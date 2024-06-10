@@ -1,0 +1,1811 @@
+% To be included
+\chapter{复数与复变函数}
+复变函数是指自变量为复数的函数，复变函数的理论和方法在数学、自然科学和工程技术领域等都有着广泛的应用。本章将在中学阶段所学的复数基本概念和运算的基础上进行一定的提升，然后介绍复数的表示、复平面的点集、区域以及复变函数的极限和连续性等基本概念，为进一步学习复变函数的中心理论-解析函数理论奠定必要的基础。
+
+
+
+\section{复数}\label{sec:complex_number}
+
+复数的概念起源于求方程的根。我们在学习初等代数时，已经知道在二次、三次代数方程的求解过程中会普遍出现对负数开方的情况。比如二次方程
+\[ z^2+1 =0,\]
+由于不能对负数开平方而没有实数解。但是，如果规定$-1$可以开平方并记为
+\begin{equation}
+    \sqrt{-1} =  \pm i,
+\end{equation}
+则此方程有两个解：记为$ z_{1}= +i, z_{2}= - i$。进而人们发现只要服从这么一个简单的规定，则任何一个$n$阶多项式方程
+\[ a_0 + a_1 z + a_2 z^2 + \cdots + a_n z^n =0, \quad (a_n \ne 0)\]
+都具有$n$个形如
+\begin{equation}\label{eq:fsxc}
+    z = x+iy, \qquad (x,y \in \mathbb{R}) 
+\end{equation}
+的解。 这种数就是所谓的复数。
+
+在很长的一段历史时间里，复数得不到合理的解释。比如方程
+$$ax^2 +bx + c= 0, \quad (a\ne 0)$$
+的解在几何上对应抛物线$y=ax^2 +bx + c$与直线$y=0$的交点。若$\sqrt{b^2-4ac} <0$，则没有交点。这说明二次方程的复数解没有合理的几何对应。因此复数长期被称为“虚构的数”。
+
+随着数学的进一步发展，特别是微积分的发明和利用，情况才有所改变。首先，人们获得了对$i$的几何解释。更重要的是，瑞士数学家欧拉在$1777$年系统地建立了复数理论,创立了复变函数的一些基本定理。$19$世纪, 复变函数理论经法国数学家柯西、德国数学家黎曼等的进一步发展, 形成了非常系统的理论。如今复数与复变函数理论已广泛地渗透到代数学、解析数论、微分方程、概率统计、计算数学、拓扑学、热力学、流体力学、电磁学、光学、量子力学和理论物理等各个领域。学习并掌握复数与复变函数理论已成为当今大学生必须掌握的基本要求。\\
+
+\subsection{复数的定义}~\\
+\begin{definition}\label{}\index{}
+	对于$\forall \boldsymbol{x}, \boldsymbol{y} \in \mathbb{R} $，构成的形如
+    \begin{equation}\label{eq:cn}
+        z = x+iy \qquad\text{or}\qquad z = x+yi 
+    \end{equation}
+    的数称为\emph{复数}。其中$i$是\emph{虚数单位}，$x$和$y$分别是复数$z$的\emph{实部}和\emph{虚部}，记为 
+    \begin{equation}\label{}
+        x = Re(z), \qquad y = Im(z) 
+    \end{equation}
+    所有的复数构成的集合叫\emph{ 复数集  }，用$\mathbb{C}$表示
+    \begin{equation}\label{}
+        \mathbb{C} = \{ z| z= x+yi, (x,y \in \mathbb{R})\} 
+    \end{equation}
+\end{definition}
+对虚数单位$i$，有两条基本约定：
+\begin{compactitem}
+  \item  $ i^2 = -1$，
+  \item  $i$与其他实数一起按同样的法则参加四则运算。
+\end{compactitem}
+
+当虚部$y=0 $时，我们把$z = x$ 看作\emph{实数}； 当实部$x=0 $时，我们把$z = iy, \, (y \ne 0) $称为\emph{纯虚数}；当实部和虚部同时等于$0$时, 我们就说复数$z=0$。
+\begin{example}
+	试问实参数$t$取何值时，复数$z=(t^2 -3 -4) +(t^2 -5t -6)i$ 是：\\
+    （1）实数；（2）纯虚数；（3）零。
+\end{example}
+\emph{解： } 由复数的定义式
+\[ z= x +yi = (t^2 -3 -4) +(t^2 -5t -6)i\]
+(1) $z$为实数
+\[ y = t^2 -5t -6 =0 \]
+解得 $t=6$ 或$ -1$ \\
+(2)$z$为纯虚数, 
+则有\[ x= t^2 -3 -4 =0, \quad  y \ne 0 \]
+解得 $t =4$或$-1$， 舍去 $ -1$ \\
+因此：当 $t =6$或$-1$时， $z$为实数； 当$t =4$ 时，$z$为纯虚数；当$t=-1$时，$z$为零。\\
+
+\subsection{复数的表示}~\\
+
+\noindent \emph{复数的代数表示} 
+
+同一复数$z$，具有多种可能表示方式。人们把$ z = x+iy $这种表示称为复数的\emph{代数表示 }。\\
+
+\noindent \emph{复数的向量表示} ~\\
+
+设一长为$r$的有向线段（箭头），躺在实轴$x$上，前端位于坐标原点，末端位于$r$处。若绕原点旋转$180^\circ$，则末端处于$-r$，如图[\ref{fig:begin}]所示。
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \tikzset{
+            %Define standard arrow tip
+            >=stealth',
+            % Define arrow style
+            pil/.style={->,thick}
+            }
+        \draw[thick,->] (-3,0) -- (3,0) node[anchor=north west] {x};
+        \coordinate[label=below:$0$] (O) at (0,0);
+        \draw (0,2pt) -- (0,-2pt);
+        \coordinate[label=below:$-r$] (A) at (-2,0);
+        \coordinate[label=below:$r$] (B) at (2,0);
+        \draw[thick,->] (O) -- (B);  
+        \draw[thick,->] (O) -- (A);  
+        \draw[black!60!green,thick, dashed] (0,2.0) arc (90:180:2.0cm);
+        \draw[black!60!green,thick, ->, dashed] (2.0,0) arc (0:90:2.0cm);
+        \draw[black!60!green,thick, dashed] (0,0) -- (0,2.0) ;
+    \end{tikzpicture}
+    \caption{有向线段的旋转}
+    \label{fig:begin}
+\end{figure}
+%\begin{figure}[htbp]
+%		\centering
+%		\includegraphics[width=0.8\textwidth]{figs/c-1.png}
+%		\caption{有向线段的旋转}
+%		\label{fig:begin}
+%	\end{figure}
+若用符号$\hat{R}$描述这种旋转，则有
+	\[ \hat{R}(\pi)r = -r\]
+	旋转$180^\circ$等效于旋转$90^\circ$再旋转$90^\circ$, 因此
+	\[ \hat{R}(\pi) = \hat{R}(\dfrac{\pi}{2}) \hat{R}(\dfrac{\pi}{2}) = \hat{R}^2(\dfrac{\pi}{2})\]
+    代回，
+	\[ \hat{R}^2 (\dfrac{\pi}{2}) r = - r \]
+	因此
+	\[ \hat{R}^2 (\dfrac{\pi}{2})  = - 1 \]
+	解得
+	\[ \hat{R} (\dfrac{\pi}{2}) = \pm i\]
+	若定义逆时钟旋转为正， 则有
+	\[ \hat{R} (+\dfrac{\pi}{2}) = +i, \qquad \hat{R} (-\dfrac{\pi}{2}) = -i\]
+	这正是虚数单位$i$的几何意义。
+    
+    很明显, 旋转90度得到纯虚数$\pm r i, (r > 0)$。它们落在过原点并与实轴x垂直的同一直线上。由于$r$取值具有任意性,所有的纯虚数都落在此直线上，基此建立$y$轴,称为\emph{虚轴 }。虚轴y与\emph{实轴}x共同确立$x-y$坐标系, 如图[\ref{fig:cn}]所示.
+    \begin{figure}[h]
+		\centering
+        \begin{minipage}[t]{0.49\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \tikzset{
+                    %Define standard arrow tip
+                    >=stealth',
+                    % Define arrow style
+                    pil/.style={->,thick}
+                    }
+                \draw[thick,->] (-2,0) -- (2,0) node[anchor=north west] {x};
+                \draw[thick,->] (0,-2) -- (0,2) node[anchor=north east] {y};
+                \node[anchor=north east] at (0,0) {0};
+                \draw (1,2pt) -- (1,-2pt) node[anchor=north] {1};
+                \draw (2pt,1) -- (-2pt,1) node[anchor=east] {i};
+            \end{tikzpicture}
+            \caption{复平面}
+            \label{fig:cn}
+        \end{minipage}
+        \begin{minipage}[t]{0.49\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \tikzset{
+                    %Define standard arrow tip
+                    >=stealth',
+                    % Define arrow style
+                    pil/.style={->,thick}
+                    }
+                \draw[thick,->] (-.5,0) -- (3.5,0) ;
+                \draw[thick,->] (0,-.5) -- (0,3.5) ;
+                \node[anchor=north east] at (0,0) {0};
+                \draw[black!60!green,thick, dashed] (2.5,2.5) -- (2.5,0) node[anchor=north] {x};
+                \draw[black!60!green,thick, dashed] (2.5,2.5) -- (0,2.5) node[anchor=east] {y};
+                \draw[fill=green!30] (0,0) -- (0:.75cm) arc (0:44.9:.75cm);
+                \draw[black!60!green,thick, ->] (0,0) -- (2.5,2.5) node[anchor=west] {$z(x,y)$};
+                \node[anchor=west] at (0.12,0.13) {$\theta$};
+            \end{tikzpicture}
+            \caption{复向量}
+		    \label{fig:cn2}
+        \end{minipage}
+	 \end{figure}
+如果旋转任意角$\theta$, 不失一般性,旋转后末端的位置可用图[\ref{fig:cn2}]中的$z$点表示。设$z$在$x$轴上的投影为$x$,在$y$轴上的投影为$y$, 则有$z=x+iy$。这正是复数的代数表示。复数$z= x+iy$唯一确定$x-y$平面上的点$(x,y)$； 同时，$x-y$平面上的点$(x,y)$唯一对应复数$z= x+iy$。复数$z= x+iy$与$x-y$平面上的点$(x,y)$ 构成一一对应关系，故称$x-y$平面为\emph{复平面}， 也称\emph{高斯平面}。
+
+复平面的引入, 使“数”和“点”之间建立了一一对应关系。因此，在研究复变函数时, 可借助于复平面取得几何直观；同时，在研究平面问题时，可借助复数和复变函数理论，以获得数学上的方便。复数获得了属于自己的现实意义和应用场景。
+
+复平面上的向量$\overrightarrow{oz}$与复数$z$构成一一对应关系，这种对应关系可使复
+数的加(减) 法与向量的加(减) 法之间保持一致。因此称$\overrightarrow{oz}$为复数$z$的\emph{向量表示}。
+
+定义测距算符$\hat{d}(z_1, z_2)$, 用以描述复平面点$z_1$与$z_2$之间的距离,则$z$点到原点$o$的距离正是向量$\overrightarrow{oz}$的长度，称为复数$z$的\emph{模}或\emph{绝对值}, 记为:$\left\vert z\right\vert$：
+\begin{equation}\label{}
+    \hat{d}[o,z] = \sqrt{ x^2 + y^2} \equiv \left\vert \overrightarrow{oz} \right\vert \equiv \left\vert z \right\vert
+\end{equation} 
+同时，称$z$点与坐标原点$o$的连线与正$x$轴构成的夹角为复数$z$的\emph{辐角 }, 记为：
+\begin{equation}
+    \theta  \equiv \text{Arg } z.
+\end{equation}
+很明显，辐角$ \theta $有无穷多个，我们称$ \theta \in \left(-\pi, \pi \right]$的这个特殊辐角为\emph{主辐角 }, 记为 $\arg z$。因此，辐角与主辐角之间存在关系：
+\begin{equation}\label{}
+    \text{Arg } z = 2 k \pi + \arg z, \qquad k \in \mathbb{Z} 
+\end{equation}
+当$z=0$时，其模长为0，辐角无意义。对于任一非零复数z, 存在如图[\ref{fig:cn} (b)]所示的三角关系： 
+\begin{equation}\label{}
+    \tan \theta = \frac{y}{x}  
+\end{equation}
+注意到
+\[ \begin{aligned}
+\text{argtan }\dfrac{y}{x} & \in (- \frac{\pi}{2 }, \frac{\pi}{2 }), \qquad 
+\arg z \in \left( - \pi, \pi \right] 
+\end{aligned}\]
+即通过$\text{argtan } \dfrac{y}{x}$ 只可直接得到第一、四象限的主辐角。而其他象限及轴向的主辐角则须要通过计算获得：
+\begin{equation}
+    \arg z=\left\{\begin{array}{cc}
+        \arctan \dfrac{y}{x} \hspace{1em}, & x>0, \\ [5 pt]
+        \pm \dfrac{\pi}{2} \hspace{3em}, & x=0, y \neq 0, \\[5 pt]
+        \arctan \dfrac{y}{x} + \pi, & x<0, y > 0, \\[5 pt]
+        \arctan \dfrac{y}{x} - \pi, & x<0, y < 0, \\[5 pt]
+        \pi \hspace{3em}, & x<0, y=0 
+        \end{array}\right.   
+\end{equation}
+\begin{example}
+    已知复数$z_1=2-2i, z_2=-3+4i$,求它们的辐角
+\end{example}
+\emph{解： } (1) $z_1$的$x>0$，在第一、四象 \\
+$z_1$的主辐角
+\[ \arg z_1 = \arctan (\frac{y}{x} )  = \arctan (\frac{-2}{2} ) = - \frac{\pi}{4}\]
+$z_1$的辐角
+\[ \begin{aligned}
+    \text{Arg } z_1   &= \arg z_1 + 2 k \pi \\ 
+    &=  2 k \pi  - \frac{\pi}{4}  \qquad (k \in \mathbb{Z})
+\end{aligned} \]
+(2) $z_2$在第二象限 \\
+$z_2$的主辐角
+\[ \arg z_2 = \arctan (\frac{4}{-3}) + \pi \]
+$z_2$的辐角
+\[ \begin{aligned}
+    \text{Arg } z_2  &=  \arg z_2 + 2 k \pi \\ 
+    &=  (2 k +1 ) \pi  - \arctan \frac{4}{3} \qquad (k \in \mathbb{Z})
+\end{aligned} \]
+\begin{example}
+    已知航轮在海平面某点的速度用复数 $v = - 1 - i$描述, 求速度大小和方向
+\end{example}
+\emph{解： }  第三象限   \\
+大小： $\left\vert v \right\vert = \sqrt{x^2 + y^2} = \sqrt{2}  $ \\
+方向： $\arg v = \arctan (\dfrac{y}{x}) - \pi = \arctan (\dfrac{-1}{-1}) - \pi  = - \dfrac{3}{4} \pi$ \\
+
+\noindent \emph{复数的三角表示} 
+
+把坐标变换关系
+\[ \begin{cases}
+	x = r\cos\theta \\
+	y = r \sin \theta \\ 
+\end{cases}\]
+代入复数的代数表示$z= x+ iy$,得
+\begin{equation}\label{eq:sjbs}
+    z \equiv  r (\cos \theta + i \sin\theta ), 
+\end{equation}
+式中$r$ 是复数$z$的模$\left\vert z\right\vert $。 称上式为复数的\emph{三角表示 }。
+特别地，当$r=1$时，有 
+\begin{equation}\label{}
+    z \equiv  (\cos \theta + i \sin\theta ), 
+\end{equation}
+称为\emph{单位复数}。\\
+
+\noindent \emph{复数的指数表示} 
+
+根据虚数单位的运算约定，可把$\boldsymbol{e}^{i \theta}$作级数展开，
+\[ \begin{aligned}
+  \boldsymbol{e}^{i \theta}=\sum_{n=0}^{\infty} \frac{(i \theta)^{n}}{n!} 
+  =\sum_{n=0}^{\infty}(-1)^{n} \frac{\theta^{2 n}}{(2 n)!}+i \sum_{n=0}^{\infty}(-1)^{n} \frac{\theta^{2 n+1}}{(2 n+1)!}
+  =\operatorname{cos}\theta+i \operatorname{sin}\theta 
+\end{aligned}\]
+这正是欧拉公式 
+\begin{equation}
+    \boldsymbol{e}^{i \theta} = \operatorname{cos}\theta+i \operatorname{sin}\theta  
+\end{equation}
+把欧拉公式代回式[\ref{eq:sjbs}]，得 
+\begin{equation}\label{}
+    z \equiv  r \boldsymbol{e}^{i \theta} \equiv  |z| \boldsymbol{e}^{i \theta}, 
+\end{equation}
+称为复数的\emph{极坐标表示}，也称为复数的\emph{指数表示}。注意到$z = r \boldsymbol{e}^{i \theta} $由$r$旋转$\theta$角而来：
+$$ \begin{aligned}
+  \hat{R}(\theta)r &=  r \boldsymbol{e}^{i \theta}  \\
+  (\hat{R}(\theta) - \boldsymbol{e}^{i \theta}) r &= 0 \\
+  \hat{R}(\theta) - \boldsymbol{e}^{i \theta} &=0 \\
+  \hat{R}(\theta) &=\boldsymbol{e}^{i \theta}
+\end{aligned}$$ 
+单位复数$\boldsymbol{e}^{i \theta}$正是旋转算符$\hat{R}(\theta)$的显式表达，因此也称虚数单位"$i$"为\emph{旋转乘数}。 \\
+
+\noindent \emph{复数的有序数对表示} 
+
+由前可知, 复数$z = x+yi$ 对应复平面的点 $z(x,y)$, 因此,复数$z$可用点坐标表示
+\begin{equation}\label{}
+    z= (x,y) 
+\end{equation}
+很明显, 在实数对$(x,y)$中交换$x$和$y$的位置所得的数对$(y,x)$对应复数$z= y+x i$。即$(x,y)$是有序实数对。因此称上式为复数的\emph{有序数对表示}.
+
+实数单位$1$和虚数单位$i$的有序实数对表示
+\begin{equation}\label{}
+    1 = 1+0i = (1,0), \qquad  i= 0+1i = (0,1)   
+\end{equation}
+如果把它们写成列阵的形式
+\begin{equation}
+    1 = \begin{pmatrix}
+        1 \\
+        0
+    \end{pmatrix},\quad  
+    i = \begin{pmatrix}
+        0 \\
+        1
+    \end{pmatrix},
+\end{equation}
+则有
+$$
+    z=x+yi = x \begin{pmatrix}
+        1 \\
+        0
+    \end{pmatrix} + y \begin{pmatrix}
+        0 \\
+        1
+    \end{pmatrix} = \begin{pmatrix}
+        x \\
+        0
+    \end{pmatrix} + \begin{pmatrix}
+        0 \\
+        y
+    \end{pmatrix} = \begin{pmatrix}
+        x \\
+        y
+    \end{pmatrix} $$
+得复数的\emph{矩阵表示}:
+\begin{equation}
+    z= \begin{pmatrix}
+        x \\
+        y
+    \end{pmatrix} 
+\end{equation}
+
+\noindent \emph{复数的复球面表示} 
+
+由前可知, 所有的复数构成复平面。取一个与复平面切于原点的单位球面，与原点重合的点记为$S$,如图[\ref{fig:fqm}]所示。通过$S$作垂直于复平面的直线，它与球面交于另一点$N$。称$S$为球面的\emph{南极}，$N$为球面的\emph{北极}。
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=0.5]
+    \draw[xslant=1.5, fill=blue, opacity=0.45]
+    (0,-5) rectangle (10,-2);
+    \node (Center) at (0,0) {};
+    \fill[green!60!black, opacity=0.7] (Center) circle (3cm);
+    \draw[dashed,draw=yellow ] (Center)  ellipse (3cm and 0.8cm);
+    \draw[dashed,draw=yellow ] (Center)  ellipse (0.8cm and 3cm);
+    \draw[->, opacity=0.7] (0,-3) -- (0,4) node[right] {};
+    \draw[->] (0,-3) -- (-3,-5.5)  node[left] {y};
+    \draw[->] (0,-3) -- (6,-3)  node[right] {x};
+    \draw[opacity=0.7] (0,3) -- (1.5,-4.5)  node[right] {z(x,y)};
+    \node [left,red] at (0,-3)   {S};
+    \node [above left,red] at (0,3)   {N};
+    \node [right,red] at (0.8,-0.9)   {$P(\theta,\varphi)$};
+    \node [right] at (-0.2,-3.5)  {O};
+\end{tikzpicture}  
+\caption{复球面示意图}
+    \label{fig:fqm}
+\end{figure}
+%\begin{figure}[htbp]
+%    \centering
+%    \includegraphics[width=0.38\textwidth]{figs/cn6.png}
+%    \caption{复球面示意图}
+%    \label{fig:fqm}
+%\end{figure}
+北极$N$与复平面点$z(x,y)$的连线与球面交于点$P(\theta, \varphi)$。很明显，通过这种连线，球面上的点与复平面的点构成一一对应关系。特别地，球面的北极$N$是复平面无穷大$\infty$的几何表示。这样，球面上的每一点都有唯一的一个复数与之对应，因此称为\emph{复球面}。并称点$P(\theta, \varphi)$为复数$z$的\emph{复球面表示}。
+\begin{equation}
+    z = P(\theta, \varphi)
+\end{equation}
+包括无穷远点在内的复平面称为\emph{扩充复平面}。不包括无穷远点在内的复平面称为\emph{有限复平面}, 简称复平面。
+
+对于复数$\infty$，它的模规定为正无穷大, 而实部,虚部和辐角等概念均无意义。很明显，复球面表示的优越性在于能把复数$\infty$（或者说复平面无穷远点）显式地表示出来。 对于复数$\infty$，有如下计算规则：
+\begin{compactitem}
+    \item 加法： $z + \infty = \infty +z = \infty, \quad ( z \ne \infty)$
+    \item 减法： $z - \infty = \infty -z = \infty, \quad ( z \ne \infty)$
+    \item 乘法： $z \cdot \infty = \infty \cdot z = \infty, \quad ( z \ne 0)$
+    \item 除法： $\dfrac{z}{\infty} =0, \, \quad  \dfrac{\infty}{z} =\infty,(z \ne \infty ), \, \quad \dfrac{z}{0} =\infty, (z \ne 0)$
+\end{compactitem}
+
+~\\
+\begin{hint}
+    为适应不同问题的讨论, 复数有六种常见表示：
+    \begin{compactitem}
+      \item 代数表示 $~ z=x+yi$
+      \item 向量表示 $~ z= \overrightarrow{oz}$ 
+      \item 三角表示  $~ z=r (\cos \theta + i\sin \theta)$
+      \item 指数表示  $~ z= r e^{i \theta}$
+      \item 有序实数对表示  $~ z=(x,y)= (r\cos \theta, r\sin \theta )$
+      \item 复球面表示 $~ z= P(\theta, \varphi)$
+    \end{compactitem}
+    它们各有其便, 且可相互转换。具体使用时以直观和方便计算为要。 
+\end{hint}
+\begin{example}
+    试把复数$z=1-i$转化成指数形式。
+\end{example}
+\emph{解： } 可经三角式过渡
+\[ \begin{aligned} 
+    z&= \sqrt{2} (\frac{\sqrt{2} }{2} - i\frac{\sqrt{2} }{2}) \\
+     &= \sqrt{2} (\cos \frac{1}{4}\pi - i\sin \frac{1}{4}\pi  ) \\
+     &= \sqrt{2} [\cos (-\frac{1}{4}\pi) + i\sin (-\frac{1}{4}\pi  )]\\
+     &= \sqrt{2}  e^{-i \frac{\pi}{4}} 
+\end{aligned}\]
+\begin{example}
+    试把复数$z=1-\cos \theta + i \sin \theta \quad (0 < \theta \le \pi)$化成指数形式。
+\end{example}
+\emph{解： }由三角函数公式
+\[ \begin{aligned} 
+    z&= 1-\cos \theta + i \sin \theta \\
+     &= 2 \sin ^2 \frac{\theta}{2}  + 2i \sin \frac{\theta}{2} \cos \frac{\theta}{2}\\
+     &= 2 \sin \frac{\theta}{2}  (\sin \frac{\theta}{2}  +  i\cos \frac{\theta}{2} ) \\
+     &= 2  \sin \frac{\theta}{2} [ \cos ( \frac{\pi}{2} -\frac{\theta}{2}) + i\sin ( \frac{\pi}{2} -\frac{\theta}{2}) ] \\
+     &= 2\sin \frac{\theta}{2} e^{i (\pi-\theta) /2}
+\end{aligned}\]
+
+\subsection{复数的运算} ~\\
+
+由于实数是复数的特例, 规定复数的运算法则时应满足一个基本要求，即：复数运算的法则施行于实数时, 应与实数运算的结果相符。同时，复数域是实数域的扩展，复数按新的法则运算时能够满足实数运算的一般定律，比如加法的交换律、结合律，乘法的交换律、结合律和乘法对加法的分配律等。\\
+
+\noindent \emph{复数相等: } 
+
+如果两复数在复平面上对应的点是同一点，则它们相等。
+设复数
+\[z_1 = (x_1,\, y_1) \qquad z_2=(x_2,\,y_2) \]
+则它们相等时，其实部和虚部分别相等
+\begin{equation}\label{} 
+    {z}_{1}={z}_{2} \quad \Leftrightarrow \quad x_{1}=x_{2}, y_{1}=y_2
+\end{equation}
+设复数
+\[z_1 = r_1 e^{i \theta_1} \qquad z_1 = r_2 e^{i \theta_2} \]
+则它们相等时，其模长相等而辐角相差$2\pi$的整数倍
+\begin{equation}\label{}
+    {z}_{1}= {z}_{2} \quad  \Leftrightarrow \quad  r_1= r_2, \theta_1=2k \pi + \theta_2, \quad k \in \mathbb{Z}   
+\end{equation}
+
+\begin{proposition}\label{}
+	与实数不同,复数只能判断是否相等，不能比较大小。或者说，只有两个复数同时为实数这种特殊情况下，才能比较大小。
+\end{proposition}
+\begin{proof}
+	设虚数$i$可以和$0$比较大小, 则
+\begin{compactitem}
+   \item 由复数相等条件，可知 $i \ne 0$
+   \item 若 $i>0$， 则 $ -1 = i\cdot i >  0 \cdot i  =0$, 矛盾！
+   \item 若 $i<0$， 则 $-i> 0$, 因此 $ -1 = (-i)\cdot (-i) >  0 \cdot 0  =0$, 矛盾！
+\end{compactitem}
+因此，当两个复数不同时为实数时，不能比较大小。 
+\end{proof}
+
+\noindent \emph{复数加法: } 
+
+把复数用向量表示，由向量加法得两复数加法法则，即：两复数的和等于它们的实部和虚部分别相加，如图[\ref{fig:fsjjf}]所示。
+  \begin{equation}\label{}
+      \begin{aligned}
+     z &= z_1 + z_2  \\ 
+     &= (x_1, y_1) + (x_2,y_2) \\
+     &= (x_1+ x_2,\,  y_1+ y_2) 
+    \end{aligned} 
+  \end{equation}
+  交换律
+  \[ z_1 + z_2  = z_2 + z_1 \]
+  结合律
+  \[ (z_1 + z_2) + z_3  = z_1 +(z_2 + z_3) \]
+  \begin{figure}[h]
+    \centering
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \tikzset{
+                %Define standard arrow tip
+                >=stealth',
+                % Define arrow style
+                pil/.style={->,thick}
+                }
+            \draw[thick,->] (-.5,0) -- (3.5,0) node[anchor=north west] {x};
+            \draw[thick,->] (0,-.5) -- (0,3.5) node[anchor=north east] {y};
+            \node[anchor=north east] at (0,0) {O};
+            \draw[black!60!green,thick,->] (0,0) -- (2,0.5) node[right] {$z_1$};
+            \draw[black!60!green,thick,->] (0,0) -- (0.5,2) node[right] at (0.5,1.9) {$z_2$};
+            \draw[black!60!green,thick,->] (0,0) -- (2.5,2.5) node[right] {$z_1+z_2$};
+            \draw[black!60!green,thick,dashed] (2.5,2.5) -- (2.5,0)  node[below] at (2.8,0) {$x_1+x_2$};
+            \draw[black!60!green,thick,dashed] (2.5,2.5) -- (0,2.5)  node[left] {$y_1+y_2$};
+            \draw[black!60!green,thick,dashed] (2,0.5) -- (2.0,0)  node[below] {$x_1$};
+            \draw[black!60!green,thick,dashed] (2,0.5) -- (0,0.5)  node[left] {$y_1$};
+            \draw[black!60!green,thick,dashed] (0.5,2) -- (0,2.0)  node[left] {$y_2$};
+            \draw[black!60!green,thick,dashed] (0.5,2) -- (0.5,0)  node[below] {$x_2$};
+            \draw[black!60!green,thick] (0.5,2) -- (2.5,2.5);
+            \draw[black!60!green,thick] (2,0.5) -- (2.5,2.5);
+        \end{tikzpicture}
+        \caption{复数加法}
+        \label{fig:fsjjf}
+    \end{minipage}
+    \begin{minipage}[t]{0.49\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \tikzset{
+                %Define standard arrow tip
+                >=stealth',
+                % Define arrow style
+                pil/.style={->,thick}
+                }
+                \draw[thick,->] (-.5,0) -- (3.5,0) node[anchor=north west] {x};
+                \draw[thick,->] (0,-2.0) -- (0,2.0) node[anchor=north east] {y};
+                \node[anchor=north east] at (0,0) {O};
+                \draw[black!60!green,thick,->] (0,0) -- (-0.5,1.5) node[left] {$z_2$};
+                \draw[black!60!green,thick,->] (0,0) -- (0.5,-1.5) node[below] {$-z_2$};
+                \draw[black!60!green,thick,->] (0,0) -- (2,0.5) node[right] {$z_1$};
+                \draw[black!60!green,thick,->] (0,0) -- (2.5,-1) node[right] {$z_1-z_2$};
+                \draw[black!60!green,thick] (0.5,-1.5) -- (2.5,-1);
+            \draw[black!60!green,thick] (2,0.5) -- (2.5,-1);
+        \end{tikzpicture}
+        \caption{复数减法}
+        \label{fig:fsjjf2}
+    \end{minipage}
+ \end{figure}
+%\begin{figure}[htbp]
+%    \centering
+%   \includegraphics[width=0.85\textwidth]{figs/cn1.png}
+%    \caption{（a）复数的加法，（b）复数减法}
+%    \label{fig:fsjjf}
+%\end{figure}
+\begin{corollary}\label{}
+    \noindent 当有$n$个复数相加时
+    \begin{equation}\label{} z_1 + z_2  + \cdots + z_n = (\sum_{j=1}^n x_j,\, \sum_{j=1}^n y_i)   
+    \end{equation}
+\end{corollary}
+
+~\\
+\noindent \emph{复数减法: }
+
+减法是加法的逆。取$z_2$ 关于原点的对称点，即得$-z_2$，如图[\ref{fig:fsjjf2}]所示。得复数复数减法法则：
+\begin{equation}\label{}
+    z_1 - z_2 = z_1 +(-z_2) = (x_1 - x_2, y_1 - y_2) 
+\end{equation}
+即：两复数的差等于它们的实部和虚部分别做差。
+两复数做差，在复平面上对应两个向量$\overrightarrow{z_1 z_2} = z_2 -z_1$ 和 $\overrightarrow{z_2 z_1} = z_1 -z_2$。它们的模相等，方向相反。 
+
+~\\
+利用测距算符
+\begin{equation}\label{}
+    \begin{aligned}
+        \hat{d}[z_1, z_2] &= \left\vert z_1 - z_2\right\vert \\
+            &=  \left\vert (x_1-x_2, \, y_1-y_2)\right\vert \\
+            &= \sqrt{(x_1-x_2)^2 + (y_1-y_2)^2}  
+        \end{aligned} 
+\end{equation}
+因此复数差的模具有复平面两点距离的几何意义, 
+若取$z_2 =0$, $z =z_1$, 则有
+        \[\left\vert z\right\vert = \hat{d}[z, 0] =  \left\vert \overrightarrow{oz}\right\vert\]
+正如前所述，复数$z$的模就是向量$\overrightarrow{oz}$的长度。
+
+~\\
+由复数的和差公式，可得三角不等式：
+\begin{equation}\label{}
+    \begin{aligned}
+        (1) &\quad   \left\vert z_1 + z_2 \right\vert \le \left\vert z_1 \right\vert +
+        \left\vert z_2 \right\vert \\
+        (2) &\quad  |z_1-z_2| \ge |z_1|  - |z_2|  \\
+     (3) & \quad  |z_1-z_2| \le |z_1- z|  + |z-z_2|  \\ 
+     (4) & \quad \left\vert \left\vert z_1\right\vert - \left\vert z_2\right\vert \right\vert  \le \left\vert z_1 \pm z_2 \right\vert 
+     \le \left\vert z_1\right\vert + \left\vert z_2 \right\vert 
+\end{aligned} 
+\end{equation}
+\begin{example}
+    试证明不等式
+    \[|z_1 -z_2| \ge ||z_1| - |z_2||\]
+    \end{example}
+\begin{proof}
+    设原点$O$与点$z_1$、$z_2$不共线，则它们构成$\Delta Oz_1z_2$。此三角形的边长分别为
+    $$a_1 =|z_1 -z_2|, \quad a_2 =|z_1|, \quad a_3 =|z_3|$$
+    由于三角形两边长之差小于第三边边长， 因此有 
+    \[|z_1 -z_2| > ||z_1| - |z_2||\]
+    当三点共线时，有 
+    \[|z_1 -z_2| = ||z_1| - |z_2||\]
+    原不等式得证。
+\end{proof}
+\begin{corollary}\label{}
+    \noindent 对于n个复数的和，存在不等式
+    \begin{equation}
+        |z_1 + z_2 + \cdots + z_n| \le |z_1| + |z_2| + \cdots +   |z_n| 
+    \end{equation}
+\end{corollary}
+\begin{example}
+    已知$x$是实数，求 
+    \[f(x) = \sqrt{(x+4)^2 +4} - \sqrt{x^2 +1}\]
+    的极大值
+\end{example}
+    \emph{解：} 令$z_1 = x+4 + 2i, \quad z_2 = x+i$,则有 
+    \[ \begin{aligned}
+        f(x) = |z_1| - |z_2| 
+          \le |z_1-z_2| 
+          = |x+4 + 2i - x -i| 
+          = \sqrt{17}
+    \end{aligned} \]
+    取极值的条件为
+    \[ \frac{2}{x+4} = \frac{1}{x}\]
+    即$x=4$
+\begin{example}
+    求复数方程 
+    \[\left\vert z+i\right\vert =2\]
+    所表示的曲线 
+    \end{example}
+    \emph{解：} 做简单变换
+    \[ \begin{aligned}
+       \left\vert z+i\right\vert &=2  \\ 
+       \left\vert z- (0-i)\right\vert &=2  \\ 
+    \end{aligned} \]
+    由测距算符可知，上式描述到定点$(0, -1)$的距离恒为 2 的点的集合，即此复数方程表示复平面上以点$(0, -1)$为圆心半径为2的圆线, 如图[\ref{fig:fbmyx}]所示。
+    \begin{figure}[h]
+		\centering
+        \begin{minipage}[t]{0.49\textwidth}
+            \centering
+            \begin{tikzpicture}[scale=0.8]
+                \tikzset{
+                    %Define standard arrow tip
+                    >=stealth',
+                    % Define arrow style
+                    pil/.style={->,thick}
+                    }
+                \draw[thick,->] (-2.5,0) -- (2.5,0) node[anchor=north west] {x};
+                \draw[thick,->] (0,-3.5) -- (0,1.5) node[anchor=north east] {y};
+                \node[anchor=north east] at (0,0) {O};
+                \draw[black!60!green,thick,name path=l1]  (0,-1) circle (2); 
+                \node[right] at(1.2,1.2) {$\left\vert z+i\right\vert =2$};
+                \fill[]  (0,-1) circle (2pt); 
+                \draw[white,thick,name path=l2]  (0,-1) -- (2,1); 
+                \fill[name intersections = {of=l1 and l2,
+            name=p}] (p-1) circle (1pt) node [above right] {};
+             \draw[black!60!green,thick]  (0,-1) -- (p-1); 
+            \end{tikzpicture}
+            \caption{复平面圆线}
+            \label{fig:fbmyx}
+        \end{minipage}
+        \begin{minipage}[t]{0.49\textwidth}
+            \centering
+            \begin{tikzpicture}[scale=1]
+                \tikzset{
+                    %Define standard arrow tip
+                    >=stealth',
+                    % Define arrow style
+                    pil/.style={->,thick}
+                    }
+                \draw[thick,->] (-.5,0) -- (3.5,0) node[anchor=north west] {x};
+                \draw[thick,->] (0,-.5) -- (0,3.5) node[anchor=north east]  {y};
+                \node[anchor=north east] at (0,0) {O};
+                \draw[black!60!green,thick,name path=l3] (-0.5,2.5) node[anchor=north] {$z_1$} -- (2.5,0.5) node[anchor=north] {$z_2$};
+                \fill[black!60!green]  (-0.5,2.5)  circle (2pt); 
+                \fill[black!60!green]  (2.5,0.5) circle (2pt); 
+                \draw[white,thick,name path=l4] (0,0) -- (2,2) ;
+                \fill[name intersections = {of=l3 and l4, name=p}] (p-1) circle (1pt) node [above right] {};
+                \draw[black!60!green,thick]  (0,0) -- (p-1) node [above right] {z}; 
+            \end{tikzpicture}
+            \caption{复平面线段}
+		    \label{fig:fpmxd}
+        \end{minipage}
+	 \end{figure}
+
+    \begin{example}
+        设$z_1, z_2$是复平面两点，试给出下列方程所描述的曲线
+        \[ z= z_1 + t (z_2 - z_1), \qquad (0\le t\le 1)\]
+    \end{example}
+    \emph{解：} 变形,得 
+    \[ z -z_1 = t (z_2 - z_1)\]
+    向量 $\overrightarrow{z_1 z}$ 与向量 $\overrightarrow{z_1 z_2}$ 共点同向，即$z$点落在由线段$z_1z_2$确定的直线上。参量$t$的取值范围为$(0\le t\le 1)$，因此$z$描述线段$z_1z_2$上的任意点，即方程描述线段$z_1z_2$, 如图[\ref{fig:fpmxd}]所示。
+
+    若改变参量$t$的取值范围: 
+    \begin{equation}
+        z= z_1 + t (z_2 - z_1), \qquad (-\infty < t < +\infty)
+    \end{equation}
+则方程描述由$z_1$和$z_2$点确定的直线,并称为复平面上两点确定直线的参数方程。\\
+    
+\noindent \emph{复数乘法: } 
+
+根据虚数单位运算的约定，得虚数单位$i$的乘法法则：
+\[\begin{aligned}
+     {i}^1 &= i = (0,1) = e^{i \frac{\pi}{2}}\\
+    {i}^2 &= -1 = (-1,0)= e^{i \pi} \\
+     {i}^3 &= -i = (0,-1) = e^{i \frac{3\pi}{2}} \\
+    {i}^4 &= 1 = (1,0) = e^{i 2\pi }\\ 
+\end{aligned} \]
+实现的是轴线上四点之间的跳转。因此，$i$的乘法存在周期性
+\begin{equation}\label{}
+    \begin{aligned}
+     i^{4 k}=1,\quad 
+     i^{4 k+1}=i,\quad 
+     i^{4 k+2}=-1 ,\quad 
+     i^{4 k+3}=-i  \qquad (k \in \mathbb{Z}^+)
+\end{aligned} 
+\end{equation}
+数乘
+\begin{equation}\label{}
+    \begin{aligned}
+    i z &= (-y, x) \\
+    c z &= (cx, cy)  \\
+    ic z &= (-cy, cx) \qquad c \in \mathbb{R}
+\end{aligned} 
+\end{equation}
+复数乘
+\begin{equation}\label{}
+    \begin{aligned}
+    z &= z_1 z_2  \\ 
+    &= (x_1, y_1) (x_2,y_2) \\
+    &= (x_1x_2- y_1y_2,\,  x_1y_2+x_2y_1) 
+   \end{aligned}  
+\end{equation}
+   交换律
+   \[ z_1 z_2  = z_2 z_1 \]
+   结合律
+   \[ (z_1 z_2)z_3  = z_1 (z_2 z_3) \]
+   分配律
+   \[ z_1 (z_2 + z_3)  = z_1 z_2 + z_1 z_3\]
+采用极坐标表示复数乘法
+	\[z= z_1 z_2 = r_{1} e^{\boldsymbol{i}\theta_{1}} \times r_{2} e^{\boldsymbol{i}\theta_{2}} = r_{1} r_{2} e^{\boldsymbol{i}\theta_{1}} e^{\boldsymbol{i}\theta_{2}}\]
+    计算后两项的积
+    \[ \begin{aligned}
+		e^{\boldsymbol{i}\theta_{1}} e^{\boldsymbol{i}\theta_{2}} &=
+\left(\operatorname{cos}\left[\theta_{1}\right]+i \operatorname{sin}\left[\theta_{1}\right]\right)\left(\operatorname{cos}\left[\theta_{2}\right]+i \operatorname{sin}\left[\theta_{2}\right]\right) \\
+		& =\left(\operatorname{cos}\left[\theta_{1}\right] \operatorname{cos}\left[\theta_{2}\right]-\operatorname{sin}\left[\theta_{1}\right] \operatorname{sin}\left[\theta_{2}\right]+i\left(\operatorname{sin}\left[\theta_{1}\right] \operatorname{cos}\left[\theta_{2}\right]+\operatorname{cos}\left[\theta_{1}\right] \operatorname{sin}\left[\theta_{2}\right]\right)\right) \\
+		& =\left(\operatorname{cos}\left[\theta_{1}+\theta_{2}\right]+i \operatorname{sin}\left[\theta_{1}+\theta_{2}\right]\right) \\
+		& = e^{\boldsymbol{i}\left(\theta_{1}+\theta_{2}\right)}
+		\end{aligned} \]
+   得乘法公式 
+   \begin{equation}\label{}
+       z_1 z_2 = r_{1} r_{2} e^{\boldsymbol{i}\left(\theta_{1}+\theta_{2}\right)} 
+   \end{equation}
+   分析：
+   \[ \begin{aligned}
+       \begin{aligned}
+           z &= z_2z_1  \\
+           &= r_{2} e^{\boldsymbol{i}\theta_{2}} z_1  \\ 
+           &= r_{2} [\hat{R}(\theta_{2})z_1] \\
+       \end{aligned} 
+   \end{aligned}\]
+   复数乘法的几何意义:先把$z_1$逆时钟旋转$\theta_2$角，然后把其模伸缩$r_2$倍，如图[\ref{fig:fstimes}]所示。
+   \begin{figure}[h]
+    \centering
+            \begin{tikzpicture}[scale=1]
+                \tikzset{
+                    %Define standard arrow tip
+                    >=stealth',
+                    % Define arrow style
+                    pil/.style={->,thick}
+                    }
+                \draw[thick,->] (-.5,0) -- (3.5,0) node[anchor=north west] {$x$};
+                \draw[thick,->] (0,-.5) -- (0,3.5) node[anchor=north east]  {$y$};
+                \node[anchor=north east] at (0,0) {O};
+                % angle \theta_1
+                \draw[fill=blue!10] (0,0) -- (0:0.95cm) arc (0:27:.95cm);
+                \draw[black!60!green,thick]  (1.15cm,0.15cm) node {$\theta_1$};
+                % angle \theta_2
+                \draw[fill=blue!20] (0,0) -- (0:0.60cm) arc (0:44:.60cm);
+                \draw[black!60!green,thick]  (0.72cm,0.3cm) node {$\theta_2$};
+                 % angle \theta
+                 \draw[fill=blue!50] (0,0) -- (0:0.35cm) arc (0:73:.35cm);
+                 \draw[black!60!green,thick]  (0.3cm,0.47cm) node {$\theta$};
+                \draw[black!60!green,thick, ->,name path=l5] (0,0) -- (2,1)  node[right]{$z_1$};
+                \draw[black!60!green,thick, ->,name path=l5] (0,0) -- (1.5,1.5)  node[right]{$z_2$}; 
+                \draw[black!60!green,thick, ->,name path=l5] (0,0) -- (1.1,3.0) node[right] {$z = z_1 z_2$}; 
+            \end{tikzpicture}
+    \caption{复数乘法}
+    \label{fig:fstimes}
+\end{figure}
+
+\begin{corollary}\label{} n个复数的乘法
+    \begin{equation}\label{}
+        z_1z_2\cdots z_n = (\prod\limits_{j=1}^{n}r_j) \boldsymbol{e}^{\boldsymbol{i} \sum _{j=1}^{n} \theta _j } 
+    \end{equation}
+\end{corollary}
+
+\begin{corollary}\label{} 复数的乘幂
+    \begin{equation}\label{eq:fscft2}
+        \begin{aligned}
+      z^n &=  r^n e^{i n \theta}\\ 
+      &=  r^n (\cos n \theta + i \sin n \theta) , \qquad n \in \mathbb{Z}^+ 
+      \end{aligned} 
+    \end{equation}
+\end{corollary}
+\begin{hint}
+很明显，复数的乘法既不是向量的点积, 也不是向量的叉积。
+\end{hint}
+
+\begin{example}
+    设物体受四个力的作用，如图[\ref{fig:fsmsjf}]所示, \\
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=0.6]
+        \tikzset{
+            %Define standard arrow tip
+            >=stealth',
+            % Define arrow style
+            pil/.style={->,thick}
+            }
+        \draw[thick,->] (-3.5,0) -- (3.5,0) node[anchor=north west] {$x$};
+        \draw[thick,->] (0,-.5) -- (0,4.5) node[anchor=north east]  {$y$};
+        \node[anchor=north east] at (0,0) {O};
+        \draw[black!60!green,thick,->] (0,0) -- (2.5, 1) node[right]  {$F_1(2.5,1)$};
+        \draw[black!60!green,thick,->] (0,0) -- (1, 3) node[right]  {$F_2(1,3)$};
+        \draw[black!60!green,thick,->] (0,0) -- (-1, 4) node[left]  {$F_3(-1,4)$};
+        \draw[black!60!green,thick,->] (0,0) -- (-3, 1.5) node[left]  {$F_3(-3,1.5)$};
+    \end{tikzpicture}
+        \caption{复数描述的力}
+        \label{fig:fsmsjf}
+\end{figure}
+%\begin{figure}[h]
+%       \centering
+%       \includegraphics[width=0.35\textwidth]{figs/c-9.png}
+%       \caption{复数描述的力}
+%      \label{fig:fsmsjf}
+%\end{figure}
+试求:
+\begin{inparaenum}[(1)]
+    \item 合外力的大小和方向，
+    \item 若$F_2$逆时针旋转45度, 合外力的大小和方向。
+\end{inparaenum}
+
+\end{example}
+\emph{解：} (1) 把力写成复数形式, 计算合力 
+\[ \begin{aligned}
+   F &= (2.5 +1-1-3, 1+3+4+1.5) \\ 
+   &= (-0.5, 9.5)
+\end{aligned} \]
+大小: $\left\vert F\right\vert = \sqrt{0.5^2 + 9.5^2} =9.51 $ \\
+方向：$\theta = \arg F + \pi = \pi - \text{argtan} \dfrac{9.5}{0.5}  = \pi - \text{argtan} (19)$ \\
+(2) $F_2$逆时针旋转45度
+\[ \begin{aligned}
+  F'_2 &= \hat{R}(\frac{\pi}{4})(1,3) \\
+  &= (1, 1) \cdot (1,3) \\ 
+  &= (-2, 4)
+\end{aligned}\]
+计算合力 
+\[ \begin{aligned}
+   F &= (2.5 -2-1-3, 1+4+4+1.5) \\ 
+   &= (-3.5, 10.5)
+\end{aligned} \]
+大小: $\left\vert F\right\vert = \sqrt{3.5^2 + 10.5^2} =11.07 $ \\
+方向：$\theta = \arg F + \pi = \pi - \text{argtan} \dfrac{10.5}{3.5}  = \pi - \text{argtan} (3)$ \\
+
+\noindent \emph{共轭运算: } 
+
+\begin{example}
+    在复平面找点$z$关于$x$轴的对称点$z^*$。
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}[scale=1]
+        \tikzset{
+        %Define standard arrow tip
+         >=stealth',
+        % Define arrow style
+        pil/.style={->,thick}
+        }
+                    \draw[thick,->] (-.5,0) -- (4.5,0) node[anchor=north west] {};
+                    \draw[thick,->] (0,-2.0) -- (0,2.0) node[anchor=north east] {};
+                    \node[anchor=north east] at (0,0) {O};
+                    % angle \theta
+                    \draw[fill=blue!20] (0,0) -- (0:0.60cm) arc (0:44:.60cm);
+                    \draw[black!60!green,thick]  (0.72cm,0.3cm) node {$\theta$};
+                    % angle -\theta
+                    \draw[fill=blue!20] (0,0) -- (0:0.60cm) arc (0:-44:.60cm);
+                    \draw[black!60!green,thick]  (0.72cm,-0.3cm) node {$-\theta$};
+                    \draw[black!60!green,thick,->] (0,0) -- (1.5,1.5)  node[right]{$z$}; 
+                    \draw[black!60!green,thick,->] (0,0) -- (1.5,-1.5)  node[right]{$z^*$}; 
+                    \draw[black!60!green,thick,dashed] (1.5,1.5) -- (0,1.5)  node[left]{$y$}; 
+                    \draw[black!60!green,thick,dashed] (1.5,-1.5) -- (0,-1.5)  node[left]{$-y$}; 
+                    \draw[black!60!green,thick,dashed] (1.5,1.5) -- (1.5,0) node[right] at (1.5,-0.2) {$x$}; 
+                    \draw[black!60!green,thick,dashed] (1.5,-1.5) -- (1.5,0) ; 
+                    \draw[black!60!green,thick,->] (0,0) -- (3,0)  node[above] at (3.3,0) {$z+z^*$};
+                    \draw[black!60!green,thick] (1.5,-1.5) -- (3,0) ;
+                    \draw[black!60!green,thick] (1.5,1.5) -- (3,0) ;
+                    \draw[black!60!green,thick,->] (0,0) -- (4,0)  node[below] {$zz^*$};
+                \end{tikzpicture}
+        %\includegraphics[width=0.2\textwidth]{figs/c-3.png}
+        \caption{共轭复数}
+        \label{fig:gefs}
+    \end{figure} 
+\end{example}
+很明显
+  \begin{equation}\label{}
+       z=(x, \, y ),  \qquad z^* = (x, \, -y)   
+  \end{equation}
+指数形式
+  \begin{equation}\label{}
+    z= r e^{i \theta}, \qquad  z^*= r e^{-i \theta}
+\end{equation}  
+我们把实部相同而虚部互为相反数的两个复数称为\emph{共轭复数 }，比如: $z^*$与$z$互为共轭复数。
+通常也称$z^*$为$z$的共轭复数，记为：$\overline{z} = z^*$, 如图[\ref{fig:gefs}]所示。共轭复数具有如下运算性质：
+\begin{equation}\label{}
+    \begin{aligned}
+    &(1) \, \overline{z_{1} \pm z_{2}}=\bar{z}_{1} \pm \bar{z}_{2} \qquad  (z_{1} \pm z_{2})^* = z_{1}^* \pm z_{2}^* \\
+    &(2) \, \overline{z_{1} \cdot z_{2}}=\bar{z}_{1} \cdot \bar{z}_{2}  \hspace{1em} \qquad (z_{1} \cdot z_{2})^* = z_{1}^* \cdot z_{2}^* \\
+    &(3) \, \overline{\left(\frac{z_{1}}{z_{2}}\right)}=\frac{\bar{z}_{1}}{\bar{z}_{2}}  \hspace{2em} \qquad \left(\frac{z_{1}}{z_{2}}\right)^* = \frac{z_{1}^*}{z_{2}^*}\\
+    &(4) \,\bar{\bar{z}}=z \hspace{5em} \qquad  (z^*)^* = z \\
+    &(5) \,z \cdot \bar{z}=\left\vert z\right\vert^2 \hspace{3em} \qquad  z \cdot z^* = \left\vert z\right\vert^2 \\
+    &(6) \,z+\bar{z}=2 \operatorname{Re}(z)  \hspace{1em} \qquad  z+z^*=2 \operatorname{Re}(z)  \\
+    &(7) \,z-\bar{z}=2 i \operatorname{Im}(z)  \hspace{0.5em} \qquad z-z^*=2 i \operatorname{Im}(z) \\ 
+\end{aligned} 
+\end{equation}
+
+注意到$z+z^*$和$zz^*$总是实数，而$z-z^*$通常是纯虚数。灵活运用这些公式，可提高复数计算的效率。
+\begin{example}
+    设$z_1 $ ,$ z_2 $ 是两个任意复数, 试证明 
+	\[ \left\vert z_1 + z_2\right\vert ^2 =  \left\vert z_1\right\vert^2 + \left\vert z_2\right\vert^2  + 2 Re(z_1z_2^*)\] 
+\end{example}
+\begin{proof}
+    由模方公式 
+	\[ \begin{aligned}
+		\left\vert z_1 + z_2\right\vert ^2  &= (z_1 + z_2)(z_1 + z_2)^* \\ 
+		&= (z_1 + z_2)(z_1^* + z_2^* ) \\
+		&= z_1 z_1^* + z_2 z_2^*  + z_1 z_2^* + z_1^* z_2  \\
+		&= z_1 z_1^* + z_2 z_2^* + z_1 z_2^* + (z_1 z_2^*)^*  \\
+		&= \left\vert z_1 \right\vert^2 + \left\vert z_2 \right\vert^2 + 2 Re(z_1z_2^*)
+	\end{aligned}\]
+\end{proof}
+
+\noindent \emph{复数除法: } 
+
+除法是乘法的逆, 对于$z= 1 \cdot z = r e^{i\theta}$,它是由实数单位"1"逆时针旋转$\theta$角后其模再伸缩r倍而来，则$\dfrac{1}{z}$应能把$z$逆变成实数单位"1"，即 
+\[ \frac{z}{z} = z \cdot \frac{1}{z}  = r e^{i\theta} \cdot \frac{1}{z}   =1 \]
+可得
+\begin{equation}\label{}
+    \frac{1}{z} = \frac{1}{r} e^{i(- \theta)}  = \frac{1}{r} [\cos(-\theta) + i \sin(- \theta)]
+\end{equation}
+当$z_2 \ne 0$时，有 
+\begin{equation}\label{}
+    \begin{aligned}
+    \frac{z_1}{z_2} &=  \frac{z_1 z^*_2 }{|z_2|^2 }  \\ 
+    &= \frac{(x_1, y_1)(x_2, -y_2) }{x^2_2+ y^2_2}   \\
+    &= \frac{(x_1x_2 + y_1y_2, x_2y_1 -x_1y_2)}{x^2_2+ y^2_2}   
+\end{aligned} 
+\end{equation}
+极坐标形式
+\begin{equation}\label{}
+      z = \frac{z_1}{z_2} = \frac{r_1}{r_2} e^{i(\theta _1 - \theta _2)}  
+\end{equation}
+除法的几何意义：先把$z_1$顺时钟旋转$\theta_2$角，然后再把模伸缩$\dfrac{1}{r_2}$倍。\\
+\begin{example}
+    已知
+	\[ z_1 = \frac{1}{2}(1-i\sqrt{3}), \, z_2 = \sin \frac{\pi}{3} -i \cos \frac{\pi}{3}\]
+	求$z_1z_2$ 和 $\dfrac{z_1}{z_2}$
+\end{example}
+\emph{解: } 把 $z_1, z_2$化成指数形式
+\[ \begin{aligned}
+    z_1 &= \cos (- \frac{\pi}{3}) + i  \sin  (- \frac{\pi}{3})  = e^{-i \pi /3}\\
+    z_2 &= \cos (- \frac{\pi}{6}) + i  \sin  (- \frac{\pi}{6})  = e^{-i \pi /6}\\
+\end{aligned}\]
+代入乘法公式
+\[ z_1 \cdot z_2 = e^{-i (\pi /3 +\pi /6) } = e^{-i \pi /2 } = -i\]
+代入除法公式
+\[ \dfrac{z_1}{z_2} = e^{i (-\pi /3 + \pi /6) } = e^{-i \pi /6 } \]
+\begin{example}
+    已知 
+	\[ z_1 = \left( \frac{1-i}{1+i}\right)^7 + i, \, z_2 = \frac{i}{1-i} + \frac{1-i}{i}  + \frac{3}{2}\] 
+	求 $z_1 \cdot z_2 $ 和$\dfrac{z_1}{z_2}$ 
+\end{example}
+\emph{解：}(1) 先求出$z_1$ 和$z_2$, 
+\[ \begin{aligned}
+    \frac{1-i}{1+i} &= \frac{(1-i)(1+i)^*}{|1+i|^2} = \frac{(1-i)^2}{2}  = -i 
+\end{aligned}\]
+因此
+\[ z_1 = (-i)^7 + i = -(i)^3 + i = 2 i\]
+由于
+\[ \begin{aligned}
+    \frac{i}{1-i} + \frac{1-i}{i} &= \frac{i(1+i)}{2} - (1-i)i  = - \frac{3}{2} - \frac{1}{2} i 
+\end{aligned}\]
+因此 
+\[     z_2 = - \frac{3}{2} - \frac{1}{2} i  + \frac{3}{2} = - \frac{1}{2} i\]
+(2) $z_1 \cdot z_2 $
+\[ z_1 \cdot z_2 = - 2 i \cdot  \frac{1}{2} i =  1 \]
+(3) $\dfrac{z_1}{z_2}$
+\[ \frac{z_1}{z_2} = - \frac{2 i}{\frac{1}{2} i} = -4 \]
+\begin{example}
+    试证明平面三角形的内角和等于$\pi$
+\end{example}
+\begin{proof}
+设三角形的三个顶点$z_1, z_2, z_3$对应的内角分别为$\alpha, \beta, \gamma$。则有
+\[\alpha = \arg \frac{z_3-z_1}{z_2- z_1}, \, \beta = \arg \frac{z_3-z_2}{z_1- z_2}, \, \gamma = \arg \frac{z_1-z_3}{z_2- z_3}\] 
+由于 
+\[ \frac{z_3-z_1}{z_2- z_1} \cdot \frac{z_3-z_2}{z_1- z_2} \cdot \frac{z_1-z_3}{z_2- z_3} = -1\]
+得
+\[\arg \frac{z_3-z_1}{z_2- z_1} + \arg \frac{z_3-z_2}{z_1- z_2} + \arg \frac{z_1-z_3}{z_2- z_3} = \arg(-1) + 2 k \pi = \pi + 2 k \pi\] 
+即  \[ \alpha + \beta + \gamma =  \pi + 2 k \pi, \quad \text{k为某适当整数}\] 
+又由于$ 0< \alpha,  \beta, \gamma < \pi $，得
+\[ 0< \alpha + \beta + \gamma < 3 \pi \]  
+两式都成立，必有$k = 0 $, 故而 $\alpha + \beta + \gamma = \pi$
+\end{proof}
+
+\noindent \emph{复数的乘幂与方根: }
+
+\noindent (1) 正整数幂 \\
+作为乘积的特例, 我们考虑非零复数$z$的正整数次幂,由复数乘法推论[\ref{eq:fscft2}],可得复数乘幂公式的三角表示
+\begin{equation}\label{}
+    z^n =  r^n (\cos n \theta + i \sin n \theta) , \qquad n \in \mathbb{Z}^+  
+\end{equation}
+极坐标形式
+\begin{equation}\label{}
+    z^n =  r^n e^{i n \theta}
+\end{equation}
+存在性质
+\begin{equation}\label{}
+\begin{cases}
+   \left\vert z^n\right\vert = \left\vert z\right\vert^n \\ 
+   \text{Arg } z^n  = n \text{Arg }z
+\end{cases}
+\end{equation}
+当$z$的模$r=1$时, 得\emph{棣莫佛公式 }
+\begin{equation}\label{}
+     (\cos \theta + i \sin  \theta)^n = \cos n \theta + i \sin n \theta
+\end{equation}
+~\\
+\noindent （2） n-次方根 \\
+	设 $z=|r| e^{i \theta }$是非零复数，它的n-次方根为$w = |w| e^{i \phi } $, 即
+	\[ \begin{aligned}
+		w^n &= z \\ 
+		|w| ^n  e^{i n\phi } &= |z| e^{i \theta } 
+	\end{aligned}\]
+	计算模 
+	\[ \begin{aligned}
+		|w|^n  &= |z| \\ 
+		|w| &= |z|^{\frac{1}{n}}
+	\end{aligned}\]
+	计算辐角
+	\[ \begin{aligned}
+		n\phi  &= 2 k \pi +\theta \\ 
+		\phi  &= \frac{2 k \pi +\theta}{n} \quad (k=0,1,2,\cdots , n-1)
+	\end{aligned}\]
+    可得n个解
+    \[ \begin{aligned}
+     w_0 &= |z|^{\frac{1}{n}} e^{i \frac{\theta}{n}} \\ 
+     w_1 &= |z|^{\frac{1}{n}} e^{i \frac{\theta}{n}} e^{i \frac{2\times 1\pi}{n}} = e^{i \frac{2\times1\pi}{n}} w_0  \\ 
+     w_2 &= |z|^{\frac{1}{n}} e^{i \frac{\theta}{n}} e^{i \frac{2\times 2\pi}{n}} = e^{i \frac{2\times 2\pi}{n}} w_0  \\ 
+     ~~ ~~ & \cdots\cdots\cdots   \\
+     w_{n-1} &= e^{i \frac{2\times (n-1)\pi}{n}} w_0 
+    \end{aligned}\]
+    写在一起, 得n-次方根公式
+    \begin{equation}\label{}
+        \begin{aligned}
+         w_k &= e^{i k\frac{2  \pi}{n}} w_0 \quad (k=0,1,2,\cdots , n-1) 
+        \end{aligned} 
+    \end{equation}
+    令$\varphi = \dfrac{2  \pi}{n}$，则 
+    \begin{equation}\label{}
+        \begin{aligned}
+         w_k = e^{i k \varphi} w_0 \quad (k=0,1,2,\cdots , n-1) 
+           \end{aligned} 
+    \end{equation}
+    写成旋转算符形式
+    \begin{equation}\label{}
+        \begin{aligned}
+               w_k = \hat{R}(k \varphi) w_0 \quad (k=0,1,2,\cdots , n-1)
+           \end{aligned} 
+    \end{equation}
+    说明把$w_0 = |z|^{\frac{1}{n}} e^{i \frac{\theta}{n}} $逆时钟旋转$k$倍$\varphi= \dfrac{2  \pi}{n}$角,既得$w_k$。因此，$w_0, w_1,w_2,\cdots w_{n-1}$正好把$2 \pi$ 分为$n$等份。 
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale = 2]
+        \tikzset{
+            %Define standard arrow tip
+            >=stealth',
+            }
+        \draw[->] (-1.3,0) -- (1.3,0) node[below] {$x$}; %作x轴并标上字母
+        \draw[->] (0,-1.3) -- (0,1.3) node[left] {$y$}; %作y轴并标上字母
+        %\node[below left] at (0,0) {$O$}; %标上原点字母 
+        \foreach \t in {0,60,120,180,240,300}{
+            \draw[black!60!green,thick] (0,0) -- ({sin(\t +10)},{cos(\t +10)});}
+        \draw[black!60!green,thick] ({sin(0 +10)},{cos(0 +10)}) node[above] {$w_1$}-- ({sin(60 +10)},{cos(60 +10)}) node[right] {$w_0$} -- ({sin(120 +10)},{cos(120 +10)}) node[right] {$w_5$} -- ({sin(180 +10)},{cos(180 +10)}) node[below] {$w_4$}  -- ({sin(240 +10)},{cos(240 +10)}) node[left] {$w_3$} -- ({sin(300 +10)},{cos(300 +10)}) node[left] {$w_2$}  -- ({sin(0 +10)},{cos(0 +10)}) ;
+        \draw[thick] (0,0) circle(1);
+        \draw[fill=blue!20] (0,0) -- (0:0.30cm) arc (0:20:.30cm);
+        \draw[black!60!green,thick] (10:0.6cm) node {$\theta/6$};
+       \end{tikzpicture}
+    %\includegraphics[width=0.4\textwidth]{figs/c-6.png}
+    \caption{复数$z$的6-次方根}
+    \label{fig:scfg}
+\end{figure}
+~\\
+
+例如：若取 $n=6$, 则 $ w_0 =  \left\vert z\right\vert ^{\frac{1}{6}} e^{i\frac{\theta}{6}}$, 并且 $\varphi = \dfrac{2  \pi}{6} = \dfrac{\pi}{3}$。取$k=1,2,\cdots ,5$, 然后把$ w_0 $旋转$ k \varphi $得其他五个解。这六个解是圆点在原点半径为$\left\vert z\right\vert ^{\frac{1}{6}} $的圆内接正六边形的顶点, 如图[\ref{fig:scfg}]所示。
+    
+若令$\omega = e^{i \frac{2 \pi}{n}}$, 有  $\omega^n =1$。则 $1$的$n$-次方根记为$1, \omega, \omega^2, \cdots, \omega^{n-1}$, 由它们在单位圆上的分布对称性，得公式 
+    \begin{equation}
+        1 + \omega + \omega^2 + \cdots + \omega^{n-1} =0  , \qquad  (\omega^n =1) 
+    \end{equation}
+特别地，当$n=3$时，有$\omega = e^{i \frac{2 \pi}{3}}  = - \dfrac{1}{2} + \dfrac{\sqrt{3}}{2} i $, 得 
+    \begin{equation}
+        1 + \omega + \omega^2 =0, \qquad  (\omega^3 =1) 
+    \end{equation}
+\begin{example}
+    试把 $\cos 3\theta$ 分解成 $\cos \theta$ 的表达式 
+\end{example}
+\emph{解： }由棣莫弗公式
+\[ \begin{aligned}
+ z &= \cos 3 \theta + i \sin  3 \theta \\
+    &= (\cos \theta + i \sin  \theta)^3 \\ 
+    &= \cos ^3 \theta  + 3 i \cos ^2 \theta \sin \theta - 3 \cos \theta \sin ^2 \theta - i \sin ^3 \theta \\ 
+    &= (\cos ^3 \theta - 3 \cos \theta \sin ^2 \theta ) + i (3  \cos ^2 \theta \sin \theta - \sin ^3 \theta )
+\end{aligned}\]
+因此有
+\[\begin{aligned}
+  \cos 3 \theta &=  \cos ^3 \theta - 3 \cos \theta \sin ^2 \theta  \\ 
+  &= 4 \cos ^3 \theta - 3 \cos \theta
+\end{aligned}\]
+\begin{example}
+    求$ \sqrt[3]{-8}$的根 
+\end{example}
+\emph{解：}把-8 写成复数的指数形式
+\[ \begin{aligned}
+     -8 &= 8 e^{i \pi}  \\ 
+\end{aligned}\]
+因此, 三次方根为 \[ w = \sqrt[3]{8} e^{i (2k +1)\pi / 3}, \, (k = 0, 1, 2) \]
+代入，有
+\[ \left\{ \begin{array} {rl}
+    w_0 &= 2 e^{i \pi / 3} \\
+    w_1 &= -2 \\
+    w_2 &= 2 e^{-i \pi / 3}
+\end{array} \right.\]
+\begin{example}
+解复数方程 
+\[ (1+z)^5 = (1-z)^5\]
+\end{example}
+\emph{解：}把 $z=1$ 代入,方程不成立,说明 $z \ne 1$， 因此有 
+\[ \begin{aligned}
+    (1+z)^5 /(1-z)^5 &=  1 \\ 
+    \left( \frac{1+z}{1-z}\right) ^5 &=1 \\
+    w ^5 &= 1
+\end{aligned}\]
+由n-次方公式,有
+\[ w = e^{i\frac{2k\pi}{5}} =  e^{i k\varphi\pi} , \quad (k=0,1,2,3,4)\]
+ 由于
+ \[ \frac{1+z}{1-z}= w_k \]
+ 可得
+ \[ \begin{aligned}   
+   z &= \frac{w_k -1 }{w_k + 1} = \frac{e^{i k\varphi\pi} -1 }{e^{i k\varphi\pi} + 1}  \\ 
+    &= \frac{\cos k \varphi + i \sin k \varphi -1 }{\cos k \varphi + i \sin k \varphi + 1}  \\ 
+    &= \frac{2 \sin k\frac{\varphi}{2}\left(-\sin k\frac{\varphi}{2}+i \cos k\frac{\varphi}{2}\right)}{2 \cos k\frac{\varphi}{2}\left(\cos k\frac{\varphi}{2}+i \sin k\frac{\varphi}{2}\right)} \\
+    &= i \tan k\frac{\varphi}{2} 
+ \end{aligned}\]
+ 代入$\varphi = \dfrac{2k\pi}{5}, k=0,1,2,3,4 $, 得
+ \[ z_0 = 0, z_1= i \tan \frac{\pi}{5} , z_2= i \tan \frac{2\pi}{5}, z_3 = i \tan \frac{3\pi}{5}, z_4 = i \tan \frac{4\pi}{5}\]
+\begin{example}
+ 试证明：三个复数$z_1, z_2, z_3$ 在复平面构成等边三角形的充要条件为
+ \[z^2_1 + z^2_2 + z^2_3  = z_1 z_2 + z_2 z_3 + z_3 z_1\]
+\end{example}
+\begin{proof}
+若$\Delta z_1 z_2 z_3$ 是等边三角形，则向量$\overrightarrow{z_1 z_2}$绕$z_1$ 左旋转 $\pi/3$或右旋转 $\pi/3$必得向量$\overrightarrow{z_1 z_3}$
+\[\begin{aligned}
+    z_3 - z_1  &= (z_2 - z_1)e^{\pm \frac{\pi}{3} i} \\ 
+    \frac{z_3 - z_1  }{z_2 - z_1}&= \cos \frac{\pi}{3} \pm i \sin \frac{\pi}{3} \\
+    \frac{z_3 - z_1  }{z_2 - z_1} - \frac{1}{2}&= \pm \frac{\sqrt{3}}{2}  i \\
+\end{aligned}\]
+两边平方并化简，得 
+\[z^2_1 + z^2_2 + z^2_3  = z_1 z_2 + z_2 z_3 + z_3 z_1\]
+\end{proof}    
+
+
+\section{复平面的点集}\label{sec:order}
+
+在复数环节，我们已看到复平面上的线段、直线和圆周等都是复平面上的点的集合。复变函数的定义域和
+值域通常是复平面上的点集。因此，我们有必要先了解复平面点集的基本概念及相关知识，然后再进入复变函数环节。
+
+复平面的点集可以是由一个个相互孤立的点构成的集合，也可以是由一条直线、线段或一段曲线上的所有连续点构成的集合，也可以是由聚在某个区域内的所有连续点构成的集合。如果用点集所含点的多少来定义点集的大小，则复平面上任意点集$D$的大小记为$|D|$。多个点集的并集可以构成更大的点集，最大的点集是由复平面上所有的点构成的点集$\mathbb{C}$，并称$\mathbb{C}$为\emph{全集}。复平面上任意点集$D$都是全集$\mathbb{C}$的子集。
+
+\subsection{平面点集的几个概念}
+
+\begin{definition}\label{}\index{}
+    设$z_0 \in \mathbb{C},  r  \in \mathbb{R} \mid  r  > 0$, 点集$\{z \mid \left\vert z - z_0 \right\vert <  r , z \in \mathbb{C} \}$ 称为$z_0$的$ r $-\emph{邻域}, 记为$U(z_0,  r )$, 其中$z_0$为邻域的中心，$ r $为邻域的半径。并称点集$\{z \mid 0 < \left\vert z - z_0 \right\vert <  r , z \in \mathbb{C} \}$为$z_0$的$ r $-\emph{去心邻域} 。
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=0.9\textwidth]{figs/c-11.png}
+      \caption{不等式与邻域：(a)邻域，(b)闭圆，(c)去心邻域 }
+        %\label{fig:}
+    \end{figure} 
+\end{definition}
+说明：
+\begin{compactitem}
+    \item 设 $M \in \mathbb{R} \mid M > 0$, 点集 $\{z \mid M<\left\vert z\right\vert  , z \in \mathbb{C} \}$ 是无穷远点的邻域，记为$U(\infty, M)$。点集 $\{z \mid M<\left\vert z\right\vert < + \infty , z \in \mathbb{C} \}$ 是无穷远点的去心邻域。
+    \item 点集$\{z \mid \left\vert z - z_0 \right\vert <  r , z \in \mathbb{C} \}$ 是以$z_0$为圆心$ r $为半径的开圆, 是$z_0$的邻域。
+    \item 点集$\{z \mid \left\vert z - z_0 \right\vert \le  r , z \in \mathbb{C} \}$ 是以$z_0$为圆心$ r $为半径的闭圆，不是$z_0$的邻域。
+    \item 邻域概念是复数数列与复变函数极限的基础。
+\end{compactitem}
+
+\begin{definition}\label{}\index{}
+	设点集$D \subset \mathbb{C}$, $z_0 \in \mathbb{C} $, $  r  \in \mathbb{R} \mid  r  > 0 $。 若 $ \forall |U(z_0,  r )\cap D| = \infty $, 则称$z_0$ 为$D$的\emph{聚点}或\emph{极限点}。点集$D$的所有聚点构成的集合记为$D^c$。若$\exists U(z_0,  r )\cap D = \{z_0 \}$, 则称$z_0$为$D$的\emph{孤立点}。
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.9\textwidth]{figs/cn2.png}
+        \caption{ (a) $z_0 \in D$，(b) $z_0 \notin D$但与$D$相邻，(c) $z_0 \notin D$也不与$D$相邻}
+        \label{fig:jdjcd}
+      \end{figure} 
+\end{definition}
+说明：
+\begin{compactitem}
+    \item 图[\ref{fig:jdjcd}]中 $r,p$取确定值时, 点集$D$确定。(a) $z_0$是$D$的聚点，(b) $z_0 \notin D$, 是点集$D$的聚点，(c)$z_0 \notin D$，不是$D$的聚点，也不是$D$的孤立点。        
+    \item 若重新定义点集$D:\{ z_0, \left\vert z - p \right\vert <  r  \}$, 则(c)图的$z_0$依然不是$D$的聚点，但是却是$D$的孤立点。
+    \item 孤立点不是聚点。
+    \item 以下六种说法彼此等价：\\
+    \begin{inparaenum}[(a)]
+        \item $z_0$是点集$D$的聚点。\\
+        \item $z_0$是点集$D$的极限点。\\
+        \item 当$z_0 \notin D$时，在$z_0$的任意领域含有D的无穷多个点。 \\
+        \item 在$z_0$的任意领域含有异于$z_0$的且属于D的一个点。 \\
+        \item 在$z_0$的任意领域含有属于D的两个点。 \\
+        \item 可以从D中取出以$z_0$为极限的数列$z_1, z_2, \cdots, z_n, \cdots$。
+    \end{inparaenum} 
+\end{compactitem}
+
+\begin{definition}\label{}\index{}
+	设点集$D \subseteq \mathbb{C}$, $z_0 \in D $, $  r  \in \mathbb{R} \mid  r  > 0 $。 若 $ \exists U (z_0,  r ) \subset D $, 则称$z_0$ 为$D$的\emph{内点}。 点集$D$的所有内点构成的集合记为$D^\circ $
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.95\textwidth]{figs/cn3.png}
+        \caption{ (a) $z_0 \in D$ 是内点，(b) $z_0 \notin D$不是内点，(c) $z_0 \in D$不是内点}
+        \label{fig:ndacj}
+      \end{figure} 
+\end{definition}
+说明：
+\begin{compactitem}
+    \item 图[\ref{fig:ndacj}]中，$r,p$取确定值时, 点集$D$确定。(a) $z_0$是$D$的聚点也是$D$的内点，(b) $z_0$是$D$的聚点，不是点集$D$的内点，(c) $z_0$是$D$的聚点，不是$D$的内点。 
+    \item  (a)、(b)图中，所有属于点集$D$的点都是内点。(c)图中圆线上的点不是内点。 
+\end{compactitem}
+
+\begin{definition}\label{}\index{}
+	设点集$D \subseteq \mathbb{C}$, 若由所有内点构成的集合$ D^\circ = D $ 则称$D$为\emph{开集}，若 $ D^c \subset D $ 则称$D$为\emph{闭集}。
+\end{definition}
+说明：对于 $ z_0 \in \mathbb{C}, r  \in \mathbb{R} \mid  r  > 0 $，
+\begin{compactitem}
+    \item  点集$ \left\vert z - z_0 \right\vert < r$ 是开集。  
+    \item  点集$ 0 < \left\vert z - z_0 \right\vert < r$ 是开集。 
+    \item  点集$ 0 < \left\vert z - z_0 \right\vert \le r$ 是半开半闭集。   
+    \item  点集$ \left\vert z - z_0 \right\vert \le r$ 是闭集。 
+    \item 全集$\mathbb{C}$是开集。 
+    \item $\{z  \mid |z| \ne 0 \}$是开集。
+    \item $\{z  \mid |z| \ne 1 \}$是开集。
+    \item 点集 $\{z  \mid |z - z_0| = 1 \}$是曲线，不是开集。
+    \item 若属于点集D的所有点都是内点，则D必是开集。
+\end{compactitem} 
+
+\subsection{区域与曲线}~\\
+
+由孤立的点构成的点集就象星星点点的繁星集。而由非孤立的点构成的点集通常有两种结构：一类是多点聚集而成的块状结构，另一类是点-点相连构成的线状结构。
+\begin{definition}\label{}\index{}
+	设点集$D \subset \mathbb{C}$, 若$D$满足条件: 
+    \begin{inparaenum} [(i)]
+        \item $D$是一个开集,
+        \item $D$是连通的,
+    \end{inparaenum}
+    则称$D$为一个\emph{区域} 
+
+    \emph{连通: }是指$D$中的任意两点都可以用某曲线$C$相连接,且$C \subset D$。
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.4\textwidth]{figs/cn4.png}
+        \caption{区域示意图}
+        %\label{fig:}
+      \end{figure} 
+\end{definition}
+说明：若 $z, z_0, z_1$ 都是复数，则
+\begin{compactitem}
+    \item 点集$\{z  \mid |z- z_0| \ne 0 \}$是开集，是连通的， 是一个区域。
+    \item 点集$\{z  \mid |z - z_0| \ne 1 \}$是开集，是不连通的，不是一个区域。
+    \item 点集$\{z  \mid |z - z_0| = 1 \}$是曲线，不是开集，是连通的，不是一个区域。
+    \item 点集$\{z  \mid |z-z_0| < 1 \} \cup \{z  \mid |z-z_1| < 1 \} $ 是开集，\\
+    \begin{inparaenum}[(a)]
+        \item 在$|z_1 -z_0| < 2$时连通的，是一个区域。
+        \item 在$|z_1 -z_0| \ge 2$时不连通的，不是一个区域。 
+    \end{inparaenum} 
+    \item 区域是确定复变函数定义域及值域的基础。
+\end{compactitem}
+
+\begin{definition}\label{}\index{}
+	设区域$D \subset \mathbb{C}$, $z_0 \notin D $, $  r  \in \mathbb{R} \mid  r  > 0 $。若 $ \forall  r , |U(z_0,  r )\cap D|> 0 $，则称$z_0$为区域$D$的边界点。区域$D$的所有边界点构成的集合，称为区域$D$的\emph{边界}，记为 $\partial  D$。并称区域$D \cup \partial  D$为\emph{闭域}$D$ 
+\end{definition}
+说明：若 $z, z_0, z_1$ 都是复数，则
+\begin{compactitem}
+    \item 点集$\{z  \mid |z- z_0| \ne 0 \}$是一个区域, 它的边界只含一个点$z = z_0$。
+    \item 点集$\{z  \mid |z - z_0| \ne 1 \}$不是一个区域,边界没有定义。
+    \item 点集$\{|z| < 1 \}$ 是一个区域，边界为曲线$|z|=1$。
+    \item 点集$\{z  \mid 0.1 <|z - z_0| < 1 \}$是一个区域,边界为$\{z  \mid |z| =0.1\} \cup \{z  \mid |z| =1\} $。
+    \item 点集$\{|z| \le 1 \}$是一个闭域。
+    \item 孤立点必是边界点，必属于边界。
+    \item 区域都是开的，边界点不属于区域。
+\end{compactitem}
+
+\begin{example}
+    试判定下列不等式所描述的点集是什么图形，是不是区域，若是则给出它的边界。 
+    \[ (1) \Im z >0,\, (2) \Re z <0,\, (3) 1 < \Im z < 2,\, (4) 1 < \Im z \le 2\]
+\end{example}
+\emph{解：} （1）是实轴以上的上半z平面，是区域， 边界为$C = \{ z \mid z = x+yi, y =0\}$。\\
+（2）是虚轴以左的左半z平面，是区域， 边界为$C = \{ z \mid z = x+yi, x =0\}$。\\ 
+（3）是界于两直线$y=1$和$y=2$之间的带形区间，是区域，边界为$C = \{ z \mid z = x+yi, y =1\} \cup \{ z \mid z = x+yi, y =2\}$。\\
+(4) 是界于两直线$y=1$和$y=2$之间的带形区间（含$y=2$），不是区域， 是半开半闭域。
+
+\begin{definition}\label{}\index{}
+	如果区域$D$可以被一个以原点为圆心的圆所包围，则称$D$为\emph{有界区域}。
+\end{definition}
+说明：若 $z \in \mathbb{C}$，则
+\begin{compactitem}
+    \item  无界区域： 全集$\mathbb{C}$；$\{z \mid z \ne 0 \}$; $\{z \mid  |Re (z)| < 1 \}$
+    \item  有界区域： $\{z \mid |z| < 1 \}$； $\{z \mid |z - z_0| < 1, z_0 \in  \mathbb{C} \}$; $\{z \mid  |Re (z)| < 1,  |Im (z)| < 1 \}$
+\end{compactitem}  
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.33\textwidth]{figs/c-13.png}
+    \caption{曲线 $ C: z = z(t)$}
+    \label{fig:qxadd}
+\end{figure}
+
+\begin{definition}\label{}\index{}
+	如果$x(t)$和$y(t)$是两个连续的实变函数，则点集
+    \[ z(t) = x(t) + i y(t) \qquad (a\le t \le b)\]
+    构成复平面上的一条曲线，称为\emph{连续曲线}, 记为$ C: z = z(t)$，并称 $z(a)$和$z(b)$为曲线$C$的两个\emph{端点}。如图[\ref{fig:qxadd}]所示。
+\end{definition}
+
+\begin{definition}\label{}
+	对于平面曲线$ C = \{z \mid z=  x(t) + i y(t), a\le t \le b \}$, 如果满足:
+	\begin{inparaenum}[(i)]
+		\item 导函数$x'(t)$ 和 $y'(t)$ 都是连续的，
+		\item 对任意 $t$, 存在$[x'(t)]^2 + [y'(t)]^2 \ne 0$.
+	\end{inparaenum}
+    则称$C$是\emph{光滑曲线}。由有限条依次相接的光滑曲线所组成的曲线称为按段光滑曲线。
+\end{definition}
+
+\begin{definition}\label{}
+	设平面曲线$ C = \{z \mid z=  z(t), a\le t \le b \}$, 对于满足
+    $a< t_1 < b, a\le t_2 \le b $的参量$t_1$和$t_2$而言, 当 $t_1 \ne t_2$时，若存在 $z(t_1) = z(t_2) $, 则称$z(t_1)$为曲线C的一个\emph{重点}。没有重点的曲线称为\emph{简单曲线}，也称\emph{若尔当曲线}。对于简单曲线$ C = \{z \mid z=  x(t) + i y(t), a\le t \le b \}$，若$z(a) = z(b) $，则称$C$为\emph{简单闭曲线}。
+\end{definition}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \matrix[matrix of nodes]
+        {
+          8 & 1 &         6 \\
+          3 & 5 & |[red]| 7 \\
+          4 & 9 &         2 \\
+        };
+      \end{tikzpicture}
+    %\includegraphics[width=0.35\textwidth]{figs/c-16.png}
+    \caption{若尔当定理} 
+    \label{fig:nrddl}
+\end{figure}
+
+\begin{theorem}[若尔当定理]\label{} \index{}
+	任意一条简单闭曲线$C$把复平面$z$唯一地分成三个互不相交的点集 ：
+	\begin{inparaenum}[(i)]
+	  \item $C$， 所有$C$上的点。
+	  \item $I(C)$， 所有$C$内部的点。
+	  \item $E(C)$， 所有$C$外部的点。
+	\end{inparaenum}
+    其中 $I(C)$ 是一个有界区域， $E(C)$ 是一个无界区域。若简单折线$P$的一个端点
+	属于$I(C)$ , 另一个端点属于$E(C)$, 则$P$ 必与$C$ 有交点. 如图[\ref{fig:nrddl}]所示。
+\end{theorem}
+说明：图[\ref{fig:nrddl}]中，
+\begin{compactitem}
+    \item 点集$C$是曲线，不是区域。
+    \item 点集$C$是区域$I(C)$的边界，也是区域$E(C)$的边界。
+\end{compactitem}
+
+\begin{definition}\label{}\index{}
+	对于区域 $D$，如果由属于$D$的点构成的任意一条简单闭曲线 $C$，都有$I(C)\subset D $，则称$D$为\emph{单连通区域}，否则为\emph{多连通区域}。如图[\ref{fig:ntqu}]所示。
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{figs/c-17.png}
+        \caption{(a) 多连通区域，(b) 单连通区域}
+        \label{fig:ntqu}
+    \end{figure}
+\end{definition}
+说明：\begin{compactitem}
+    \item 单连通区域是没有所谓的“洞”结构的区域，
+    \item 是否存在在拓扑学中非常重要。
+\end{compactitem}
+
+\begin{definition}\label{}
+	设闭集C是所含不止一个点的点集， 如果不能划分为两个无公共点的非空闭集，则称C为\emph{连续点集}。 若区域D的边界$\partial D$是一个或二个、三个、$\dots$、n个互不相交的连续点集构成，则称D为单连通区域或\emph{二连通、三连通、$\dots$、n连通区域}。
+\end{definition}
+说明：\begin{compactitem}
+    \item 图[\ref{fig:ntqu} (a)]的边界含三个互不相交的连续点集，因此是三连通区域
+    \item 洞的数目在拓扑学中也非常重要。
+\end{compactitem}
+
+\begin{example}
+    指明下列不等式所确定的区域, 是有界的还是无界的,单连通的还是多连通的
+    \[ \begin{aligned}
+        & (1) Re(z^2) < 1, \qquad (2) |\arg z| < \pi/3, \qquad (3) |1/z| < 3 \\
+        & (4) |z+1| +|z-1| <4, \qquad (5) |z-1|\cdot|z+1|<1 , \qquad (6) |z+ 1 +i| <1
+    \end{aligned}\]
+\end{example}
+\emph{解：} (1) 取 $z=x+yi$
+\[ \begin{aligned}
+    Re(z^2) &= x^2 -y^2 \\
+    Re(z^2) < 1 & \quad \Leftrightarrow  \quad  x^2 -y^2 < 1
+\end{aligned}\]
+这是双曲函数之间的部分, 因此是无界单连通区域。\\
+(2) 取 $z=re^{i \theta}$
+\[ \begin{aligned}
+    |\arg z| < \pi/3 & \quad \Leftrightarrow  \quad  -\pi/3  <\theta < \pi/3 
+\end{aligned}\]
+这是一个角形域，也是一个无界单连通区域。\\
+(3)变形
+\[ \begin{aligned}
+    |1/z| < 3  & \quad \Leftrightarrow  \quad  |z| > 3 
+\end{aligned}\]
+这是一个以原点为圆心半径为$\dfrac{1}{3}$的圆的外部区域，是一个无界二连通区域。\\
+(4) $|z+1| +|z-1| <4$ \\
+这是复平面到两定点的距离和为4的椭圆的内部区域， 因此是有界单连通区域。 \\
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.4\textwidth]{figs/cn5.png}
+    \caption{双叶玫瑰线}
+    %\label{fig:}
+\end{figure}
+(5) $|z-1|\cdot|z+1|<1$\\
+取三角式，先计算边界 
+\[ \begin{aligned}
+    |z-1|\cdot|z+1| &=1 \\
+    |r \cos \theta -1 + r i \sin \theta|\cdot|r \cos \theta +1 + r i \sin \theta| &=1 \\
+    [(r \cos \theta -1)^2  + (r \sin \theta)^2 ] \cdot [(r \cos \theta +1)^2  + (r \sin \theta)^2 ] &=1 \\
+    (r^2 +1)^2 -4(r \cos \theta)^2 &= 1 
+\end{aligned}\]
+得两个解: (i) $r=0$; (i) $r^2=2 \cos 2 \theta$, 这是双叶玫瑰线。 
+\[|z-1|\cdot|z+1| <1 \]
+是内部区域，注意到$r=0$连通左右，是有界单连通区域。\\
+(6) $ 0<|z+ 1 +i| <1$ \\
+是以（$-1,-i$）点为圆心半径为$1$的圆的内部去心区域，是有界二连通区域。
+
+
+\section{复变函数} 
+复变函数是以复数为自变量的函数，是十九世纪数学研究的热点。它可以看作是高数中实变函数向复数域的扩充。因此，它的部分内容，如函数可导和解析的判定、函数积分、幂级数的展开等，与高数相应部分内容是极为相似的。但也有部分内容与实变函数明显不同。学习和使用时，要特别注意这些不同的地方。
+
+复变函数重点在于函数的可微性与可积性，这在处理许多物理与工程问题上，有着天然的优势。如关于瑕积分的计算，就有着化繁为简的奇效。
+
+\subsection{复变函数的定义}
+
+\begin{definition}\label{}\index{}
+	设$E$为一复数集, 如果存在某种对应关系$f$, 按照这种对应关系，对于$E$中的每一复变数$z= x+yi$, 都存在复变数$w = u+vi $与之对应，则称复变数$w$是复变数$z$的函数，简称\emph{复变函数}, 并记作 $$w = f (z ), \quad (z \in E)$$ 
+	若对每个$z$都只存在惟一的复变数$w$与之对应, 则称 $f (z )$是\emph{单值复变函数}；若存在两个或两个以上的 $w$与一个$z$对应的情况, 则称 $f (z )$是\emph{多值复变函数}。称$E$为函数$f ( z )$的\emph{定义域}, 并称$w$的所有值构成的集合$F$为函数$f ( z )$的\emph{值域}，记为
+    \[F: \left\{ w \mid w=f(z), z \in E \right\} \]
+\end{definition}
+说明：\begin{compactitem}
+    \item 只要$E$中有一个$z$存在两个或两个以上的$w$与之对应的情况， $f (z )$就是多值复变函数。
+    \item 单值函数要求每一个$z$只有惟一一个$w$与之对应，并没有要求$w$也只有惟一一个$z$与之对应。因此对于单值函数，存在$|F| \ge |E| $。
+    \item 复自变量$z$和复因变量$w$之间的关系 $w = f (z )$可用两个二元实变函数
+    \[ u =u(x,y), \quad  v =v(x,y)\]
+    进行描述。
+\end{compactitem}
+比如，设$ w = f(z)$取如下具体形式 
+\[ w = z^2 +2\]
+若$z$采用三角表示，$w$采用代数表示，则有
+   \[ \begin{aligned}
+	 u+vi &=  r^2 (\cos \theta +i\sin \theta )^2 +2 \\ 
+	 &= (r^2 \cos 2 \theta +2) + i r^2 \sin 2 \theta 
+   \end{aligned}\] 
+根据复数相等条件， 有
+   \[ \begin{cases}
+	 u = u(r,\theta) = r^2 \cos 2 \theta +2\\
+	 v = v(r,\theta) =  r^2 \sin 2 \theta
+ \end{cases}\]
+ 复变函数$w = f (z )$体现的是$(r, \theta)$与（$u,v$）之间的对应关系。\\
+
+ 若两者都采用有序数对表示，则有
+\[ \begin{aligned}
+  (u,v)&= (x,y)^2 +(2,0) \\ 
+  (u,v)&= (x^2 -y^2 +2,2xy)
+\end{aligned}\] 
+当然，可以写成
+\[ \begin{cases}
+  u = x^2 -y^2 +2\\
+  v = 2xy
+\end{cases}\]
+复变函数$w = f (z )$体现的是有序自变量对（$x,y$）与有序因变量对（$u,v$）之间的关系, 它们构成四维空间 $( u , v , x , y )$ , 因此它们的关系难以在二维空间进行几何表示。如果把有序数对（$x,y$）看成$z$-平面的点，有序数对（$u,v$）看成$w$-平面的点, 则变成了点与点之间的对应。复变函数$w = f (z )$可看成$z$-平面的点集$E$与$w$-平面的点集$F$之间的关系。如图[\ref{fig:twopoint}]所示。
+\begin{figure}[ht]
+	\centering
+	  \includegraphics[width=0.75\textwidth]{figs/c-18.png}
+      \caption{复变函数描述两平面点集间的对应关系}
+      \label{fig:twopoint}
+\end{figure}
+很明显，两点集的元素间有如下关系：
+\begin{compactitem}
+    \item 对于点集$E$中的每一点$z$, 相应的点$w = f ( z )$必是点集$F$
+    中的一个点，
+    \item 对于点集$F$中的每一点$w$, 在点集$E$中至少有一点$z$与之对应。
+ \end{compactitem}
+
+\begin{definition}\label{}\index{}
+	如果用$z$-平面的点$z$表示自变量$z$的值， 而用$w$-平面的点$w$表示因变量$w$的值,那么复变函数$w = f(z)$在几何上可以看作从$z$-平面点集$E$到$w$-平面点集$F$的\emph{变换}。通常称为由函数$w = f(z)$构成的\emph{映射}，并称$w$是$z$的\emph{像点}，$z$是$w$的\emph{原像}。 
+\end{definition}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figs/c-19.png}
+	\caption{$\Delta ABC $与$\Delta A'B'C' $的映射关系}
+	\label{fig:twotri}
+  \end{figure}
+  图[\ref{fig:twotri}]描述了，$z$平面$\Delta ABC $，通过函数$w = z^* $映射到了$w$平面$\Delta A'B'C' $的情况。原来四维的复杂的对应关系就这样轻松地用二维映射进行了图形化、形象化地描述。
+
+\begin{example}
+    把平面$\Delta ABC $绕点$(-2,1)$逆时针旋转45度, 得$\Delta A'B'C' $，如图[\ref{fig:twotri2}]所示。试写出它们之间的变换关系式。
+\end{example}
+\emph{解:}~$\Delta ABC$ 构成$z$平面点集$E$，$\Delta A'B'C'$ 构成$w$平面点集$F$，令$z_0 = (-2,1)$, 则有
+\[ \begin{aligned}
+    w-z_0 &= e^{i\pi /4}(z-z_0) \\
+    w &=  (z-z_0)e^{i\pi /4} + z_0
+\end{aligned} \]  
+这正是两者之间的变换关系式。
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figs/c-20.png}
+    \caption{三角形的旋转变换}
+    \label{fig:twotri2}
+   \end{figure}
+
+若绕点$(-2,1)$逆时针旋转45度并放大10倍，则有
+\[ \begin{aligned}
+    w-z_0 &= 10 e^{i\pi /4}(z-z_0) \\
+    w &=  10 (z-z_0)e^{i\pi /4} + z_0
+\end{aligned} \]    
+
+\begin{example}
+    在$z$平面有（1）双曲线$x^2 - y^2 =4$ 、（2）直线 $ y= \sqrt{3} x $ （3）圆弧 $\{(x,y) \mid x^2 + y^2 =4, x \ge 0, y \ge 0 \}$, 如图[\ref{fig:threetran}]所示。
+	若通过函数$w= z^2 $进行映射，求它们在$w$平面的图像。
+    \begin{figure}[htbp]
+     \centering
+     \includegraphics[width=0.8\textwidth]{figs/c-22.png}
+     \caption{(a) z平面曲线, (b) w平面曲线}
+     \label{fig:threetran}
+    \end{figure}
+\end{example}
+\emph{解:} （1）由对应关系
+\[ \begin{aligned}
+    w &=z^2 \\ 
+    u+v i &= (x^2 -y^2) + 2 xy i 
+\end{aligned}\]
+得 $$u = x^2 -y^2 =4$$
+因此双曲线$x^2 -y^2 =4$在$w$平面对应直线$u=4$。\\
+(2) 直线 $ y= \sqrt{3} x $的辐角为 $\theta _1 = \dfrac{1}{3} \pi, \theta _2 = \dfrac{1}{3} \pi + \pi $，
+对应关系 $w =z^2 $要求辐角变成原来的二倍,即
+$$\varphi _1  =  2 \theta _1 = \frac{2}{3} \pi \qquad \varphi _2 = 2 \theta _2 = \frac{2}{3} \pi + 2\pi = \varphi _1 $$
+因此直线 $ y= \sqrt{3} x $在$w$平面对应一条射线 \\
+(3) 圆弧 $\{(x,y) \mid x^2 + y^2 =4, x \ge 0, y \ge 0 \}$ 的复数表示
+\[ z= 2 e^{i \theta}, \quad  (0 \le \theta \le \frac{\pi}{2}) \]
+由对应关系
+\[ \begin{aligned}
+    w &=z^2 \\ 
+    &= 4 e^{i 2 \theta} \\
+    &= R e^{i \varphi}, \quad ( R=4, 0 \le  \varphi \le \pi)
+\end{aligned}\]
+因此此圆弧在$w$平面对应半圆。\\
+
+\begin{example}
+    试问函数$w = \dfrac{1}{z+1}$把z平面的下列曲线变换成了w平面的什么图形？
+    \[ (1) x^2 + y^2 =1, \quad (2) y=x+1\]
+\end{example}
+\emph{解：} （1） 把公式 
+\[ x= \frac{1}{2}(z + z^*), \qquad  y= \frac{1}{2i}(z - z^*) \]
+代入，$x^2 + y^2 = 1$  有
+\[ \frac{1}{4}(z + z^*)^2 - \frac{1}{4}(z - z^*)^2 =1\]
+得$zz^* =1$\\
+由变换关系 $w = \dfrac{1}{z+1}$， 得
+\[ z=  \dfrac{1}{w} -1\]
+代入上式
+\[ \begin{aligned}
+    (\dfrac{1}{w} -1)(\dfrac{1}{w^*} -1) &= 1
+\end{aligned} \]
+解得$w + w^* =1$, 因此有 
+\[ u= \dfrac{1}{2}\]
+即：z平面的圆$ x^2 + y^2 =1$被变换成了w平面的直线$u= \dfrac{1}{2}$ \\
+(2) 把公式代入$y=x+1$，得
+\[ \frac{1}{2i}(z - z^*) = \frac{1}{2}(z + z^*) +1 \]
+把 $z=  \dfrac{1}{w} -1$ 代入上式，
+\[ \frac{1}{2i} \left( \frac{1}{w} -  \frac{1}{w^*} \right)  =  \frac{1}{2} \left( \frac{1}{w} + \frac{1}{w^*} -2\right) +1 \]
+两边同乘$2iw^* w^*$, 得
+\[ w^* - w = i(w + w^*)\]
+由 $ w -u = iv, \quad  w^*-u = - iv $, 可得
+\[ w^* - w = -2 i v, \quad w^* + w = 2 u\]
+代回，得 
+\[ u = -v \]
+即：z平面的直线$y=x+1$被变换成了w平面的直线$u= -v $ \\
+
+\begin{example}
+    在$z$平面有点集$\{ z \mid z = x+yi, \, x \in \mathbb{Z}, y \in \mathbb{Z}, \left\vert x \right\vert \le 3, \left\vert y \right\vert \le 3) \}$ 
+    若通过函数 $w= e^z $ 进行映射，求它们在$w$平面的图像。
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.8\textwidth]{figs/c-24.png}
+        \caption{(a) z平面点集，(b) w平面点集}
+        \label{fig:twoplantdots}
+       \end{figure}
+\end{example}
+\emph{解:} （1）由对应关系 
+\[ w= e^z = e^xe^{iy} =Re^{i\theta}\]
+得模长
+\[ R= e^3, e^2, e^1, e^0, e^{-1}, e^{-2}, e^{-3}\]
+辐角
+\[ \theta = -3, -2, -1, 0, 1, 2, 3\]
+实现的是49点构成的点集从直角坐标系到极坐标系的变换，如图[\ref{fig:twoplantdots}]所示。\\
+
+\begin{definition}\label{}\index{}
+	设函数$w = f(z)$ 的定义集为$z$-平面的点集$E$, 函数值集为$w$-平面的点集$F$，那么$F$中的每个点必将与$E$中的一个或多个点对应。 因此在点集$F$也可确定一个函数$z= \varphi(w)$, 它是函数$w = f(z)$的\emph{反函数}，也称映射$w = f(z)$的\emph{逆映射}。记为$z= f^{-1}(w)$。 逆映射是从$w$平面点集$F$到$z$平面点位集$E$之间的变换。
+\end{definition}
+说明：\begin{compactitem}
+    \item 必存在 $\forall w \in F, w = f[\varphi(w)]$,
+    \item 当反函数是单值函数时, 必存在 $\forall z \in E, z = \varphi [f(w)]$,
+    \item 当函数与反函数都是单值时，则集合$E$和$F$之间构成一一映射。
+\end{compactitem} 
+~\\
+
+\subsection{复变函数的极限}~\\
+
+\begin{definition}\label{}\index{}
+    设函数$w = f(z)$定义在$z_0$的去心领域$0<\left\vert z - z_0\right\vert < \rho $内，如果存在确定的数$w_0$， 对于任意给定的$\varepsilon >0 $, 相应地必有一个实数$\delta $,使得只要
+    \[ 0<\left\vert z - z_0\right\vert < \delta, ( 0< \delta \le \rho )  \]
+    都有 $\left\vert f(z) -w_0\right\vert < \varepsilon , $ 则称 $w_0$为函数 $f(z)$ 当 $z $趋于$z_0$ 时的\emph{极限}，记为：
+    \[ \lim_{z \to z_0} f(z) = w_0\] 
+\end{definition}
+说明：\begin{compactitem}
+    \item 若极限 $\lim\limits_{z \to z_0} f(z) = w_0$
+	存在，则必然唯一，与$z \to z_0$ 的具体路径无关。
+    \item 当$z$-平面的变点$z$进入一个充分小的$z_0$的$\delta $-去心邻域时, 它在$w$-平面的像点就落入$w_0$ 的一个任意给定的 $\varepsilon$-邻域内。如图[\ref{fig:qxry}]所示。
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=0.7\textwidth]{figs/c-23.png}
+      \caption{趋于方式的任意性示意图}
+      \label{fig:qxry}
+    \end{figure} 
+    \item 极限的存在是研究复变函数一切重要性质的前提。
+\end{compactitem}
+
+\begin{theorem}\label{} \index{}
+    设$f(z) = u(x,y) + i v(x,y), z_0 = x_0 + i y_0, w_0 = u_0 + i v_0$,那么存在极限$ \lim\limits_{z \to z_0} f(z) = w_0 $ 的充要条件为：两实变函数$u(x, y), v(x,y)$ 在点（$x_0, y_0$）处存在极限
+    \[ \lim _{\substack{x \rightarrow x_{0} \\ y \rightarrow y_{0}}} u(x, y)=u_{0}, \quad \lim _{\substack{x \rightarrow x_{0} \\ y \rightarrow y_{0}}} v(x, y)=v_{0}\]
+\end{theorem}
+说明：\begin{compactitem}
+    \item 该定理把复变函数的极限问题转化为两个二元实变函数的极限问题。
+    \item 二元实变函数的极限具有惟一性，与$x \rightarrow x_{0} $ 及$y \rightarrow y_{0} $ 的具体路径无关。
+\end{compactitem}
+
+\begin{proof}
+  (1) 必要性：如果存在$ \lim\limits_{z \to z_0} f(z) = w_0 $ ，根据定义，当$z$进入$\delta$-领域时 
+  $$0<\left\vert (x+iy) - (x_0+iy_0)\right\vert < \delta$$
+  则$w$必进入$\varepsilon$-领域
+  $$\left\vert (u+iv) - (u_0+iv_0)\right\vert < \varepsilon$$
+  也就是说
+  $$\left\vert (u-u_0) + i(v-v_0)\right\vert < \varepsilon$$
+  可得 
+  $$\left\vert u-u_0\right\vert < \varepsilon,\quad \left\vert v-v_0\right\vert < \varepsilon$$
+  根据实变函数极限的定义，即存在 
+  \[ \lim _{\substack{x \rightarrow x_{0} \\ y \rightarrow y_{0}}} u(x, y)=u_{0}, \quad \lim _{\substack{x \rightarrow x_{0} \\ y \rightarrow y_{0}}} v(x, y)=v_{0}\]
+  （2）充分性：若
+  \[ \lim _{\substack{x \rightarrow x_{0} \\ y \rightarrow y_{0}}} u(x, y)=u_{0}, 
+  \quad \lim _{\substack{x \rightarrow x_{0} \\ y \rightarrow y_{0}}} v(x, y)=v_{0}\]
+  则必有$$ \left\vert u - u_0 \right\vert  < \dfrac{\varepsilon}{2},\qquad  \left\vert v - v_0 \right\vert  < \dfrac{\varepsilon}{2} $$
+  因此 
+  $$ \left\vert u - u_0 \right\vert  + \left\vert v - v_0 \right\vert  <  \varepsilon $$
+  那么,根据三角不等式，有 
+  \[ \left\vert w -  w_0   \right\vert  \le \left\vert u - u_0 \right\vert  +  \left\vert v - v_0 \right\vert < \varepsilon\]
+  说明当 $0<\left\vert z- z_0 \right\vert < \delta$时，$w$进行了任意小的$\varepsilon$-领域, 也即
+  \[ \lim\limits_{z \to z_0} f(z) = w_0 \]
+\end{proof}
+
+\begin{theorem}\label{} \index{}
+    若定义于点集$E$的两函数 $f(z), g(z)$ 在 $z_0$ 存在极限
+	  \[\lim_{z \to z_0} f(z) = w_{1}, \, \lim_{z \to z_0} g(z) = w_{2}, \]
+	  则它们的各、差、积、商也存在极限
+	  \[ \begin{aligned}
+		 \lim\limits_{z \to z_0} [f(z) \pm g(z)] &= w_{1} \pm w_{2} \\
+		 \lim\limits_{z \to z_0} [f(z)g(z)] &= w_{1}w_{2} \\
+			\lim\limits_{z \to z_0} [f(z)/g(z)] &= w_{1}/w_{2} 
+	  \end{aligned}\]
+\end{theorem}
+说明：\begin{compactitem}
+    \item 复变函数极限四则运算法则与实变函数的类似。
+\end{compactitem}
+\begin{example}
+    试证明, 当$z\to 0$时，函数 $f(z) = \dfrac{Re(z)}{\left\vert z\right\vert}$的极限不存在
+\end{example}
+\begin{proof}
+    (1) 令$z = x + y i, w = u + v i$, 有 
+    \[f(z) = \frac{x}{\sqrt{x^2 + y^2}} \]
+    因此 
+    \[ u(x,y) = \frac{x}{\sqrt{x^2 + y^2}}, \, v(x,y) =0\]
+    当$z$沿直线 $y= k x $ 趋于零时，有 
+    \[ \begin{aligned}
+     \lim _{\substack{x \rightarrow 0 \\ y \rightarrow 0}} u(x, y) &=\lim _{\substack{x \rightarrow 0 \\ y =  k x}}  \frac{x}{\sqrt{x^2 + y^2}} \\
+     &= \lim_{x \to 0} \frac{x}{\sqrt{x^2 + k^2x^2}} \\
+     &= \lim_{x \to 0} \frac{x}{ \left\vert x\right\vert\sqrt{1+ k^2}} \\
+     &= \pm \frac{1}{\sqrt{(1+ k^2)}} 
+    \end{aligned}\]
+    值不唯一，因此, 当$z\to 0$时，  
+    $$f(z) = \frac{Re(z)}{\left\vert z\right\vert}$$的极限不存在 \\
+    (2) 采用三角表示，则
+    \[ f(z) = \frac{r \cos \theta }{r} = \cos \theta \]
+    若$z$沿实轴正方向趋0， 则 $\arg z = \theta =0$, $f(z) \to 1$, 
+    若$z$沿y轴正方向趋0， 则 $\arg z = \theta =\pi/2$, $f(z) \to 0$,
+    值不唯一，因此, 当$z\to 0$时， 
+    $$f(z) = \frac{Re(z)}{\left\vert z\right\vert}$$的极限不存在。
+\end{proof}
+
+\subsection{复变函数的连续性}~\\
+
+\begin{definition}
+    \label{}\index{}
+    设函数$w = f(z)$定义在点集$E$上，如果存
+    在极限\[ \lim_{z \to z_0} f(z) = f(z_0), z \in E\] 
+    则称函数$f(z)$在$z_0$点连续。对于曲线$C$，如果存
+    在极限\[ \lim_{z \to z_0} f(z) = f(z_0), z \in C\]
+    则称函数$f(z)$在曲线$C$上$z_0$处连续。如果函数$f(z)$在$C$内处处连续， 则称函数$f(z)$在曲线$C$上连续。如果$f(z)$在区域$D$ 内处处连续，则称函数$f(z)$在区域$D$连续。
+\end{definition}
+
+\begin{theorem}\label{} \index{}
+设$f(z) = u(x,y) + i v(x,y), z_0 = x_0 + i y_0, w_0 = u_0 + i v_0 $,那么$ f(z) $ 在 $z_0$ 连续的充要条件是 ：实变函数 $u(x,y)$和$v(x,y) $在点（$x_0, y_0$）处连续，
+  \[ \lim _{\substack{x \rightarrow x_{0} \\ y \rightarrow y_{0}}} u(x, y)=u(x_0, y_0), \quad \lim _{\substack{x \rightarrow x_{0} \\ y \rightarrow y_{0}}} v(x, y)=v(x_0, y_0)\]
+\end{theorem}
+说明：\begin{compactitem}
+    \item 该定理把复变函数的连续性问题转化为两个二元实变函数的连续性问题。
+\end{compactitem}
+对于复变函数$$f(z) = \ln (x^2 + y^2) + i (x^2 -y^2)$$
+由于实函数$u(x,y) = \ln (x^2 + y^2) $ 在除原点外的x-y平面处处连续,
+而实函数$v(x,y) = x^2 -y^2 $ 在x-y平面处处连续,
+因此复变函数$f(z)$在除原点外的复平面处处连续。
+
+\begin{theorem}\label{} \index{}
+ 若 $f(z), g(z)$ 在 $z_0$ 连续, 则它们的各、差、积、商(分母不为零)也在 $z_0$ 连续。
+\end{theorem}
+
+\begin{theorem}\label{} \index{}
+若函数$h = g(z)$在 $z_0$ 连续,  函数$w = f(z)$在 $h_0 = g(z_0)$ 连续, 那么复合函数 
+        \[ w = f[g(z)]\]
+        在 $z_0$连续。  
+\end{theorem}
+比如：\\
+(1) 多项式函数  
+\[ w = P(z) = a_0 + a_1 z + a_2 z^2 + \cdots + a_n z^n\]
+在复平面内处处连续. \\
+(2) 多项式有理分式函数
+\[ w = \frac{ P(z) }{ Q(z) } \]
+在复平面内使分母多项式不为零的点处处连续.
+
+\begin{example}
+    试证明函数
+    \[ f(z) = \frac{1}{2i} \left(\frac{z}{z^*} - \frac{z^*}{z} \right)\]
+    在原点处不连续
+\end{example}
+\begin{proof} 先化简
+    \[ \begin{aligned}
+      f(z) &= \frac{1}{2i} \left(\frac{z}{z^*} - \frac{z^*}{z} \right)\\
+      &=  \frac{1}{2i}  \frac{z^2 - z^{*2} }{zz^* } \\
+      &=  \frac{1}{2i}  \frac{(z- z^{*}) (z+z^{*})  }{zz^* } \\
+    \end{aligned}\]   
+    $z$取三角式，
+    \[ \begin{aligned}
+        f(z) = \frac{1}{2i r^2} (2r i \sin \theta) (2r \cos \theta) 
+        &= \sin  2 \theta
+      \end{aligned} \]  
+      若$z$沿正实轴方向趋于原点，则有$\theta = 0$ 
+      \[ \lim_{z \to 0} = \sin 0 = 0\]
+      若$z$沿第一象限的平分线方向趋于原点，则有 $\theta = \frac{\pi}{4}$
+      \[ \lim_{z \to 0} = \sin  2  \frac{\pi}{4} = 1\]
+      不唯一，因此复变函数$f(z)$在原点处不存在极限， 因此不连续.  
+\end{proof}
+
+\begin{example}
+    试证明：如果函数 $f(z) $ 在$z_0$连续,则 $g(z) = f^*(z)$也在$z_0$连续。
+\end{example}
+\begin{proof} 
+    设 $$f(z) = u(x,y) + iv(x,y)$$则 $$g(z) =f^*(z) = u(x,y) - iv(x,y)$$ 
+    
+    如果$f(z) $ 在$z_0$连续， 则 $u(x,y)$ 和 $v(x,y)$ 都在$(x_0, y_0)$处连续。因此$u(x,y)$ 和 $-v(x,y)$ 也在$(x_0, y_0)$处连续。
+    
+    故$g(z)$在$z_0$处连续。
+\end{proof}
+
+\begin{Exercises}
+    \item 试把 $z= \sqrt{-12} -2 i$ 化成指数形式
+    \item 试证明 
+    \begin{compactenum}[(1)]
+        \item $\arg (z_1 z_2) = \arg z_1 + \arg z_2 + 2k_a \pi $,
+        \item $\arg (\dfrac{z_1}{z_2}) = \arg z_1 - \arg z_2 + 2k_b \pi $,
+    \end{compactenum}
+    式中$k_a, k_b$ 各表示某个适当的整数。
+    \item 试证明 $z_1,z_2, z_3$ 三点共线的充要条件为
+    \[ \Im \frac{z_3 - z_1}{z_2 -z_1} = 0\]
+    \item 试证明 
+	\[ (e^{in\theta})^{\frac{1}{n}}  \ne e^{i \theta}, \quad n \in \mathbb{Z}^+\]
+	\item 试证明
+    \[ \left\vert z_1 + z_2\right\vert ^2  + \left\vert z_1 - z_2\right\vert ^2  = 2 \left( \left\vert z_1 \right\vert ^2 + \left\vert z_2 \right\vert ^2\right) \]
+    并说明其几何意义
+    \item 已知一正方形$z_1 z_2 z_3 z_4$的相对顶点的坐标
+    \[ z_1 = (0,-1), z_3 = (2,5)\]
+    求其他两个顶点的坐标
+    \item 试计算 (1) $\sqrt[4]{1+i}$, (2) $ (1+i)^6$的值.
+    \item 当$|z| \le 1$时，求$|z^n + z_0|$的最大值，其中n为正整数。
+    \item 设$n \in \mathbb{Z}^+$, 若$(1+i)^n = (1-z)^n$，试求n的值
+    \item 试将旋转公式
+    \[ \begin{cases}
+        x = x_1 \cos \theta -y_1 \sin \theta \\
+        y = x_1 \sin \theta  + y_1 \cos \theta 
+    \end{cases}
+    \] 转化为复数形式
+    \item 试证明 （1）复平面上的直线方程可写成
+            \[ a z^* + a^* z = c, \quad (a \ne 0, a \in \mathbb{C}, c \in \mathbb{C})\]
+            (2) 复平面上的圆周方程可写成
+            \[ zz^* +a z^* + a^* z + c =0, \quad (a \in \mathbb{C}, c \in \mathbb{R})\]
+    \item 试问不等式 \[0< \arg \frac{z-i}{z+i} < \frac{\pi}{4}\]
+    确定的点集是不是一个区域，如果是则明确其类型。
+    \item 试问函数$w = \dfrac{1}{z +1}$把z平面的下列曲线分别变换成了w平面的什么图形
+    \[ （1）y=1， \quad (2) y=x, \quad (3) (x-1)^2 +y^2 -2 y =1 \]
+    \item 求满足关系式$\cos \theta < r < 3 \cos \theta, \, (-\pi/2 < \theta < \pi /2 )$的点$z = r(\cos \theta + i \sin \theta)$的点集$D$, 然后判定$D$是不是区域，如果是它是单连通的还是多连通的？
+    \item 试描出下列不等式所确定的区域或闭区域，并指明它们的有界的还是无界的，是单连通的还是多连通的
+    \[(1) Im(z)> 0, \quad (2) |z-2| =4, \quad (3) 0< Re(z) <1, \quad (4) 2\le |z+1|\le 4\]
+    \[(5) |z-1| < 4|z+1|, \quad (6) |z-2| + |z+2| \le 6, \quad (7) zz^* =(2+i) z -(2-i)z^* \le 4 \]
+    \item 试证明函数 
+    \[ f(z) = \frac{1}{2i} \left( \frac{z}{z^*} -\frac{z^*}{z} \right) \]
+    当$z \to 0$时的极限不存在。
+    \item 若函数$f(z)$在$z_0$处连续且$f(z_0) \ne 0$,试证明可以找到$z_0$的小领域，在这个领域内$f(z) \ne 0$.
+    \item 试证明$f(z) = \arg z$ 在原点及负实轴上不连续。
+    \item 试证明$f(z) = u(x,y) + i v(x,y)$ 在点$z_0 = x_0 + i y_0$处连续的充要条件为二🈚元函数$u(x,y)$ 和$v(x,y)$都在$(x_0, y_0)$点连续。
+    \item 作图 
+    \[ \begin{aligned}
+        &(1)  |z-5|=6 ;\quad 
+        (2)  |z+2 i| \geqslant 1 \\
+        &(3)  \operatorname{Re}(z+2)=-1 ;\quad 
+        (4)  \operatorname{Re}(\mathrm{i} \bar{z})=3 \\
+        &(5)  |z+i|=|z-i| ;\quad 
+        (6)  |z+3|+|z+1|=4 \\
+        &(7)  \operatorname{Im}(z) \leqslant 2 ;\quad 
+        (8)  \left|\frac{z-3}{z-2}\right| \geqslant 1 \\
+        &(9)  0<\arg z<\pi ;\quad 
+        (10)  \arg (z-i)=\frac{\pi}{4}  
+    \end{aligned}\]
+    \item 作出函数 $w = \dfrac{1}{z}$把下列z平面的曲线或区域变换成w平面的图形
+    \[ \begin{aligned}
+        &(1) (x-1)^2 +y^2 =4 ;\quad 
+        (2)  y > x\\
+        &(3)  x=-1 ;\quad 
+        (4)   \arg z =\pi 
+    \end{aligned}\]
+\end{Exercises} 

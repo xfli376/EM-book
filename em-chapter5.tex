@@ -1,0 +1,3156 @@
+\chapter{特殊函数与多项式}
+特殊函数是指一些具有特定性质的函数。许多特殊函数来源于某个或某类微分方程的解，通常作为微分方程的解或解函数的积分出现，由于在数学分析、泛函分析、物理研究、具体工程问题等领域得到广泛应用而具有举足轻重的地位。
+
+主要的特殊函数及多项式包括厄密多项式，勒让德多项式、球谐函数、伽马函数、贝塞耳函数、椭圆函数、超几何函数、合流超几何函数、马丢函数、拉梅函数、$\zeta$函数及$Li$多重对数函数等。
+
+\section{厄密多项式}
+厄密多项式在数学与物理上都有重要应用。在概率论中，埃奇沃斯级数的表达式中含厄密多项式，在
+组合数学中，阿佩尔微分方程
+\begin{equation}
+	\left(e^{-x^{2} / 2} u^{\prime}\right)^{\prime}+\lambda e^{-x^{2} / 2} u=0
+\end{equation}
+的解函数就是厄密多项式。取边界条件为$u$在无穷远处有界，则方程的固有值应取自然数$\lambda \in \mathbb{N}$。而属于$\lambda = n$的固有函数正是$n$阶厄密多项式： 
+\begin{equation}
+	u_{n}(x)=(-1)^{n} e^{x^{2} / 2} \frac{d^{n}}{d x^{n}} e^{-x^{3} / 2}
+\end{equation}
+在物理学中，厄密方程 
+\begin{equation}
+	H'' -2 x H' +2\lambda H=0 
+\end{equation}
+在边界条件为$H$在无穷远处为零时，其固有值也取自然数$n$，对应的固有解函数就是厄密多项式
+\begin{equation}
+	H_{n}(x)=(-1)^{n} e^{x^{2}} \frac{d^{n}}{d x^{n}} e^{-x^{2}}
+\end{equation}
+这两种厄密多项式略有不同，两者的关系为
+\begin{equation}
+	H_{n}(x) = 2^{n/2} u_n(\sqrt{2}x)
+\end{equation}
+下面我们给出厄密多项式的获得过程及其重要性质。
+	 
+\subsection{厄密方程}
+\begin{example}
+	求解n阶厄密方程
+	\begin{equation}\label{eq:hemfc}
+		H'' -2 x H' +2n H=0 
+	\end{equation} 
+\end{example}
+\emph{解：}
+	设方程有级数解
+	\begin{equation*}
+		H=\sum_{k=0}^{\infty} c_k x ^k
+	\end{equation*}     
+	求导
+	$$\begin{aligned}
+		H'=\sum_{k=1}^{\infty} k c_k x ^{k-1}, \qquad  
+		2 x H' =\sum_{k=0}^{\infty} 2 k c_k x ^{k}
+	\end{aligned}$$ 
+	再求导
+	$$\begin{aligned}
+		H''&=\sum_{k=2}^{\infty} k(k-1) c_k x ^{k-2} \\
+		   &=\sum_{k-2=0}^{\infty} (k-2+2)(k-2+1) c_{k-2+2} x ^{k-2} \\
+		   &=\sum_{k=0}^{\infty} (k+2)(k+1) c_{k+2} x ^{k}
+	\end{aligned}$$  
+   代回厄密方程，得
+   \begin{equation*}
+	   \sum_{k=0}^{\infty} (k+2)(k+1) c_{k+2} x ^{k} -\sum_{k=0}^{\infty} 2 k c_k x ^{k} +2n \sum_{k=0}^{\infty} c_k x ^k=0 
+   \end{equation*}
+   这是有关$x$的多项式, 系数项应为零
+   \[(k+2)(k+1) c_{k+2} - 2 k c_k  + 2n c_k =0 \]
+   整理得系数递推式
+   \begin{equation*}
+	   c_{k+2} = \frac{ 2(k-n)}{(k+2)(k+1) } c_k, ~~  \left( k=0,1,2,3, ...  \right)
+   \end{equation*} 
+	对于n阶厄密方程来说, $n$是确定数, 而$k$是级数的指标。当$k$增加到$k=n$时,系数$c_{k+2} =0 $ 。因此, 无论$n$是奇还是偶数, 级数的最高次都是$k=n$，令最高次项系数为：
+	\begin{equation*}
+		c_n =2^n
+	\end{equation*}
+	系数降幂递推式，\begin{equation*}
+		c_{k-2} = -\frac{k(k-1) } { 2(n-(k-2))}  c_k
+	\end{equation*}   
+	取$k=n$
+	\begin{equation*}
+		\begin{aligned}
+			c_{n-2} &=-\frac{n(n-1) } { 2(n-(n-2))}  c_n  = -\frac{n(n-1) } { 2\times2}  2^n 
+		\end{aligned}
+	\end{equation*} 
+	\begin{equation*}
+		\begin{aligned}
+			c_{n-4} &=-\frac{(n-2)(n-3) } { 2(n-(n-4))}  c_{n-2}  \\
+			&=(-1)^2 \frac{(n-2)(n-3) } { 2(n-(n-4))}\frac{n(n-1) } { 2\times2}  2^n   \\
+			&= (-1)^2 \frac{n(n-1)(n-2) (n-3) } { (2\times 2)\times (2\times 4)}  2^n
+		\end{aligned}
+	\end{equation*}
+	\begin{equation*}
+		\begin{aligned}
+			c_{n-6} &= (-1)^3 \frac{n(n-1)(n-2) (n-3)(n-4) (n-5) } { (2\times 2)\times (2\times 4)\times (2\times 6)}  2^n \\
+		&= (-1)^3 \frac{n!/(n-6)!} {2^3 (6)!!}  2^n \\
+		c_{n-2\times 3} &= (-1)^3 \frac{n!/(n-2\times 3)!} {2^3 2^3 3!}  2^n \\
+		&= (-1)^3 \frac{n!} { 3! (n-2\times 3)!}  2^{n-2\times 3}
+		\end{aligned}
+	\end{equation*} 
+用$m$取代$3$，得一般式
+	\begin{equation*}
+ c_{n-2m} =(-1)^m \frac{n! } {  m ! (n-2m)!}  2^{n-2m} 
+	\end{equation*}
+	无论奇偶, n阶厄密多项式总可以表示为
+	\begin{equation}\label{eq:njhemdxs}
+		\boxed{H_n(x) =\sum_{m=0}^{M}  (-1)^m \frac{n! } {  m ! (n-2m)!}  2^{n-2m} x^{n-2m} ,  ~~~ M=[n/2] }
+	\end{equation}   
+	式中$M=[n/2]$表示向下取整。\\
+~~\\
+至此，$n$阶厄密方程有两个基本解函数：一个是$n$阶厄密多项式，一个是无穷级数。当$n$为偶数时，奇数阶项构成无穷级数，当$n$为奇数时，偶数阶项构成无穷级数。在实际物理体系中，这个无穷级数解通常不满足边界条件，应删除。即：n阶厄密方程[\ref{eq:hemfc}]的解为$n$阶厄密多项式[\ref{eq:njhemdxs}]。
+
+\subsection{厄密多项式的性质}
+
+\begin{proposition}
+	厄密多项式存在生成函数
+	\begin{equation}\label{eq:Hermi-0}
+     w(x,t)=e^{2xt-t^2}
+	\end{equation}
+\end{proposition}
+\begin{proof}
+ 这是一个二元函数, 对它做关于变量$t$的$Taylor$展开
+ \begin{equation*}
+	w(x,t) =\sum_{n=0}^{\infty} \frac{1}{n!}  c_n(x) t^n
+\end{equation*}
+如果展开系数函数$c_n(x)$是厄密多项式, 则必满足厄密方程
+\begin{equation*}
+	\left[  \frac{d^2}{dx^2} -2x\frac{d}{dx} +2n  \right] c_n(x)=0
+\end{equation*}
+1)、针对等式  
+$$ w(x,t) = \sum_{n=0}^{\infty} \frac{1}{n!}  c_n(x) t^n = e^{2xt-t^2} $$ 
+对$x$求导
+$$
+\begin{aligned}
+	\dfrac{\partial }{\partial x} \sum_{n=0}^{\infty} \frac{1}{n!}  c_n (x) t^n =  \dfrac{\partial }{\partial x} e^{2xt-t^2}
+\end{aligned}  
+$$
+$$
+\begin{aligned}
+	\sum_{n=0}^{\infty} \frac{1}{n!}  c'_n (x) t^n  = 2t e^{2xt-t^2} = 2t ~w(x,t)
+\end{aligned}  
+$$
+代入$w(x,t)$的展开式
+$$
+\begin{aligned}
+	\sum_{n=0}^{\infty} \frac{1}{n!}  c'_n (x) t^n 
+	&= 2t \sum_{n=0}^{\infty} \frac{1}{n!}  c_n(x) t^n \\
+	&= \sum_{n=0}^{\infty} \frac{1}{n!} 2 c_n(x) t^{n+1} \\ 
+	&= \sum_{n=1}^{\infty} \frac{1}{n!} 2n c_{n-1}(x) t^{n} \\ 
+\end{aligned}  
+$$
+整理，得
+$$ \sum_{n=0}^{\infty} \frac{1}{n!}  c'_n (x) t^n  - \sum_{n=1}^{\infty} \frac{1}{n!} 2n c_{n-1}(x) t^{n} =0 $$
+多项式的各项系数应为零，得递推式-I
+\begin{equation}\label{eq:Hermi-1}
+	c'_n (x)=2n c_{n-1} (x)	
+\end{equation}
+求导
+$$
+c~''_n(x)= 2n c'_{n-1} (x) 
+$$
+显然有
+$$c'_{n-1}(x) = 2(n-1) c_{n-2} (x) $$
+代回上式, 得递推式-II
+\begin{equation}\label{eq:Hermi-2}
+	c~''_n(x)= 4n(n-1) c_{n-2} (x)
+\end{equation}
+~\\
+2）针对等式 
+$$ w(x,t) = e^{2xt-t^2} $$ 
+对$t$求导
+$$
+\begin{aligned}
+	\dfrac{\partial w(x,t)}{\partial t} &= \dfrac{\partial }{\partial t} e^{2xt-t^2} \\
+	&= 2(x-t) e^{2xt-t^2}  \\ 
+	&= 2(x-t) ~w(x,t) 
+\end{aligned}
+$$
+移项,得   
+$$  \dfrac{\partial w(x,t)}{\partial t} +2(t-x) ~w(x,t) =0$$  
+代入$w(x,t)$的展开式 
+$$
+\begin{aligned}
+	 \dfrac{\partial}{\partial t} \sum_{n=0}^{\infty} \frac{1}{n!}  c_n(x) t^n +2(t-x) \sum_{n=0}^{\infty} \frac{1}{n!}  c_n(x) t^n = 0 
+\end{aligned}
+$$ 
+$$
+\begin{aligned}
+	 &\sum_{n=0}^{\infty} \frac{1}{n!} n c_n(x) t^{n-1} + \sum_{n=0}^{\infty} \frac{2}{n!}  c_n(x) t^{n+1} + \sum_{n=0}^{\infty} \frac{-2x}{n!}  c_n(x) t^n = 0 \\
+	 &\sum_{n=0}^{\infty} \frac{1}{(n-1)!} c_n(x) t^{n-1} + \sum_{n=0}^{\infty} \frac{2(n+1)}{(n+1)!}  c_n(x) t^{n+1} + \sum_{n=0}^{\infty} \frac{-2x}{n!}  c_n(x) t^n = 0 
+\end{aligned}
+$$ 
+做脚标变换
+$$
+\sum\limits_{n=0}^{\infty} \dfrac{1}{n!} c_{n+1}(x) t^{n} +\sum\limits_{n=1}^{\infty}\dfrac{2n}{n!} c_{n-1}(x)t^n +\sum\limits_{n=0}^{\infty} \dfrac{-2x}{n!} c_n(x)t^n =0   
+$$ 
+左端是关于$t$的多项式, 各项系数应为零，有
+$$ c_{n+1}(x) -2xc_n(x) +2nc_{n-1} (x) =0 $$ 
+向下递推,有
+\begin{equation}\label{eq:Hermi-3}
+	c_{n}(x) -2xc_{n-1}(x) +2(n-1)c_{n-2} (x) =0	
+\end{equation}
+整理
+$$  c_{n}(x) - \dfrac{x}{n} (2n c_{n-1} (x))  +\dfrac{1}{2n} (4n(n-1) c_{n-2} (x)) =0 $$ 
+代入[\ref{eq:Hermi-1}]及[\ref{eq:Hermi-2}]，得
+$$  c_{n}(x) - \dfrac{x}{n}c~'_{n}(x) +\dfrac{1}{2n}c~''_{n} (x) =0 $$ 
+整理
+\begin{equation*}
+	 \left[  \dfrac{d^2}{dx^2} -2x\frac{d}{dx} +2n  \right] c_n(x)=0 
+\end{equation*}
+表明 $c_n(x)$满足厄密方程, 因此有  
+$$ c_n(x)= H_n (x)  $$ 
+\textcolor{red}{证毕！}
+\end{proof}
+
+~~\\ 
+
+\begin{proposition}
+厄密多项式有递推关系
+\begin{equation}
+	\begin{aligned}
+		& H'_n(x)=2nH_{n-1}(x) \\ 
+		& H_{n}(x) -2xH_{n-1}(x) +2(n-1)H_{n-2} (x) =0  \\ 
+	\end{aligned}
+\end{equation}
+\end{proposition}
+\begin{proof}
+把关系
+$$ c_n(x)= H_n (x)  $$  
+代入式 [\ref{eq:Hermi-1}]
+\begin{equation*}
+	c'_n (x)=2n c_{n-1} (x)	
+\end{equation*}
+得
+$$
+H'_n(x)=2nH_{n-1}(x)  
+$$ 
+同理,代入式 [\ref{eq:Hermi-3}]
+\begin{equation*}
+	c_{n}(x) -2xc_{n-1}(x) +2(n-1)c_{n-2} (x) =0	
+\end{equation*}
+得
+$$
+H_{n}(x) -2xH_{n-1}(x) +2(n-1)H_{n-2} (x) =0  
+$$ 
+\textcolor{red}{证毕！}
+\end{proof}
+~~\\ 
+
+\begin{example}
+	试求前五个厄密多项式
+	\end{example}
+   \emph{解：}
+	有厄密多项表达式
+		\begin{equation*}
+			H_n(x) =\sum_{m=0}^{M}  (-1)^m \frac{n! } {  m ! (n-2m)!}  2^{n-2m} x^{n-2m} ,  ~~~ M=[n/2]
+		\end{equation*} 
+	(1) 取 $n=0$, 有 $M=[n/2] =0$, 有 $m=0$, 代入上式, 得 
+	\[H_0 (x) = 1\]  
+	(2) 取 $n=1$, 有 $M=[n/2] =0$, 有 $m=0$, 代入上式, 得 
+	\[H_1 (x) = 2x\] 
+	(3) 递推关系 $H_{n}(x) -2xH_{n-1}(x) +2(n-1)H_{n-2} (x) =0$ 中, 取 $n=2$, 得
+	$$H_{2}(x) -2xH_{1}(x) +2(2-1)H_{0} (x) =0 $$ 
+	代入 $H_0 (x) = 1, H_1 (x) = 2x$, 得 
+	\[H_2 (x) = 4x^2 -2 \] 
+	(4) 依次递推, 可得其他厄密多项式，
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=0.6\textwidth]{figs/h0to5.png}
+   \caption{厄密多项式图例}
+   %\label{fig:}
+\end{figure}
+前七个厄密多项式具体表达为：
+$$
+\begin{aligned}
+   & H_0(x)=1 \\
+   & H_1(x)=2 x \\
+   & H_2(x)=4 x^2-2 \\
+   & H_3(x)=8 x^3-12 x \\
+   & H_4(x)=16 x^4-48 x^2+12 \\
+   & H_5(x)=32 x^5-160 x^3+120 x \\
+   & H_6(x)=64 x^6-480 x^4+720 x^2-120
+   \end{aligned}
+   $$
+
+
+	~~\\ 
+
+\begin{proposition}
+	厄密多项式有如下微分表达式
+		\begin{equation}
+			H_n(x) =(-1) ^n e^{x^2}  \frac{d~^n }{d~x^n}  e^{-x^2}
+		\end{equation}
+\end{proposition}
+	\begin{proof}
+	对厄密多项式的母函数作关于$t$的$Taylor$展开
+	\begin{equation*}
+		w(x,t)=e^{2xt-t^2} = \sum_{n=0}^{\infty} \frac{1}{n!} \left[  \frac{\partial ~^n w  }{\partial t^n}  \right] _{t=0} t^n 
+	\end{equation*}
+	展开系数就是厄密多项式
+	\[ 
+	\begin{aligned}
+		H_n(x) & = \left[  \frac{\partial^n w  }{\partial t^n}  \right] _{t=0} 
+	\end{aligned} \]
+	代入母函数的解析式
+	\[ 
+	\begin{aligned}
+		H_n(x) & = \left[  \frac{\partial^n   }{\partial t^n} e^{2xt-t^2} \right] _{t=0} \\
+		& = \left[  \frac{\partial^n   }{\partial t^n} e^{x^2 -(x-t)^2} \right] _{t=0} \\
+		& = e^{x^2} \left[  \frac{\partial^n   }{\partial t^n} e^{-(x-t)^2} \right] _{t=0} 
+	\end{aligned} \]
+	做变量代换$u=x-t$
+	\[ 
+	\begin{aligned}
+		H_n(x)
+		&= (-1) ^n e^{x^2}   \left[  \frac{d^n }{du^n}  e^{-u^2}   \right] _{u=x}  \\
+		&= (-1) ^n e^{x^2}  \frac{d~^n }{d~x^n}  e^{-x^2}
+	\end{aligned} \]
+	证毕！
+	\end{proof}
+~~\\ 
+
+\begin{proposition}-4:
+	试证明厄密多项式具有带权正交归一性
+	\[ \frac{1}{2^n n! \sqrt{\pi} }\int\limits_{-\infty}^{+\infty} e^{-x^{2}} H_m(x) H_n(x)dx = \left\{ 
+		\begin{aligned}
+			& 0, \quad (m\ne n) \\ 
+			& 1, \quad (m= n)
+		\end{aligned}\right.\]
+\end{proposition}
+\begin{proof}
+	（I）构造方程
+	$$\Psi'' +(2n+1-x^2) \Psi =0 $$ 
+	当 $ |x| \to \infty$，方程可近似为
+		 \begin{equation}\label{eq:osc1}
+			 \left(\frac{\mathbf{d} ^2}{\mathbf{d} x^2} - x^2 \right) \Psi=0 
+		 \end{equation} 
+		 考虑平方指数函数解
+		 $$ \exp(\frac{x ^2}{2}), \quad \exp(-\frac{x ^2}{2})  $$ 
+		 对它们求导
+		 \begin{equation*}
+			 \frac{d^2 }{d x ^2} \exp(\frac{x ^2}{2}) =(x ^2 +1)  \exp(\frac{x ^2}{2}) 
+		 \end{equation*}    
+		 \begin{equation*}
+			 \frac{d^2 }{d x ^2} \exp( - \frac{x ^2}{2}) =(x ^2 -1)  \exp( - \frac{x ^2}{2}) 
+		 \end{equation*}  
+		 当 $ x \to \infty$， 它们可近似为：\\
+		 \begin{equation*}
+			 (x ^2 )  \exp( \frac{x ^2}{2}) ~~, ~~ (x ^2 )  \exp( - \frac{x ^2}{2}) 
+		 \end{equation*} 
+		 代回方程[\ref{eq:osc1}]
+		 \begin{equation*}
+			 \left(\frac{\mathbf{d} ^2}{\mathbf{d} x^2} - x^2 \right) \Psi \approx (x ^2 )  \exp( \frac{x ^2}{2}) - x ^2   \exp( \frac{x ^2}{2}) =0 
+		 \end{equation*}
+		 即上述平方指数函数近似地满足方程，因此，极限状态下方程的解应与如下函数相关联
+		 \begin{equation*}
+			 C_1  \exp( \frac{x ^2}{2}) + C_2   \exp( - \frac{x ^2}{2})  
+		 \end{equation*}     
+		 删除发散项（第一项），得极限状态解函数形式 \\
+		 \begin{equation*}
+			 \Psi_\infty (x)  \sim C_2 \exp( - \frac{x ^2}{2})  
+		 \end{equation*}  
+		 (2) 非极限状态的解函数可考虑对极限状态解函数作常数变异 
+		 \begin{equation*}
+			 \Psi(x) = H(x) e^{-x^2/2 }  
+		 \end{equation*}   
+		 求导
+		 \begin{equation*}
+			 \Psi'(x) = H'(x) e^{-x^2/2 } -  H(x) x e^{-x^2/2 } 
+		 \end{equation*} 
+		 再求导 
+		 \begin{equation*}
+			 \Psi''(x) = \left[  \left( x^2 -1 \right) H -2x H' +H''  \right] e^{-x^2/2}
+		 \end{equation*}  
+		 代回方程[\ref{eq:osc1}], 得 
+		 $$ \left[  \left( x^2 -1 \right) H -2x H' +H''  \right] e^{-x^2/2} + \left( 2n+1 - x^2 \right) H(x) e^{-x^2/2 }=0 $$  \\ 
+		 整理
+		 \[\left[H'' -2 x H' + 2n H \right]e^{-x^2/2 } =0\]
+		 由系数项应为零, 得
+		 \[H'' -2 x H' +2n H =0\]
+		 这正是n阶厄密方程 \\
+		 ~\\
+		 因此，方程[\ref{eq:osc1}]的属于$n$的解函数为 $$\Psi_n(x)=H_n(x) e^{-x^{2}/2}$$
+	考虑两个解函数的内积，有
+	\begin{equation}\label{eq:hemdqzj}
+		\int\limits_{-\infty}^{+\infty} \Psi_n(x) \Psi_m(x) d x =\int\limits_{-\infty}^{+\infty} e^{-x^{2}} H_m(x) H_n(x)dx
+	\end{equation}
+	两解函数都满足方程
+	$$\Psi _n'' +(2n+1-x^2) \Psi _n =0 \quad (1)$$
+	$$\Psi _m'' +(2m+1-x^2) \Psi _m =0 \quad (2)$$
+	$(1)\times \Psi _m - (2)\times \Psi _n$, 得
+	$$\Psi _n''\Psi _m - \Psi _m''\Psi _n = 2(m-n)\Psi_n \Psi_m $$
+	左端积分
+	\[ 
+	\begin{aligned}
+		\int\limits_{-\infty}^{+\infty}  [\Psi _n''\Psi _m - \Psi _m''\Psi _n]dx 
+		&= [\Psi_m \Psi''_n -\Psi_n \Psi''_m]_{-\infty} ^{+\infty} - \int_{-\infty} ^{+\infty} [\Psi'_m \Psi'_n -\Psi'_m \Psi'_m] dx \\
+		&= 0  
+	\end{aligned}
+	\]
+	因此, 右端积分也为零
+	\[2(m-n)\int\limits_{-\infty}^{+\infty} \Psi_n \Psi_m dx =0 \]
+	当 $m\ne n$时, 只有 
+	\[\int\limits_{-\infty}^{+\infty} \Psi_n \Psi_m dx =0 \]
+	代回式[\ref{eq:hemdqzj}]， 得 
+	\[\int\limits_{-\infty}^{+\infty} e^{-x^{2}} H_m(x) H_n(x)dx\]
+	当$m \ne n$时，两厄密多项式带权正交。\\
+    ~\\
+	（II）由递推公式：
+	$$H_{n} -2xH_{n-1} +2(n-1)H_{n-2} =0  $$ 
+	$$ \implies H^2_{n}-2xH_n H_{n-1}+2(n-1) H_n H_{n-2} =0  $$
+	$$H_{n+1} -2xH_{n} +2nH_{n-1} =0  $$ 
+	$$\implies H_{n+1} H_{n-1}-2xH_{n} H_{n-1}+2nH^2_{n-1} =0  $$ 
+	两式相减
+	$$H^2 _n(x) -H_{n+1} H_{n-1}=2n H^2 _{n-1}(x) - 2(n-1) H_n H_{n-2}$$	  
+	两端同乘权重函数 
+	$$ e^{-x^2} H^2 _n(x) dx -  e^{-x^2} H_{n+1} H_{n-1} dx = 2n  e^{-x^{2}} H^2 _{n-1}(x) dx  - e^{-x^{2}} 2(n-1) H_n H_{n-2} dx $$ 	
+	两端积分
+	$$ \int\limits_{-\infty}^{+\infty} e^{-x^2} H^2 _n(x) dx - \int\limits_{-\infty}^{+\infty} e^{-x^2} H_{n+1} H_{n-1} dx = 2n \int\limits_{-\infty}^{+\infty} e^{-x^{2}} H^2 _{n-1}(x) dx  - \int\limits_{-\infty}^{+\infty} e^{-x^{2}} 2(n-1) H_n H_{n-2} dx $$ 	
+	由带权正交性可知，左边第二项和右边第二项都为零，得递推式
+	\[
+	\begin{aligned}
+		\int\limits_{-\infty}^{+\infty} e^{-x^2} H^2 _n(x) dx &=2n \int\limits_{-\infty}^{+\infty} e^{-x^{2}} H^2 _{n-1}(x) dx\\ 
+		&= 2n \times 2(n-1) \int\limits_{-\infty}^{+\infty} e^{-x^{2}} H^2 _{n-2}(x) dx  \\
+		&= 2n \times 2(n-1) ... (2(n-n)) \int\limits_{-\infty}^{+\infty} e^{-x^{2}} H^2 _{0}(x) dx 
+	\end{aligned}
+	\]
+	整理，并代入$H _{0}(x)=1$
+	\[
+	\begin{aligned}
+		\int\limits_{-\infty}^{+\infty} e^{-x^2} H^2 _n(x) dx
+		&= 2^n n! \int\limits_{-\infty}^{+\infty} e^{-x^{2}} H^2 _{0}(x) dx  \\	
+		&= 2^n n! \int\limits_{-\infty}^{+\infty} e^{-x^{2}} dx  \\	
+		&= 2^n n! \sqrt{\pi}  
+	\end{aligned}
+	\]
+   \textcolor{red}{证毕！}
+\end{proof}
+
+厄密方程的固有解函数（厄密多项式）构成正交归一完全集，因此，一般的函数可以做厄密多项式展开。
+
+\begin{example}
+	求函数
+	\[ f(x) =2x^3 +3x \] 
+	的厄密展开式
+\end{example}
+   \emph{解：}设$f(x)$的厄密展开式为
+	\[ f(x) = \sum_{n=0}^{+\infty} a_n H_n(x) \] 
+	已知前四厄密多项式如下
+	\[\begin{aligned} H_0 (x) &= 1,\quad H_1 (x) = 2x \\ H_2 (x) &= 4x^2 -2, \quad  H_3 (x) = 8x^3 -12x \end{aligned}\]
+	考虑幂阶关系, 展开式中的最高阶应为$n=3$
+	\[
+	\begin{aligned}
+		f(x) & = \sum_{n=0}^{3} a_n H_n(x) \\ 
+		&= a_0 H_0(x) + a_1 H_1(x) + a_2 H_2(x) +  a_3 H_3(x) \\
+		&= a_0 + a_1 (2x) + a_2 (4x^2 -2)  + a_3 (8x^3 -12x) \\
+		&= (a_0 -2 a_2) + (2 a_1 - 12a_3 )x +  4 a_2 x^2 + 8a_3 x^3 
+	\end{aligned}
+	\]
+	代入 $f(x)$, 并整理， 得
+	\[ (a_0 -2 a_2) + (2 a_1 - 12a_3 -3)x +  4 a_2 x^2 + (8a_3 -2) x^3 = 0 \]
+	多项式等于零的充要条件是各项系数都为零, 解得
+	\[\left\{
+	\begin{aligned}
+		a_0 &= 0, \quad 
+		a_1 = 3\\
+		a_2 &= 0, \quad 
+		a_3 = \frac{1}{4}
+	\end{aligned} \right.
+	\]
+	因此,有 
+	\[ f(x) =   \frac{1}{4} H_3(x)+ 3 H_1(x)\] 
+	当然，也可用拼凑法
+   \[
+  \begin{aligned}
+   f(x) &= 2x^3 +3x \\
+   &= \frac{1}{4}(8x^3 -12x)+ 3x +3x \\
+   &= \frac{1}{4}(8x^3 -12x)+ 3(2x) \\
+   &= \frac{1}{4} H_3(x) + 3H_1(x)
+  \end{aligned}
+	\]
+
+\section{球谐函数}
+拉普拉斯方程只能在四种已知坐标系中分离变量: 笛卡尔坐标系、圆柱坐标系、球面坐标系和椭圆坐标系，球谐函数是拉普拉斯方程在球面坐标系中的解函数。
+
+对于拉普拉斯方程 
+$$ \nabla ^2 u = 0 $$	
+代入球面坐标系拉普拉斯算子
+$$ \displaystyle  \nabla ^{2} =\frac{1}{r^2} \frac{\partial }{\partial r} (r^2\frac{\partial }{\partial r} )+
+	\frac{1}{r^2 \sin \theta  } \frac{\partial }{\partial \theta } (\sin \theta \frac{\partial }{\partial \theta } )
+	+\frac{1}{r^2 \sin^2 \theta  } \frac{\partial^2}{\partial\varphi ^2}$$
+并考虑到
+\begin{equation*}
+	L^2 =  -\left[ \frac{1}{ \sin \theta  } \frac{\partial }{\partial \theta } (\sin \theta \frac{\partial }{\partial \theta } )
+	+\frac{1}{ \sin^2 \theta  } \frac{\partial^2}{\partial\varphi ^2} \right]
+\end{equation*}	
+拉普拉斯方程变为 
+\begin{equation*}
+	\left[\frac{1}{r^2}  \frac{\partial }{\partial r} (r^2\frac{\partial }{\partial r} ) - \frac{1}{r^2} L^2  \right] u
+	=0
+\end{equation*}	
+可做径向/角向分离变量，令 
+\begin{equation*}
+	u=R (r) Y(\theta,\varphi)
+\end{equation*}	
+代回方程，得
+\begin{equation*}
+	\frac{ L^2 Y}{Y}= \frac{1}{R}   \frac{\partial }{\partial r} (r^2\frac{\partial R }{\partial r} )=\lambda
+\end{equation*}
+得两个方程	\\
+(1)径向方程：
+\begin{equation}\label{eq:r}
+	\frac{d}{d r} (r^2\frac{d R }{d r} ) -\lambda R =0
+\end{equation}	
+(2)角向方程：
+\begin{equation*}
+	L^2 Y=\lambda Y
+\end{equation*}	
+代入$L^2$的具体形式
+	\begin{equation*}
+		\left[ \frac{1}{ \sin \theta  } \frac{\partial }{\partial \theta } (\sin \theta \frac{\partial }{\partial \theta } )
+		+\frac{1}{ \sin^2 \theta  } \frac{\partial^2}{\partial\varphi ^2}  +\lambda \right] Y=0 
+	\end{equation*}
+    可进一步分离变量, 令：
+	\begin{equation*}
+		Y(\theta,\varphi)= \Theta(\theta) \Phi(\varphi)
+	\end{equation*}	
+	代回,得
+	\begin{equation*}
+		\Phi \frac{1}{\sin \theta} \frac{d}{d \theta}\left(\sin \theta \frac{d \Theta}{d \theta}\right)+\Theta \frac{1}{\sin ^{2} \theta} \frac{d^{2} \Phi}{d \varphi^{2}}+\lambda \Theta \Phi=0
+	\end{equation*}	
+	整理得恒等式，可令其等于任意常数$\lambda'$
+	\begin{equation*}
+		\frac{\sin ^{2} \theta}{\Theta \sin \theta} \frac{d}{d \theta}\left(\sin \theta \frac{d \Theta}{d \theta}\right)+\sin ^{2} \theta \lambda=-\frac{1}{\Phi} \frac{d^{2} \Phi}{d \varphi^{2}}=\lambda'
+	\end{equation*}
+	得两个方程 \\
+	（2'）纬度方程：
+	\begin{equation}\label{eq:theta}
+		\frac{1}{\sin \theta} \frac{d}{d \theta}\left(\sin \theta \frac{d \Theta}{d \theta}\right)+\left[\lambda-\frac{\lambda'}{\sin ^{2} \theta}\right] \Theta=0,(0<\theta \le \pi)
+	\end{equation}		
+	（2''）经度方程：
+	\begin{equation}\label{eq:varphi}
+		\frac{d^{2} \Phi}{d \varphi^{2}}+\lambda' \Phi=0,(0<\varphi\le2 \pi)
+	\end{equation}	
+	最终,球坐标系下的拉普拉斯方程被分离成三个方程：径向方程 [\ref{eq:r}], 纬度方程[\ref{eq:theta}], 经度方程[\ref{eq:varphi}]。 这是三个一维的微分方程, 理论上是可以精确求解的。
+
+	\subsection{解经度方程}
+	\begin{example}
+	求解经度方程
+	\begin{equation*}
+		\frac{d^{2} \Phi}{d \varphi^{2}}+\lambda' \Phi=0,(0<\varphi\le2 \pi)
+	\end{equation*}
+	\end{example}
+	\emph{解：}
+	这是二阶常微分方程, 存在两个待定系数, 它们可由周期性边界条件确定, 因此是如下边值问题
+		\[\begin{cases}
+			\dfrac{d^{2} \Phi}{d \varphi^{2}}+\lambda' \Phi=0,\quad 0 < \varphi < 2 \pi \\ 
+			\Phi(0)=\Phi(2 \pi), \quad \Phi^{\prime}(0)=\Phi^{\prime}(2 \pi)
+		\end{cases}\]
+		有解\\	
+		固有值和固有函数
+		\[\begin{cases}
+			\lambda'=m^2, ~~~ (m=0,\pm 1,\pm 2,\cdots) \\ 
+			\Phi_m (\varphi)=A_m e^{im\varphi}
+		\end{cases}\]	
+		求归一化系数 
+		\begin{equation*}
+		\begin{split}
+			\int_{0}^{2\pi}  |\Phi_m (\varphi)|^2 d\varphi &= 1 \\
+			\int_{0}^{2\pi}  A_m e^{im\varphi} A_m e^{-im\varphi} d\varphi &= 1 \\
+			|A_m|^2 \int_{0}^{2\pi} 1 d\varphi &= 1 \\
+			|A_m|^2 2\pi &= 1 \\
+			A_m&=\frac{1}{\sqrt{2\pi}} 
+		\end{split}
+		\end{equation*}
+		代回， 得归一化固有函数	
+		\begin{equation}
+		\boxed{\Phi_m (\varphi)=\frac{1}{\sqrt{2\pi}} e^{im\varphi}, \qquad (m=0,\pm 1,\pm 2,\cdots)}  
+		\end{equation}	
+	结束！ 
+	
+	~~\\ 
+	
+	\subsection{解纬度方程}
+	
+	\begin{example}
+		求解纬度方程
+		\begin{equation*}
+			\frac{1}{\sin \theta} \frac{d}{d \theta}\left(\sin \theta \frac{d \Theta}{d \theta}\right)+\left[\lambda-\frac{\lambda'}{\sin ^{2} \theta}\right] \Theta=0,\qquad (0<\theta \le \pi)
+		\end{equation*}		
+	\end{example}
+	\emph{解：}
+		把经度方程中解得的 $\lambda'=m^2$代回纬度方程， 得
+		\begin{equation}
+			\frac{1}{\sin \theta} \frac{d}{d \theta}\left(\sin \theta \frac{d \Theta}{d \theta}\right)+\left[\lambda-\frac{m^{2}}{\sin ^{2} \theta}\right] \Theta=0
+		\end{equation}	
+		这是一个方程束，对于一个特定方程来说，$m$是常数, 称为连带勒让德(Legendre)方程。\\
+		做微分展开
+		\begin{equation*}
+			\frac{d^{2} \Theta}{d \theta^{2}}+\frac{\cos \theta}{\sin \theta} \frac{d \Theta}{d \theta}+\left[\lambda-\frac{m^{2}}{\sin ^{2} \theta}\right] \Theta=0
+		\end{equation*}		
+		令$x=\cos \theta$, 有 $$y(x)= y(\cos \theta) =\Theta (\theta)$$ 
+		对$x=\cos \theta$ 求导
+		\begin{equation*}
+			\frac{d x}{d  \theta} =-\sin \theta  
+		\end{equation*}	
+		链式求导	
+		\begin{equation*}
+			\frac{d \Theta}{d \theta} =\frac{d y}{d x}\frac{d x}{d \theta} =-\sin \theta \frac{d y}{d x}
+		\end{equation*}	
+		二阶导	
+		\begin{equation*}
+			\frac{ d^2 \Theta }{d \theta ^2} =\sin ^2 \theta \frac{d^2 y}{d x^2} -\cos \theta \frac{d y}{d x}
+		\end{equation*}		
+		代回， 得
+		\begin{equation*}
+			\sin  \theta\frac{d^{2} y}{d x^{2}}-2 x \frac{d y}{d x}+\left[\lambda-\frac{m^{2}}{\sin^2 \theta}\right] y=0, \quad (|x|\le 1)
+		\end{equation*}	
+		注意到$\cos\theta =x,~ \sin^2  \theta =1-x^2 $ \\
+		得连带勒让德方程的简洁形式
+		\begin{equation}
+			\boxed{\left(1-x^{2}\right) \frac{d^{2} y}{d x^{2}}-2 x \frac{d y}{d x}+\left[\lambda-\frac{m^{2}}{1-x^{2}}\right] y=0, \quad (|x|\le 1)} 
+		\end{equation}
+		解纬度方程转化为解连带勒让德方程！ 
+		
+	~~\\ 
+	
+	
+	\subsection{解勒让德方程}
+	首先考虑最简单的情况，取$m=0$, 得勒让德方程
+		\begin{equation}
+			\boxed{\left(1-x^{2}\right) \frac{d^{2} y}{d x^{2}}-2 x \frac{d y}{d x}+\lambda y=0} 
+		\end{equation}
+	\emph{解：}	
+		这是个二阶变系数常微分方程，令方程有级数解，
+		\[ y=\sum_{k=0}^{\infty} a_k x ^k \]
+		对级数求导
+	$$\begin{cases}
+			y' = \sum\limits_{k=1}^{\infty} k a_k x^{k-1} \\
+			xy'= \sum\limits_{k=0}^{\infty} k a_k x^{k}
+			\\
+			y'' = \sum\limits_{k=2}^{\infty} k (k-1) a_k x^{k-2} =  \sum\limits_{k=0}^{\infty} (k+2) (k+1) a_{k+2} x^k \\
+			x^{2}y'' =  \sum\limits_{k=0}^{\infty} k (k-1) a_k x^{k}
+		\end{cases}$$
+		代回方程，注意指标对齐，得：
+		\[ \sum\limits_{k=0}^{\infty} (k+2) (k+1) a_{k+2} x^k - \sum\limits_{k=0}^{\infty} k (k-1) a_k x^{k} -2\sum\limits_{k=0}^{\infty} k a_k x^{k} + \lambda \sum_{k=0}^{\infty} a_k x ^k \]
+		整理
+		\begin{equation*}
+			\sum_{k=0}^{\infty}\left\{(k+1)(k+2) a_{k+2}+[\lambda-k(k+1)] a_{k}\right\} x^{k}=0
+		\end{equation*}	
+		多项式为零，要求各项系数为零, 有
+		\begin{equation*}
+			(k+1)(k+2) a_{k+2}+[\lambda-k(k+1)] a_{k}=0
+		\end{equation*}	
+		得递推式
+		\begin{equation} \label{eq:dts}
+			a_{k+2}=-\frac{k(k+1)-\lambda}{(k+1)(k+2) }a_{k}
+		\end{equation}
+		这是隔项递推，若 $a_0$ 已知，则所有的偶数次幂的系数 $a_{2m}$ 可得, 同理若 $a_1$ 已知，则所有的奇数次幂的系数 $a_{2m+1}$ 可得。
+		偶数项写在一起
+		\begin{equation*}
+			y_{1}(x)= a_{0} + a_{2} x^2 + a_{2} x^4 +...  
+		\end{equation*}	
+		奇数项写在一起
+		\begin{equation*}
+			y_{2}(x)= a_{1} x+ a_{3} x^3 + a_{5} x^5 +... 
+		\end{equation*}
+		方程的级数解为\[ y(x)=  y_{1}(x) +  y_{2}(x) \]
+		现在考虑级数解的收敛性问题, 由式[\ref{eq:dts}], 得
+		\[ \frac{a_{k+2}}{a_{k}} = -\frac{k(k+1)-\lambda}{(k+1)(k+2) }\]
+		当 $k \to \infty$时，有
+		\[ \lim_{k \to \infty}|\frac{a_{k+2}}{a_{k}}| \approx 1-\frac{2}{k}\]
+		对于偶数项
+		\[ \lim_{k \to \infty} |\frac{a_{k+2}}{a_{k}}| \approx 1-\frac{2}{2m} = 1-\frac{1}{m} \]
+		对于函数$\ln(1+x)+\ln(1-x) = \ln (1-x^2)$在$x=\pm 1$的泰勒展开式，相邻项展开系数有
+		\[ \lim_{k \to \infty} \frac{a_{k+1}}{a_{k}} = 1-\frac{1}{k} \]
+		我们知道$\ln (1-x^2)$在$x=\pm 1$处发散， 因此，$$ \lim_{\left \vert x \right \vert \to 1} y_{1}(x) \to \infty $$
+		同理，$$ \lim_{\left \vert x \right \vert \to 1} y_{2}(x) \to \infty $$
+		即：级数解 $ y(x)=  y_{1}(x) +  y_{2}(x) $ 在 $x=\pm 1$处发散。
+		~~\\
+		考察式[\ref{eq:dts}], 如果设
+		\[\lambda = l(l+1), (l=0,1,2,\cdots )\]
+		则有新的递推式
+		\begin{equation}\label{eq:dts2}
+			a_{k+2}=-\frac{k(k+1)-l(l+1)}{(k+1)(k+2) }a_{k}
+		\end{equation}
+		考虑到$l$对应角向(方)算符本征方程
+		\begin{equation*}
+			L^2 Y=\lambda Y
+		\end{equation*}	
+		的本征值$\lambda$, 对于一个确定的本征值$\lambda$来说, $l$有确定值。新的递推式[\ref{eq:dts2}]表明：对于确定的$l$来说, 当$k$增长到 $k=l$, 有$a_{k+2} =0$, 级数截断成$l$次多项式。
+		\begin{itemize}
+			\item $k = 2m, y_1 \text{截断}(y_2\text{仍当无穷级数})$
+			\item $k = 2m+1, y_2 \text{截断}(y_1\text{仍当无穷级数})$
+		\end{itemize}
+		即, 只有通过设定$\lambda = l(l+1)$, 才可以得到一个在$[-1, 1]$收敛的多项式, 它是符合条件的物理解。\\
+	~~\\
+		为了明确这个多项式解的具体形式，把递推式[\ref{eq:dts2}]逆向
+		\begin{equation*}
+			a_{k}=-\frac{(k+1)(k+2) }{(l-k)(l+k+1)}a_{k+2}
+		\end{equation*}
+		递推两次,
+		\begin{equation*}
+			a_{k-2}=-\frac{(k-1)(k)}{(l-(k-2))(l+k-1)}a_{k}
+		\end{equation*}	
+		\begin{equation*}
+			a_{k-4}=-\frac{(k-3)(k-2)}{(l-(k-4))(l+k-3)}a_{k-2}
+		\end{equation*}
+		代入$a_{k-2}$,得
+		\begin{equation*}
+			a_{k-4}=(-1)^2\frac{(k-3)(k-2)(k-1)(k)}{(l-(k-4))(l-(k-2))(l+k-3)(l+k-1)}a_{k}
+		\end{equation*}		
+		注意到最高项为 $k=l$,为了直观起见,令最高项为第$n$项, 即 $n=k=l$, 代入，得
+		\begin{equation*}
+			a_{n-4}=(-1)^2\frac{(n-3)(n-2)(n-1)(n)}{(2\times 2)(2\times 1)(2n-3)(2n-1)}a_{n}
+		\end{equation*}	
+		依次递推, 则每一项的系数都可以用最高项的系数$a_{n}$描述,
+		现令最高项系数为 \[a_n=\frac{(2n)!}{2^n (n!)^2} = \frac{2n (2n-1)(2n-2)(2n-3)(2n-4)!}{2^n \times [n (n-1) (n-2)!]\times [n (n-1)  (n-2) (n-3) (n-4)!] } \]
+		代回上式并约分，得：
+		\begin{equation*}
+			a_{n-4}=(-1)^2\frac{(2n-4)!}{2! 2^n (n-2)! (n-4)!}
+		\end{equation*} 
+		为了方便递推, 改写成
+		\begin{equation*}
+			a_{n-2\times 2}=(-1)^2\frac{(2 n-2\times 2) !}{2!2^{n}  (n-2) !(n-2\times 2) !}
+		\end{equation*}	
+		再递推一次
+		\begin{equation*}
+			a_{n-2\times 3}=(-1)^3\frac{(2 n-2\times 3) !}{3!2^{n}  (n-3) !(n-2\times 3) !}
+		\end{equation*}	
+		写出一般式
+		\begin{equation*}
+			a_{n-2 \times m}=(-1)^{m} \frac{(2 n-2 m) !}{m ! 2^{n} (n-m) !(n-2 m) !}
+		\end{equation*}	
+		得勒让德方程的解
+		\begin{equation*}
+			y(x)=\sum_{m=0}^{[n/2]}a_{n-2m} x^{n-2m} =\sum_{m=0}^{[n / 2]}(-1)^{m} \frac{(2 n-2 m) !}{2^{n} m !(n-m) !(n-2 m) !} x^{n-2 m} =P_{n}(x)
+		\end{equation*}	
+		称为勒让德多项式。 注意当$m=0$时, 对应最高项, 当$m=[n/2]$时对应最低项，有
+		\[
+		n-2m = n-2\times[n/2] =
+		\begin{cases}
+			0 \quad (\text{n 为偶数})\\
+			1 \quad (\text{n 为奇数})
+		\end{cases}
+		\]
+		由于$n$只是暂时借用, 真正决定最高项的是$l$,勒让德多项式应记为
+		\begin{equation}\label{eq:Pl}
+			\boxed{P_{l}(x)=\sum_{m=0}^{[l / 2]}(-1)^{m} \frac{(2 l-2 m) !}{2^{l} m !(l-m) !(l-2 m) !} x^{l-2 m}} 
+		\end{equation}
+	
+	~~\\ 
+	
+	 \begin{example}
+	 求前五个勒让德多项式
+	 \end{example}
+	\emph{解：}
+		在勒让德多项式表达式[\ref{eq:Pl}] 中, \\ 
+	(1) 取 $l=0$, 则$m=0$， 代入上式， 得 $P_{0}(x) =1$ \\  
+	(2) 取 $l=1$, 则$m=0$， 代入上式， 得 $P_{1}(x) =x$\\
+	(3) 取 $l=2$, 则$m=0,1$， 代入上式，得 
+	$ P_{2}(x) = \dfrac{1}{2}\left(3 x^{2}-1\right) $\\
+	(4) 取 $l=3$, 则$m=0,1$， 代入上式，得 
+	$ P_{3}(x) = \dfrac{1}{2}\left(5 x^{3}-3 x\right)  $ \\
+	(5) 取 $l=4$, 则$m=0,1,2$， 代入上式，得 
+	$$ P_{4}(x) = \dfrac{1}{8}\left(35 x^{4}-30 x^{2}+3\right)  $$
+	列表如下，取 $x=\cos\theta$，则得右列
+	$$\renewcommand\arraystretch{1.6}
+	\begin{array}{|l|l|}
+		\hline P_{0}(x)=1 & P_{0}(\cos\theta)=1\\
+		\hline P_{1}(x)=x & P_{1}(\cos \theta)=\cos \theta \\
+		\hline P_{2}(x)=\dfrac{1}{2}\left(3 x^{2}-1\right) & P_{2}(\cos \theta)=\dfrac{1}{4}[3 \cos 2 \theta+1] \\ 
+		\hline P_{3}(x)=\dfrac{1}{2}\left(5 x^{3}-3 x\right) & P_{3}(\cos \theta)=\dfrac{1}{8}[5 \cos 3 \theta+3 \cos \theta] \\
+		\hline P_{4}(x)=\dfrac{1}{8}\left(35 x^{4}-30 x^{2}+3\right) & P_{4}(\cos \theta)=\dfrac{1}{64}[35 \cos 4 \theta+20 \cos 2 \theta+9] \\
+		\hline P_{5}(x)=\dfrac{1}{8}\left(63 x^{5}-70 x^{3}+15 x\right) & \cdots  \\
+		\hline P_{6}(x)=\dfrac{1}{16}\left(231 x^{6}-315 x^{4}+105 x^2 -5\right) & \cdots  \\
+		\hline
+	\end{array}$$
+	
+	~~\\ 
+	图[\ref{fig:p012345}]给出前六个勒让德多项式的图形，很明显，$P_{l}(x)$具有$l$的奇偶性。
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.98\textwidth]{figs/p012345.png}
+		\caption{勒让德多项式图}
+		\label{fig:p012345}
+	\end{figure}
+	
+	
+	~~\\ 
+	\begin{example}
+		解连带勒让德方程
+		\begin{equation*}
+			\left(1-x^{2}\right) \frac{d^{2} y}{d x^{2}}-2 x \frac{d y}{d x}+\left[l(l+1)-\frac{m^{2}}{1-x^{2}}\right] y=0, \quad (|x|\le 1) 
+		\end{equation*}
+	\end{example}
+	\emph{解：}
+	勒让德多项式满足勒让德方程
+	\[\left(1-x^{2}\right) P'' _l  (x) -2 x P' _l (x)+l(l+1)P_l(x)=0\]
+	求导
+	\[\left[-2x P'' _l  (x) + \left(1-x^{2}\right) P''' _l  (x)\right] - \left[2 P' _l (x) +2 x P'' _l (x) \right] + l(l+1)P'_l(x)=0 \]
+	整理成如下形式
+	\[\left(1-x^{2}\right) P^{(3)} _l (x) -2(1+1) x P'' _l (x)+\left[l(l+1)-1(1+1)\right]P'_l(x)=0	\]
+	再求导
+	\[ \begin{aligned}
+		0=&\left[-2x P^{(3)}_l (x) + \left(1-x^{2}\right) P^{(4)} _l (x)\right] \\
+		&- \left[2(1+1) P'' _l (x) +2(1+1) x P^{(3)} _l (x)\right] + \left[l(l+1)-1(1+1) \right] P''_l(x)\\ 
+	\end{aligned}
+	 \]
+	整理,得
+	\[\left(1-x^{2}\right) P^{(4)} _l  (x) -2(2+1) x P^{(3)} _l (x)+(l(l+1)-2(2+1)P''_l(x)=0\]
+	经$m$次求导,得
+	\begin{equation}\label{eq:lege}
+			\left(1-x^{2}\right) P^{(m+2)} _l  (x) -2(m+1) x P^{(m+1)} _l (x)+\left[l(l+1)-m(m+1)\right]P^{(m)} _l(x)=0
+	\end{equation}
+	令 $$ \boxed{P^{m} _l(x)=(1-x^2)^{m/2}P^{(m)} _l(x), \quad 0\le m\le l, l=1,2,3,\cdots} $$
+	%并对其求导
+	%\[
+	%\begin{aligned}
+	%	\frac{d}{d x} P^m_{l}(x) &= -mx P^{(m)} _l(x) + (1-x^2)^{\frac{m}{2}}P^{(m+1)} _l(x) \\ 
+	%	\frac{d^2}{d x^2} P^m_{l}(x) &= -m P^{(m)} _l(x) -mx P^{(m+1)} _l(x) -mx P^{(m+1)} _l(x) + (1-x^2)^{\frac{m}{2}}P^{(m+2)} _l(x) \\ 
+	%\end{aligned}\]
+	代回方程[\ref{eq:lege}],得
+	\begin{equation*}
+		\left(1-x^{2}\right) \frac{d^{2}}{d x^{2}} P^m_{l}(x) -2 x \frac{d}{d x} P^m_{l}(x)+\left[l(l+1)-\frac{m^{2}}{1-x^{2}}\right] P^m_{l}(x)=0
+	\end{equation*}		
+	$P^m _{l}(x)$满足连带勒让德方程，即$P^m _{l}(x)$是连带勒让德方程的解, 称为连带勒让德多项式, 其中$m$称为连带勒让德多项式的阶, $l$称为连带勒让德多项式的自由度。
+	
+	~~\\ 
+	前几个连带勒让德多项式,具体如下表。很明显,$P^m_{l}(x)$具有$l+m$的奇偶性 
+	$$\renewcommand\arraystretch{1.6}
+	\begin{array}{|l|l|}
+		\hline P^0_{0}(x)=1 & P^2_{2}(x)=3\left(1-x^2\right)\\
+		\hline P^0_{1}(x)=x & P^0_{3}(x)=\dfrac{1}{2}x(5x^2-3) \\
+		\hline P^1_{1}(x)=-(1-x^2)^{1/2} & P^1_{3}(x)=\dfrac{3}{2}(1-5x^2)(1-x^2)^{1/2} \\
+		\hline P^0_{2}(x)= \dfrac{1}{2}(3x^2-1) & P^2_{3}(x)=15 x(1-x^2)\\ 
+		\hline P^1_{2}(x)=- 3x\left(1-x\right)^{1/2}  &P^3_{3}(x)= -15 x(1-x^2)^{3/2} \\
+		\hline
+	\end{array}$$
+	~~\\ 
+	
+	
+	\subsection{勒让德多项式的性质}
+	
+	\begin{proposition}-1:
+		勒让德多项式有如下微分形式：
+		\begin{equation*}
+			P_{n}(x)=\frac{1}{2^{n} n !} \frac{d^{n}}{d x^{n}}\left(x^{2}-1\right)^{n}, \quad(n=0,1,2,3, \cdots \cdots)
+		\end{equation*}
+	\end{proposition}
+	\begin{proof}
+		由二项式定理，有：
+		$$\begin{aligned}
+			\left(x^{2}-1\right)^{n}&=\sum_{m=0}^{n} C_{n}^{m}(-1)^{m}\left(x^{2}\right)^{n-m}\\
+			&=\sum_{m=0}^{n} \frac{(-1)^{m} n !}{m !(n-m) !} x^{2 n-2 m}
+		\end{aligned}$$
+		求n次导
+		\begin{equation*}
+			\frac{d^{n}}{d x^{n}}\left(x^{2}-1\right)^{n}=\sum_{m=0}^{n} \frac{(-1)^{m} n !}{m !(n-m) !} \frac{d^{n}}{d x^{n}}\left(x^{2 n-2 m}\right)
+		\end{equation*}	
+		当$2n-2m<n$时， 上式右边的导数为零，即非零项应要求
+		\[
+			\begin{aligned}
+				2n-2m \ge n \qquad \to \qquad 
+				2m \le n 
+			\end{aligned}
+		\]
+		即非零的最高次幂为 $m=[n/2]$
+		\begin{align*}
+			\frac{d^{n}}{d x^{n}}\left(x^{2}-1\right)^{n}&=\sum_{m=0}^{[n/2]} \frac{(-1)^{m} n !}{m !(n-m) !} \frac{d^{n}}{d x^{n}}\left(x^{2 n-2 m}\right)\\
+			&=\sum_{m=0}^{[n / 2]}(-1)^{m} \frac{(2 n-2 m) ! n!}{ m !(n-m) !(n-2 m) !} x^{n-2 m}
+		\end{align*}	
+		两端同除以 $2^{n} n !$
+		\begin{align*}
+			\frac{1}{2^{n} n !} \frac{d^{n}}{d x^{n}}\left(x^{2}-1\right)^{n} &= \sum_{m=0}^{[n / 2]}(-1)^{m} \frac{(2 n-2 m) !}{2^{n} m !(n-m) !(n-2 m) !} x^{n-2 m}\\
+			&=P_n(x)\\
+		\end{align*}
+	\textcolor{red}{证毕！}
+	\end{proof}
+	
+	~~\\ 
+	
+	\begin{proposition}-2:勒让德多项式有母函数
+		\begin{equation*}
+			w(x, z)=\left(1-2 z x+z^{2}\right)^{-1 / 2}
+		\end{equation*}	
+	\end{proposition}
+	\begin{proof}
+		即要证函数展开式与勒让德多项式有如下关系
+		\begin{equation*}
+			\left(1-2 z x+z^{2}\right)^{-1 / 2}=\sum_{n=0}^{\infty} P_n(x) z^n
+		\end{equation*}	
+		二项式定理
+		\begin{equation*}
+			(1+v)^{p}=\sum_{k=0}^{\infty} \frac{p(p-1) \cdots(p-k+1)}{k !} v^{k}
+		\end{equation*}	
+		取$p=-1/2$， 得：
+		\begin{align*}
+			(1+v)^{-1/2}&=\sum_{k=0}^{\infty} (-1)^{k}\frac{\frac{1}{2}\frac{3}{2}  \cdots \frac{2k-1}{2}}{k !} v^{k}\\
+			&=\sum_{k=0}^{\infty} (-1)^{k}\frac{\frac{1}{2}\frac{2}{2}\frac{3}{2} \frac{4}{2}  \cdots \frac{2k-1}{2}\frac{2k}{2}} {(k !)^2} v^{k}\\
+			&=\sum_{k=0}^{\infty}(-1)^{k} \frac{(2 k) !}{2^{2 k}(k !)^{2}} v^{k}
+		\end{align*}	
+		取$$v=-2zx+z^2=-z(2x-z)$$ 
+		\begin{equation*}
+			v^{k}=(-1)^{k} z^{k}(2 x-z)^{k}=(-1)^{k} z^{k} \sum_{m=0}^{k} C_{k}^{m}(2 x)^{k-m}(-z)^{m}
+		\end{equation*}	
+		代回
+		\begin{equation*}
+		\begin{aligned}
+		\left(1-2 z x+z^{2}\right)^{-{1}/{2}} &= \sum_{k=0}^{\infty}(-1)^{k} \frac{(2 k) !}{2^{2 k}(k !)^{2}} (-1)^{k} z^{k} \sum_{m=0}^{k} C_{k}^{m}(2 x)^{k-m}(-z)^{m}\\
+		&=\sum_{k=0}^{\infty} \frac{(2 k) !}{2^{2 k}(k !)^{2}} \sum_{m=0}^{k}(-1)^{m} C_{k}^{m}(2 x)^{k-m} z^{k+m}
+		\end{aligned}
+		\end{equation*}	
+		令$k+m=n$，
+		\begin{equation*}
+		\begin{split}
+			\left(1-2 z x+z^{2}\right)^{-{1}/{2}} &= \sum_{k=0}^{\infty} \frac{(2 k) !}{2^{2 k}(k !)^{2}} \sum_{m=0}^{k}(-1)^{m} C_{k}^{m}(2 x)^{k-m} z^{n} \\
+			&= \sum_{n=0}^{\infty}\sum_{k+m=n, m\le k} \frac{(2 k) !}{2^{2 k}(k !)^{2}}  (-1)^{m} C_{k}^{m}(2 x)^{k-m} z^{n}
+		\end{split}
+		\end{equation*}
+		去除指标$k$, 因为$k+m=n$, 有 $k=n-m$, 有$k-m = n-2m $,代入上式
+		\begin{equation*}
+			\begin{split}
+			\left(1-2 z x+z^{2}\right)^{-{1}/{2}}&=\sum_{n=0}^{\infty}\sum_{m=0}^{n} \frac{(2 (n-m)) !}{2^{2 (n-m)}((n-m) !)^{2}}(-1)^{m} C_{n-m}^{m}(2 x)^{n-2m} z^{n}\\
+			&=\sum_{n=0}^{\infty}\sum_{m=0}^{n}(-1)^{m} \frac{(2 n-2m) !}{2^{2 (n-m)}((n-m) !)^{2}} \frac{(n-m) !}{m!(n-2 m) !}2^{n-2 m}x^{n-2 m} z^{n}\\
+			&=\sum_{n=0}^{\infty}\sum_{m=0}^{n}(-1)^{m} \frac{(2 n-2 m) !}{2^{n} m !(n-m) !(n-2 m) !} x^{n-2 m} z^{n}
+		\end{split}
+		\end{equation*}	
+		因此，
+		$$
+		\left(1-2 z x+z^{2}\right)^{-{1}/{2}}=\sum_{n=0}^{\infty}P_{n}(x) z^{n}  
+		$$ 
+	\textcolor{red}{证毕！}
+	\end{proof}
+	
+	~~\\ 
+	\begin{hint}
+		母函数的物理意义： \\
+		在母函数中
+		$$
+		\left(1-2 z x+z^{2}\right)^{-{1}/{2}}=\sum_{n=0}^{\infty}P_{n}(x) z^{n}  
+		$$
+		取$z=\dfrac{r}{R}, x = \cos \theta, n=l $, 得
+		$$
+		\left(1-2 \frac{r}{R} \cos \theta+\frac{r^2}{R^2}\right)^{-{1}/{2}}=\sum_{l=0}^{\infty}P_{l}(\cos \theta) (\frac{r}{R})^{l}  
+		$$
+		两端同除以$\dfrac{1}{R}$, 有
+		\[\begin{aligned}
+			\frac{1}{\sqrt{r^2+ R^2 -2rR\cos \theta} } =\frac{1}{R} \sum_{l=0}^{\infty}P_{l}(\cos \theta) (\frac{r}{R})^{l}  \\ 
+			\frac{1}{\sqrt{\vec{r}^2+ \vec{R}^2 -2\vec{r}\cdot\vec{R} }} =\frac{1}{R} \sum_{l=0}^{\infty}P_{l}(\cos \theta) (\frac{r}{R})^{l}  \\
+			\frac{1}{\left\vert\vec{r}-\vec{R} \right\vert} =\frac{1}{R} \sum_{l=0}^{\infty}P_{l}(\cos \theta) (\frac{r}{R})^{l} 
+		\end{aligned} \]
+		考虑泰勒展开, 有
+		\[\begin{aligned}
+			\frac{1}{\left\vert\vec{r}-\vec{R} \right\vert} = \frac{1}{\left\vert r- R \right\vert} = \frac{1}{R} \sum_{l=0}^{\infty}a_l(\frac{r}{R})^{l} 
+		\end{aligned} \]
+		得
+		\[ a_l = P_l(\cos \theta), \qquad (r^l\text{部分：见径向解} )\]
+		勒让德多项式是一个物理量对球心的泰勒展开下的各阶系数多项式。
+	\end{hint}
+	
+	\begin{proposition} 勒让德多项式递推关系
+		\begin{equation*}
+			(n+1) P_{n+1}(x)-(2 n+1) x P_{n}(x)+n P_{n-1}(x)=0
+		\end{equation*}	
+	\end{proposition}
+		\emph{解：}
+			存在母函数
+			\begin{equation*}
+				w(x, z)=(1-2zx+z^2)^{-1/2}=\sum_{n=0}^{\infty} P_{n}(x) z^{n}
+			\end{equation*}	
+			对形式级数求关于z的偏导：
+			\begin{equation*}
+				\frac{\partial w}{\partial z}=\sum_{n=1}^{\infty} n P_{n}(x) z^{n-1}=\sum_{n=0}^{\infty}(n+1) P_{n+1} z^{n}
+			\end{equation*}	
+			对函数求关于z的偏导：
+			\begin{equation*}
+				\frac{\partial w}{\partial z}=	(x-z)(1-2zx+z^2)^{-3/2}
+			\end{equation*}		
+			\begin{equation*}
+				(1-2zx+z^2)\frac{\partial w}{\partial z}=(x-z)(1-2zx+z^2)^{-1/2}
+			\end{equation*}		
+			\begin{equation*}
+				(1-2zx+z^2)\frac{\partial w}{\partial z}-(x-z)w=0
+			\end{equation*}	
+			代入级数及级数偏导	
+			\begin{equation*}
+				(1-2zx+z^2)\sum_{n=0}^{\infty}(n+1) P_{n+1} z^{n}-(x-z)\sum_{n=0}^{\infty} P_{n}(x) z^{n}=0
+			\end{equation*}		
+			整理
+			\begin{equation*}
+				\sum_{n=1}^{\infty} [(n+1)P_{n+1} -(2n+1)x P_n + nP_{n-1} ] z^{n}=0
+			\end{equation*}		
+			由多项式系数项为零\\ \textcolor{red}{得证！}
+	
+		~~\\ 
+	
+	\begin{proposition}勒让德多项式的正交归一性
+		\[ \frac{2n+1}{2} \int\limits_{-1}^{+1}  P_m(x) P_n(x)dx = \left\{ 
+			\begin{aligned}
+				& 0, \quad (m\ne n) \\ 
+				& 1 , \quad (m= n)
+			\end{aligned}\right.\]
+		\end{proposition}
+	\begin{proof}
+		（I）正交性：勒让德多项式满足勒让德方程($n=l$)
+		\begin{equation*}
+			\left(1-x^{2}\right) P'' _n  (x) -2 x P' _n (x)+n(n+1)P_n(x)=0
+		\end{equation*}		
+		等价形式
+		\begin{equation*}
+			[\left(1-x^{2}\right) P' _n  (x)]' +n(n+1)P_n(x)=0    \cdots  (1)
+		\end{equation*}		
+		同理：
+		\begin{equation*}
+			[\left(1-x^{2}\right) P' _m  (x)]' + m (m+1)P_m(x)=0    \cdots  (2)
+		\end{equation*}		
+		(1)$\times P_m$-(2)$\times P_n$
+		\[ [n(n+1) -m (m+1)] P_m P_n = P_n[\left(1-x^{2}\right) P' _m  (x)]' - P_m[\left(1-x^{2}\right) P' _n  (x)]' \]
+		积分 
+		\begin{equation*}
+				[n(n+1) -m (m+1)]\int_{-1}^{1} P_mP_n dx =\int_{-1}^{1} \left\{P_n [\left(1-x^{2}\right) P' _m] '-P_m [\left(1-x^{2}\right) P' _n ]'\right\}dx
+		\end{equation*}
+		右端分部积分
+		\begin{equation*}
+		\begin{split}
+			= &\left.\left\{P_n [\left(1-x^{2}\right) P' _m]-P_m [\left(1-x^{2}\right) P' _n ]\right\} \right| _{-1} ^{1}  
+			-\int_{-1}^{1}  [\left(1-x^{2}\right) P' _nP' _m -\left(1-x^{2}\right) P' _mP' _n  ]  dx \\
+			=&0
+		\end{split}
+		\end{equation*}		
+		因此，式子的左端也为零
+		\begin{equation*}
+			[n(n+1) -m (m+1)]\int_{-1}^{1} P_mP_n dx =0
+		\end{equation*}	
+		由于$ n\ne m  $ 
+		\begin{equation*}
+			\int_{-1}^{1} P_mP_n dx =0 ,\cdots (n\ne m)
+		\end{equation*}
+		（II）归一性：由递推公式
+		\begin{equation*}
+			nP_{n} -(2n-1)x P_{n-1} + (n-1)P_{n-2}  =0
+		\end{equation*}		
+		\begin{equation*}
+			nP ^2 _{n} =(2n-1)x P_n P_{n-1} - (n-1)P_nP_{n-2} 
+		\end{equation*}		
+		\begin{equation*}
+			\int_{-1}^{1}  P ^2 _{n} dx = \frac{(2n-1)}{n} \int_{-1}^{1}  x P_n P_{n-1} dx , \cdots (1)
+		\end{equation*}	
+		递推式可写成
+		\begin{equation*}
+			(n+1)P_{n+1} -(2n+1)x P_{n} + nP_{n-1}  =0  
+		\end{equation*}		
+		\begin{equation*}	
+			x P_{n}=\frac{n+1}{2n+1}P_{n+1} + \frac{n}{2n+1}P_{n-1} , \cdots (2)
+		\end{equation*}	
+		把(2)代入(1)式，得积分递推式
+		\begin{align*}
+			\int_{-1}^{1}  P ^2 _{n} dx &=  \frac{2n-1}{2n+1}\int_{-1}^{1}   P^2_{n-1} dx \\
+			&=  \frac{2n-1}{2n+1} \cdot \frac{2(n-1)-1}{2(n-1)+1} \int_{-1}^{1}   P^2_{n-2} dx \\
+		\end{align*}		
+		反复递推
+		\begin{equation*}
+			\int_{-1}^{1}  P ^2 _{n} dx =  \frac{1}{2n+1}\int_{-1}^{1}   P^2_{0} dx = \frac{2}{2n+1}
+		\end{equation*}	
+	\textcolor{red}{证毕！}
+	\end{proof}
+	~~\\ 
+	
+	\begin{example}
+	计算积分
+		\begin{equation*}
+			\int_{-1}^{+1} x^2 P _{n}(x) dx 
+		\end{equation*}	
+	\end{example}
+	 
+	\emph{解：}
+		由于
+		\begin{equation*}
+			P_0(x)=1, \quad	P_1(x)=x, \quad P_2(x)= \dfrac{1}{2}(3x^2-1)  
+		\end{equation*}	
+		$x^2$的勒让德多项式只有三项
+		\[
+			\begin{aligned}
+				&x^2 = a_0P_0(x) + a_1P_1(x) + a_2P_2(x) \\
+				&a_0 + a_1 x + a_2 \dfrac{1}{2}(3x^2-1) - x^2 =0 \\
+				& ( \dfrac{3a_2}{2} -1)x^2 + a_1 x + (a_0 -\dfrac{a_2}{2} ) =0
+			\end{aligned} 
+		\]
+		由多项式各项系数为零，得 
+		\begin{equation*}
+			a_0 =\dfrac{1}{3}, \quad	a_1 =0, \quad a_2 =\dfrac{2}{3}
+		\end{equation*}	
+		$x^2$的展开式
+		$$ x^2 =\dfrac{2}{3}P_2+\dfrac{1}{3}P_0$$
+		原式为：
+		\begin{equation*}
+		\begin{aligned}
+			\int_{-1}^{+1} x^2 P _{n} dx &= \int_{-1}^{+1} (\dfrac{2}{3}P_2+\dfrac{1}{3}P_0)  P _{n} dx \\	  
+			&= \int_{-1}^{+1} \dfrac{2}{3}P_2 P _{n} dx + \int_{-1}^{+1} \dfrac{1}{3}P_0 P _{n} dx
+		\end{aligned}  	
+		\end{equation*}	
+		分情况讨论：\\
+		(1)  $n=0$, 
+		\begin{equation*}
+			\int_{-1}^{+1} x^2 P _{n} dx  =   \int_{-1}^{+1} \dfrac{1}{3}P_0  P _{0} dx=\dfrac{1}{3} \frac{2}{2n+1}  = \dfrac{2}{3}	
+		\end{equation*}	
+		(2)  $n=2$, 
+		\begin{equation*}
+			\int_{-1}^{+1} x^2 P _{n} dx  =   \int_{-1}^{+1} \dfrac{2}{3}P_2  P _{2} dx= \dfrac{2}{3}\frac{2}{2n+1}  = \dfrac{4}{15}	
+		\end{equation*}	
+		(3) $ n\neq 0,2$
+		\begin{equation*}
+			\int_{-1}^{+1} x^2 P _{n} dx  =  0	
+		\end{equation*}
+	
+	~~\\ 
+	
+	
+	\subsection{连带勒让德多项式的性质}
+	~\\
+	连带勒让德多项式具有以下性质\\
+	(1) 正交归一性：
+	$$
+	\int_{-1}^1 P_l^m(x) P_{l^{\prime}}^m(x) d x=\frac{2}{2 l+1} \frac{(l+m) !}{(l-m) !} \delta_{l l^{\prime}}
+	$$
+	$$
+	\int_{-1}^1 P_l^m(x) P_l^{m^{\prime}}(x) \frac{d x}{1-x^2}=\frac{(l+m) !}{m(l-m) !} \delta _{mm'}
+	$$	
+	(2) 递推式： 
+	\begin{equation*}
+		(l+1-m)P^m _{l+1} -(2l+1)x P^m _l + (l+m) P^m _{l-1} =0 
+	\end{equation*}	
+	~~\\ 
+	
+	\subsection{球谐函数}
+	~~\\ 
+	角向方程:
+		\begin{equation*}
+			\left[ \frac{1}{ \sin \theta  } \frac{\partial }{\partial \theta } (\sin \theta \frac{\partial }{\partial \theta } )
+			+\frac{1}{ \sin^2 \theta  } \frac{\partial^2}{\partial\varphi ^2} +l(l+1)\right] Y=0
+		\end{equation*}	
+	解为球谐函数：
+		\begin{equation*}
+			Y_{lm}(\theta,\varphi)= \Theta_{lm}(\theta) \Phi_m (\varphi), \quad ( 0 \le \theta \le \pi, 0 \le \varphi\le 2\pi)
+		\end{equation*}	
+	其中
+		\begin{equation*} \left\{
+			\begin{aligned}
+				\Phi_m (\varphi) &= e^{im\varphi}, \qquad (m=0,\pm 1, \pm 2, \cdots \pm l) \\ 
+				\Theta_{lm}(\theta)&= P^m  _{l}(\cos \theta), \qquad (l=0,1,2,3, \cdots (n-1)) 
+			\end{aligned}\right.
+		\end{equation*}
+	前几个球谐函数的空间图像给出在图[\ref{fig:ylm}]中。
+	
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=0.98\textwidth]{figs/ylm.png}
+			\caption{球谐函数的形态}
+			\label{fig:ylm}
+		\end{figure}
+	
+	~~\\ 
+	\begin{example}
+		求归一化的球谐函数
+	\end{example}
+	 \emph{解：}
+	 设归一化的球谐函数为
+	 \begin{equation*}
+		Y_{lm} (\theta,\varphi)= A_{lm}  P_l ^m (\cos \theta)  \Phi_m (\varphi)
+	\end{equation*}
+	代入归一化公式
+		\begin{equation*}
+		\begin{split}
+			 \iint  |Y_{lm}| ^2  d \sigma & =1  \\
+			 \iint  A^2_{lm}  |P_l ^m (cos \theta)|^2  |\Phi (\varphi)|^2 d \sigma  & =1  \\
+		 A^2_{lm}\int_{-1}^{+1} |P_l ^m (x)|^2 d x \int_{0}^{2\pi} |\Phi _m (\varphi)|^2 d \varphi  &= 1 \\
+		A^2_{lm} 2\pi  \int_{0}^{\pi}    |P_l ^m (cos \theta)|^2  \sin \theta d\theta &=1 \\
+		\end{split}		
+		\end{equation*}	
+	因此,有
+	$$
+		A^2_{lm}  2\pi  \frac{(l+m)!}{(l-m)!}  \frac{2}{2l+1}  =1   
+	$$ 
+		解得\[ A_{lm} = \sqrt{\frac{(2l+1)(l-m)!}{4\pi (l+m)!}}\]
+	因此, 归一化的球谐函数为
+	\begin{equation*}
+		Y_{l}^m (\theta,\varphi)= \sqrt{\frac{(2l+1)(l-m)!}{4\pi (l+m)!}}  P_l ^m (cos \theta)  \Phi_m (\varphi)
+	\end{equation*}
+	归一化的经度函数
+	\begin{equation*}
+		\Phi_m (\varphi) = \frac{1}{\sqrt{2\pi}} e^{im\varphi}
+	\end{equation*}
+	归一化的纬度函数
+	\begin{equation*}
+		\Theta_{lm}(\theta) = B_{lm} P_l ^m (cos \theta)= \sqrt{\frac{(2l+1)(l-m)!}{2 (l+m)!}}  (1-x^2)^{\frac{m}{2}}P^{(m)} _l(x)
+	\end{equation*}
+	
+	
+	谐波是指频率为基波频率整数倍的波,比如琴弦的一维谐波,比如鼓面的二维谐波. 球谐函数描述的是单位球面上的三维谐波。每一个基波都有自己的谐波, 球谐函数$Y_{l} ^{m}$ 中, $l$ 描述一个基波有多少个谐波, 称为球谐函数的自由度, $m$ 为谐波的阶, 阶高的称为高阶谐波。具有如下三角形排布
+	\renewcommand\arraystretch{1.6}
+	\begin{table}[h]
+		\centering
+		\caption{球谐函数的三角形排布}
+		%\label{tab:label}
+		\begin{tabular}{cccccc}
+				&$Y_{1} ^{0}$& $Y_{1} ^{1}$ & $\hspace{1.5em}$ & $\hspace{1.5em}$ & $\hspace{1.5em}$\\
+				&$Y_{2} ^{0}$& $Y_{2} ^{1}$ & $Y_{2} ^{2}$ & $\hspace{1.5em}$ & $\hspace{1.5em}$\\
+				&$Y_{3} ^{0}$& $Y_{3} ^{1}$ & $Y_{3} ^{2}$ & $Y_{3} ^{3}$ & $\hspace{1.5em}$\\
+				&$Y_{4} ^{0}$& $Y_{4} ^{1}$ & $Y_{4} ^{2}$ & $Y_{4} ^{3}$ & $Y_{4} ^{4}$	
+		\end{tabular}
+		\end{table}	
+	~~\\
+	前几个复球谐函数
+	$$
+	\begin{aligned}
+	Y_0^0 & =\frac{1}{2} \sqrt{\frac{1}{\pi}} \\
+	Y_1^{-1} & =\frac{1}{2} \sqrt{\frac{3}{2 \pi}} \frac{(x-i y)}{r} \\
+	Y_1^0 & =\frac{1}{2} \sqrt{\frac{3}{\pi}} \frac{z}{r} \\
+	Y_1^1 & =-\frac{1}{2} \sqrt{\frac{3}{2 \pi}} \frac{(x+i y)}{r} \\
+	Y_2^{-2} & =\frac{1}{4} \sqrt{\frac{15}{2 \pi}} \frac{(x-i y)^2}{r^2} \\
+	Y_2^{-1} & =\frac{1}{2} \sqrt{\frac{15}{2 \pi}} \frac{z(x-i y)}{r^2} \\
+	\end{aligned}
+	$$
+	$$
+	\begin{aligned}
+	Y_2^0 & =\frac{1}{4} \sqrt{\frac{5}{\pi}} \frac{\left(2 z^2-x^2-y^2\right)}{r^2} \\
+	Y_2^1 & =-\frac{1}{2} \sqrt{\frac{15}{2 \pi}} \frac{z(x+i y)}{r^2} \\
+	Y_2^2 & =\frac{1}{4} \sqrt{\frac{15}{2 \pi}} \frac{(x+i y)^2}{r^2}
+	\end{aligned}
+	$$
+	取出经度函数的实部和虚部,球谐函数化为
+		\[Y_{lm}=A_{lm} P^m _l(\cos\theta) \Phi_m (\varphi)=A_{lm}\begin{cases}
+			 P^m _l(\cos\theta) \cos m \varphi\\
+			 P^m _l(\cos\theta) \sin m \varphi\\
+		\end{cases}\]
+	当然，实球谐函数可写成
+	$$
+	Y_{\ell m}= \begin{cases}\dfrac{i}{\sqrt{2}}\left(Y_{\ell}^m-(-1)^m Y_{\ell}^{-m}\right), & \text { if } m<0 \\ Y_{\ell}^0, & \text { if } m=0 \\ \dfrac{i}{\sqrt{2}}\left(Y_{\ell}^{-m}+(-1)^m Y_{\ell}^m\right), & \text { if } m>0\end{cases}
+	$$
+	前几个实球谐函数为：
+	$$
+	\begin{aligned}
+	Y_{1,-1} & =\sqrt{\frac{3}{4 \pi}} \frac{y}{r} \\
+	Y_{1,0} & =\sqrt{\frac{3}{4 \pi}} \frac{z}{r} \\
+	Y_{1,1} & =\sqrt{\frac{3}{4 \pi}} \frac{x}{r} \\
+	Y_{2,-2} & =\frac{1}{2} \sqrt{\frac{15}{\pi}} \frac{x y}{r^2} \\
+	Y_{2,-1} & =\frac{1}{2} \sqrt{\frac{15}{\pi}} \frac{y z}{r^2} \\
+	Y_{2,0} & =\frac{1}{4} \sqrt{\frac{5}{\pi}} \frac{\left(2 z^2-x^2-y^2\right)}{r^2} \\
+	Y_{2,1} & =\frac{1}{2} \sqrt{\frac{15}{\pi}} \frac{x z}{r^2} \\
+	Y_{2,2} & =\frac{1}{4} \sqrt{\frac{15}{\pi}} \frac{\left(x^2-y^2\right)}{r^2}
+	\end{aligned}
+	$$
+	~~\\ 
+	小结：\\
+	(1) 经度方程 
+	\begin{equation*}
+		\frac{d^{2} \Phi}{d \varphi^{2}}+\lambda' \Phi=0,\quad (0<\varphi\le2 \pi)
+	\end{equation*}
+	固有值与固有函数:
+	   $$ \left\{
+	   \begin{aligned}
+		&\lambda' = m^2,\quad m = 0, \pm 1, \pm 2, \cdots , \pm l \\
+		&\Phi_m (\varphi)=\frac{1}{\sqrt{2\pi}} e^{im\varphi}  
+	   \end{aligned} \right. $$ 
+	(2) 纬度方程：
+	\begin{equation*}
+		\frac{1}{\sin \theta} \frac{d}{d \theta}\left(\sin \theta \frac{d \Theta}{d \theta}\right)+\left[\lambda-\frac{m^{2}}{\sin ^{2} \theta}\right] \Theta=0, \quad (0< \theta \le \pi)
+	\end{equation*}	
+	固有值与固有函数: 
+	   $$ \left\{
+	   \begin{aligned}
+		&\lambda = l (l+1), \quad l =0,1,2,\cdots \\
+		&\Theta (\theta) = \sqrt{\frac{(2l+1)(l-m)!}{2 (l+m)!}}  P^m _{l}(\cos\theta)
+	   \end{aligned} \right. $$ 
+	(3) 角向方程：
+	\begin{equation*}
+		L^2 Y=\lambda Y
+	\end{equation*}	
+	固有值与固有函数（球谐函数）: 
+	$$ \left\{
+		\begin{aligned}
+		 &\lambda = l (l+1), \quad l =0,1,2,\cdots \\
+		 &Y_{l}^m (\theta,\varphi)= \sqrt{\frac{(2l+1)(l-m)!}{4\pi (l+m)!}}  P_l ^m (cos \theta)  \Phi_m (\varphi)
+		\end{aligned} \right. $$ 
+	
+	
+	\subsection{解径向方程} 
+	~\\
+	把固在值$ \lambda =l(l+1)$代入径向方程
+	\begin{equation*}
+		\frac{d}{d r} (r^2\frac{d R }{d r} ) =\lambda R
+	\end{equation*}	
+	得
+	\begin{equation*}
+		\frac{d}{d r} (r^2\frac{d R }{d r} ) =l(l+1) R
+	\end{equation*}
+	整理	
+	\begin{equation*}
+		\frac{d^2 R}{d r^2} + \frac{2}{r}\frac{d R }{d r} - \frac{l(l+1)}{r^2} R=0
+	\end{equation*}	
+	欧拉型常微分方程，做变量代换
+	\[ r = e^x\]
+	方程化为 
+	\[ R'' + R' -l(l+1)R =0\]
+	通解为：
+	\begin{equation*}
+			R(x)=C_1 e ^{-(l+1)x}+C_2 e^ {lx} 
+	\end{equation*}	
+	代入 $x = \ln r$, 得
+	\begin{equation*}
+		R(r)=C_1 r ^{-(l+1)} + C_2 r ^ l 
+    \end{equation*}	
+   ~\\ 
+	\begin{hint}
+        最终，我们获得了球坐标系拉普拉斯方程的基本解
+		\begin{equation}
+			\begin{aligned}
+				u_{ml} &= R(r)Y_{l} ^m (\theta,\varphi) \\
+				  &= [C_{ml} r ^ l  + D_{ml} r ^{-(l+1)}] P_l ^m (cos \theta)  \Phi_m (\varphi)
+			\end{aligned}
+		\end{equation}
+		叠加解
+		\begin{equation}
+				u=\sum_{l=0}^{\infty}\sum_{m=-l}^{m=l} u_{ml} 
+		\end{equation}
+		叠加解写成实函数形式，
+		\begin{equation}
+			\begin{aligned}
+				u=\sum_{m, l} & \left(A_{m l} r^{l}+B_{m l} r^{(-l-1)}\right) P_{l}^{m}(\cos \theta)\operatorname{cos} m \varphi\\
+					& + \sum_{m,l} \left(C_{m l} r^{l}+D_{m l} r^{(-l-1)}\right) P_{l}^{m}(\cos \theta)\operatorname{sin} m\varphi
+			\end{aligned}
+		\end{equation}
+	\end{hint}
+
+	\section{拉盖尔多项式}
+
+	微分方程
+	\begin{equation}
+		x y''  + (m + 1 -x) y' +n y =0
+	\end{equation}
+	为连带拉盖尔方程，只有当n为非负时才有非平凡解。
+	当$m =0$时称为拉盖尔方程。
+	\begin{equation}
+		x y''  + (1 -x) y' +n y =0
+	\end{equation}
+	由于$x_0=0$是方程的正则奇点，在$x_0=0$及其领域上有有限级数解
+	\begin{equation}
+		y(x)=a_{0}\left[1+\frac{-n}{(1!)^{2}} x+\frac{-n(1-n)}{(2!)^{2}} x^{2}+\cdots+\frac{-n(1-n) \cdots(k-1-n)}{(k!)^{2}} x^{k}+\cdots\right]
+	\end{equation}
+	当n为整数时，解退化为n次多项式
+	\begin{equation}
+		L_{n}(x)=\sum_{i=0}^{n}\binom{n}{i} \frac{(-1)^{i}}{i!} x^{i}
+	\end{equation}
+	称为拉盖尔多项式。下面给出获得过程及其性质。
+
+	\subsection{解拉盖尔方程} 
+		\begin{example}
+		试求解拉盖尔方程
+			\begin{equation*}
+				x y''  + (1 -x) y' +n y =0
+			\end{equation*}	 
+		\end{example}
+		\emph{解：}
+		这是个变系数常微分方程, 考虑级数解, 令  
+		\begin{equation*}
+			y=\sum_{k=0}^{\infty} c_k x^k
+		\end{equation*}	
+		对级数求导
+		$$
+			\begin{aligned}
+				y' &= \sum\limits_{k=1}^{\infty} k c_k x^{k-1} \\ 
+					& =\sum\limits_{k=0}^{\infty} (k+1) c_{k+1} x^{k}\\
+				xy' &= \sum\limits_{k=0}^{\infty} k c_k x^{k} \\
+				y'' &= \sum\limits_{k=2}^{\infty} k (k-1) c_k x^{k-2} \\
+				xy''	&=  \sum\limits_{k=1}^{\infty} k (k-1) c_k x^{k-1} 
+			\end{aligned}
+		$$
+		\[		xy'' = \sum\limits_{k=0}^{\infty} (k+1) k c_{k+1} x^{k}\]
+		代回方程 
+		\[\sum\limits_{k=0}^{\infty} (k+1) k c_{k+1} x^{k} + \sum\limits_{k=0}^{\infty} (k+1) c_{k+1} x^{k} - \sum\limits_{k=0}^{\infty} k c_k x^{k} + \sum_{k=0}^{\infty} n c_k x^k =0\]
+		整理,得
+		\begin{equation*}
+			\sum_{k=0}^{\infty} [(n-k)c_k +(k+1)^2 c_{k+1}  ] x^k =0
+		\end{equation*}	
+		多项式为零, 要求各阶系数为零
+		\begin{equation*}
+			c_{k+1}=-\frac{n-k}{(k+1)^2} c_k
+		\end{equation*}
+		这是递推式, 反复递推
+		\begin{equation*}
+			\begin{aligned}
+				c_{1} &=-\frac{n-0}{(0+1)^2} c_0 \\ 
+				c_{2} &=-\frac{n-1}{(1+1)^2} c_1 \\ 
+				&= (-1)^2\frac{n(n-1)}{(2!)^2} c_0
+			\end{aligned}
+		\end{equation*}
+		\begin{equation*}
+			c_{k}=(-1)^k \frac{n(n-1)\cdots (n-(k-1))}{(k!)^2} c_0
+		\end{equation*}	
+		显然, 当$(k-1) = n$时, 分子为零, 即这不是一个无穷级数而是一个多项式, 称为拉盖尔多项式。\\ 
+		当$k=n$时，最高阶项系数为
+		\begin{equation*}
+			c_{n}=(-1)^n \frac{1}{n!} c_0, 
+		\end{equation*}	
+		若取
+		\begin{equation*}
+			c_{0}=n!
+		\end{equation*}	
+		代回, 得拉盖尔多项式系数表达式
+		\begin{equation*}
+			\begin{aligned}
+				c_{k}&= (-1)^k \frac{1}{(k!)^2}\frac{n! }{(n-k)!} n! \\
+				&=(-1)^k \frac{(n!) ^2}{(k!)^2 (n-k)!},  \qquad (k=0,1,2,\cdots, n) \\ 
+			\end{aligned}
+		\end{equation*}	
+		代回级数表达式,得拉盖尔多项式
+		\begin{equation*}
+		\begin{split}
+			L_n(x) &=\sum_{k=0}^{n} c_{k} x^k \\
+			&= \sum_{k=0}^{n} (-1)^k \frac{(n!)^2 }{(k!)^2 (n-k)!}x^k \\
+			&= \sum_{k=0}^{n} (-1)^k \frac{n! }{(k!) (n-k)!} \frac{n!}{k!}x^k   \\
+			&= \sum_{k=0}^{n} (-1)^k C^k _n \frac{n!}{k!}x^k
+		\end{split}		
+		\end{equation*}		
+		\textcolor{red}{解毕！}
+	
+		~~\\ 
+	
+	\subsection{拉盖尔多项式及其性质} 
+		\begin{example}
+		试求前四个拉盖尔多项式
+		\end{example}	
+		\emph{解：}
+		根据公式
+		\begin{equation*}
+				L_n(x)= \sum_{k=0}^{n} (-1)^k C^k _n \frac{n!}{k!}x^k
+		\end{equation*}
+		需要计算两个表格
+			\renewcommand\arraystretch{1.4}
+			\begin{table}[h]
+				\centering
+				\caption{$\dfrac{n!}{k!}$, ~($0 \le k\le n, n =1,2,3,4$)}
+				%\label{tab:label}
+				\begin{tabular}{cccccc}
+						&1 & 1 & $\hspace{1.5em}$ & $\hspace{1.5em}$ & $\hspace{1.5em}$\\
+						&2 & 2 & 1 & $\hspace{1.5em}$ & $\hspace{1.5em}$\\
+						&6 & 6 & 3 & 1 & $\hspace{1.5em}$\\
+						&24 & 24 & 12 & 4 & 1 \\	
+				\end{tabular}
+				\end{table}	 
+				\renewcommand\arraystretch{1.4}
+				\begin{table}[h]
+					\centering
+					\caption{$(-1)^k C^k _n$, ~($0 \le k\le n, n =1,2,3,4$)}
+					%\label{tab:label}
+					\begin{tabular}{cccccc}
+							&1 & -1 & $\hspace{1.5em}$ & $\hspace{1.5em}$ & $\hspace{1.5em}$\\
+							&1 & -2 & 1 & $\hspace{1.5em}$ & $\hspace{1.5em}$\\
+							&1 & -3 & 3 & -1 & $\hspace{1.5em}$\\
+							&1 & -4 & 6 & -4 & 1 \\	
+					\end{tabular}
+					\end{table}	\\
+		两个表格对应位置的数字相乘,构成系数, 得拉盖尔多项式
+		$$
+	\begin{aligned}
+	& L_0(x)=1 \\
+	& L_1(x)=-x+1 \\
+	& L_2(x)=x^2-4 x+2 \\
+	& L_3(x)=-x^3+9 x^2-18 x+6 \\
+	& L_4(x)=x^4 -16x^3 +72 x^2-96 x+24
+	\end{aligned}
+	$$
+	前五个拉盖尔多项式的图形显示在图[\ref{fig:l01234}]中。 \begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.6\textwidth]{figs/l01234.png}
+		\caption{拉盖尔多项式的图形}
+		\label{fig:l01234}
+	\end{figure}
+	
+		~~\\ 
+	
+	
+		\begin{proposition}拉盖尔多项式微分形式
+			\begin{equation*}
+				L_n(x) =e^x \frac{d ^n}{d x^n} (x^n e^{-x})
+			\end{equation*}	
+		\end{proposition}
+		\begin{proof}
+			由高阶导数莱布尼兹公式 
+			\begin{equation*}
+				(u\cdot v) ^{(n)} =\sum_{k=0}^{n} C^k _n u^{(k) }v^{(n-k)} 
+			\end{equation*}	
+			得：
+			\begin{equation*}
+			\begin{split}
+				(e^{-x}\cdot x^n) ^{(n)}&= \sum_{k=0}^{n} C^k _n [ e ^{-x}]^{(k)}   [(x^n)^{(n-k)}]\\
+				&= \sum_{k=0}^{n} C^k _n [(-1)^k e ^{-x}]   [ \frac{n!}{k!} x^k]
+			\end{split}		
+			\end{equation*}	
+		两端同除以$ e^x  $ 
+			\begin{equation*}
+				\begin{split}
+					e^x \frac{d^n }{d x^n} (e^{-x}\cdot x^n) &=e^x \sum_{k=0}^{n} C^k _n [(-1)^k e ^{-x}]   [ \frac{n!}{k!}  x^k]\\
+					&= \sum_{k=0}^{n} (-1)^k C^k _n \frac{n!}{k!}x^k  \\
+					&=L_n (x)		
+				\end{split}		
+				\end{equation*}	
+			\textcolor{red}{证毕！}
+		\end{proof}
+		~~\\ 
+	
+		\begin{proposition}拉盖尔多项式生成函数
+			\begin{equation*}
+				w(t,x) =\frac{e^{-xt/(1-t) } } {1-t}
+			\end{equation*}	
+		\end{proposition}
+		\begin{proof}
+			对函数在$t=0$做泰勒展开
+			\begin{equation*}
+			\begin{split}
+				w(t,x) = \sum_{n=0}^{\infty} \frac{d^n w}{d t^n} |_{t=0} \frac{t^n}{n!}  = \sum_{n=0}^{\infty}  e^x \frac{d^n }{d x^n} (e^{-x}\cdot x^n) \frac{t^n}{n!}= \sum_{n=0}^{\infty} \frac{1}{n!} L_n t^n  
+			\end{split}		
+			\end{equation*}	
+		\textcolor{red}{证毕！}
+		\end{proof}
+
+		\begin{proposition}拉盖尔多项式的递推式
+			\begin{equation*}
+			\begin{split}
+				L_{n+1} &= (2n+1-x) L_n  -n^2 L_{n-1}  \\
+				L_1 &=(1-x) L_0 
+			\end{split}		
+			\end{equation*}	
+		\end{proposition}
+		\begin{proof}
+		对母函数求导
+			\begin{equation*}
+				\begin{split}
+					w(t,x) &=\frac{e^{-xt/(1-t) } } {1-t}\\
+					\frac{\partial w}{\partial t}  &= [\frac{1}{(1-t)^2} -\frac{x}{(1-t)^3}]  e^{-xt/(1-t) }     \\
+					(1-t)^2	\frac{\partial w}{\partial t}  &= [1 -t-x] w   , \cdots \cdots  (1)
+				\end{split}		
+				\end{equation*}
+		对展开式求导	
+				\begin{equation*}
+					\begin{split}
+						w(t,x) &= \sum_{n=0}^{\infty}  L_n  \frac{t^n}{n!} \\
+						\frac{\partial w}{\partial t}  &=   \sum_{n=1}^{\infty}  L_n  \frac{t^{n-1}}{(n-1)!}   \\
+						&=  \sum_{n=0}^{\infty}  L_{(n+1)}  \frac{t^n}{(n)!} \\
+						&=  \sum_{n=2}^{\infty}  L_{(n-1)}  \frac{t^{n-2}}{(n-2)!} \\
+					\end{split}		
+					\end{equation*}	
+					代入（1）式的左边，有：
+					\begin{equation*}
+						(1-t)^2	\frac{\partial w}{\partial t}  =   \sum_{n=0}^{\infty}  L_{n+1}  \frac{t^n}{(n)!}  -2  \sum_{n=1}^{\infty}  L_{n}  \frac{t^n}{(n-1)!} +  \sum_{n=2}^{\infty}  L_{n-1}  \frac{n(n-1)}{(n)!}  t^n
+					\end{equation*}	
+					（1）式的右边，有：
+					\begin{equation*}
+						\begin{split}
+							[1 -t-x] w &= (1-x)w -t w \\
+							& =   \sum_{n=0}^{\infty} (1-x) L_n  \frac{t^n}{n!} -  \sum_{n=0}^{\infty}  L_n  \frac{t^{n+1}}{n!} \\
+							&=  \sum_{n=0}^{\infty} (1-x) L_n  \frac{t^n}{n!} -  \sum_{n=1}^{\infty}  L_{n-1}  \frac{t^n}{(n-1)!}
+						\end{split}		
+					\end{equation*}	
+					（1）式的左边=右边，系数应相等
+					\[ L_{n+1} - 2 n L_{n} + n(n-1) L_{n-1} = (1-x) L_n  - n L_{n-1}   \]
+					整理得递推式！
+					\begin{equation*}
+							L_{n+1} = (2n+1-x) L_n  -n^2 L_{n-1}  
+					\end{equation*}	
+		\textcolor{red}{证毕！}
+		\end{proof}
+		~~\\ 
+	
+		\begin{proposition}拉盖尔多项式带权($e^{-x}$)正交归一性 
+			\begin{equation*}
+				(n!)^2 \int_{0}^{\infty}  e^{-x} L_n L_m dx = \left\{
+			\begin{split}
+				0, \qquad (n=m)  \\
+				1, \quad (n \ne m)  \\
+			\end{split}	\right.	
+			\end{equation*}	
+		\end{proposition}
+		\begin{proof}
+		（1）正交性： 拉盖尔多项式满足拉盖尔方程：
+		\begin{equation*}
+			\begin{split}
+				x L_n''  + [1 -x] L_n' +n L_n &=0  \\
+				[xe^{-x}  L_n'] ' +n e^{-x} L_n &=0  \\
+				[xe^{-x}  L_m'] ' +m e^{-x} L_m &=0  \\ 
+				L_m[xe^{-x}  L_n'] ' +n e^{-x} L_m L_n &=0  \quad \cdots (a)\\
+				L_n  [xe^{-x}  L_m'] ' +m e^{-x} L_n L_m& =0  \quad \cdots (b)\\ 
+			\end{split}		
+		\end{equation*}	
+		(a)-(b),并两端积分
+			\begin{equation*}
+				\begin{split}
+					(m-n) \int_{0}^{\infty}  e^{-x} L_n L_m dx &=  \int_{0}^{\infty} [L_n  [xe^{-x}  L' _m] ' - L_m[xe^{-x}  L' _n] '] dx \\
+					&=  -\int_{0}^{\infty} L'_n  [xe^{-x}  L' _m] dx + L'_m[xe^{-x}  L' _n]  dx \\
+					&=  \int_{0}^{\infty} [xe^{-x}  L' _m L' _n - xe^{-x}  L' _n L' _m]  dx =0
+				\end{split}		
+			\end{equation*}	
+		（2）归一性：由递推式
+			\begin{equation*}
+				\begin{split}
+					L_{n+1} &= (2n+1-x) L_n  -n^2 L_{n-1}  \\
+					L_{n} &= (2n-1-x) L_{n-1}  -(n-1)^2 L_{n-2}  \\
+					L^2 _{n} &= (2n-1-x) L_n  L_{n-1}  -(n-1)^2 L_n L_{n-2}  \\
+					L_{n-1}	L_{n+1} &= (2n+1-x)	L_{n-1}	 L_n  -n^2 	L^2 _{n-1}  \\
+					\int_{0}^{\infty}  e^{-x}  L^2 _{n}  dx &=  n^2   \int_{0}^{\infty}  e^{-x}  L^2 _{n-1} dx  \\
+					&=  (n!)^2   \int_{0}^{\infty}  e^{-x}  L^2 _{0} dx  \\
+					&=  (n!)^2 
+				\end{split}		
+			\end{equation*}		
+		\textcolor{red}{证毕！}
+		\end{proof}
+		
+		~~\\ 
+		\subsection{连带拉盖尔多项式及其性质} 
+		~\\
+		连带拉盖尔方程
+				\begin{equation*}
+					x L''  + (m+1 -x) L' +n L =0
+				\end{equation*}	 
+		基于拉盖尔多项式（$m=0$）定义广义拉盖尔多项式
+				\begin{equation*}
+					L^0 _n (x)= \frac{1} {n!} L_n (x) = \frac{1} {n!} \sum_{k=0}^{n} (-1)^k C^k _n \frac{n!}{k!}x^k 
+				\end{equation*}	
+			为了方便，广义拉盖尔多项式的上标记号通常略去。前几个广义拉盖尔多项式为 \\
+			$$\begin{aligned}
+				& L_0(x)=1 \\
+				& L_1(x)=-x+1 \\
+				& 2! L_2(x)=x^2-4 x+2 \\
+				& 3! L_3(x)=-x^3+9 x^2-18 x+6 \\
+				& 4! L_4(x)=x^4 -16x^3 +72 x^2-96 x+24
+				\end{aligned}
+			$$
+			连带拉盖尔多项式就是$m\ne 0$的广义拉盖尔多项式
+				\begin{equation*}
+					L^m _n (x)= \frac{1} {n!}  \sum_{k=0}^{n} (-1)^k C^k _n \frac{(n+m)!}{(m+k)!}x^k = (-1)^m \frac{\mathrm{d}^m}{\mathrm{d}x^m} L_{n+m}(x)
+				\end{equation*}	
+			对连带拉盖尔多项式求导, 
+			\begin{equation*}
+				\begin{aligned}
+					(L^m _n (x))'&= \frac{1} {n!}  \sum_{k=1}^{n} (-1)^k C^k _n \frac{(n+m)!}{(m+k)!} k x^{k-1} \\ 
+					x (L^m _n (x))'&= \frac{1} {n!}  \sum_{k=0}^{n} (-1)^k C^k _n \frac{(n+m)!}{(m+k)!} k x^{k} 
+				\end{aligned}
+			\end{equation*}	
+		   再求导，
+			\begin{equation*}
+				\begin{aligned}
+					(L^m _n (x))''&= \frac{1} {n!}  \sum_{k=2}^{n} (-1)^k C^k _n \frac{(n+m)!}{(m+k)!} k(k-1) x^{k-2} \\ 
+					x (L^m _n (x))''&= \frac{1} {n!}  \sum_{k=1}^{n} (-1)^k C^k _n \frac{(n+m)!}{(m+k)!} k(k-1) x^{k-1} \\ 
+					&= \frac{1} {n!}  \sum_{k=0}^{n} (-1)^{k+1} C^{k+1} _n \frac{(n+m)!}{(m+k+1)!} k(k+1) x^k 
+				\end{aligned}
+			\end{equation*}	
+			代回方程, 发现满足连带拉盖尔方程。即连带拉盖尔方程的解为连带拉盖尔多项式。
+	
+		~~\\ 
+			当然，也可根据正则奇点邻域的级数解法，令 
+			$$
+			L(x)=\sum_{n=0}^{\infty} c_n x^{n+s}
+			$$
+			代回连带拉盖尔方程, 并整理得
+			$$
+		\begin{aligned}
+		& \sum_{n=0}^{\infty} c_n(s+n)(s+n-1) x^{s+n-1}+(m+1) \sum_{n=0}^{\infty} c_n(s+n) x^{s+n-1} \\
+		& ~~ -\sum_{n=0}^{\infty} c_n(s+n) x^{s+n}+\lambda \sum_{n=0}^{\infty} c_n x^{s+n}=0
+		\end{aligned}
+		$$
+		由等式成立要求各项系数为0, 解得连带拉盖尔多项式
+		\begin{equation*}
+			L^m _n (x)= \frac{1} {n!}  \sum_{k=0}^{n} (-1)^k C^k _n \frac{(n+m)!}{(m+k)!}x^k
+		\end{equation*}	
+	
+		~~\\ 
+		连带拉盖尔多项式的性质：\\
+		（1）生成函数：($\left\vert w \right\vert < 1, \alpha > -1$)
+			$$
+	(1-w)^{-\alpha-1} \exp \left(\frac{x w}{w-1}\right)=\sum_{n=0}^{\infty} L_n^\alpha(x) w^n
+	$$
+		（2）微分形式： 
+				\begin{equation*}
+					L^m _n(x) =\frac{x^{-m}e^x  }{n!} \frac{d ^n}{d x^n} (x^{m+n} e^{-x})
+				\end{equation*}
+		（3）递推式：
+				\begin{equation*}
+					(n+1)	L^m _{n+1} = (2n+1+m -x) L^m _n  - (n+m)  L_{n-1}  
+				\end{equation*}	
+		（4）正交归一性：
+				\begin{equation*}
+					\frac{n!}{(n+m)!}\int_{0}^{\infty}  e^{-x} x^m  L^m _n L^ m _k dx =\delta _{nk}
+				\end{equation*}				
+		（5）推论：
+				\begin{equation*}
+					\int_{0}^{\infty}  e^{-x} x^{m+1}  [L^m _{n}]^2  dx = \frac{(n+m)!}{n!}  (2n+m+1)
+			\end{equation*}				
+	
+	~~\\ 
+	\section{伽马函数}
+	伽玛函数（$\Gamma$函数）是阶乘在实数与复数上扩展的一类函数。该函数在物理学、光学工程、分析学、概率论、偏微分方程和组合数学中有重要的应用。
+	
+	伽玛函数的创造是件非常有意思的事。1728年，哥德巴赫在考虑数列插值的问题,他发现数列$$1,4,9,16,\ldots$$具有通项公式$a_n = n^2$,而当把$n$从正整数域延拓到实数域时，这个通项公式是函数$y=x^2$。即数列$a_n = n^2$ 只是函数$y=x^2$在$x$取正整数的值构成的序列。因此，哥德巴赫就想：阶乘数列$\{1,2,6,24,120,720,\ldots\}$的通项公式$a_n = n!$延拓到实数域时应对应某个函数，这样可计算非整数的阶乘，比如2.5!、$\pi !$等。他苦思不得此函数，于是写信请教尼古拉斯·伯努利和丹尼尔·伯努利。欧拉当时正好在丹尼尔·伯努利那里玩，因此他得知了这个问题。经过差不多一年的努力，只有22岁的欧拉找到了这个延拓函数！这就是$\Gamma$函数。
+	
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.5\textwidth]{figs/gamma1.png}
+		\caption{$\Gamma$函数，阶乘的延拓}
+		%\label{}
+	\end{figure}
+	
+	\subsection{伽马函数的定义}~\\
+	伽马函数具有多种定义，欧拉给出的伽马函数是一个含参数的无穷积分
+	\begin{equation}
+		\Gamma(z)=\int_{0}^{\infty} t^{z-1} e^{-t} dt , \quad (Re(z) > 0)
+	\end{equation}
+	这是定义在复数域的亚纯函数，除了零和负整数点以外，它全部解析。定义于实数域的伽马函数为
+	\begin{equation*}
+		\Gamma(x)=\int_{0}^{\infty} t^{x-1} e^{-t} dt, \quad (x>0)
+	\end{equation*}	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.9\textwidth]{figs/gamma2.png}
+		\caption{$\Gamma$函数的图像：左图为实数域，右图为复数域}
+		%\label{}
+	\end{figure}
+	
+	\subsection{伽马函数的性质}
+	
+	\begin{example} 试证明伽马函数存在
+		\begin{equation}
+		\boxed{\Gamma(1)=1} 
+	\end{equation}	
+	\end{example}
+	\begin{proof}
+		\[ \begin{aligned}
+				\Gamma(z)&=\int_{0}^{\infty} t^{z-1} e^{-t} dt , \quad (Re(z) > 0) \\
+			\Gamma(1)&=\int_{0}^{\infty} t^{1-1} e^{-t} dt \\	
+					&=\int_{0}^{\infty}  e^{-t} dt \\
+					&= \left.-e^{-t}\right\vert_{0}^{\infty} \\
+					&=1	
+		\end{aligned}\]
+	\end{proof}
+	~~\\ 
+	
+	\begin{proposition}
+		$\Gamma$函数存在递推关系
+	\begin{equation}
+		\boxed{\Gamma(z+1)=z \Gamma(z)}
+	\end{equation}
+	\end{proposition}
+	\begin{proof}
+		由定义，有
+	\[\begin{aligned}
+		\Gamma(z+1)&= \int_{0}^{\infty} t^{(z+1)-1} e^{-t} dt \\
+			&= \left.-t^z e^{-t} \right\vert_{0}^{\infty} + z \int_{0}^{\infty} t^{z-1} e^{-t} dt \\
+			&= z \int_{0}^{\infty} t^{z-1} e^{-t} dt \\
+			&=z \Gamma(z)
+	\end{aligned}\]
+	其中，用到了极限公式
+	$$
+	\lim _{t \rightarrow+\infty} \frac{t^n}{e^t}=0
+	$$
+	\end{proof}
+	当从小向大递推时，有公式
+	\begin{equation}
+		\boxed{\Gamma(z)= \frac{1}{z}\Gamma(z+1)} 
+	\end{equation}
+	~~\\
+	
+	\begin{example}
+		试证明$\Gamma$函数与阶乘有如下关系
+	\begin{equation}
+		\boxed{\Gamma(n+1)=n!} 
+	\end{equation}
+	\end{example}
+	\begin{proof}
+	在递推式
+	\begin{equation*}
+		\Gamma(z+1)=z \Gamma(z)
+	\end{equation*}
+	中，取 $z=n$
+	\[\begin{aligned}
+		\Gamma(n+1)&=n \Gamma(n) \\
+		&=n(n-1) \Gamma(n-1) \\
+		&=n(n-1)\cdots 1 \Gamma(1) \\
+		&=n! \times 1 \\
+		&=n!
+	\end{aligned}\]
+	\end{proof}
+	~~\\
+	
+	\begin{example}
+		试证明半正整数$\Gamma$函数的值与$\pi$有如下关系
+	\begin{equation}
+		\left\{
+		\begin{aligned}
+			&\Gamma(\frac{1}{2}) =\sqrt{\pi} \\ 
+			&\Gamma(n+\frac{1}{2}) = \frac{(2n-1)!!}{2^n} \sqrt{\pi}
+		\end{aligned}\right.	
+	\end{equation}
+	\end{example}
+	\begin{proof}
+		(1) 在$\Gamma$函数定义式中，取$z=\dfrac{1}{2}$
+		\[
+			\begin{aligned}
+				 \Gamma(z)&=\int_{0}^{\infty} t^{ z-1} e^{-t} dt \\
+				 \Gamma(\frac{1}{2})&=\int_{0}^{\infty} t^{\frac{1}{2}-1} e^{-t} dt\\
+				 &=\int_{0}^{\infty} \frac{1}{\sqrt{t}} e^{-t} dt\\
+				 &=\int_{0}^{\infty} \frac{1}{\sqrt{t}} e^{-(\sqrt{t})^2} d(\sqrt{t})^2
+			\end{aligned}	
+			\]
+			令$x=\sqrt{t} \quad (\ge 0) $，做变量代换，有
+			\[\Gamma(\frac{1}{2})
+			=2\int_{0}^{\infty} e^{-x^2} dx\]
+			问题转化为求积分
+			\[I=\int_{0}^{\infty} e^{-x^2} dx\]
+			\[I^2=\int_{0}^{\infty} \int_{0}^{\infty} e^{-x^2} e^{-y^2} dxdy\]
+			由于 $x,y \ge 0$, 化为极坐标系积分时，应取第一象限，有 $0 \le \theta \le \pi/2$
+			\[
+			\begin{aligned}
+					I^2
+					 &=\int_{0}^{\frac{\pi}{2}}d\theta \int_{0}^{\infty}  e^{-r^2} r dr \\
+					 &=\frac{\pi}{2} \int_{0}^{\infty} r e^{-r^2} dr \\
+					 &=\frac{\pi}{2} \int_{0}^{\infty} \frac{1}{2} e^{-r^2} dr^2 \\
+					 &=\frac{\pi}{2}\left[-\frac{1}{2} e^{-k}\right]_{0}^{\infty} \\
+					 &=\frac{\pi}{4}
+				\end{aligned}	
+				\] 
+		代回, 得 
+		\[\Gamma(\frac{1}{2})
+			=2I = \sqrt{\pi} \]
+		 \\
+		(2) 在递推公式 $\Gamma(1+z)=z \Gamma(z) $ 中，取 $z = 1/2$\\
+		\[
+			\begin{aligned}
+				\Gamma(1+\frac{1}{2})&= \frac{1}{2} \Gamma(\frac{1}{2}) \\
+				&=\frac{1}{2} \sqrt{\pi}\\
+			\end{aligned} 
+			  \]
+		  \[
+		\begin{aligned}
+			\Gamma(2+\frac{1}{2})&= \Gamma(1+\frac{3}{2}) \\
+			&=\frac{3}{2} \Gamma(1+\frac{1}{2}) \\
+			&= \frac{3}{2}\frac{1}{2}\sqrt{\pi}
+		\end{aligned} 
+		  \]
+		依次递推，有
+		  \[
+		\begin{aligned}
+			\Gamma(3+\frac{1}{2})& = \frac{5}{2} \frac{3}{2}\frac{1}{2}\sqrt{\pi}\\
+			&\cdots \\
+			\Gamma(n+\frac{1}{2})& = \frac{(2n-1)!!}{2^n}\sqrt{\pi}\\
+		\end{aligned} 
+		  \]
+		写成阶乘
+		  \[
+		\begin{aligned}
+			\Gamma(n+\frac{1}{2})& = \frac{(2n-1)!!}{2^n}\sqrt{\pi}\\
+			 & = \frac{(2n)!}{2^{2n} n!}\sqrt{\pi}
+		\end{aligned} 
+		  \]
+		证毕!
+	\end{proof}
+	~~\\
+	
+	\begin{example}
+		试证明半正整数的阶乘与$\Gamma$函数有如下关系
+		\[ (m-\frac{1}{2})! =\Gamma (m+\frac{1}{2}) \]
+		\[(\frac{1}{2})! =  \frac{\sqrt{\pi}}{2}\]
+		\end{example}
+		\begin{proof}
+			把$\Gamma$函数与阶乘的关系式从正整数向正实数延拓!
+			\[n!=\Gamma(n+1)\qquad \to \qquad x!=\Gamma(x+1), \quad (x>0)\]
+			(1) 令 $x=m-\dfrac{1}{2}, \quad (m=1,2,3, \cdots )$，有
+			\[ \begin{aligned}
+				(m-\frac{1}{2})! &= \Gamma (m-\frac{1}{2}+1) \\
+								 &= \Gamma (m+\frac{1}{2})
+			\end{aligned} \]
+			取$m=1$，有
+			\[ \begin{aligned}
+				(\frac{1}{2})! &= \Gamma (1+\frac{1}{2}) \\
+							&= \frac{1}{2}\Gamma (\frac{1}{2}) \\
+							&= \frac{\sqrt{\pi}}{2}
+			\end{aligned} \]
+		\end{proof}
+	
+		\begin{example}
+			试证明半负整数$\Gamma$函数的值与$\pi$有如下关系
+			\begin{equation}
+				\begin{split}
+				\Gamma(-\frac{1}{2}) &=-2\sqrt{\pi} \\ 
+				\Gamma(-\frac{2k-1}{2}) &=(-1)^k\frac{2^{k}}{(2k-1)!!}\sqrt{\pi}
+				\end{split}	
+			\end{equation}
+			\end{example}
+			\begin{proof}
+				在递推公式 $$\Gamma(z) = \frac{1}{z}\Gamma(1+z) $$ 
+		(1) 取$z=-\dfrac{1}{2}$
+		\[
+		\begin{aligned}
+			 \Gamma(-\frac{1}{2})&= (-\frac{2}{1}) \Gamma(1-\frac{1}{2})\\
+			 &=(-\frac{2}{1}) \Gamma(\frac{1}{2})\\
+			 &=-2 \sqrt{\pi}
+		\end{aligned}	
+		\]
+		(2) 取$z=-\dfrac{3}{2}$
+		\[\begin{aligned}
+			\Gamma(-\frac{3}{2})&= -\frac{2}{3} \Gamma(1-\frac{3}{2})\\
+			&=-\frac{2}{3} \Gamma(-\frac{1}{2})\\
+			&=(-\frac{2}{3})(-\frac{2}{1}) \sqrt{\pi} \\
+			&=\frac{4}{3}\sqrt{\pi} \\
+	   \end{aligned}\]	
+	   (3) 取$z=-\dfrac{5}{2}$
+		\[\begin{aligned}
+			\Gamma(-\frac{5}{2})&= -\frac{2}{5} \Gamma(1-\frac{5}{2})\\
+			&=-\frac{2}{5} \Gamma(-\frac{3}{2})\\
+			&=(-\frac{2}{5})(-\frac{2}{3})(-\frac{2}{1}) \sqrt{\pi} \\
+	   \end{aligned}\]	
+	   (4) 取$z=-\dfrac{2k-1}{2}$
+		\[\begin{aligned}
+			\Gamma(-\frac{2k-1}{2})
+			&=(-\frac{2}{2k-1}) \cdots (-\frac{2}{5})(-\frac{2}{3})(-\frac{2}{1}) \sqrt{\pi} \\
+			&= (-1)^k\frac{2^{k}}{(2k-1)!!}\sqrt{\pi} 
+	   \end{aligned}\]
+		\end{proof}
+	
+		\begin{proposition}
+			$\Gamma$函数在非正整数点的极限值是无穷大
+			\begin{equation}
+				\lim\limits_{z\to -n }\Gamma(z)=\infty, \qquad (n=0,1,2, \cdots)
+			\end{equation}
+			\end{proposition}
+			\begin{proof}
+	把递推公式
+		\[x\Gamma(x)= \Gamma(x+1) \]
+		变形成
+		\[\Gamma(x)=\frac{1}{x} \Gamma(x+1) \]
+		求极限
+		\[\lim\limits_{x\to 0 }	\Gamma(x)=	\lim\limits_{x\to 0 } \frac{1}{x} \Gamma(x+1) =\infty \]
+	取$x\to -1$,有
+	\[\lim\limits_{x\to -1 }\Gamma(x)=\lim\limits_{x\to -1 } \frac{1}{x} \Gamma(x+1) =  \lim\limits_{y\to 0 } \frac{1}{y-1} \Gamma(y) =\infty \]
+	取$x\to -n$,有
+		\begin{equation*}
+		\begin{split}
+			\lim\limits_{x\to -n }	\Gamma(x)=\lim\limits_{x\to -n } \frac{1}{x} \Gamma(x+1) 
+			=\lim\limits_{y\to -n+1 } \frac{1}{y-1} \Gamma(y)  = \lim\limits_{x\to -n+1 }  \Gamma(x)
+		\end{split}
+		\end{equation*}	
+	依次递推,有
+	\[ 	\lim\limits_{x\to -n }	\Gamma(x) = \lim\limits_{x\to -n+2 }\Gamma(x) =\cdots  =\lim\limits_{x\to -1 }\Gamma(x) = \infty
+	 \]
+		\end{proof}
+		通常，这个性质也可写成
+		\begin{equation} \boxed{\frac{1}{\Gamma(-n)} =0, \qquad (n=0,1,2, \cdots)} \end{equation}
+	\begin{hint} 
+		$\Gamma(z)$函数存在非正整数奇点（$z = 0,-1,-2,\cdots$）, 并且它们都是一阶极点! 如此之外，在其他所有的点都连续。
+	\end{hint}
+	~~\\
+	
+	\subsection{伽马函数的应用}
+	
+	\begin{example}
+	利用$\Gamma$函数计算积分
+		\[ \int_{0}^{\infty} x^2 e^{-x^2} dx \]
+	\end{example}
+	
+	\emph{解：}
+	注意$\Gamma$函数的结构
+		\[\Gamma(x)=\int_{0}^{\infty} t^{x-1} e^{-t} dt, \qquad (x>0)\]
+		变型
+		\[\begin{aligned}
+			\int_{0}^{\infty} x^2 e^{-x^2} dx = \int_{0}^{\infty} x^2 e^{-(x^2)} \frac{1}{2x}d(x^2)
+			= \frac{1}{2}\int_{0}^{\infty} (x^2)^{\frac{1}{2}} e^{-(x^2)} d(x^2)
+		\end{aligned} \]
+	令 $x^2 =t$,有 
+		  \[\begin{aligned}
+			\int_{0}^{\infty} x^2 e^{-x^2} dx  &= \frac{1}{2}\int_{0}^{\infty} t^{\frac{1}{2}} e^{-t} d(t) = \frac{1}{2}\int_{0}^{\infty} t^{\frac{3}{2}-1} e^{-t} d(t) \\	
+			&= \frac{1}{2}\Gamma(\frac{3}{2})  \\ 
+			&= \frac{1}{2} \Gamma(1+\frac{1}{2}) \\
+			&= \frac{1}{2} (\frac{1}{2})!	\\
+			&= \frac{\sqrt{\pi}}{4}
+		\end{aligned} \]
+	~~\\
+	
+
+
+\section{贝塞尔函数}
+贝塞尔（Bessel）函数是贝塞尔方程的级数解。贝塞尔函数在波动问题和涉及势场的各种问题中有着重要应用，因此贝塞尔函数是除初等函数外，在物理和工程领域最为常用的特殊函数之一。
+
+\subsection{贝塞尔方程}
+\begin{example}
+	对于半径为$r_0$的侧面绝缘的薄均匀圆盘，边界温度始终保持为0度，当盘的初始温度已知时 ($\Psi(x,y)$)，求体系的温度分布函数。
+\end{example}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.25\textwidth]{figs/bessel0.png}
+	\caption{薄均匀圆盘}
+	%\label{}
+\end{figure}
+\emph{解：}
+	这是非稳恒温度场，温度分布函数服从热传导方程：
+	\begin{equation}\label{eq:bessel0}
+		\begin{cases}
+		u_t=a^2 [u_{xx}   +u_{yy}] ~~~~ (0< x^2 +y^2 <r_0 ^2, t>0)\\
+		u(x,y,t)|_{x^2+y^2=r_0 ^2}= 0 \\
+		u(x,y,t)|_{t=0}= \Psi(x,y)
+	\end{cases} 
+    \end{equation}
+	考虑到圆域边界条件，为了便于分离变量，应改用极坐标系
+	$$\begin{cases}
+		\displaystyle	u_t=a^2 [ {	\frac{\partial^2 u }{\partial r^2 } +\frac{1}{r } \frac{\partial u }{\partial r } +
+		\frac{1}{r^2 } \frac{\partial ^2 u }{\partial \theta ^2
+		} }], ~~~~ (0<r<r_0, t>0)\\
+		u(r,\theta)|_{r=r_0}=0 	\\
+		u(r,\theta,t)|_{t=0} = \Psi(r,\theta) 	
+	\end{cases} $$
+	令 $u(r,\theta,t) =R(r)\Theta(\theta)T(t)$,  代回原方程
+	\begin{equation*}
+		R\Theta T'=a^2 [ R'' \Theta T + \dfrac{1}{r} R' \Theta T  + \dfrac{1}{r^2} R \Theta '' T ]
+	\end{equation*}
+	整理：
+	\begin{equation*}
+		\frac{T'}{a^2T} =\frac{R''}{R}+\frac{1}{r} \frac{R'}{R} +\frac{1}{r^2} \frac{\Theta ''} {\Theta}  =-\lambda
+	\end{equation*}
+	转化为两个方程：
+	\begin{equation*}
+		T'(t)+\lambda a^2T(t)=0  ~~~~~....... ~~~~~~(1)
+	\end{equation*}	
+	\begin{equation*}
+		r^2 \frac{R'' (r)}{R(r)}+r \frac{R'(r)}{R(r)} + \lambda r^2 +\frac{\Theta ''(\theta)} {\Theta (\theta)} =0  ~~~~~~......~~(2)
+	\end{equation*}
+	方程-1是衰减模型，若固有值$\lambda$已知，则方程可解！\\
+	方程-2是固有值问题，可继续分离变量：	
+	\begin{equation*}
+		r^2 \frac{R'' (r)}{R(r)}+r \frac{R'(r)}{R(r)} + \lambda r^2 =-\frac{\Theta ''(\theta)} {\Theta (\theta)} =\mu  
+	\end{equation*}
+	得两个固有值方程 \\
+	角向:
+	$$ \begin{cases}
+		\Theta ''(\theta)+\mu \Theta (\theta) =0 \\
+		\Theta (\theta) =	\Theta (\theta+2\pi)  \\
+		\Theta' (\theta) =	\Theta' (\theta+2\pi)  
+	\end{cases} $$	
+	径向：
+	$$ \begin{cases}
+		r^2 R'' (r)+r R'(r) +( \lambda r^2 -\mu)R(r)=0  \\
+		R(r_0)=0
+	\end{cases} $$	
+	角向固有值问题有解,\\
+	固有值：
+	\begin{equation*}
+		\mu=n^2, ~~~~~(n=0,1,2,3...)
+	\end{equation*}
+	固有函数：
+	\begin{equation*}
+		\Theta_n(\theta) = \frac{1}{\sqrt{2\pi}} e^{-i n \theta }, ~~~~~(n=0,1,2,3...)
+	\end{equation*}
+	~\\
+	把$\mu=n^2$,代回径向方程，径向固有值问题转化为贝塞尔方程
+	\begin{equation} 
+		\boxed{ \begin{cases}
+		r^2 R'' (r)+r R'(r) +( \lambda r^2 -n^2)R(r)=0  \\
+		R(r_0)=0
+	\end{cases} }
+    \end{equation}	
+	设贝塞尔方程的解为$R(r)$, 则温度分布函数为
+	$$u(r,\theta,t) =R(r)\Theta(\theta)T(t)$$	
+	因此，问题转化为求解贝塞尔方程。
+
+~~\\ 
+
+\begin{example}
+	鼓膜的运动可以用如下圆域波动方程描述
+	\begin{equation}\label{eq:bessel1}
+		\begin{cases}
+		u_{tt}=a^2 [u_{xx}   +u_{yy}] ~~~~ (0< x^2 +y^2 <r_0 ^2, t>0)\\
+		u(x,y,t)|_{x^2+y^2=r_0 ^2}= 0 \\
+		u(x,y,t)|_{t=0}= \Psi(x,y), u'(x,y,t)|_{t=0}= \varphi(x,y)
+	\end{cases} 
+   \end{equation}
+试求解鼓膜的波动函数
+\end{example}
+\emph{解：}
+比较上述圆域波动方程和圆域热传导方程[\ref{eq:bessel0}]，会发现只是把后方程的$u_{t}$变成了$u_{tt}$，导致相应的初始条件增加了一项$u'(x,y,t)|_{t=0}= \varphi(x,y)$。因此求解过程没有本质的不同。 \\
+把方程写成极坐标形式
+$$\begin{cases}
+	\displaystyle	u_{tt}=a^2 [ {	\frac{\partial^2 u }{\partial r^2 } +\frac{1}{r } \frac{\partial u }{\partial r } +
+	\frac{1}{r^2 } \frac{\partial ^2 u }{\partial \theta ^2
+	} }], ~~~~ (0<r<r_0, t>0)\\
+	u(r,\theta)|_{r=r_0}=0 	\\
+	u(r,\theta,t)|_{t=0} = \Psi(r,\theta) ,\quad u'(r,\theta,t)|_{t=0}= \varphi(r,\theta)	
+\end{cases} $$
+令 $u(r,\theta,t) =R(r)\Theta(\theta)T(t)$,  代回原方程
+	\begin{equation*}
+		R\Theta T''=a^2 [ R'' \Theta T + \dfrac{1}{r} R' \Theta T  + \dfrac{1}{r^2} R \Theta '' T ]
+	\end{equation*}
+	整理：
+	\begin{equation*}
+		\frac{T''}{a^2T} =\frac{R''}{R}+\frac{1}{r} \frac{R'}{R} +\frac{1}{r^2} \frac{\Theta ''} {\Theta}  =-\lambda
+	\end{equation*}
+	转化为两个方程：
+	\begin{equation*}
+		T''(t)+\lambda a^2T(t)=0  ~~~~~....... ~~~~~~(1)
+	\end{equation*}	
+	\begin{equation*}
+		r^2 \frac{R'' (r)}{R(r)}+r \frac{R'(r)}{R(r)} + \lambda r^2 +\frac{\Theta ''(\theta)} {\Theta (\theta)} =0  ~~~~~~......~~(2)
+	\end{equation*}
+	此处的方程-1是振动模型，若固有值$\lambda$已知，则方程可解\\
+	此处的方程-2与上例的方程-2完全相同，经分离变量后，问题也转化为求贝塞尔方程
+	\begin{equation*} 
+		\begin{cases}
+		r^2 R'' (r)+r R'(r) +( \lambda r^2 -n^2)R(r)=0  \\
+		R(r_0)=0
+	\end{cases} 
+    \end{equation*}	
+
+~~\\
+
+\begin{remark}:
+贝塞尔方程是圆域波动及圆域势场等相关问题的一个基本数学方程，具有普适性。
+\end{remark}
+~~\\
+
+为了得到它的最简形式，做变量变换，令
+	\begin{equation*}
+		x=\sqrt{\lambda} r, ~~~~y(x)= R(r) =R(\frac{x}{\sqrt{\lambda}})
+	\end{equation*}
+	有： 
+	\[
+	\begin{aligned}
+		&\frac{dy}{dx} = \frac{dR}{dr} \frac{dr}{dx} = \frac{1}{ \sqrt{\lambda}} \frac{dR}{dr}\\
+		&\frac{d^2y}{dx^2} = \frac{1}{\lambda} \frac{dR^2}{dr^2}\\
+	\end{aligned}	
+	\]
+	代回原方程，得：
+	\begin{equation} \label{eq:bessel}
+		\boxed{x^2\frac{d^2y}{dx^2} + x\frac{dy}{dx} +(x^2 -n^2)y=0}
+	\end{equation}
+	注意到$n$是角向方程的固有值，是整数。因此，称为整数阶贝塞尔方程。\\ 
+	与欧拉方程
+	\begin{equation*}
+		x^2\frac{d^2y}{dx^2} + x\frac{dy}{dx} +n^2y=0
+	\end{equation*}
+	相比较，贝塞尔方程的零次项也是变系数的。 令$t=\ln x $， 欧拉方程可转化为常系数微分方程
+	\[ \frac{d^2y}{dt^2} - n^2y=0 \]	
+	同样令$t=\ln x $, 贝塞尔方程转化为 
+	\[ \frac{d^2y}{dt^2} +(x^2-n^2)y=0 \]
+	这依然是个变系数微分方程。因此,贝塞尔方程没有通常意义的初等函数表达式解。
+
+\subsection{整数阶塞尔函数}
+整数阶贝塞尔方程的解称为整数阶塞尔函数。现在我们来解整数阶贝塞尔方程。
+\begin{example}
+	求解贝塞尔方程
+	\begin{equation*}
+		x^2\frac{d^2y}{dx^2} + x\frac{dy}{dx} +(x^2 -n^2)y=0
+	\end{equation*}		
+\end{example}
+\emph{解：}
+	所谓没有通常意义的初等函数表达式解，即没有通常意义的级数解。现设方程有如下级数解：
+	\begin{equation*}
+		y=\sum\limits_{k=0}^{\infty} a_k x^{s+k},  \qquad (a_0 \not =0)
+	\end{equation*}	
+	做计算，注意指（脚）标对齐技巧的使用
+	\[\begin{aligned}
+		x^2 y &= \sum\limits_{k=0}^{\infty} a_k x^{s+k+2}  \\ 
+		&= \sum\limits_{k=2}^{\infty}  a_{k-2} x^{s+k}  \\
+		(x^2 -n^2)y &=  \sum\limits_{k=2}^{\infty}  a_{k-2} x^{s+k} - n^2 \sum\limits_{k=0}^{\infty} a_k x^{s+k} \quad \cdots \quad (1)
+	\end{aligned}
+	\] 
+	求导：
+	\begin{equation*}
+	\begin{aligned}
+		\frac{dy}{dx}&=\sum\limits_{k=0}^{\infty} (s+k) a_k x^{s+k-1} \\
+		\frac{d^2y}{dx^2}&=\sum\limits_{k=0}^{\infty} (s+k) (s+k-1) a_k x^{s+k-2}
+	\end{aligned}
+	\end{equation*}
+	因此，有
+	\[\begin{aligned}
+		x\frac{dy}{dx} &= \sum\limits_{k=0}^{\infty} (s+k) a_k x^{s+k} \quad \cdots \quad (2) \\ 
+		x^2\frac{d^2y}{dx^2}&= \sum\limits_{k=0}^{\infty} (s+k) (s+k-1) a_k x^{s+k} \quad \cdots \quad (3)
+	\end{aligned}
+	\] 
+	把（1）（2）（3）式代回方程，得：
+	\begin{equation*}
+		\sum\limits_{k=0}^{\infty} [(s+k) ^2 -n^2]  a_k x^{s+k} + \sum\limits_{k=2}^{\infty}  a_{k-2} x^{s+k} =0
+	\end{equation*}	
+	第一项(k=0)系数为零：
+	\begin{equation*}
+		\begin{aligned}
+		[(s+0) ^2 -n^2] a_0 &= 0 \\
+		s^2 -n^2 &= 0 \\
+		\to  s_1=n, &\quad s_2=-n
+	\end{aligned}
+	\end{equation*}	
+	第二项(k=1)系数应为零：
+	\begin{equation*}
+		[(s+1) ^2 -n^2] a_1=0,\qquad \to a_1=0. 
+	\end{equation*}	
+	后面各项系数都为零：
+	\begin{equation*}
+		[(s+k) ^2 -n^2] a_k+ a_{k-2}=0, ~~~ (k=2,3,4,...)
+	\end{equation*}	
+	得递推关系
+	\begin{equation*}
+		a_k=-\frac{1}{(s+k) ^2 -n^2 } a_{k-2}
+	\end{equation*}	
+	由$a_1=0$,可推出所有的奇数项系数为零 \[a_{2m+1}=0\]
+	现求偶数项系数，令$k=2m\quad (m=1,2,3,...)$，并取$s=s_1=n$, (注：取$s=s_2=-n$ 也不影响解题过程),得:
+	\begin{equation*}
+	\begin{aligned}
+		a_{2m}&=\frac{-1}{(n+2m) ^2 -n^2 } a_{2m-2} \\
+		&=\frac{-1}{2^2 m (n+m) } a_{2(m-1)}
+	\end{aligned}
+	\end{equation*}	
+	上式中，依次取$m=m-1, m-2, \cdots, 1$
+	\begin{equation*}
+		\begin{aligned}
+			a_{2(m-1)} &=\frac{-1}{2^2 (m-1) (n+m-1) } a_{2(m-2)} \\ 
+			a_{2(m-2)} &=\frac{-1}{2^2 (m-2) (n+m-2) } a_{2(m-3)} \\ 
+			\cdots &\cdots \\
+			a_{2} &=\frac{-1}{2^2 1 (n+1) } a_{0} \\
+		\end{aligned}
+		\end{equation*}	
+	归纳，得:
+	\begin{equation*}
+		a_{2m}=(-1)^m  \frac{1}{2^{2m} m! (n+m) (n+m-1)... (n+1) } a_0 
+	\end{equation*}	
+	取：$a_0=1/2^n n!$， 得：
+	\begin{equation*}
+		a_{2m}=(-1)^m  \frac{1}{2^{2m+n} m! (n+m) ! }
+	\end{equation*}	
+	采用$ \Gamma $表示
+	\begin{equation*}
+		a_{2m}=(-1)^m  \frac{1}{2^{2m+n} m! \Gamma(n+m+1) }
+	\end{equation*}	
+	贝塞尔方程有级数特解：
+	\begin{equation*}
+		y(x) = \sum\limits_{m=0}^{\infty} a_{2m} x^{n+2m} 
+	\end{equation*}		
+	
+
+~~\\ 
+分析收敛性：
+	\begin{equation*}
+		\lim\limits_{m\to \infty}|\frac{ a_{2m+2}} {a_{2m}}|= \lim\limits_{m\to \infty}\frac{ 1}{4(m+1)(n+m+1)} =0
+	\end{equation*}	
+	满足级数收敛条件，说明$n$整数阶贝塞尔方程的级数特解是某函数的级数展开式，称为$n$整数阶贝塞尔函数，记为$J_n(x)$：
+	\begin{equation}
+		\boxed{\begin{aligned}
+			J_n(x) &=\sum\limits_{m=0}^{\infty} a_{2m} x^{n+2m}  \\ 
+			&= \sum\limits_{m=0}^{\infty}  \frac{(-1)^m }{ m! (n+m) ! } \left(\frac{x}{2}\right)^{n+2m} 
+		\end{aligned}}
+		\end{equation}
+	~~\\ 
+	贝塞尔函数可采用$\Gamma $函数来表示
+	\begin{equation}
+		\boxed{
+			J_n(x) = \sum\limits_{m=0}^{\infty}  \frac{(-1)^m }{ m! \Gamma (n+m+1) ! } \left(\frac{x}{2}\right)^{n+2m} }
+		\end{equation}
+	取$n=0$, 得零阶贝塞尔函数$J_0(x)$
+	\begin{equation*}
+			J_0(x)  =\sum\limits_{m=0}^{\infty}  \frac{(-1)^m }{ (m!)^2 } \left(\frac{x}{2}\right)^{2m} 
+	\end{equation*}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{figs/bessel1.png}
+		\caption{贝塞尔函数}
+		\label{fig:bessel1}
+	\end{figure}
+
+
+	依次取$n=0,1,2,3\cdots$, 可得$J_0(x),J_1(x),J_2(x),J_3(x)\cdots$,它们的图形如图[\ref{fig:bessel1}]所示。很显然,它们具有哀减振荡特性。在$x=0$处,各函数的取值为
+	\begin{equation*}
+		J_0(0)=1,\qquad J_1(0)=J_2(0) =J_3(0) = J_4(0) =J_5(0) = 0 
+	\end{equation*}	
+	注意：若在上述求解过程中取$s=s_2=-n$, 则可得负整数阶贝塞尔函数$J_{-n}(x)$。
+	\begin{equation}
+		\boxed{
+			J_{-n}(x) = \sum\limits_{m=0}^{\infty}  \frac{(-1)^m }{ m! \Gamma (-n+m+1) ! } \left(\frac{x}{2}\right)^{-n+2m} }
+		\end{equation}
+	当然，存在半奇数阶贝塞尔函数, 比如：
+	\begin{equation}
+		\boxed{
+			J_{\pm\frac{1}{2}}(x) = \sum\limits_{m=0}^{\infty}  \frac{(-1)^m }{ m! \Gamma (\pm \frac{1}{2}+m+1) ! } \left(\frac{x}{2}\right)^{\pm\frac{1}{2}+2m} }
+		\end{equation} 
+~~\\ 
+
+\begin{example}
+	试证明负整数阶贝塞尔函数与正整数阶贝塞尔函数之间存在如下关系
+	\begin{equation*}
+		J_{-n}(x)=(-1)^n J_n(x)
+	\end{equation*}	
+\end{example}
+ \begin{proof}
+	$\Gamma$ 函数形式的正整数阶贝塞尔函数：
+	\begin{equation*}
+		J_n(x) = \sum\limits_{m=0}^{\infty} (-1)^m  \frac{1}{m! \Gamma(n+m+1) } (\frac{x}{2})^{n+2m} 
+	\end{equation*}	
+	用$\Gamma$ 函数形式的负数阶塞尔函数
+	\begin{equation*}
+		J_{(-n)}(x) = \sum\limits_{m=0}^{\infty} (-1)^m  \frac{1}{m! \Gamma(-n+m+1) } (\frac{x}{2})^{-n+2m} 
+	\end{equation*}	
+	对于 $m<n$ 的项，分母中的$\Gamma$函数为无穷大，因此都为零,去除后为：
+	\begin{equation*}
+		J_{(-n)}(x) = \sum\limits_{m=n}^{\infty} (-1)^m  \frac{1}{m! \Gamma(-n+m+1) } (\frac{x}{2})^{-n+2m} 
+	\end{equation*}	
+	令 $m-n=k$, 有 $m=n+k $, 
+	\begin{equation*}
+	\begin{aligned}
+		J_{(-n)}(x) &= (-1)^n\sum\limits_{k=0}^{\infty} (-1)^k  \frac{1}{(n+k)! \Gamma(k+1) } (\frac{x}{2})^{n+2k}  \\
+		&= (-1)^n\sum\limits_{k=0}^{\infty} (-1)^k  \frac{1}{(n+k)! k! } (\frac{x}{2})^{n+2k} \\
+		&=(-1)^n J_{n} (x)
+	\end{aligned}
+	\end{equation*}	
+	证毕！
+ \end{proof}
+ ~~\\ 
+
+ \begin{example}
+	试证明半奇数阶贝塞尔函数有如下形式
+	\begin{equation*}
+		J_{1/2} (x) =\sqrt{\frac{2}{\pi x}} \sin x,  \qquad  J_{-1/2} (x) =\sqrt{\frac{2}{\pi x}} \cos x
+	\end{equation*}
+ \end{example}
+  \begin{proof}
+	（1）半奇数阶贝塞尔函数
+	\begin{equation*}
+		J_{1/2}(x) = \sum\limits_{m=0}^{\infty} (-1)^m  \frac{1}{m! \Gamma(1/2+m+1) } (\frac{x}{2})^{1/2+2m} 
+	\end{equation*}	 
+	计算$\Gamma$函数部分 
+	\begin{equation*}
+		\begin{split}
+			\Gamma(1/2+m+1) &= (\frac{2m+1}{2}) \Gamma(1/2+m) \\
+			& = (\frac{2m+1}{2}\frac{2m-1}{2})  \Gamma(1/2+m-1) \\
+			&\cdots \cdots \\
+			& = \frac{(2m+1)!!}{2^{m+1}} \Gamma(1/2) \\
+			& = \frac{(2m+1)!!}{2^{m+1}} \sqrt{\pi} \\
+		\end{split}	
+	\end{equation*}	
+	代回，有：
+	\begin{equation*}
+		J_{1/2}(x) = \sqrt{\frac{2}{\pi x}} \sum\limits_{m=0}^{\infty} (-1)^m  \frac{x^{2m+1}}{(2m+1)!} 
+	\end{equation*}	 
+	求和部分正是$ \sin $ 函数的展开式
+	\begin{equation*}
+		J_{1/2}(x) = \sqrt{\frac{2}{\pi x}} \sin x  
+	\end{equation*}	 
+	（2）负半奇数阶贝塞尔函数
+	\begin{equation*}
+		J_{-1/2}(x) = \sum\limits_{m=0}^{\infty} (-1)^m  \frac{1}{m! \Gamma(-1/2+m+1) } (\frac{x}{2})^{-1/2+2m} 
+	\end{equation*}	
+	计算Gamma函数部分 
+		\begin{equation*}
+			\begin{split}
+				\Gamma(-1/2+m+1) &= \Gamma(1/2+m) \\
+				& = \frac{2}{2m+1}\frac{(2m+1)!!}{2^{m+1}} \sqrt{\pi}  \\
+				& =  \frac{(2m-1)!!}{2^m} \sqrt{\pi} \\
+			\end{split}	
+	\end{equation*}	
+	代回，有：
+	\begin{equation*}
+		J_{-1/2}(x) = \sqrt{\frac{2}{\pi x}} \sum\limits_{m=0}^{\infty} (-1)^m  \frac{x^{2m}}{(2m)!} 
+	\end{equation*}	 
+	求和部分正是$ \cos $ 函数的展开式
+	\begin{equation*}
+		J_{-1/2}(x) = \sqrt{\frac{2}{\pi x}} \cos x  
+	\end{equation*}	 
+  \end{proof}
+  
+
+
+\subsection{贝塞尔函数的性质}
+\begin{proposition}:1 贝塞尔函数的导数存在递推式	
+	\begin{equation*}
+		\begin{split}
+			\left[x^{n} J_{n}(x)\right]'= &x^{n} J_{n-1}(x),\qquad \cdots (1) \\
+			\left[x^{-n} J_{n}(x)\right]'=& -x^{-n} J_{n+1}(x) ,\qquad \cdots (2) 
+		\end{split}
+	\end{equation*}
+\end{proposition}
+\begin{proof}$\Gamma$函数形式的贝塞尔函数
+	\begin{equation*}
+		J_n(x) = \sum\limits_{m=0}^{\infty} (-1)^m  \frac{1}{m! \Gamma(n+m+1) } (\frac{x}{2})^{n+2m} 
+	\end{equation*}	 
+	（1）两端同乘$x^n$, 再求导：
+	\begin{equation*}
+		\begin{split}
+			[x^n J_n(x)]' &= \frac{d}{dx}\sum\limits_{m=0}^{\infty} (-1)^m  
+			\frac{1}{m! \Gamma(n+m+1) } (\frac{x^{2n+2m}}{2^{n+2m}})\\
+			&=\sum\limits_{m=0}^{\infty} (-1)^m  
+			\frac{2(n+m)}{m! \Gamma(n+m+1) } (\frac{x^{2n-1+2m}}{2^{n+2m}})\\
+			&=x^n\sum\limits_{m=0}^{\infty} (-1)^m  
+			\frac{1}{m! \Gamma(n-1+m+1) } (\frac{x^{n-1+2m}}{2^{n-1+2m}})\\ 
+			&=x^n J_{n-1}(x) 
+		\end{split}
+		\end{equation*}	 
+		（2）两端同乘$x ^{-n} $, 再求导：
+		\begin{equation*}
+			\begin{split}
+				[x ^{-n}  J_n(x)]' &= \frac{d}{dx}\sum\limits_{m=0}^{\infty} (-1)^m  
+				\frac{1}{m! \Gamma(n+m+1) } (\frac{x^{2m}}{2^{n+2m}})\\
+				&=\sum\limits_{m=1}^{\infty} (-1)^m  
+				\frac{2m}{m! \Gamma(n+m+1) } (\frac{x^{2m-1}}{2^{n+2m}})\\
+				&=x ^{-n} \sum\limits_{m=1}^{\infty} (-1)^m  
+				\frac{m}{m! \Gamma(n+m+1) } (\frac{x^{n-1+2m}}{2^{n-1+2m}})
+			\end{split}
+			\end{equation*}	 
+	令  $ m = k+1  $
+	\begin{equation*}
+		\begin{split}
+			[x ^{-n}  J_n(x)]' 
+			&=x ^{-n} \sum\limits_{m=1}^{\infty} (-1)^m  
+			\frac{m}{m! \Gamma(n+m+1) } (\frac{x^{n-1+2m}}{2^{n-1+2m}})\\ 
+			&=-x ^{-n} \sum\limits_{k=0}^{\infty} (-1)^k  
+			\frac{k+1}{(k+1)! \Gamma(n+k+1+1) } (\frac{x^{n+1+2k}}{2^{n+1+2k}})\\
+			&=-x ^{-n} \sum\limits_{k=0}^{\infty} (-1)^k  
+			\frac{1}{k! \Gamma(n+1+k+1) } (\frac{x^{n+1+2k}}{2^{n+1+2k}})\\
+			&=-x ^{-n}  J_{n+1}(x) 
+		\end{split}
+		\end{equation*}
+\end{proof}
+ ~~\\ 
+
+ \begin{proposition}:2 贝塞尔函数存在递推式	
+	\begin{equation*}
+		\begin{split}
+			2 n J_{n}(x)=&xJ_{n-1}(x)+x J_{n+1}(x) ,\qquad \cdots (1) \\
+			2 J_{n}^{\prime}(x)=&J_{n-1}(x)-J_{n+1}(x) ,\qquad \cdots (2) 
+		\end{split}
+	\end{equation*}
+\end{proposition}
+\begin{proof} 由导数递推式
+	\begin{equation*}
+		\begin{split}
+			[x^n J_n(x)]' & = x^n J_{n-1}(x)  \\
+			n x^{n-1} J_n(x) + x^n J'_n(x) & = x^n J_{n-1}(x) \qquad \cdots (3) \\
+			[x ^{-n}  J_n(x)]' & = -x ^{-n}  J_{n+1}(x)  \\
+			-n x^{-n-1} J_n(x) + x ^{-n} J'_n(x) & = -x ^{-n}  J_{n+1}(x) \qquad \cdots (4)  \\
+		\end{split}
+	\end{equation*}	
+	$ (3)\times x ^{-n} - (4)\times x ^{n}  $, 并整理得:
+	\begin{equation*}
+		2 n J_{n}(x)=x J_{n-1}(x)+x J_{n+1}(x) 
+	\end{equation*}	 	
+	$ (3)\times x^{-n-1} + (4)\times x^{n-1}  $, 并整理得:
+	\begin{equation*}
+	2 J_{n}^{\prime}(x)=J_{n-1}(x)-J_{n+1}(x) 
+	\end{equation*}	 
+\end{proof}
+ ~~\\ 
+
+ \begin{example}
+ 试证明半奇阶贝塞尔函数
+ \[J_{\frac{3}{2}} (x) = \sqrt{\frac{2}{\pi x}} \left[ \frac{1}{x} \sin x -\cos x\right]\]
+ \end{example}
+ \begin{proof}
+ 在递推式
+ \[2 n J_{n} (x)= xJ_{n-1} (x)+x J_{n+1} (x)\]
+取$n=\dfrac{1}{2}$
+\[J_{\frac{1}{2}} (x)= xJ_{-\frac{1}{2}} (x)+x J_{\frac{3}{2}} (x)\]
+代入$J_{-\frac{1}{2}} (x), J_{\frac{1}{2}} (x)$， 得
+\[\sqrt{\frac{2}{\pi x}} \sin x= x \sqrt{\frac{2}{\pi x}} \cos x+x J_{\frac{3}{2}} (x)\]
+整理得
+\[J_{\frac{3}{2}} (x) = \sqrt{\frac{2}{\pi x}} \left[ \frac{1}{x} \sin x -\cos x\right]\]
+\end{proof}
+ ~~\\ 
+
+ \begin{proposition}:3 贝塞尔函数存在渐近公式
+	\begin{equation*}
+		J_{n}(x) \approx \sqrt{\frac{2}{\pi x}} \cos \left(x-\frac{n \pi}{2}-\frac{\pi}{4}\right)
+	\end{equation*}
+\end{proposition}
+\begin{proof} 对贝塞尔方程
+	\begin{equation*}
+		x^2\frac{d^2y}{dx^2} + x\frac{dy}{dx} +(x^2 -n^2)y=0
+	\end{equation*}
+	做变量代换 \[ y=\frac{u}{\sqrt{x}}\] 
+	求导：
+	\[ y'=\frac{u'}{x^{\frac{1}{2}}} -\frac{1}{2}\frac{u}{x^{\frac{3}{2}}} \] 
+	\[ y''=\frac{u''}{x^{\frac{1}{2}}} -\frac{u'}{x^{\frac{3}{2}}} + \frac{3}{4}\frac{u}{x^{\frac{5}{2}}} \] 
+	代入,得关于 $u(x)$的方程：
+	\begin{equation*}
+		u'' +[1+\frac{\frac{1}{4}-n^2}{x^2}] u=0
+	\end{equation*}
+	当$x \to \infty $时, 有方程：
+	\begin{equation*}
+		u'' + u=0 
+	\end{equation*}	
+	通解为：\[u=A\cos(x+\theta)\]
+	确定系数$A$和$\theta$ (不证)
+	\[A =\sqrt{\frac{2}{\pi}}, \quad \theta = -[\frac{n \pi}{2}+\frac{\pi}{4}]  \]
+	得n阶贝塞尔函数的渐近形式
+	\begin{equation*}
+		J_{n}(x) \approx \sqrt{\frac{2}{\pi x}} \cos \left(x-\frac{n \pi}{2}-\frac{\pi}{4}\right)
+	\end{equation*}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{figs/bessel2.png}
+		\caption{贝塞尔函数的渐近形式}
+		\label{fig:bessel2}
+	\end{figure}
+	图[\ref{fig:bessel2}]给出的前几个贝塞尔函数渐近形式的图形, 与标准的贝塞尔函数图形[\ref{fig:bessel1}]相比较,可以看出有明显的差别。
+	但是贝塞尔函数是无穷级数,这给计算带来很大的复杂性。贝塞尔函数渐近形式是解释式,计算非常方便。\\
+	~~\\ 
+	若令$J_{n}(x)=0$,则对应图像与x轴的交叉点,即零点。$J_{n}(x)$有无穷多个零点，它们与$\cos$函数的零点相关。结合$\cos$函数零点公式，可得n阶贝塞尔函数的零点近似公式：
+	\begin{equation*}
+		\mu_{m}^{n} \approx m \pi+\frac{n \pi}{2}+\frac{3 \pi}{4}, \quad m=0,\pm 1, \pm 2, \cdots 
+	\end{equation*}
+\end{proof}
+~~\\ 
+
+在圆域热传导方程及波动方程中，分离变量所得的径向方程为
+	\[\begin{cases}
+		r^2 R'' (r)+r R'(r) +( \lambda r^2 -n^2)R(r)=0  \\
+		R(r_0)=0
+	\end{cases}  \]
+	方程的解为$n$阶贝塞尔函数 $$R(r)=J_n(x) = J_n(\sqrt{\lambda}r)$$ 
+	零边界条件 $R(r_0)=0$ 可表示为： $$J_n(\sqrt{\lambda}r_0)=0$$ 
+	零边界条件下的固有值问题, 正是贝塞尔函数的零点问题， 由\\
+	\[ \sqrt{\lambda}r_0 = \mu_{m}^{n}\]
+	得:\\
+	(1)固有值
+	\[\lambda_m ^n =(\frac{\mu_{m}^{n}}{r_0})^2 \quad m=0,\pm 1, \pm 2, \cdots \]
+	(2)固有函数
+	\[R_m ^n(r) = J_n (\frac{\mu_{m}^{n}}{r_0}r) \]
+	把固有值$ \lambda_m ^n  $ 代入方程
+	\[T''(t)+\lambda a^2T(t)=0 \] 
+	结合初始条件，圆域波动问题得解。\\
+	把固有值$ \lambda_m ^n  $ 代入方程
+	\[T'(t)+\lambda a^2T(t)=0 \] 
+	结合初始条件，圆域热传导问题得解 \\
+ ~~\\ 
+
+\begin{proposition}-4:贝塞尔函数有如下零点递推式
+	\[ J'_n(\mu_m ^n)= - J_{n+1}(\mu_m ^n)\]
+	\end{proposition}
+\begin{proof}
+	由微分递推公式 
+ 	\begin{equation*}
+	\begin{split}
+	 \left[x^{-n} J_{n}(x)\right]'=& -x^{-n} J_{n+1}(x) \\
+	 -n x^{-n-1} J_n(x) + x^{-n} J'_n(x)&= -x^{-n} J_{n+1}(x) \\
+	 -n J_n(x) + x J'_n(x)&= -x J_{n+1}(x) \\
+	\end{split}
+\end{equation*}
+代入零点$J_n(x) = J_n(\mu_m ^n) =0 $
+\begin{equation*}
+	\begin{split}
+	 -n 0 + x J'_n(\mu_m ^n)&= -x J_{n+1}(\mu_m ^n) \\
+	 J'_n(\mu_m ^n)&= - J_{n+1}(\mu_m ^n)
+ 	\end{split}
+	\end{equation*}	
+\textcolor{red}{证毕！}
+\end{proof}
+~~\\
+
+\begin{proposition}-5:贝塞尔函数正交归一性
+	\begin{equation*}
+		\int_0 ^{r_0} r J_n (\frac{\mu_{m} ^{n}}{r_0}r) J_n (\frac{\mu_{k} ^{n}}{r_0}r) dr =
+		\left\{
+		\begin{aligned}
+			0  \qquad \qquad \qquad (m \ne k)\\
+			\frac{1}{2} r_0^2 [J'_n(\mu_m ^n)]^2 \quad (m = k)
+		\end{aligned}\right.
+	\end{equation*}
+	\end{proposition}
+\begin{proof}
+	(1) 对于径向方程：
+	\begin{equation*}
+		r^2 R''+r R' +(\lambda r^2 -n^2)R=0
+	\end{equation*}
+	代入固有值
+	\begin{equation*}
+		r^2 R''+r R' +((\frac{\mu_{m}^{n}}{r_0})^2 r^2 -n^2)R=0 
+	\end{equation*}	
+	做等价变换
+	\begin{equation*}
+		r R''+ R' +((\frac{\mu_{m}^{n}}{r_0})^2 r -\frac{n^2}{r})R=0  
+	\end{equation*}	
+	\begin{equation*}
+		(r R')' +((\frac{\mu_{m}^{n}}{r_0})^2 r -\frac{n^2}{r})R=0  
+	\end{equation*}	
+	 令：\[J_n (\frac{\mu_{m}^{n}}{r_0}r)=R_1, \qquad J_n (\frac{\mu_{k}^{n}}{r_0}r) =R_2\]
+	它们都是方程的解
+	\begin{equation*}
+		(r R_1')' +((\frac{\mu_{m}^{n}}{r_0})^2 r -\frac{n^2}{r})R_1=0  \cdots (1)
+	\end{equation*}	 
+	\begin{equation*}
+		(r R_2')' +((\frac{\mu_{k}^{n}}{r_0})^2 r -\frac{n^2}{r})R_2=0  \cdots (2) 
+	\end{equation*}	
+	$(1)\times R_2-(2)\times R_1,$，并积分
+	\begin{equation*}	
+		\left[\left(\frac{\mu_{m}^{n}}{r_0}\right)^{2}-\left(\frac{\mu_{k}^{n}}{r_0}\right)^{2}\right] \int_0 ^{r_0} r R_{1} R_{2} dr 
+		=\int_0 ^{r_0}  [R_{1}\left(r R_{2}^{\prime}\right)^{\prime}-R_{2}\left(r R_{1}^{\prime}\right)^{\prime}] dr
+	\end{equation*}
+	\begin{equation*}
+		\begin{split}
+			=& [r R_1 R_2']|_0 ^{r_0} - [r R_2 R_1']|_0 ^{r_0} + \int_0 ^{r_0} r R_2' R_1' dr - \int_0 ^{r_0} rR_1' R_2' dr\\
+			=& \int_0 ^{r_0} rR_2'R_1' dr - \int_0 ^{r_0} rR_1'R_2' dr\\
+			=& 0
+		\end{split}
+	\end{equation*}	
+	当$ m \ne k $ 时，有
+	\begin{equation*}	
+		\int_0 ^{r_0} r R_{1} R_{2} dr = 0
+	\end{equation*}
+	(2) 对于径向方程
+	\begin{equation*}
+		r^2 R''+r R' +(\lambda r^2 -n^2)R=0 
+	\end{equation*}	
+	乘以$R'$
+	\begin{equation*}
+		2r^2 R'R''+2r (R')^2 +(\lambda r^2 -n^2)R'R=0 
+	\end{equation*}	
+	整理，得
+	\begin{equation*}
+		\frac{1}{2 \lambda}[r^2 (R')^2 + (\lambda r^2 -n^2)R^2]'= rR^2
+	\end{equation*}
+	两端积分
+	\begin{equation*}
+		\begin{split}
+			\int_0 ^{r_0} r R^2 dr =& \frac{1}{2\lambda} \int_0 ^{r_0} [r^2 (R')^2 + (\lambda r^2 -n^2)R^2]' dr  \\
+			=& \frac{1}{2\lambda} |r^2 (R')^2 + (\lambda r^2 -n^2)R^2 |_0 ^{r_0} \\
+			=& \frac{1}{2\lambda} r_0^2 (R'(r_0))^2 \\
+			=& \frac{1}{2} r_0^2 [J'_n(\mu_m ^n)]^2 \\
+			=& \frac{r_0^2}{2} [J_{n+1}(\mu_m ^n)]^2
+		\end{split}
+	\end{equation*}
+\textcolor{red}{证毕！}
+\end{proof}
+~~\\ 
+
+\begin{example}
+设函数$f(r)$的贝塞尔函数展开式为
+	\begin{equation*}
+		f(r)=\sum_{m=1}^\infty c_m J_n(\frac{\mu_m ^n}{r_0} r)
+	\end{equation*}	
+	试求展开系数$c_m$	
+\end{example}
+ 
+\emph{解：}
+	展开式两端同乘以$r J_n(\frac{\mu_k ^n}{r_0} r)$
+	\begin{equation*}
+		r J_n(\frac{\mu_k ^n}{r_0} r) f(r)=\sum_{m=1}^\infty c_m r J_n(\frac{\mu_k ^n}{r_0} r) J_n(\frac{\mu_m ^n}{r_0} r)
+	\end{equation*}
+	两端积分
+	\begin{equation*}
+		\int_0 ^{r_0}  r J_n(\frac{\mu_k ^n}{r_0} r) f(r) dr=\sum_{m=1}^\infty c_m \int_0 ^{r_0}  r J_n(\frac{\mu_k ^n}{r_0} r) J_n(\frac{\mu_m ^n}{r_0} r) dr
+	\end{equation*}
+	由正交性, 右边$m \ne k $的积分项都为零
+	\begin{equation*}
+		\begin{aligned}
+			\int_0 ^{r_0}  r J_n(\frac{\mu_m ^n}{r_0} r) f(r) dr &= c_m \int_0 ^{r_0}  r J_n(\frac{\mu_m ^n}{r_0} r) J_n(\frac{\mu_m ^n}{r_0} r) dr \\ 
+			&= c_m \frac{r_0^2}{2} [J_{n+1}(\mu_m ^n)]^2 
+		\end{aligned}
+	\end{equation*}
+	整理得
+	\begin{equation*}
+		c_m=\frac{2} {r^2_0 J_{n+1} ^2 (\mu_m ^n)} \int_0 ^{r_0} r f(r) J_n (\frac{\mu_m ^n}{r_0} r)  dr 
+	\end{equation*}	
+
+~~\\ 
+
+\subsection{应用实例}
+\begin{example}
+	求解热传导方程
+	\begin{equation*}
+		\begin{cases}
+		u_t= u_{xx}   +u_{yy} ~~~~ (0< x^2 +y^2 <R ^2, t>0)\\
+		u(x,y,t)|_{x^2+y^2=r_0 ^2}= 0 \\
+		u(x,y,t)|_{t=0}= x^2+y^2 +2
+	\end{cases} 
+    \end{equation*}
+\end{example}
+\emph{解：}
+	这是圆域热传导方程, 改用极坐标系
+	$$\begin{cases}
+		\displaystyle	u_t= {	\frac{\partial^2 u }{\partial r^2 } +\frac{1}{r } \frac{\partial u }{\partial r } +
+		\frac{1}{r^2 } \frac{\partial ^2 u }{\partial \theta ^2
+		} }, ~~~~ (0<r<R, 0<\theta<2\pi, t>0)\\
+		u(r,\theta)|_{r=R}=0 	\\
+		u(r,\theta,t)|_{t=0} =r^2 +2 	
+	\end{cases} $$
+	令 $u(r,\theta,t) =F(r)\Theta(\theta)T(t)$, 代回, 原方程可分离变量成三个方程 \\
+	方程-1: $$ \begin{cases}
+		\Theta ''(\theta)+\mu \Theta (\theta) =0 \\
+		\Theta (\theta) =	\Theta (\theta+2\pi)  \\
+		\Theta' (\theta) =	\Theta' (\theta+2\pi)  
+	\end{cases} $$
+	方程-2:	$$ \begin{cases}
+		r^2 F'' (r)+r F'(r) +( \lambda r^2 -\mu)F(r)=0  \\
+		F(R)=0
+	\end{cases} $$
+	方程-3: \begin{equation*}
+		T'(t)+\lambda T(t)=0 
+	\end{equation*}	
+	方程-1 有解 \\
+	固有值：
+	\begin{equation*}
+		\mu=n^2, ~~~~~(n=0,1,2,3...)
+	\end{equation*}
+	固有函数：
+	\begin{equation*}
+		\Theta_n(\theta) = a_n e^{-i n \theta}, ~~~~~(n=0,1,2,3...)
+	\end{equation*}
+	把固有值$ \mu = n^2 $ 代入方程-2
+	$$ \begin{cases}
+		r^2 F'' (r)+r F'(r) +( \lambda r^2 -n^2)F(r)=0  \\
+		F(R)=0
+	\end{cases} $$
+	这是贝塞尔方程的零点问题, 有解 \\
+	固有值：
+	\[\lambda_m ^n =(\frac{\mu_{m}^{n}}{R})^2, \quad (m=0, \pm 1, \pm 2,\cdots) \]
+	固有函数：\[F_m ^n(r) = J_n (\frac{\mu_{m}^{n}}{R}r) \]
+	把固有值$ \lambda_m ^n  $ 代回方程-3: \begin{equation*}
+		T'(t)+(\frac{\mu_{m}^{n}}{R})^2 T(t)=0 
+	\end{equation*}	
+	这是衰减模型, 有解
+	\begin{equation*}
+		T_m ^n=Ce^{- (\frac{\mu_{m}^{n}}{R})^2 t}
+	\end{equation*}
+	方程的基本解为
+	$$u_m ^n(r,\theta,t) = J_n (\frac{\mu_{m}^{n}}{R}r) e^{-i n \theta} e^{- (\frac{\mu_{m}^{n}}{R})^2 t}$$
+	叠加解为
+	$$u(r,\theta,t) = \sum_{n=0}^{\infty} \sum_{m=0}^{\infty} c_m ^n J_n (\frac{\mu_{m}^{n}}{R}r) e^{-i n \theta - (\frac{\mu_{m}^{n}}{R})^2 t}$$
+	取$t=0$, 结合初值条件
+	$$u(r,\theta,0) = r^2 +2  = \sum_{n=0}^{\infty} \sum_{m=0}^{\infty} c_m ^n J_n (\frac{\mu_{m}^{n}}{R}r) e^{-i n \theta }$$
+	两端同乘以 $e^{i k \theta }$, 并对$\theta$ 积分
+	\[
+	\begin{aligned}
+	\int _0 ^{2\pi} e^{i k \theta } (r^2 +2) d\theta & = \sum_{n=0}^{\infty} \sum_{m=0}^{\infty} c_m ^n  J_n (\frac{\mu_{m}^{n}}{R}r) \int_0 ^{2\pi} e^{i k \theta } e^{-i n \theta}  d\theta \\ 
+	\int _0 ^{2\pi} e^{i m \theta } \frac{r^2 +2}{2\pi} d\theta & = \sum_{m=0}^{\infty} c_m ^n J_n (\frac{\mu_{m}^{n}}{R}r)
+	\end{aligned}\]
+	两端同乘以 $ r J_n (\frac{\mu_{k}^{n}}{R}r)$, 并对$r$ 积分
+	\[ \begin{aligned}
+		\int _0 ^{R} \int _0 ^{2\pi} r J_n (\frac{\mu_{k}^{n}}{R}r) e^{i m \theta } \frac{r^2 +2}{2\pi} d\theta dr & = \sum_{m=0}^{\infty} c_m ^n \int _0 ^{R}   r J_n (\frac{\mu_{k}^{n}}{R}r) J_n (\frac{\mu_{m}^{n}}{R}r) dr \\
+		\int _0 ^{R} \int _0 ^{2\pi} r J_n (\frac{\mu_{m}^{n}}{R}r) e^{i m \theta } \frac{r^2 +2}{2\pi} d\theta dr & = c_m ^n \frac{1}{2} R^2 [J'_n(\mu_m ^n)]^2 \\
+		\end{aligned}\]
+	整理得
+	\[c_m ^n = \frac{1}{R^2 [J'_n(\mu_m ^n)]^2} \int _0 ^{R} \int _0 ^{2\pi}  J_n (\frac{\mu_{m}^{n}}{R}r)\frac{r^3 +2r}{\pi} e^{i m \theta }  d\theta dr \]
+	方程的最终解为
+	\[
+	\left\{\begin{aligned}
+		u(r,\theta,t) & = \sum_{n=0}^{\infty} \sum_{m=0}^{\infty} c_m ^n J_n (\frac{\mu_{m}^{n}}{R}r) e^{-i n \theta - (\frac{\mu_{m}^{n}}{R})^2 t} \\
+		\\
+		c_m ^n &= \frac{1}{R^2 [J'_n(\mu_m ^n)]^2} \int _0 ^{R} \int _0 ^{2\pi}  J_n (\frac{\mu_{m}^{n}}{R}r)\frac{r^3 +2r}{\pi} e^{i m \theta }  d\theta dr 
+	\end{aligned}\right. \]
+
+
+\begin{example}
+	求解热传导方程
+	$$\begin{cases}
+		\displaystyle u_t= \frac{\partial^2 u }{\partial r^2 } +\frac{1}{r } \frac{\partial u }{\partial r }, ~~~~ (0<r<1, 0<\theta<2\pi, t>0) \\
+		u(r,\theta)|_{r=1}=0 	\\
+		u(r,\theta,t)|_{t=0} =1-r^2
+	\end{cases} $$
+\end{example}
+\emph{解：}
+	这是极坐标系下的圆域热传导方程。与标准的方程相比较,主方程少了与$\theta$有关的那一项,因此 \\
+	令 $u(r,\theta,t) =F(r)T(t)$, 代回, 原方程可分离变量成三个方程 \\
+	方程-1:	$$ \begin{cases}
+		r^2 F'' (r)+r F'(r) +( \lambda r^2 )F(r)=0  \\
+		F(r)|_{r=1}=0
+	\end{cases} $$
+	方程-2: \begin{equation*}
+		T'(t)+\lambda T(t)=0 
+	\end{equation*}	
+	方程-1是零阶（$n=0$）贝塞尔方程的零点问题, 有解 \\
+	固有值：
+	\[\lambda_m ^0 =(\mu_{m}^{0})^2, \quad (m=0, \pm 1, \pm 2,\cdots) \]
+	固有函数：\[F_m ^0(r) = J_n (\mu_{m}^{0}r) \]
+	把固有值$ \lambda_m ^0  $ 代回方程-2: \begin{equation*}
+		T'(t)+(\mu_{m}^{0})^2 T(t)=0 
+	\end{equation*}	
+	这是衰减模型, 有解
+	\begin{equation*}
+		T_m ^n=Ce^{- (\mu_{m}^{0})^2t}
+	\end{equation*}
+	方程的基本解为
+	$$u_m ^n(r,\theta,t) = J_n ((\mu_{m}^{0})^2r) e^{- (\mu_{m}^{0})^2 t}$$
+	叠加解为
+	$$u(r,\theta,t) = \sum_{m=0}^{\infty} c_m ^0 J_n ((\mu_{m}^{0})^2r) e^{- (\mu_{m}^{0})^2 t}$$
+	取$t=0$, 结合初值条件
+	$$u(r,\theta,0) = 1- r^2  = \sum_{m=0}^{\infty} c_m ^0 J_n (\mu_{m}^{0}) $$
+	两端同乘以 $ r J_n (\mu_{m}^{0}r)$, 并对$r$ 积分
+	\[ \begin{aligned}
+		\int _0 ^{1} r J_n (\mu_{k}^{0}r)  (1-r^2)  dr & = \sum_{m=0}^{\infty} c_m ^0 \int _0 ^{1}   r J_n (\mu_{k}^{0}r) J_n (\mu_{m}^{0}r) dr \\
+		\int _0 ^{1}  r J_n (\mu_{m}^{0}r) (1-r^2)  dr & = c_m ^0 \frac{1}{2} [J'_n(\mu_m ^0)]^2 \\
+		\end{aligned}\]
+	整理得
+	\[c_m ^0 = \frac{2}{[J'_n(\mu_m ^0)]^2} \int _0 ^{1} J_n (\mu_{m}^{0}r) (r-r^3) dr \]
+	方程的最终解为
+	\[
+	\left\{\begin{aligned}
+		u(r,\theta,t) &= \sum_{m=0}^{\infty} c_m ^0 J_n ((\mu_{m}^{0})^2r) e^{- (\mu_{m}^{0})^2 t} \\
+		\\
+		c_m ^0 &= \frac{2}{[J'_n(\mu_m ^0)]^2} \int _0 ^{1} J_n (\mu_{m}^{0}r) (r-r^3) dr  
+	\end{aligned}\right. \]
+
+~~\\ 
+
+
+\section{狄拉克函数}
+物理上存在质点、点电荷等物理模型。其体积无穷小，质量密度或电荷密度无穷大，数学上采用狄拉克函数-$\delta(x) $ 描述这些“点”模型密度的空间分布。
+\subsection{狄拉克函数定义}
+设有一均匀细线，其质量为$1~\text{kg}$长度为$2l~\text{m}$。则其线密度为$$\rho=\frac{1}{2l}~\text{(kg/m)}$$\\
+若取线段中点为坐标原点，线密度的数学表达为 
+	  \[\rho(x)=\left\{\begin{array}{c}
+		\dfrac{1}{2 l}, \qquad (-l \leq x \leq l) \\
+		0, \quad (x<-l, x>l)
+		\end{array}\right.\]
+积分得质量
+	 \[\int_{-\infty}^{+\infty} \rho(x) d x= 1\]
+显然,有
+	 \[\int_{a}^{b} \rho(x) d x =1, \qquad  (a,b) \subset(-l,l) \]
+考虑当$l \to 0$时, 线段变为质点模型。把质点的点密度定义为狄拉克函数$\delta(x)$,有
+	 \[\delta(x)=\left\{\begin{array}{c}
+		 \infty, \quad(x=0) \\
+		 0, \quad(x \neq 0)
+		 \end{array}\right. \]
+狄拉克函数的积分为
+	 \[\int_{-\infty}^{+\infty} \delta(x) d x=1 \]
+考虑到物理测量，不防改$\infty$为 $1$，把狄拉克函数定义改为
+	 \[\delta(x)=\left\{\begin{array}{c}
+		 1, \quad(x=0) \\
+		 0, \quad(x \neq 0)
+		 \end{array}\right. \]
+而它的积分不变
+	 \[\int_{-\infty}^{+\infty} \delta(x) d x=1 \] 
+则狄拉克函数依然描述了物理学的各种“点”模型。\\
+考虑到量子化, 狄拉克函数也定义成一个连续实函数的序列 
+\[\lim_{n\to\infty} \int_{-\infty}^{+\infty} \delta_n (x) d x=1 \]
+
+\subsection{狄拉克函数性质}
+1、$\delta(x)$函数的积分有如下性质
+	$$\begin{aligned}
+		&\int _{a} ^{b} \delta(x) d x=1 , \quad 0 \in (a,b) \\
+		&\int_{-\infty}^{+\infty} \delta(x) \psi (x) d x=\psi  (0) \\
+		&\int_{a}^{b} \delta(x) \psi (x) d x=\psi (0)  , \quad 0\in(a,b) \\
+		&\int_{-\infty}^{+\infty} \delta(x-x_0) \psi (x) d x=\psi  (x_0)\\
+	\end{aligned}$$
+\begin{proof} 
+性质-1：
+\[ 1 = \int_{-\infty}^{a} \delta(x) d x + \int _{a} ^{b} \delta(x) d x + \int _{b} ^{+\infty} \delta(x) d x = \int _{a} ^{b} \delta(x) d x \]
+性质-2：
+\[\delta(x) \psi (x) = \left\{\begin{aligned}
+	\psi (0), \quad(x=0) \\
+	0, \quad(x \neq 0)
+\end{aligned}\right. \quad = \psi (0) \delta(x) \]
+\[ \int_{-\infty}^{+\infty} \delta(x) \psi (x) d x= \int_{-\infty}^{+\infty} \psi  (0)\delta(x)d x = \psi (0) \int_{-\infty}^{+\infty} \delta(x)d x = \psi  (0)\]
+性质-3：
+  \[ \int_{a}^{b} \delta(x) \psi (x) d x= \int_{a}^{b} \psi  (0)\delta(x)d x = \psi (0) \int_{a}^{b} \delta(x)d x = \psi  (0)\]
+性质-4： 令 $x'=x-x_0$
+\[ \int_{-\infty}^{+\infty} \delta(x-x_0) \psi (x) d x = \int_{-\infty}^{+\infty} \delta(x') \psi (x') d x'= \psi (x')|_{x'=0} = \psi (x)|_{x=x_0} = \psi (x_0)  \]
+因此，性质-4也称挑选性。
+\end{proof} 
+
+~~\\
+2、$\delta(x)$函数有如下性质
+$$\begin{aligned}
+		&\delta(-x)=\delta(x) \\
+		&\delta'( -x ) = - \delta'( x ) \\
+		&\delta(\alpha x ) = \frac{\delta( x ) }{\left|\alpha \right|} \\
+		&x\delta( x ) = 0 \\
+		&x\delta_{\lambda}( x ) = \lambda \delta_{\lambda}( x ) \\
+\end{aligned}$$
+
+\begin{proof} 性质-5： $\delta$函数是偶函数 \\
+	~对于$$\int_{-\infty}^{+\infty} \delta(-x) \psi (x) d x$$ 令 $-x =x'$, 有 $-dx = dx'$,代入得 
+	\[
+		\begin{aligned}
+			\int_{-\infty}^{+\infty} \delta(-x) \psi (x) d x &= -\int_{+\infty}^{-\infty} \delta(x') \psi (-x') d x' = \int_{-\infty}^{+\infty} \delta(x') \psi (-x') d x' \\
+			&=  \psi (-x') | _{x'=0}\\
+			&=  \psi (0) \\
+			&=  \int_{-\infty}^{+\infty} \delta(x) \psi (x) d x 
+		\end{aligned}
+		   \]
+		得证! \\ 
+	性质-6： $\delta$函数的导数是奇函数
+	\[
+		\begin{aligned}
+		  \int_{-\infty}^{+\infty} \delta'(x) \psi (x) d x &= \delta(x) \psi (x)|_{-\infty}^{+\infty} - \int_{-\infty}^{+\infty} \delta(x) \psi' (x) d x \\
+			&=  - \int_{-\infty}^{+\infty} \delta(x) \psi' (x) d x \\
+			&=  - \psi' (0)
+		\end{aligned}\]
+	\[
+			\begin{aligned}
+			  \int_{-\infty}^{+\infty} \delta'(-x) \psi (x) d x &= \int_{+\infty}^{-\infty} \delta'(x') \psi (-x') d (-x') \\
+				&= \int_{-\infty}^{+\infty} \delta'(x') \psi (-x') d (x') \\
+				&=  \psi' (-x') _{x'=0}\\
+				&=  \psi' (0) 
+			\end{aligned}
+			   \]
+	即
+	\[\int_{-\infty}^{+\infty} \delta'(x) \psi (x) d x = - \int_{-\infty}^{+\infty} \delta'(-x) \psi (x) d x\]
+	得 \[\delta'(-x)   = \delta'(-x) \] 
+	推论：\[ \int_{-\infty}^{+\infty} \delta^{(n)}(-x) \psi (x) d x = (-1)^n \psi^{(n)} (0)\]
+	性质-7：放缩
+	\[\int_{-\infty}^{+\infty} \delta(\alpha x) d x=
+	\frac{1}{\alpha}\int_{-\infty}^{+\infty} \delta(x') d x' =
+	 \int_{-\infty}^{+\infty} \frac{1}{\alpha}\delta(x) d x\]
+	 即
+	 \[\delta(\alpha x)  = \frac{1}{\alpha}\delta(x)\] 
+	性质-8：在性质-2中
+	\[\int_{-\infty}^{+\infty} \delta(x) \psi (x) d x=\psi  (0)\] 
+	取$\psi (x) =x$, 得 
+	\[ \int_{-\infty}^{+\infty} x\delta(x) d x = 0\]
+	定积分为零，有两种可能：一是被积函数是零函数$x\delta(x) = 0$，二是$x\delta(x)$在积分区域出现正负面积相等的情况。现有$x\delta(x)$除在$x=0$之外各点的值都为零，因此不可能出现第二种情况，得：
+	\[ x\delta(x) = 0\]
+\end{proof}
+
+~~\\
+狄拉克函数在不同坐标系下的形式为：
+\[
+		\begin{aligned}
+		  \delta (\vec{r}-\vec{r}_0) &=  \delta (x-x_0) \delta (y-y_0) \delta (z-z_0)\\
+		  &=  \frac{1}{r^2\sin\theta}\delta (r-r_0) \delta (\theta -\theta_0) \delta (\varphi -\varphi_0)
+		\end{aligned}
+		   \]
+极坐标系下为 
+\[ \delta (\vec{r}-\vec{r}_0) =  \frac{1}{r}\delta (r-r_0) \delta (\theta -\theta_0) \]
+
+\subsection{狄拉克函数的傅里叶变换}
+\begin{example}
+	试证明$\delta$函数的傅里叶变换公式为
+	\[ \boxed{\delta(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} e^{-ikx} d k} \]
+\end{example}
+\begin{proof}
+有性质-4
+ \[\int_{-\infty}^{+\infty} \delta(x-x_0) \psi (x) d x = \psi (x_0)\]
+取 $ \psi (x) = e^{ikx} $, 得
+\[\int_{-\infty}^{+\infty} \delta(x-x_0) e^{ikx} d x = e^{ikx_0}\]
+取 $ x_0 =0 $, 得
+\[\int_{-\infty}^{+\infty} \delta(x) e^{ikx} d x = 1\]
+利用傅里叶变换公式，有：
+\[ \delta(x) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} 1 \cdot e^{-ikx} d k = \frac{1}{2\pi} \int_{-\infty}^{+\infty} e^{-ikx} d k \]
+\textcolor{red}{证毕！} \\
+代入波矢与动量关系$$ k = \frac{p_x}{\hbar}$$
+得量子力学形式
+\begin{equation}\label{eq:qm-1}
+\boxed{\delta(x) = \frac{1}{2\pi\hbar} \int_{-\infty}^{+\infty} e^{-\frac{i}{\hbar}p_xx} d p_x }
+\end{equation}
+\end{proof}
+
+\begin{example}
+	试证明动量表象$\delta$函数的傅里叶变换公式为
+	\[\delta(p_x) = \frac{1}{2\pi\hbar} \int_{-\infty}^{+\infty} e^{\frac{i}{\hbar} p_x x} d x \]
+\end{example}
+\begin{proof}
+	在式[\ref{eq:qm-1}]中,取$x=-x$, 
+	\[ \delta(-x) = \frac{1}{2\pi\hbar} \int_{-\infty}^{+\infty} e^{\frac{i}{\hbar}p_xx} d p_x \]
+	又$\delta(-x)=\delta(x)$
+	\[ \delta(x) = \frac{1}{2\pi\hbar} \int_{-\infty}^{+\infty} e^{\frac{i}{\hbar}p_xx} d p_x \]
+	全空间积分
+	\[ 
+	\begin{aligned}
+	\int_{-\infty}^{+\infty} \delta(x) dx &= \frac{1}{2\pi\hbar} \iint_{-\infty}^{+\infty} e^{\frac{i}{\hbar}p_xx} d p_x dx \\
+	 1 &= \frac{1}{2\pi\hbar} \iint_{-\infty}^{+\infty} e^{\frac{i}{\hbar}p_xx}   dp_x dx\\
+	\int_{-\infty}^{+\infty} \delta(p_x) dp_x &= \int_{-\infty}^{+\infty} \left[\frac{1}{2\pi\hbar} \int_{-\infty}^{+\infty} e^{\frac{i}{\hbar}p_xx}  dx\right] dp_x 
+	\end{aligned}
+	\]	
+	得
+	\[\delta(p_x) = \frac{1}{2\pi\hbar} \int_{-\infty}^{+\infty} e^{\frac{i}{\hbar}p_x x}  dx\]
+\end{proof}
+
+\begin{example}
+	已知自由粒子的波函数取平面波形式
+	$$
+	\Psi _{p_x}(x)= e^{\frac{i}{\hbar}p_x x} 
+	$$ 
+	试求归一化平面波函数
+\end{example}
+\emph{解：}
+	设归一化的波函数为
+	$$
+	\psi _{p_x}(x)= C e^{\frac{i}{\hbar}p_x x} 
+	$$ 
+	在动量表象$\delta$函数的傅里叶变换公式中, 以 $p_x - p'_x$ 取得  $p_x$
+	\[ 
+		\begin{aligned}
+			\delta(p_x-p'_x) &= \frac{1}{2\pi\hbar} \int_{-\infty}^{+\infty} e^{\frac{i}{\hbar}(p_x-p'_x) x}  dx\\
+		 &= \frac{1}{2\pi\hbar} \int_{-\infty}^{+\infty} e^{\frac{i}{\hbar}p_x x} e^{\frac{-i}{\hbar}(p'_x) x} dx\\
+		 &= \frac{1}{C^2 2\pi\hbar} \int_{-\infty}^{+\infty} \psi^* _{p'_x}(x) \psi_{p_x}(x) dx
+		\end{aligned}
+		\]
+	由于$\psi _{p_x}(x)$是属于固体值$p_x$的固有函数, 当$p_x \ne p'_x$时,两固有函数正交, 因此有
+	\[ 
+		\begin{aligned}
+			\delta(p_x-p_x) &= \frac{1}{C^2 2\pi\hbar} \int_{-\infty}^{+\infty} \psi^* _{p_x}(x) \psi_{p_x}(x) dx\\
+			1 & = \frac{1}{C^2 2\pi\hbar} \\
+			C  & = \frac{1}{\sqrt{2\pi\hbar} }
+		\end{aligned}
+		\]
+	因此，有
+	$$
+	\psi _{p_x}(x)= \frac{1}{\sqrt{2\pi\hbar}} e^{\frac{i}{\hbar}p_x x} 
+	$$
+
+
+\begin{example}
+	设狄利克雷内核函数为
+	\[ D_m(x) =  \frac{1}{2\pi}\frac{\sin (m+\frac{1}{2})x}{ \sin\frac{1}{2}x } \]
+	试证明它是狄拉克函数的辅助函数，即有
+	\[\lim_{m \to \infty} D_m(x) =  \delta(x) \]
+\end{example}
+ \begin{proof}
+	对三角公式,两端同时积分
+	\[
+	\begin{aligned}
+		1+2\sum\limits_{n=1}^{m}\cos x &= \frac{\sin (m+\frac{1}{2})x}{\sin\frac{1}{2}x} \\ 
+		\int_{-\pi} ^\pi (1+2\sum\limits_{n=1}^{m}\cos x) d x &= \int_{-\pi} ^\pi \frac{\sin (m+\frac{1}{2})x}{\sin\frac{1}{2}x d x  } \\
+		2\pi &= \int_{-\pi} ^\pi \frac{\sin (m+\frac{1}{2})x}{\sin\frac{1}{2}x d x  }
+	\end{aligned}	
+	\]
+	得 \[\int_{-\pi} ^\pi D_m(x) d x =1\]
+	$ D_m(x)  $ 是归一化的偶函数，现在只需要证明当 $x \to 0$ 时，函数在$m \to \infty$ 时， 取极大值。
+	\[D_m(0) = \frac{1}{2\pi} \lim_{x\to 0}\frac{\sin (m+\frac{1}{2})x}{ \sin\frac{1}{2}x } = \frac{1}{2\pi} (-2+1) \]
+	\[\lim_{m \to \infty} D_m(0) = \lim_{m \to \infty} \frac{1}{2\pi} (2m+1) =\infty \]
+	一个在包含点 $x=0$的区域里归一化， 在点$x=0$处趋于$\infty$ 的函数，正是 $\delta$ 函数。因此
+	\[\lim_{m \to \infty} D_m(x) = \delta(x) \]
+ \end{proof}
+ 
+
+\begin{example}
+		试用$\delta$函数证明对于连续函数，傅里叶级数收敛
+\end{example}
+\begin{proof}
+	傅里叶级数为
+	\[\dfrac{a_0}{2} +\sum\limits_{n=1}^{\infty}  \left(  a_n \cos~ nx +  b_n \sin~ n x  \right) \]
+	部分和为
+	\[S_m(x) = \dfrac{a_0}{2} +\sum\limits_{n=1}^{m}  \left(  a_n \cos~ n x +  b_n \sin~ n x  \right) \]
+	代入系数,整理得
+	\[ \begin{aligned} S_n(x) & = \frac{1}{2\pi}\int_{-\pi}^\pi f(t)dt + \frac{1}{\pi}\sum\limits_{n=1}^{m} \int_{-\pi}^\pi f(t) \cos~ (n(x -t)) dt  \\
+		&= \frac{1}{2\pi}\int_{-\pi}^\pi f(t)dt + \frac{1}{\pi} \int_{-\pi}^\pi f(t) \sum\limits_{n=1}^{m}\cos~n (x -t) dt \\
+		&= \frac{1}{2\pi}\int_{-\pi}^\pi f(t) \left[ 1+ 2\sum\limits_{n=1}^{m}\cos~n (x -t) \right] dt
+	\end{aligned}\]
+	代入三角公式
+	\[1+2\sum\limits_{n=1}^{m}\cos x = \frac{\sin (m+\frac{1}{2})x}{\sin\frac{1}{2}x}\]
+	得
+	\[ \begin{aligned} S_m(x) & =\int_{-\pi}^\pi f(t) \frac{\sin (m+\frac{1}{2})(x -t)}{2\pi \sin\frac{1}{2}(x -t) } dt \\
+	&=\int_{-\pi}^\pi f(t) D_m(x-t) \mathrm{d} t	
+	\end{aligned}\]
+	考虑 $m \to \infty$, 
+	\[ \begin{aligned} \lim_{m \to \infty} S_m(x) &= \int_{-\pi}^\pi f(t) \delta (x-t) \mathrm{d} t  \\
+		&= f(x)
+	 \end{aligned}\]
+	说明在$f(x)$连续的所有点，傅里叶级数收敛。 对于不连续的一类断点或极值点（略）。\\
+	\textcolor{red}{证毕！}
+\end{proof}
+
+\begin{Exercises}
+	\item 利用$\Gamma$函数的递推公式，计算 
+		$$\Gamma(\frac{1}{2}), \quad  \Gamma(-\frac{1}{2}), \quad \Gamma(-\frac{3}{2}), \quad (\frac{5}{2})!  \quad (-\frac{5}{2})! $$ 
+	\item 利用$\Gamma$函数证明
+		\[0! =1 \] 
+	\item 利用$\Gamma$函数,计算积分
+		\[\int_{0}^{\infty} x^2 e^{-\frac{1}{2}x^2} dx \]
+	\item 试证明
+	\begin{equation*}
+		J_{1/2} (x) =\sqrt{\frac{2}{\pi x}} \sin x,  \qquad  J_{-1/2} (x) =\sqrt{\frac{2}{\pi x}} \cos x
+	\end{equation*} 
+		\item 试证明
+		\[ J_{-n}(x) = (-1)^n J_{n}(x), \quad [x J_{-1}(x)]' = -x  J_{0}(x) \]
+		\item 试证明
+		\[\frac{d}{d x}\left[x^{-n} J_{n}(x)\right] = -x^{-n} J_{n+1}(x)\] 
+		\item 求函数的值
+		\[ \Gamma(0),\qquad  J_{\frac{3}{2}}(0)\]
+		\item 试证明正交性公式
+	    \[\int_{0}^{+\infty} J_n(kr)J_n(k'r) r dr = \frac{\delta(k-k')}{k}, \qquad (n\geq-1; k, k'>0)\]
+		\item 试证明
+		\begin{equation*}
+			\Gamma(1/2)=\sqrt{\pi}, \qquad J_{-1/2}(x) = \sqrt{\frac{2}{\pi x}} \cos x  
+		\end{equation*}
+		\item 试证明零点递推公式  \[ J'_n(\mu_m ^n)= - J_{n+1}(\mu_m ^n)\]
+		\item 设函数$f(r)$的贝塞尔展开式为
+		\begin{equation*}
+			f(r)=\sum_{m=1}^\infty c_m J_n(\frac{\mu_m ^n}{r_0} r)
+		\end{equation*}	
+		试证明其展开系数为: 
+		\begin{equation*}
+			c_m=\frac{2} {r^2_0 J_{n+1} ^2 (\mu_m ^n)} \int_0 ^{r_0} f(r) J_n(\frac{\mu_m ^n}{r_0} r) r dr 
+		\end{equation*}	
+		\item 求解圆域波动方程
+		$$\begin{cases}
+			\displaystyle u_{tt} = \frac{\partial^2 u }{\partial r^2 } +\frac{1}{r } \frac{\partial u }{\partial r }, ~~~~ (0<r<1, 0<\theta<2\pi, t>0) \\
+			u(r,\theta)|_{r=1}=0 	\\
+			u(r,\theta,t)|_{t=0} =\cos^2\theta
+		\end{cases} $$
+		\item 求解圆域热传导方程
+		$$\begin{cases}
+			\displaystyle u_t= \frac{1}{r^2 } \frac{\partial ^2 u }{\partial \theta ^2
+			}, ~~~~ (0<r<R, 0<\theta<2\pi, t>0)\\
+			u(r,\theta)|_{r=R}=0 	\\
+			u(r,\theta,t)|_{t=0} = \sin 3\theta 	
+		\end{cases} $$
+		\item 已知半径为$R_0$的球体表面电势为$u_0(\theta)$，求表面电荷的密度分布函数。
+		\item 试证明
+	 \[
+	  \int_{-\infty}^{+\infty} 1 \cdot e^{2\pi i kx} d x = \delta(k)
+	 \]
+		\item 试证明\[\delta(p_x-p'_x) = \frac{1}{2\pi\hbar} \int_{-\infty}^{+\infty} e^{\frac{i}{\hbar}(p_x-p'_x) x}  dx\]
+		\item 解方程	
+		\begin{equation*}
+			\left[
+			\frac{1}{\sin \theta  } \frac{\partial }{\partial \theta } (\sin \theta \frac{\partial }{\partial \theta } )
+			+\frac{1}{ \sin^2 \theta  } \frac{\partial^2}{\partial\varphi ^2}\right]  u (\theta, \varphi) +\lambda u (\theta, \varphi) =0 
+		\end{equation*}
+		\item 试用级数法求解连带拉盖方程
+		\begin{equation*}
+			x L''  + (m+1 -x) L' +n L =0
+		\end{equation*}	
+		\item 试写出$f(\varphi) = \cos ^2 \varphi$  在函数系$\{ \Phi _m(\varphi)\}$的展开式。
+		\item 求函数$f(x) = 3x^3+x^2+1$的勒让德展开式， 并计算积分  $$ \int_{-1}^{+1} (x^3 -x +1) P_{n}(x) dx, \quad \int_{-1}^{1} (x^2+x) P_l(x) dx, \quad \int_{-1}^{1} x^k P_l(x) dx \quad(k<l), \quad  	\int_{-1}^{1} x^l P_l(x) dx $$ 
+		\item 试证明勒让德多项式递推公式
+		\begin{equation*}
+			(n+1) P_{n+1}(x)-(2 n+1) x P_{n}(x)+n P_{n-1}(x)=0
+		\end{equation*}
+		\item 试用勒让德多项式递推公式证明
+		\begin{equation*}
+			\frac{2n+1}{2}\int_{-1}^{1}  P ^2 _{n} dx = 1 
+	\end{equation*}	
+		\item 试证明 	
+	\[P _{n}(-x) =(-1)^n P _{n}(x),\quad P _{n}(-1) =(-1)^n, \quad P'_{n}(-1) = \frac{n(n+1)}{2}(-1)^{n+1} \] 
+		\item 求下列连带勒让德多项式的具体表达式
+	$$P^1 _{1}(x),\quad P^1 _{2}(x),\quad P^2 _{2}(x),\quad P^1 _{3}(x),\quad P^2 _{3}(x),\quad  P^3 _{3}(x)$$
+		\item 求函数$f(x) = 3x^3+x^2+1$的连带勒让德多项式展开式 \\
+		\item 计算积分
+		\begin{equation*}
+		\int_{-1}^{+1} (x^3 -x +1) P^l _{n}(x) dx 
+		\end{equation*}
+		\item 试证明
+		\[P^m_l(-x) = (-1)^{l+m} P^m_l(x), \quad P^{-m}_l(x) = (-1)^m \frac{(l-m)!}{(l+m)!} P^{m}_l (x) \]
+		\item 试证明
+		\[ Y^*_{lm}(\theta, \varphi) = (-1)^m Y_{l, -m}(\theta, \varphi), \quad Y_{\ell}^0(\theta, \phi)=\sqrt{\frac{2 \ell+1}{4 \pi}} P_{\ell}(\cos \theta)\]
+		\item  证明递推关系式$$
+		(2 \ell+1)\left(1-x^2\right)^{1 / 2} P_{\ell}^m=P_{\ell+1}^{m+1}-P_{\ell-1}^{m+1}
+		$$
+		\item 令 $$
+		\hat{L}_{\pm}=e^{i \phi}\left(\pm\frac{\partial}{\partial \theta}+i \frac{\cos \theta}{\sin \theta} \frac{\partial}{\partial \phi}\right)
+		$$
+		试证明 $$
+		\hat{L}_{\pm} Y_{\ell}^m=\alpha_{\ell}^m Y_{\ell}^{m \pm 1}
+		$$
+		\item  求类拉盖方程
+		$$
+       \frac{\mathrm{d}^2 U}{\mathrm{~d} \xi^2}+\frac{2}{\xi} \frac{\mathrm{d} U}{\mathrm{~d} \xi}+\left(\frac{\beta}{\xi}-\frac{l(l+1)}{\xi^2}\right) U=0
+       $$ 
+\item 写出 $L_1 (x)$ 和 $L_1 ^0 (x)$ 之间的关系式 
+\item 计算积分：
+	\begin{equation*}
+		\int_{0}^{\infty}   e^{-x} ( L_1 (x) )^2 dx, \qquad  \int_{0}^{\infty}   e^{-x} ( L_2 (x) )^2 dx, \qquad \int_{0}^{\infty}  e^{-x} L _{n}(x)L _{m}(x)  dx  
+	\end{equation*}	
+\item 求函数$ f(x) = 3x^3+1 $ 的拉盖多项式展开式, 并计算积分
+		\[\int_{0}^{+\infty} e^{-x}f(x)L_n(x) dx \]
+\item 试证明
+		$$
+		x L_n^{\prime}(x)=n L_n(x)-n L_{n-1}(x), \quad  L^m_n (x) = (-1)^m \frac{\mathrm{d}^m}{\mathrm{d}x^m} L_{n+m}(x)
+		$$
+\end{Exercises}
+~~\\
+
+

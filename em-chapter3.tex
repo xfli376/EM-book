@@ -1,0 +1,1284 @@
+\chapter{常微分方程}
+
+现代科学和工程中的大量物理模型通常采用数学方程进行描述。如牛顿第二定律、万有引力定律等，其数学方程显式地描述着各相关物理量之间的关系。
+
+通常，一个物理量（u）可表示成位置 (x)和时间(t)的函数，记为$u(x,t)$。当研究物理量随时间或空间的变化规律时，相应的方程通常含有这个未知函数u(x,t)及其对时间或空间的导数，这种方程称为\emph{微分方程}。可表示为：
+\begin{equation}
+	\boldsymbol{f}\left(\boldsymbol{x}, \boldsymbol{t}, \boldsymbol{u}, \boldsymbol{u}_{t}, \boldsymbol{u}_{t t}, \ldots \boldsymbol{u}_{t \ldots t}, \boldsymbol{u}_{x}, \boldsymbol{u}_{x x}, \ldots, \boldsymbol{u}_{x \ldots x}\right)=\mathbf{0} \\
+ \end{equation}
+比如，经典力学中的振动方程、电磁场理论中的麦克斯韦方程、量子力学中的薛定谔方程等。当未知函数是一元函数时，称为\emph{常微分方程}；是多元函数时，则方程通常含有偏分，称为\emph{偏微分方程}。
+
+微分方程中出现的最高阶导数的阶数称为微分方程的阶。根据阶的不同，方程又可分为一阶、二阶及高阶微分方程。通常的物理规律，表现为一阶、二阶微分方程的形式。在实际的物理过程中，也很少出现高阶微分方程的情况。
+
+如果一个微分方程中所含的未知函数及其各阶导数的幂都没有超过一次的，则称为
+\emph{线性微分方程}，否则称为\emph{非线性微分方程}。$n$阶线性常微分方程可表示为：
+\begin{equation}
+	a_0\boldsymbol{u}(x) + a_1 (x)\boldsymbol{u}_{x} +a_2 (x) \boldsymbol{u}_{x x}+ \ldots+ a_n(x)\boldsymbol{u}_{x \ldots x}=f(x)
+ \end{equation}
+其中$f(x)$为\emph{自由项}。如果自由项$f(x)=0$，则为\emph{齐次线性微分方程}。如果各项系数$a_i (x)$都是常数，则为\emph{常系数线性微分方程}，否则为\emph{变系数线性微分方程}。 
+
+任何代入微分方程后使其成为恒等式的函数，都是该方程的\emph{解函数}。当方程的解函数中含有任意常数的个数与方程的阶相等，且任意两常数都不能合并时，则称此解函数为该方程的\emph{通解}（或一般解）。通解构成一个函数族。对于实际问题，往往可以通过定解条件，使通解函数的各任意常数都取特定值，这种解函数称为方程的\emph{特解}。一般情况下，特解可能包含在通解中，也可能不包含在通解中。齐次线性微分方程的解函数称为补函数。补函数加上由自由项确定的特解，构成对应非齐次线性微分方程的解函数。
+
+科学研究和工程领域中的各种微分方程，绝大多数都不能精确求解。若想对那些较复杂的微分方程进行定性分析或者求解，则必须先学习并掌握常见微分方程的求解规律。因此，对当今理工科专业大学生来说，微分方程的求解是一种必备的基本技能。
+
+本章从常微分方程模型的建立和求解问题出发，通过几个具体的实例，建立起一阶、二阶微分方程与具体物理模型之间的联系。
+
+\section{一阶常微分方程}
+
+物理量$u(x)$用一元函数描述，它的方程中最高阶为一阶的称为一阶常微分方程。
+\begin{equation}
+	\boldsymbol{u}_{x} +P (x) u=Q(x)
+ \end{equation}
+我们首先回顾一下如何用分离变量法和常数变易求解一阶非齐次线性微分方程。\\
+
+\subsection{基本解法} ~\\
+
+不失一般性，一阶线性常微分方程可表示为：
+\begin{equation}\label{eq:eq1}
+	\frac{\mathrm{d}y}{\mathrm{d}x}+P (x) y=Q(x)
+ \end{equation}
+\emph{解：}
+ （1）对应的齐次方程为
+\begin{equation}
+	\frac{\mathrm{d}y}{\mathrm{d}x}+P (x) y=0
+ \end{equation}
+把与y有关的部分全放到方程的左边，与x有关的部分全放到方程的右边，实现x与y变量的分离
+\begin{equation*}
+	\frac{\mathrm{d}y}{y}=-P(x){\mathrm{d}x}
+\end{equation*}
+两边积分
+\begin{equation*}
+	\ln y=-\int P(x)dx + c.
+\end{equation*}
+通解为
+\begin{equation}\label{eq:anseq1}
+	y=Ce^{-\int P(x)dx}
+\end{equation}
+式中$C$为代定系数。\\
+(2) 对于非齐次方程[\ref{eq:eq1}]，由于自由项$ Q(x) $ 的函数形式不明，考虑常数变易，令$C=C(x)$, 
+\begin{equation*}
+	y=C(x)e^{-\int P(x)dx}
+\end{equation*}
+代回方程，得
+\[\begin{aligned}
+	C'(x)&=\frac{Q(x)}{e^{-\int P(x)dx}} \\
+\end{aligned}\]
+解得
+$$
+C(x)=\int Q(x){e^{\int P(x)dx}} dx +c  
+$$ 
+方程的解为
+\begin{equation*}
+	y=\left[\int Q(x){e^{\int P(x)dx}} dx +c\right]e^{-\int P(x)dx}
+\end{equation*}
+式中c为代定系数，由定解条件确定。当然, 解函数可改写成
+\begin{equation*}
+	y=Ce^{-\int P(x)dx} + e^{-\int P(x)dx}\int Q(x){e^{\int P(x)dx}} dx 
+\end{equation*}
+其中, 第一项是齐次方程的通解,第二项是由自由项$Q(x)$确定的特解,描述着外来扰动对固有运动的影响。\\
+
+\subsection{衰减与增长模型}
+\begin{example} 
+	建立放射性物质的衰减数学模型,并求解
+\end{example}
+	\emph{解：} （1） 建立方程：设在单位时间内, 一个放射性原子发生衰变的概率为$r$（大于零）, 衰变速率与外界条件几乎无关,因此也称衰变常数。设在某时刻$t$, 放射性原子数目为N(t), 则有
+		\begin{equation*}
+			-dN	= r N dt
+		\end{equation*}	 
+	若已知$t=0$时, 放射性物质的总核数为$N_0$, 则有初值问题
+	\begin{equation*}
+		\frac{dN}{dt}	= - rN ~~(r>0),~~ N(t)|_{t=0} = N_0
+		\end{equation*}
+	不失一般性,\emph{衰减数学模型}可写成
+	\begin{equation}
+	\boxed{\left\{\begin{aligned}
+		&\frac{du}{dt} + ru =0, ~~(r>0)~~  \\
+		&u|_{t=0} = u_0 
+	\end{aligned}\right.} 
+	\end{equation}
+    这正是一阶线性齐次微分方程。
+
+	（2）求解：\\
+采用一阶线性齐次微分方程的通解公式([\ref{eq:anseq1}])，得
+		\begin{equation*}
+			u=Ce^{-\int P(t)dt}=Ce^{-\int rdt}= Ce^{- r t}
+		\end{equation*}
+当然，也可采用分离变量法求解
+	$$\begin{aligned}
+	\frac{du}{u} &= - rdt\\
+	\ln u &=-rt+c\\
+	u(t)      &=Ce^{- r t}
+	\end{aligned}$$
+	取$t=0$, 结合初值条件
+	\begin{equation*}
+		u(0)=u_0=Ce^{- r 0} 
+	\end{equation*}
+	确定系数$C=u_0$, 原方程得解：
+	\begin{equation}
+	\boxed{u(t)= u_0 e^{- r t}}
+	\end{equation}
+
+	~~\\ 
+	\begin{hint}
+	显然，当$t\rightarrow \infty$， $u(t)\rightarrow 0$, 即：一个自然衰减过程呈现出e指数衰减的规律。
+	\end{hint}
+	
+~~\\
+衰减模型的一个重要参数是半衰期（T）。根据半衰期定义:
+	\begin{align*}
+		\frac{1}{2}u_0 &= u_0 exp(-rT)\\
+		T &=\frac{1}{r} \ln 2  \\ &\approx \frac{1}{r} \times 0.6931	
+		\end{align*}
+	半衰期完全由单个原子的衰减概率决定，与物质的初始量的多少没有任何关系。
+		
+	在衰减模型中, 若改$r$前的加号为减号, 则得\emph{增长模型}：
+	\begin{equation}
+		\boxed{\left\{\begin{aligned}
+			&\frac{du}{dt} - ru =0, ~~(r>0)~~ \\
+			&u(t=0) = u_0	 \\ 
+		\end{aligned}\right.} 
+	\end{equation}
+	这个方程就是著名的人口增长马尔萨斯模型。马尔萨斯（Malthus, 1766～1834），英国人口统计学家。他在18世纪建立这个方程来描述英国一百多年来的人口变化情况。
+
+	增长模型的求解与衰减模型的完全类似, 得解
+	\begin{equation}
+		\boxed{u(t) = u_0 e^{r t}} 
+	\end{equation}
+	\begin{hint}
+		显然，一个自然群体数量的增长呈现的是e指数增长规律
+	\end{hint}
+	~~\\
+
+	考虑到自然资源的限制等因素, 人口不可能无限增长，因此得对方程进行必要的修正, 修正后的方程是逻辑斯蒂有限增长模型。它源于对鼠疫的研究。设某个区域有$K$只老鼠，在$t$时刻病鼠与非病鼠的数目分别为$u$和$v$，则有约束关系
+	$$
+	 u+v=K
+	$$ 
+	病鼠数目的变化率显然与uv这个乘积因子成比例，即
+	$$
+	\begin{aligned}
+		\frac{du}{dt} &= a uv \\
+		&= au(K-u) \\
+		&= aKu(1-\frac{u}{K}) \\
+		&= r u(1-\frac{u}{K})
+	\end{aligned}
+	$$ 
+	很明显，方程中出现了非线性项 $u^2$, 因此，这是一个非线性的一阶微分方程。说明对一个自然过程进行干涉，会产生非线性项，导致其不再服从e指数规律。
+
+	\begin{example} %2
+	求人口增长的逻辑斯蒂模型：
+	\begin{equation*}
+	\frac{du}{dt}	=  ru (1-\frac{u}{K}), ~~~~ u(t_0) = u_0
+	\end{equation*}
+	\emph{解：} 方程依然可分离变量：\\
+	\begin{align*}
+	\frac{1}{u(1-u / K)}du &=r d t \\
+		\frac{u / K+(1-u / K)}{u(1-u / K)} d u &=r d t	\\
+		(\frac{1}{K-u}+\frac{1}{u} ) d u &=r d t \\
+		-\ln (K-u)+\ln u &=r t+C 
+	\end{align*}
+	左边两项合并，得
+	\begin{align*}	
+	&\ln \frac{u}{K-u}  =r t+C\\
+	&\frac{u}{K-u} =\exp (r t+C)	
+	\end{align*}
+得通解
+$$ u(t)  =\frac{K}{1+\exp (-r t-C)} $$			
+ 考虑定解条件$$u(t_0) =u_0 $$ 
+得待定系数$$C=\ln \dfrac{u_0}{K-u_0} -r t_0$$
+代回通解，得解：
+\begin{equation*}
+u(t)  =\dfrac{K}{1+(\dfrac{K}{u_0}-1)   \exp (-r (t-t_0))}	
+\end{equation*}
+
+\end{example}
+~~\\
+下图是根据上海2022年3月到4月累计确诊病例数据所得数据拟合曲线与逻辑斯蒂有限增长模型理论数据的关系图
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figs/fig4.png}
+	\caption{逻辑斯蒂有限增长模型，蓝色为实际确诊人数}
+\end{figure}
+
+可以发现，如果没有人口的限制，确诊病例总数是按自然指数增长的。当受到总人口数目的限制时，增长被有效抑制。每日确诊病例数很快速地就达到正态分布的峰值，即曲线斜率最大的点。很明显，这是一个非线性的增长过程。 实际上，人体重量随年龄的变化，人体激素水平随年龄的变化等等，都是非线性过程，服从逻辑斯蒂有限增长模型。
+
+基本结论：一个自然群体数量的变化, 采用一阶微分方程描述。群体数量要么是按自然指数增长的要么是按自然指数衰减的。抑制的存在导致非线性现象的出现。
+
+~~\\
+\begin{hint}
+分离变量法是求解微分方程最基本的方法。如果不能直接分离变量, 则可以通过一定的变量代换使其可分离变量 （见练习）。
+\end{hint}
+
+\section{二阶常微分方程}
+对于一元函数$u(x)$的微分方程, 如果导数的最高阶为二阶,则为二阶常微分方程。一般形式为：
+\begin{equation}
+	\boldsymbol{f}\left(\boldsymbol{x}, \boldsymbol{u}, \boldsymbol{u}_{x}, \boldsymbol{u}_{x x}\right)=\mathbf{0} \\
+ \end{equation}
+ 如果是线性的，则可表示为
+ \begin{equation}
+	a_2 (x) \boldsymbol{u}_{x x} + a_1 (x)\boldsymbol{u}_{x} + a_0\boldsymbol{u}(x)  = f(x)
+ \end{equation}
+ 当 $  f(x)=0 $, 则为二阶线性齐次常微分方程。\\
+
+\subsection{叠加原理} ~\\
+
+所有的线性齐次微分方程的解服从一个重要的原理--叠加原理。
+ \begin{example}
+	 试证明若 $\psi(x), \varphi(x)$ 是二阶线性齐次常微分方程
+	 \begin{equation*}
+		\left[a_2 (x) \frac{\mathrm{d^2}}{\mathrm{d}x^2} + a_1 (x)\frac{\mathrm{d}}{\mathrm{d}x} + a_0 \right]u(x)  = 0
+	 \end{equation*} 
+	 的解,则它们的线性叠加
+	 \begin{equation*}
+		 \Psi(x,t) = A \psi(x,t) + B \varphi(x,t)
+	 \end{equation*} 
+	 也是方程的解
+	 \end{example}
+	 \begin{proof}
+	为了便于书写，定义新的微分记号：$$D = \frac{\mathrm{d}}{\mathrm{d x}}$$
+	则有，
+	$$ Du(x) = u_{x}(x), \quad D^2 u(x) = u_{xx}(x) = \frac{\mathrm{d^2}}{\mathrm{d}x^2} u(x) $$
+	再令
+	$$ L = a_2 (x) D^2 + a_1 (x) D +  a_0 $$
+	则原方程可简写成
+	$$ Lu(x)=0 $$
+	 $\psi(x), \varphi(x)$ 必满足以上方程
+	 \begin{equation*}
+		L\psi(x)=0  \cdots (1), \quad L\varphi(x)=0  \cdots (2)
+	 \end{equation*} 
+	 $A\times (1) + B\times (2) $, 得
+	 $$ \begin{aligned}
+		 0 &= AL\psi(x)+ BL\varphi(x) \\
+		&= L[A\psi(x)]+ L[B\varphi(x)] \\
+		&= L[A\psi(x)+ B\varphi(x)] \\
+		&= L\Psi(x)
+	 \end{aligned}$$
+	 即$ \Psi(x) $也满足原方程, 得证！
+	 \end{proof}
+    ~~\\ 
+	 现在进行推广，令 $$ L = a_n (x) D^n + a_{n-1} (x) D^{n-1} + \cdots + a_2 (x) D^2 + a_1 (x) D +  a_0 $$
+	 则n阶线性齐次常微分方程可写为
+	 $$ Lu=0 $$
+	 试证明，若 $\{u_n(x), (n=1,2,3,\dots) \}$是线性齐次微分方程
+	$$Lu=0$$
+	的解，它们的线性叠加
+	$$\Psi(x)=\sum_n c_n u_n(x) $$
+	也是原方程的解。
+	\begin{proof}
+	$$ \begin{aligned}
+		L\Psi(x) = L\sum_n c_n u_n(x) = \sum_n \{L[c_n u_n(x)]\} = \sum_n [c_n L u_n(x)] = 0
+	\end{aligned}$$
+    \end{proof}
+	叠加原理还可以进一步推广到n阶线性齐次偏微分方程。总之，所有的线性齐次微分方程的解都服从叠加原理。\\
+	~~\\ 
+	因此，一旦获得一个线性齐次微分方程的所有基本解\{$u_n(x,t)$\}，则方程的任意解可以表示为这些基本解的线性叠加:
+	\begin{equation}
+		u(x,t) = \sum_n a_n u_n(x,t)
+	\end{equation}
+
+	\subsection{一般解法} ~\\
+
+	二阶常系数线性微分方程的一般形式为 
+	\begin{equation}
+		y^{\prime \prime}+py^{\prime}+qy=f(x)
+	\end{equation}
+	\begin{example} 
+	求解二阶齐次常系数线性微分方程
+		$$  y^{\prime \prime}+py'+qy=0 $$
+	\emph{解：}
+		特征方程
+		$$ \lambda^2 +p\lambda +q=0  $$
+		解有三种情况
+		$$ \begin{aligned}
+			\text{两相异实根：}& \lambda_1 \ne \lambda_2  \\
+			\text{两相同实根：}& \lambda_1 = \lambda_2 = \lambda  \\
+			\text{两共轭复根：}& \lambda_1=\alpha+i\beta , \quad \lambda_2=\alpha-i\beta
+		\end{aligned}$$
+	   齐次方程的通解：
+	   $$ \begin{aligned}
+		\text{两相异实根：}y=& C_1 \exp(\lambda_1 x)+ C_2 \exp (\lambda_2 x)   \\
+		\text{两相同实根：}y=& (C_1+C_2x)  \exp (\lambda x)  \\
+		\text{两共轭复根：}y=&  \exp(\alpha x)  [C_1 \cos (\beta x)+ C_2 \sin (\beta x)]
+	\end{aligned}$$
+	式中，$C_1,C_2$为待定系数，由初始条件确定。
+	\end{example}
+	~\\
+	\begin{hint} 
+		特征方程法是求解二阶常系数线性微分方程最基本的方法,要深入理解叠加原理与特征方程法之间的关系。
+	\end{hint}
+
+\subsection{振动模型} ~\\
+
+如前所述，通过衰减/增长模型，可以很好地理解一阶常微分方程。同样，通过振动模型可以很好地理解二阶常微分方程。
+ \begin{example} 
+	建立弹簧振子的微分方程并求解
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=0.25\textwidth]{figs/fig1.png}
+		\caption{弹簧振子示意图}
+	\end{figure}
+\end{example}
+		\emph{解：} （1） 建立方程：根据胡克定律，有
+		\begin{equation*}
+			F= -k x 
+			\end{equation*}
+		根据牛顿第二定律，有
+		\begin{equation*}
+			F=Ma= M\frac{d ^2 x}{d t^2} 
+		\end{equation*}
+		联立,得
+     $$\frac{d ^2 x}{d t^2} +\frac{k}{M} x =0$$
+	 令$\omega ^2 = \dfrac{k}{M} $, 得标准简谐振动微分方程
+	 \begin{equation}
+		\boxed{x^{\prime \prime} +\omega ^2 x = 0} 
+	\end{equation}
+	设初始时刻，物体处于$x_0$的位置且其初速度为零,即获得定解问题：
+	\begin{equation}
+		\begin{cases}
+			x^{\prime \prime} +\omega ^2 x = 0 	\\
+			x(t)\left |_{t=0}  =x_0  \right.  \\
+			x^{\prime}(t) \left |_{t=0}  =0  \right.      	
+			\end{cases}
+	\end{equation}
+（2） 解方程： 写出特征方程
+	$$\begin{aligned}
+		m^2+\omega ^2&=0 
+	  \end{aligned}$$
+	特征方程有两虚根
+	  $$ m_{1, 2} =\pm i\omega $$
+	原方程存在两个基本解
+	  $$ \begin{cases}
+		x_{1} =\cos \omega t  \\
+		x_{2} =\sin \omega t
+	  \end{cases} $$
+	根据叠加原理, 方程的通解为
+	  \begin{equation}
+	 \boxed{x(t)=C_1 \cos \omega t +C_2 \sin \omega t} 	
+	  \end{equation}
+	求导
+	  $$x'(t)=-C_1 \omega \sin \omega t +C_2 \omega\cos \omega t$$
+	取$t=0$,结合两个初始条件，得两个方程
+	  \[ \left\{
+	\begin{aligned}
+		x(t)|_{t=0}  &= x_0 =C_1 +C_2 0 \\ 
+		x^{\prime}(t)|_{t=0} & =0=-C_1 0 +C_2 \omega 
+	\end{aligned}\right.
+	\]
+	得系数
+	  $$\begin{cases}
+		C_1 = x_0 \\
+		C_2 = 0 \\
+	  \end{cases}$$
+	代回通解,方程得解：
+	$$x(t)=x_0 \cos \omega t $$ 
+	表明振子在平衡位置附近来回振荡。物理上把这种解称为驻波解。\\
+	实际上，两个基本解还可以写成
+	  $$ \begin{cases}
+		x_{1} =e^{i\omega t}  \\
+		x_{2} =e^{-i\omega t}
+	  \end{cases} $$
+	有通解
+	  \begin{equation}
+	 \boxed{x(t)=C_1 e^{i\omega t} +C_2 e^{-i\omega t} }	
+	  \end{equation}
+	物理上称这种解为行波解。什么时候采用驻波解，什么时候采用行波解，得视实际情况而定。一个总的原则是方程的相关条件能使对应通解中的一项为零。此例中采用驻波解，正是这个原因。
+
+当考虑空气的阻力时，这种阻尼应与振子的速度成比列，因此采用如下小阻尼振动方程进行描述, 
+\begin{equation}
+    x^{\prime \prime} +2\varepsilon x^{\prime}  +\omega ^2 x = 0 ,  ~~~ (\varepsilon \ll \omega)   
+  \end{equation}
+  式中$\varepsilon$是阻尼系数。对于密度均匀的空气来说，阻尼系数是常数。
+\begin{example} 
+	求小阻尼振动微分方程
+	\begin{equation*}
+		\frac{d^2 x}{d t^2} +2\varepsilon \frac{d x}{dt} +\omega ^2 x = 0 ,  ~~~ (\varepsilon \ll \omega)   
+	  \end{equation*}
+\end{example}
+\emph{解：} 
+		阻尼会导致振幅衰减，设这种衰减也是指数的, 令$$\displaystyle  x(t)= \exp(-\varepsilon t) u(t) $$ 
+		求导
+		$$
+\begin{aligned}
+  \frac{d x}{d t } &= -\varepsilon  \exp(-\varepsilon t) u +  \exp(-\varepsilon t) \frac{d u}{d t } \\
+  & =\exp(-\varepsilon t) [-\varepsilon u +\frac{d u}{dt}]
+\end{aligned}
+$$
+求二次导
+$$
+\begin{aligned}
+	\frac{d^2 x}{d t^2 } &= -\varepsilon \exp(-\varepsilon t) [-\varepsilon u +\frac{d u}{dt}] + \exp(-\varepsilon t) [-\varepsilon \frac{d u}{dt} +\frac{d^2u}{dt^2}] \\
+	& =\exp(-\varepsilon t) [\varepsilon ^2 u -2\varepsilon \frac{d u}{dt}+ \frac{d^2 u}{dt^2} ]
+\end{aligned}
+$$
+代回方程并整理得
+$$ \frac{d^2 u}{d t^2} +(\omega ^2 - \varepsilon ^2) u = 0,  ~~~ (\varepsilon \ll  \omega) $$
+令 $k^2 =\omega ^2 - \varepsilon ^2 >0 $, 得简谐振动标准方程
+$$\frac{d^2 u}{d t^2} +k ^2 u = 0 $$
+其通解为
+\begin{equation*}
+	u(t)=C_1 \cos k t +C_2 \sin k t 
+\end{equation*}
+原方程得解
+$$  x(t)= \exp(-\varepsilon t) \left[C_1 \cos k t +C_2 \sin k t \right] $$ 
+代入$k$的值,得通解
+$$ x(t)= \exp(-\varepsilon t) \left[C_1 \cos (\sqrt{\omega ^2 - \varepsilon ^2} t) +C_2 \sin (\sqrt{\omega ^2 - \varepsilon ^2} t) \right] $$ 
+如给定初值条件，则系数$C_1, C_2$可确定。
+
+很明显，阻尼导致振子的振动频率发生变化
+$$ \omega \to \sqrt{\omega ^2 - \varepsilon ^2} $$
+也导致振幅呈指数衰减 $$ \exp(-\varepsilon t) $$ 随着阻尼的不同, 体系呈现出多种运动形态， 如图[\ref{fig:damp}]所示。图中的过阻尼描述了物体没有振动地缓慢地从远处返回到平衡位置的状态，比如粘性很强的油中的振子。通常的阻尼则是无阻尼振动和过阻尼振动的线性叠加。临界阻尼状态则是阻尼刚好能够阻止系统起振的那种临界状态。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.55\textwidth]{figs/fig2.png}
+	\caption{阻尼振动的类型}
+	\label{fig:damp}
+\end{figure}
+~~\\ 
+
+实际工作的器件具有两个频率，一个是固有频率外，一个是工作频率。固有频率由器件本身的结构特性决定，工作频率由策动力（$f(t)$）的周期性决定。工作器件的运动状态由受迫振动方程描述。
+\begin{equation}
+    \frac{d^2 x}{d t^2} +2\varepsilon \frac{d x}{dt} +\omega ^2 x = f(t),  ~~~ (\varepsilon \ll \omega)   
+\end{equation}
+\begin{example} 
+	考虑周期性策动力 $f(t)= p \sin \omega_0 t$， 试求受迫振动方程
+\begin{equation*}
+    \frac{d^2 u}{d t^2} +2\varepsilon \frac{d x}{dt}+\omega ^2 u = p \sin \omega_0 t    
+  \end{equation*} 
+\end{example}
+\emph{解：}
+先考虑无阻尼的情况，方程为
+\begin{equation}\label{eq:aaa}
+    \frac{d^2 u}{d t^2} +\omega ^2 u = p \sin \omega_0 t    
+  \end{equation} 
+这是非齐次方程, 对应齐次方程的通解为
+\begin{equation*}
+	u(t)=C_1 \cos \omega t +C_2 \sin \omega t 
+	\end{equation*}
+它描述着固有频率下的振动。非齐次方程存在一个特解，描述由策动的周期性导致的受迫振动，可以写成 \\
+	$$ u(t) =C \sin \omega_0 t $$
+对特解求导
+	$$ u''(t) = - C \omega_0 ^2 \sin \omega_0 t $$
+代回方程[\ref{eq:aaa}],得
+	$$ \begin{aligned}
+	  C(\omega^2-\omega_{0} ^2 ) \sin(\omega_0 t) =p\sin(\omega_0 t)
+	\end{aligned}  $$
+解得 $$C = \frac{p}{\omega^2-\omega_{0} ^2 }  $$ 
+因此, 得特解 $$ u(t) =\frac{p}{\omega^2-\omega_{0} ^2 } \sin \omega_0 t $$
+受迫振动的频率由策动的频率决定，其强度则由两个因素决定：
+\begin{itemize}
+	\item 策动力的强度：$p$
+	\item 固有频率与策动频率的平方差：$\omega^2-\omega_{0} ^2$ 
+\end{itemize}
+
+~~\\ 
+当两频率相近时，振幅会变得非常大，称为共振，如图[\ref{fig:work}]的上图所示。 因此，器件的工作频率应远离固有频率。
+~~\\ 
+
+通解+特解，得原方程的一般解
+$$ x(t)= C_1 \cos \omega t +C_2 \sin \omega t+ \frac{p}{\omega^2-\omega_{0} ^2 } \sin (\omega_0 t)  $$
+若给出初始条件, 系数 $C_1, C_2$将被确定。\\
+很明显，解函数是固有频率$\omega$和策动频率$\omega_0$两种振动的线性叠加。\\
+
+考虑阻尼，通解为
+  $$ x(t)= \exp(-\varepsilon t) \left[C_1 \cos (\sqrt{\omega ^2 - \varepsilon ^2} t) +C_2 \sin (\sqrt{\omega ^2 - \varepsilon ^2} t) \right] $$ 
+  依然令特解为
+  $$ u(t) =C \sin \omega_0 t $$
+  代入原方程
+  $$ \begin{aligned}
+	C[(\omega^2-\omega_{0} ^2 ) \sin(\omega_0 t) + 2 \varepsilon \omega_{0} \cos(\omega_0 t) ] =p\sin(\omega_0 t)
+  \end{aligned}  $$
+解得 
+$$ C= \frac{p \sin(\omega_0 t)}{(\omega^2-\omega_{0} ^2 ) \sin(\omega_0 t) + 2 \varepsilon \omega_{0} \cos(\omega_0 t)} $$
+原方程的解为
+$$ \begin{aligned} x(t)=& \exp(-\varepsilon t) \left[C_1 \cos (\sqrt{\omega ^2 - \varepsilon ^2} t) +C_2 \sin (\sqrt{\omega ^2 - \varepsilon ^2} t) \right] \\
+	 & \quad +  \frac{p \sin^2(\omega_0 t)}{(\omega^2-\omega_{0} ^2 ) \sin(\omega_0 t) + 2 \varepsilon \omega_{0} \cos(\omega_0 t)}  
+\end{aligned}$$ 
+显然，阻尼导致前一项（固有振动）的振幅呈指数衰减，最后只留下工作频率振动，如图[\ref{fig:work}]的下图所示。
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.55\textwidth]{figs/fig3.png}
+	\caption{上图：共振现象, 下图：阻尼导致固有频率振动快速衰减}
+	\label{fig:work}
+\end{figure}
+ 
+\begin{example} 
+	求二阶非齐次常系数线性微分方程的初值问题
+	$$\begin{cases}
+		u^{\prime \prime} +\omega ^2 u =f, (t>0)\\
+		u(0)=0, u'(0)=0
+	\end{cases}$$
+\end{example}
+	\emph{解：}
+		这是振动数学模型，齐次方程有通解： 
+		$$ u=C_1 \cos(\omega t)+C_2 \sin(\omega t) $$
+		$f$的函数形式不明，不能写出一个具体的特解。考虑常数变易，\\
+		设非齐次方程的解为 
+		$$ u=C_1(t) \cos(\omega t)+C_2(t) \sin(\omega t) $$
+		求导
+$$ \begin{aligned}
+	u'& =[C'_1(t) \cos(\omega t)+C'_2(t) \sin(\omega t)] \\
+	&+ [  - \omega C_1(t) \sin(\omega t)+ \omega C_2(t) \cos(\omega t)  ] \\ 
+\end{aligned}  $$
+可令上式第一项为零 $$[C'_1(t) \cos(\omega t)+C'_2(t) \sin(\omega t)]=0 \quad \cdots \cdots \quad (1) $$
+再求导
+$$ u^{\prime \prime}= [  - \omega C'_1(t) \sin(\omega t)+ \omega C'_2(t) \cos(\omega t)  ] -\omega^2 u  $$
+代回原方程,得
+$$ [  - \omega C'_1(t) \sin(\omega t)+ \omega C'_2(t) \cos(\omega t)  ] =f      \quad \cdots \cdots \quad (2) $$
+联立（1）（2）， 得方程组
+$$\qquad \begin{bmatrix}
+		\cos(\omega t) & \sin(\omega t) \\ 
+		-\omega \sin(\omega t) & \omega\cos(\omega t)
+	\end{bmatrix} 
+\begin{bmatrix}
+		C'_1(t)\\ 
+		C'_2(t)
+	\end{bmatrix}  =
+\begin{bmatrix}
+		0\\ 
+		f
+	\end{bmatrix} $$
+解得：
+	$$ \begin{cases}
+			C'_1(t)=\dfrac{f}{\omega} \sin(\omega t)  \\ 
+			\\
+			C'_2(t)=\dfrac{f}{\omega} \cos(\omega t)  
+		\end{cases}  $$
+积分得
+		$$ \displaystyle \begin{cases}
+				C_1(t)=\dfrac{1}{\omega} [\int\limits_{0}^{t} \sin(\omega \tau) f(\tau)  d\tau +C_1 ]\\  \\
+				C_2(t)=\dfrac{1}{\omega} [\int\limits_{0}^{t} \cos(\omega \tau) f(\tau)  d\tau +C_2 ]
+			\end{cases}  $$
+代回通解,得
+			$$ \begin{aligned}
+				u(t)=&\dfrac{1}{\omega}\cos(\omega t)\left[\int\limits_{0}^{t} \sin(\omega \tau) f(\tau)  d\tau +C_1 \right] +\dfrac{1}{\omega} \sin(\omega t) \left[\int\limits_{0}^{t} \cos(\omega \tau) f(\tau)  d\tau +C_2 \right]
+			\end{aligned}  $$
+			$$ \begin{aligned}
+				u'(t)=&-\sin(\omega t)\left[\int\limits_{0}^{t} \sin(\omega \tau) f(\tau)  d\tau +C_1 \right] +\cos(\omega t) \left[\int\limits_{0}^{t} \cos(\omega \tau) f(\tau)  d\tau +C_2 \right] \\
+				&+ \dfrac{1}{\omega}\cos(\omega t) \dfrac{f}{\omega} \sin(\omega t)  + \dfrac{1}{\omega} \sin(\omega t) \dfrac{f}{\omega} \cos(\omega t)
+			\end{aligned}  $$
+代入定解条件
+\[
+\begin{aligned}
+	u(0)=0 &= \dfrac{1}{\omega}\cos(\omega 0)\left[\int\limits_{0}^{t} \sin(\omega \tau) f(\tau)  d\tau +C_1 \right] +\dfrac{1}{\omega} \sin(\omega 0) \left[\int\limits_{0}^{t} \cos(\omega \tau) f(\tau)  d\tau +C_2 \right] \\
+	u'(0)=0 &=  -\sin(\omega 0)\left[\int\limits_{0}^{t} \sin(\omega \tau) f(\tau)  d\tau +C_1 \right] +\cos(\omega 0) \left[\int\limits_{0}^{t} \cos(\omega \tau) f(\tau)  d\tau +C_2 \right]
+\end{aligned}
+\]
+解得  $C_1=C_2=0$ \\
+代回,得原方程的解
+$$ \begin{aligned}
+	u(t)=&\dfrac{1}{\omega}\cos(\omega t)\left[\int_{0}^{t} \sin(\omega \tau) f(\tau)  d\tau \right] +\dfrac{1}{\omega} \sin(\omega t) \left[\int_{0}^{t} \cos(\omega \tau) f(\tau)  d\tau \right]
+\end{aligned}  $$
+这是一个振幅被调制的简谐振动,调制强度由策动函数包含多少成份的固有频率振动决定。
+
+~~\\ 
+\begin{hint}
+	从解方程的角度来说，策动力的函数形式很重要。当策动函数为多项式函数，三角函数，指数函数等与通解形式相近的形态时，待定系数法通常可确定一个特解。对于一般的策动函数，则考虑常数变易法求解。
+\end{hint} ~\\
+
+\subsection{二阶变系数线性常微分方程} ~\\
+
+对于简谱振动，如果既有策动又有空气阻尼，方程为
+\begin{equation*}
+    \frac{d^2 u}{d t^2} +2\varepsilon \frac{d u}{dt} +\omega ^2 u = f(t) ,  ~~~ (\varepsilon \ll \omega)   
+  \end{equation*} 
+如果阻尼系数是时间的函数（比如水蒸汽环境，空气密度随时间变化），方程为
+\begin{equation*}
+	  \frac{d^2 u}{d t^2} +2\varepsilon(t) \frac{d u}{dt} +\omega ^2 u = f(t)
+	\end{equation*}
+如果固有频率也是时间的函数（比如变质量沙漏，受热环境中的弹簧振子等），则方程为
+	\begin{equation*}
+		  \frac{d^2 u}{d t^2} +2\varepsilon(t) \frac{d u}{dt} +\omega^2 (t)  u = f(t)
+	\end{equation*}
+它们都是二阶变系数线性微分方程。工程中要考虑的现实情况往往是很复杂的, 需要根据具体条件建立各种各样的微分方程。它们有可能是一阶或二阶的也可能是高阶的，有可能是线性的也可能是非线性的，有可能是常系数的也可能是变系数的。研究它们的解法及解的结构对理解实际工程问题是非常重要的。由于工程的复杂性，通常这些方程是不可解的，但通过研究解的存在性、唯一性及可能的极限解等问题，有时会对问题的解决带来非常有益的帮助。
+
+在具体实践过程中，人们找到了某些二阶及高阶微分方程的解法。比如二阶变系数线性微分方程中的伯努利方程、欧拉方程和厄密方程等。
+
+欧拉方程源于对刚体的转动和无粘性流体胶束运动的研究。略去方程的建立过程，直接给出方程的基本形式：
+\begin{equation}
+x^n y^{(n)}+P_1 x^{n-1} y^{(n-1)}+\cdots+P_{n-1} x y^{\prime}+P_n y=f(x)
+\end{equation}
+其中，二阶的欧拉方程为
+\begin{equation}
+	x^2 \frac{d^2 y}{d x^2} +x \frac{d y}{d x} +k y =f(x) 
+\end{equation}
+下面给出它的一些基本类型和解法。
+\begin{example} 
+	求解二阶欧拉方程
+\begin{equation}
+	x^2 \frac{d^2 y}{d x^2} +x \frac{d y}{d x} +n^2 y =0 
+\end{equation}
+\emph{解：}
+令 $x=\exp(t) , (t=\ln x)$，链式求导
+$$ 
+\frac{d y}{d x}  = \frac{d y}{d t}\frac{d t}{d x}= \frac{1}{ x}\frac{d y}{d t} 
+$$ 
+$$ \frac{d^2y}{dx^2} =\frac{d}{dt} \frac{1}{x}\frac{dy}{dt}\frac{dt}{dx}= \frac{1}{x^2}\frac{d^2y}{dt^2}-\frac{dy}{dt} $$ 
+代回原方程并整理，得
+$$ \frac{d^2 y}{d t^2}  +n^2 y =0  $$
+这是振动模型，通解 
+$$ y=C_1 \cos(n t)+C_2 \sin(n t) $$
+代入$t=ln x$ ，得原方程通解
+$$ y(x)=C_1 \cos (n \ln x) +C_2 \sin (n \ln x)  $$ 
+两系数可由定解条件确定。
+\end{example}
+\begin{example} 
+	求欧拉方程
+\begin{equation}
+	x^2 \frac{d^2 y}{d x^2} +2x \frac{d y}{d x} -n(n+1) y =0 
+\end{equation}
+\emph{解：}
+	令 $x=\exp(t) , (t=\ln x)$，求微分并代回, 得齐次常系数微分方程
+	$$ \frac{d^2 y}{d t^2}  +\frac{dy}{dt}-n(n+1) y =0 $$ 
+	特征方程
+	$$ \lambda^2 +\lambda -n(n+1) =0 $$
+	存在两相异实根 $$ \lambda_1=n, \qquad \lambda_2= -(n+1) $$
+	方程的通解
+$$ y(t)=C_1 \exp (nt) +C_2 \exp (-(n+1) t)  $$
+代入 $t=\ln x$, 原方程得解
+$$ y(x)=C_1 x^n +C_2 x^{-(n+1) } $$
+两系数可由定解条件确定。
+\end{example}
+\begin{example} 
+	求非齐次欧拉方程
+\begin{equation}
+	x^2 \frac{d^2 y}{d x^2} -2x \frac{d y}{d x} +2y = \ln^2( x) -2 \ln(x) 
+\end{equation}
+\emph{解：} 
+	令 $x=\exp(t) , (t=\ln x)$，求微分并代回原方程， 得常系数非齐次方程
+	$$ 
+\frac{d^2 y}{d t^2}  -3\frac{dy}{dt} +2 y =t^2 -2t  $$
+齐次方程的特征方程为
+$$ \lambda^2  -3\lambda +2  =0  $$
+存在两相异实根
+$$ \lambda_1=1, \qquad \lambda_2=2 $$
+通解
+$$y_1=C_1 e^t +C_2 e^{2t}$$
+现在有两条路可走 
+\begin{itemize}
+	\item 特解+通解
+	\item 常数变易法
+\end{itemize}
+考虑到自由项可写成多项式
+$$ \ln^2( x) -2 \ln(x) = t^{2} -2 t $$
+令特解为：
+$$y_2=a t^2+bt+c$$
+求导,并代回原方程, 解得特解
+$$ y_2=\frac{1}{2} t^2+\frac{1}{2}t+\frac{1}{4}  $$
+原方程的解
+$$ y= y_1 + y_2 =C_1 e^t +C_2 e^{2t}+\frac{1}{2} t^2+\frac{1}{2}t+\frac{1}{4}  $$
+代入 $t=\ln x $, 得解 
+$$ y(x)=C_1 x +C_2 x^2+\frac{1}{2} \ln ^2 x+\frac{1}{2}\ln x+\frac{1}{4} $$
+
+\end{example}
+很明显,欧拉方程具有相当成熟的解法。
+
+厄密(Hermite)方程也是一个有成熟解法的变系数微分方程。
+厄密方程的基本形式为
+\begin{equation}
+\frac{d^2 y}{d x^2}-2 x \frac{d y}{d x}+\lambda y=0 
+\end{equation}
+它的解可以写成第一类合流超几何函数和一个多项式的和的形式。特别地，当 $\lambda=0,2,4,\cdots, 2n$时, 方程的解函数用来描述量子力学中的谐振子，现在给出它的基本解法。
+\begin{example} 
+	求解厄密方程
+\begin{equation}
+	\frac{d^2 y}{d x^2} -2x \frac{d y}{d x} +2n y =0
+\end{equation}
+\end{example}
+\emph{解：} 
+	设方程有级数解 
+$$ y=\sum_{k=0}^{\infty} c_k x^k $$
+对级数求导
+$$\left\{\begin{aligned}
+		y' &= \sum\limits_{k=1}^{\infty} k c_k x^{k-1} \\ 
+		2xy'& =\sum\limits_{k=0}^{\infty} 2 k c_k  x^{k}\\
+		\\
+		y'' &= \sum\limits_{k=2}^{\infty} k (k-1) c_k x^{k-2} \\
+		&=  \sum\limits_{k=0}^{\infty} (k+2) (k+1) c_{k+2} x^k
+	\end{aligned}\right.$$
+把$y, 2xy', y''$的级数形式代回原方程， 得
+$$ \sum\limits_{k=0}^{\infty} (k+2) (k+1) c_{k+2} x^k - \sum\limits_{k=0}^{\infty} 2 k c_k  x^{k} + \sum_{k=0}^{\infty} 2n c_k x^k =0 $$
+整理,得
+	$$ \sum_{k=0}^{\infty} [ (2n -2k)c_k +(k+2)(k+1) c_{k+2}  ] x^k  =0 $$
+多项式为零，要求各项系数为零, 有
+$$ (2n -2k)c_k +(k+2)(k+1) c_{k+2} =0 $$
+整理,得系数递推式
+$$ c_{k+2} = \frac{ 2(k-n)}{(k+2)(k+1) } c_k, ~~  \left( k=0,1,2,3, ...  \right)  $$
+这是隔项递推，如果 $c_0$ 已知，则所有的偶数次幂的系数 $c_{2m}$ 可得 \\
+$$\begin{cases}
+		c_2 =- \dfrac{2n}{2!} c_0\\
+		c_4 = \dfrac{2^2n(n-2)}{4!} c_0 \\
+		c_6 = -\dfrac{2^3n(n-2)(n-4)}{6!} c_0 \\
+		...	
+\end{cases} $$
+偶数次幂的系数的一般式
+$$c_{2m} = (-1) ^m \dfrac{2^mn(n-2)(n-4) ... (n-2m+2)  } {(2m)!} c_0$$
+同理,如果 $c_1$ 已知，可得奇数次幂的系数的一般式
+$$ c_{2m+1} = (-1) ^m \dfrac{2^m (n-1) (n-3)(n-5)...(n-2m+1)  } {(2m+1)!} c_1  $$
+令
+$$ \begin{cases}
+		y_1(x)  = [1- \dfrac{2n}{2!} x^2+ \dfrac{2^2n(n-2)}{4!} x^4 -...  ] \\
+		y_2(x)  = [x- \dfrac{2(n-1)}{3!} x^3+ \dfrac{2^2(n-1)(n-3) }{5!}x^5 -...  ]
+	\end{cases}$$ 
+方程的解为
+	$$y(x) =c_0y_1(x)+c_1 y_2(x)$$
+$c_0,c_1$为代定系数,可由定解条件确定。在量子力学中，这个解将获得更有物理意义的表达形式。
+
+~~\\
+\begin{hint}
+	本例中使用的级数指标对齐方法，是级数法求解方程过程中的一种基础技巧。
+\end{hint} ~\\
+
+\subsection{二阶非线性常微分方程} ~\\
+\begin{example}
+ 试建立单摆所满足的微分方程
+ \begin{figure}[h]
+	\centering
+	\includegraphics[width=0.18\textwidth]{figs/pendulum.png}
+	\caption{单摆模型}
+	 %\label{fig:}
+ \end{figure}
+\end{example}
+ \emph{解：}
+	设单摆线长为$l$,在$t$时刻，单摆的角度为$\theta$，其切向速度为$v$, 在$dt$时间内单摆摆动了$d\theta$,有
+	$$
+	v=l \frac{d\theta}{dt}
+	$$
+	单摆只有切向运动，切向方向的力为
+	$$
+	F=mg \sin\theta 
+	$$
+代入牛顿第二定律
+$$
+\begin{aligned}
+	F&=m\frac{\mathrm{d v}}{\mathrm{dt}}\\ 
+	-mg \sin\theta  &= m l \frac{d^2\theta }{dt^2} \\
+\end{aligned}
+$$
+得微分方程
+$$ \theta _{tt} + \frac{g}{l} \sin \theta =0 $$
+将$\sin \theta$ 做Taylor展开
+$$
+\sin \theta=\theta-\frac{\theta^3}{3 !}+\frac{\theta^5}{5 !}-\frac{\theta^7}{7 !}+\ldots
+$$ 
+当 $\theta$ 很小时，取一阶近似，有
+$$ \theta _{tt} + \frac{g}{l} \theta =0 $$
+令$\omega ^2 = \dfrac{g}{l}$, 得振动模型
+$$ \theta _{tt} + \omega ^2 \theta =0 $$
+当 $\theta$ 变大时， 取三阶近似，得非线性微分方程
+$$ \theta _{tt} + \omega ^2 (\theta - \frac{\theta^3}{3 !}) =0 $$
+~~\\ 
+\begin{hint} 微分方程类型与物理模型的关系
+\begin{itemize}
+	\item 物体在平衡位置附近振荡时，服从线性常系数微分方程
+	$$ \theta _{tt} + \omega ^2 \theta =0 $$
+	\item 当远离平衡位置时，必须考虑非线性项，服从非线性常系数微分方程。$$ \theta _{tt} + \omega ^2 (\theta - \frac{\theta^3}{3 !}) =0 $$
+	\item 当考虑空气阻尼时，服从含阻尼的非线性常系数微分方程
+$$ \theta _{tt} + 2\varepsilon \theta _{t} + \omega ^2 (\theta - \frac{\theta^3}{3 !}) =0 $$
+\item 当考虑空气密度随时间变化时，服从非线性变系数微分方程
+$$ \theta _{tt} + 2\varepsilon(t) \theta _{t} + \omega ^2 (\theta - \frac{\theta^3}{3 !}) =0 $$
+\item 如果考虑重力加速度与位置的相关性，则$ \omega  $是时间的函数，有
+$$ \theta _{tt} + 2\varepsilon(t) \theta _{t} + \omega^2(t)  (\theta - \frac{\theta^3}{3 !}) =0 $$
+\end{itemize}
+
+弹簧振子方程的建立，采用的是胡克定律$F=-kx$，因此，这似乎是严格意义上的一个常系数微分方程。实际上，胡克定律也只是一种Taylor展开下的近似，如果考虑高阶近似，则产生非线性微分方程。非线性项对物理体系的影响称为非线性效应。研究非线性光学效应的物理学叫非线性光学。
+
+总之，通过研究弹性振子和单摆，获得了各种不同类型的常微分方程与物理模型的对应。这对今后的学习是很有帮助的。
+\end{hint}
+
+
+\section{傅里叶变换}
+\subsection{数学表述}
+
+如果$f(x)$是定义于$(-\infty,+\infty)$的周期函数（$T=2l$）, 且在一个周期内只有有限个一类断点与极值点，则可展开成傅里叶级数:
+\begin{equation} \label{eq:fly1}
+	\left\{ \begin{aligned}
+	f(x) =\dfrac{a_0}{2} +\sum\limits_{n=1}^{\infty}  \left(  a_n \cos~ \dfrac{n\pi}{l} x +  b_n \sin~ \dfrac{n\pi}{l} x  \right) \\ 
+	a_n =\dfrac{1}{l}  \int\limits_{-l}^{l}  f(\xi )   \cos~ \dfrac{n\pi}{l} \xi d\xi \\
+	b_n =\dfrac{1}{l}  \int\limits_{-l}^{l}  f(\xi )   \sin~ \dfrac{n\pi}{l} \xi d\xi  
+\end{aligned} \right. 
+\end{equation}
+式中 $a_n, b_n$是展开系数。
+
+如果$f(x)$是定义于$(-\infty,+\infty)$的非周期函数，且只有有限个一类断点与极值点（狄利克雷收敛条件），则可展开成指数函数形式: 
+\begin{equation} \label{eq:fly2}
+	\left\{ \begin{aligned}
+		f(x) &=\int\limits_{-\infty}^{+\infty}  G(\omega) e^{i\omega x} d\omega\\
+		G(\omega) &= \dfrac{1}{2\pi} \int\limits_{-\infty}^{+\infty}  f(x) e^{-i\omega x} dx 
+	\end{aligned} \right.
+\end{equation}
+式中，$G(\omega)$是展开系数。通常称$G(\omega)$ 是$f(x)$的傅里叶变换，$f(x)$ 是$G(\omega)$的傅里叶逆变换。为满足函数的归一化要求, 可写成
+\begin{equation} \label{eq:fly3}
+	\left\{ \begin{aligned}
+	f(x) = \dfrac{1}{\sqrt{2\pi} }\int\limits_{-\infty}^{+\infty}  G(\omega) e^{i\omega x} d\omega\\
+	G(\omega) = \dfrac{1}{\sqrt{2\pi} } \int\limits_{-\infty}^{+\infty}  f(x) e^{-i\omega x} dx 
+\end{aligned} \right. 
+\end{equation}
+若考虑$\omega$的量子化，可写成 
+\begin{equation} \label{eq:fly4}
+	\left\{ \begin{aligned}
+	f(x)& = \dfrac{1}{\sqrt{2\pi} }\sum_n c_n e^{i\omega_n x} \\
+	c_n &=\dfrac{1}{\sqrt{2\pi} }  \int\limits_{-\infty}^{\infty}  f(x)  e^{-i\omega_n x}  d x 
+\end{aligned} \right. 
+\end{equation}
+
+若$f(x)$不满足狄利克雷收敛条件，可乘上一个收敛因子$g(x) = f(x) e^{-\sigma x}$使其满足收敛条件，则$g(x)$可展开成指数函数形式:
+$$
+\begin{aligned}
+	f(x) =\int\limits_{-\infty}^{+\infty}  G(\omega) e^{\sigma x} e^{i\omega x} d\omega
+	=\int\limits_{-\infty}^{+\infty}  G(\omega) e^{(\sigma +i\omega) x} d\omega 
+\end{aligned}$$
+令$s = \sigma +i\omega$,有
+$$ \begin{cases}
+\begin{aligned}
+	f(x)&=\int\limits_{\sigma-i\infty}^{\sigma+i\infty}  G(s) e^{s x} d\omega\\
+	G(s) &= \dfrac{1}{2\pi i} \int\limits_{0}^{+\infty}  f(x) e^{- s x} dx 
+\end{aligned}
+\end{cases}  $$
+式中，$G(s)$是展开系数。通常称$G(s)$是$f(x)$的拉普拉斯变换，$f(x)$是$G(s)$的拉普拉斯逆变换。很明显，在拉普拉斯变换中取$\sigma =0$, 则可退化为傅里叶变换。 因此，傅里叶变换只是拉普拉斯变换的特例，拉普拉斯变换是傅里叶变换向复数域的延拓。
+
+~~\\ 
+\begin{hint}
+	对于一个无穷数列$\{a_n, n \in \mathbb{N}\}$，构成的表达式
+	\[\sum_{n=1}^{\infty} a_n\]
+	称为无穷级数。级数的前n项和
+	\[s_n= a_1 + a_2 +\dots + a_n\]
+	称为级数的部分和，如果部分和数列$\{s_n\}$收敛则称级数$ \displaystyle \sum_{n=1}^{\infty} a_n $收敛, 且称极限$\displaystyle \lim_{n \rightarrow \infty} s_n=s$为级数的和。
+	常用的有幂级数、正项级数、三角级数、傅里叶级数、泰勒级数、洛朗级数等。本教材用得较多的是三角级数、傅里叶级数和泰勒级数等。
+\end{hint}
+
+\subsection{物理意义}
+考察: 周期性策动条件下谐振子的解
+$$ \begin{aligned}
+	x(t) & = C_1 \cos \omega t +C_2 \sin \omega t+ \frac{p}{\omega^2-\omega_{0} ^2 } \sin (\omega_0 t) \\
+	& = a_0 /2  + a_1 \cos \omega _1 t +b_1 \sin \omega _1 t + a_2 \cos \omega _2 t +b_2 \sin \omega _2 t
+\end{aligned}  $$
+式中，$a_0$是零频振幅，$a_1$和$b_1$是基频振幅，$a_2$和$b_2$是策动频振幅。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.3\textwidth]{figs/fft.png}
+	\caption{多级策动下的振动}
+	\label{fig:fft}
+\end{figure}
+如果存在多级策动 （如图[\ref{fig:fft}] 所示），则解函数是各频函数的线性叠加。 
+$$ f(x) =\dfrac{a_0}{2} +\sum\limits_{n=1}^{\infty}  \left(  a_n \cos~ \omega_n x +  b_n \sin~ \omega_n x  \right)  $$
+考虑各策动频与基频之间存在简单的倍频关系（这种情况在物理实验上很容易实现,比如各策动臂长之间存在倍数关系），上式可写成 
+$$ f(x) =\dfrac{a_0}{2} +\sum\limits_{n=1}^{\infty}  \left(  a_n \cos~ \dfrac{n\pi}{l} x +  b_n \sin~ \dfrac{n\pi}{l} x  \right) $$
+
+在实验中, 仅使用这种简单的倍频多级策动，就可产生非常复杂的波形。比如方波信号和齿型信号等就可以用傅里叶级数的部分和进行无限逼近，（如图[\ref{fig:fft3}] 所示）。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figs/fft3.png}
+	\caption{傅里叶级数的部分和逼近（a）方波信号（b）齿型信号}
+	\label{fig:fft3}
+\end{figure}
+即：一个复杂函数可以使用函数集$\left\{1,\cos \omega_n x,\sin \omega_n x \right\}$中各函数的线性叠加进行无限逼近。那么, 是否任意的周期函数$f(x)$都可以采用$\left\{1,\cos \omega_n x,\sin \omega_n x \right\}$里各函数的线性叠加进行无限逼近呢？答案是：只要这个函数$f(x)$满足狄利克雷（Dirichlet）收敛条件， 则是可以的。对于非周期性函数$f(x)$，则可以采用函数集 \{$e^{i \omega_n x} $ \}中各函数的线性叠加进行无限逼近。
+
+\emph{数学理解：}二阶齐次微分方程有两个基本解$u_1(x), u_2(x)$，根据叠加原理，它们的线性叠加，描述了此方程的任意解：
+	\[ f(x) = a_1 u_1(x) + a_2 u_2(x)\]
+	同理， $N$阶齐次微分方程有$N$个基本解$u_1(x), u_2(x), \cdots, u_n(x)$，它们的线性叠加描述了此方程的任意解：
+	\[ f(x) = \sum_{n=1}^{N} a_n u_n(x)\]
+	如果 $\{1, \cos \omega_n x,\sin \omega_n x \}$ 是某个微分方程的基本解集（见第四章），则它们的线性叠加可以描述此方程的任意解：
+	\[ \begin{aligned} f(x) &= \sum_{n=1} a_n u_n(x) \\
+		&= \frac{a_0}{2}+ \left(\sum_{n=1} a_n \cos \omega_n x + \sum_{n=1} b_n \sin \omega_n x\right)
+	\end{aligned} \]
+	同理，如果 \{$e^{i \omega_n x} $ \} 是某个微分方程的基本解集（见第四章），则它们的线性叠加可以描述此方程的任意解：
+	\begin{equation*} 
+		 \begin{aligned}
+		f(x) = \dfrac{1}{\sqrt{2\pi} }\sum_n c_n e^{i\omega_n x} 
+	\end{aligned}  
+	\end{equation*}
+
+\emph{物理理解：}从时域空间看，一个信号的波型（函数$f(x)$）可能是非常复杂的，但从频域空间看，它总是由不同频率的简谐波$\{1, \cos \omega_n x,\sin \omega_n x \}$叠加而成的。实例：吉它发出的乐声，它总是由各种单一频率的音（单音）组合而成的。
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.7\textwidth]{figs/fft2.png}
+		\caption{乐声的频谱分解}
+		%\label{fig:}
+	\end{figure}
+
+~~\\ 
+\begin{hint}
+“一种数学方法的成功，不是因为它那巧妙的谋略或者幸运的偶遇，而是由于它表达着物理真理的某个方面。”
+$\qquad$ -- 沙顿	
+\end{hint}
+~\\
+\subsection{正交完全性}
+~\\
+
+\emph{正交性：}如果复函数$u(x)$和$v(x)$的内积存在，
+$$ \int_a^b u^* (x) v(x) dx = 0$$
+式中$u^* (x)$是$u(x)$的复共轭，则称它们在区间[$a,b$]正交。
+如果$u(x)$和$v(x)$是实函数，则退化为 
+$$ \int_a^b u (x) v(x) dx = 0$$
+对于三维向量~$\vec{U} = (u_1, u_2, u_3 )^T$,~$\vec{V} = (v_1, v_2, v_3 )^T$, 若它们正交，则有
+  \[ \vec{U} \cdot \vec{V} = \begin{pmatrix} u^*_1 & u^*_2 & u^*_3 \end{pmatrix} \begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix} =
+  u^*_1 v_1 + u^*_2 v_2 + u^*_3 v_3  = \sum_{i=1}^{3} u^*_i v_i = 0\]
+  若为N维向量， 则有
+  \[ \vec{U} \cdot \vec{V} = \sum_{i=1}^{N} u^*_i v_i = 0\]
+  把坐标改用函数值的方式描述，则有
+  \[ \vec{U} \cdot \vec{V} = \sum_{i=1}^{N} u^*(x_i) v(x_i) = 0\]
+  若为无穷维向量，则有
+	\[\vec{U} \cdot \vec{V} = \int_{a}^{b}u^*(x) v(x)dx = 0\]
+	向量$\vec{U}$和$\vec{V}$相互正交等价于 
+	它们的坐标函数$u(x)$和$v(x)$在区间[$a,b$]相互正交。\\
+
+\emph{正交集：}若函数集$\{ u_n (x)\}$中的任意两函数正交
+$$ \int_a^b u_n^* (x) u_m(x) = 0, \qquad (n \ne m)$$
+则称此函数集是区间[$a,b$]上的一个正交集。\\
+例如：$\{\vec{e}_x, \vec{e}_y, \vec{e}_z\}$是三维矢量空间的一个正交集
+\[ \vec{e}_i \cdot \vec{e}_j =0, \quad (i\ne j), \quad (i,j =x,y,z) \]
+若正交集$\{ u_n (x)\}$中的任意函数，满足
+  $$ \int\limits_a ^b u_n^* (x) u_n (x) dx =1 $$
+则称为正交归一集，表示为：\\
+  $$
+  \int\limits_a ^b u_m^* (x) u_n (x) dx = 
+  \left \{ 
+  \begin{aligned}
+  &0 \qquad (n \ne m) \\
+  &1 \qquad (n = m) \\
+  \end{aligned} \right.
+  $$
+  ~~\\ 
+例如：$\{\vec{e}_x, \vec{e}_y, \vec{e}_z\}$是三维矢量空间的一个正交归一集
+\[ \vec{e}_i \cdot \vec{e}_i =1, \quad (i=x,y,z) \]
+定义狄拉克记号
+$$
+\delta _{nm} = 
+\left \{ 
+\begin{aligned}
+&0 \qquad (n \ne m) \\
+&1 \qquad (n = m) \\
+\end{aligned} \right.
+$$
+则正交归一性表示为：
+$$
+\int\limits_a ^b u_m^* (x) u_n (x) dx = \delta _{nm}
+$$
+
+\emph{完全集：}如果定义在区间[$a,b$]的任意函数$f(x)$都可以在正交集$\{ u_n (x)\}$上展开
+\begin{equation}\label{eq:completeset}
+ \left \{ 
+\begin{aligned}
+f(x)&= \sum_n a_n u_n (x)  \\
+ a_n &= \dfrac{1}{\int\limits_a ^b u_n^* (x) u_n (x) dx}\int_a ^b u_n^* (x) f(x) dx 
+\end{aligned} \right.
+\end{equation}
+则称$\{ u_n (x)\}$是区间[$a,b$]的一个正交完全集。
+对于正交归一完全集，有
+  $$ \left \{ 
+  \begin{aligned}
+  f(x)&= \sum_n a_n u_n (x)  \\
+   a_n &= \int_a ^b u_n^* (x) f(x) dx 
+  \end{aligned} \right.
+  $$	
+  ~~\\ ${\color{red}\star}~$ 例如：$\{\vec{e}_x, \vec{e}_y, \vec{e}_z\}$是三维矢量空间的一个正交归一完全集， 空间任意矢量都可以在此完全集展开 
+ \[ \left \{ 
+	\begin{aligned}
+	 \vec{P} &= \sum_{i=1}^{3} a_i \vec{e}_i, \quad (i=x,y,z) \\
+	 & a_i = \vec{e}_i \cdot \vec{P}
+	\end{aligned} \right.\]
+  求展开系数正是求内积, 是矢量在对应基矢上的投影，因此也称投影系数。\\
+  ~~\\
+  若
+  \[a_n = \int_a ^b u_n^* (x) f(x) dx \]
+  的值较大，我们就说基函数$u_n(x)$在$f(x)$中的占比较大。\\
+~~\\ 
+${\color{red}\star}~$ 函数集$\displaystyle \{1, \cos~ \dfrac{n\pi}{l} x,\sin~ \dfrac{n\pi}{l} x \}$ 正是[$-l,l$]上的一个正交完全集。因此，定义于$(-\infty,+\infty)$周期为$T=2l$的任意函数都可以在其上展开：
+  $$ \left\{ \begin{aligned}
+	  f(x) &=\dfrac{a_0}{2} +\sum\limits_{n=1}^{\infty}  \left(  a_n \cos~ \dfrac{n\pi}{l} x +  b_n \sin~ \dfrac{n\pi}{l} x  \right) \\ 
+	  &a_n =\dfrac{1}{l}  \int\limits_{-l}^{l}  f(\xi )   \cos~ \dfrac{n\pi}{l} \xi d\xi \\
+	  &b_n =\dfrac{1}{l}  \int\limits_{-l}^{l}  f(\xi )   \sin~ \dfrac{n\pi}{l} \xi d\xi  
+  \end{aligned} \right. $$
+  由式[\ref{eq:completeset}]可得
+  \[ \begin{aligned} \int\limits_a ^b u_n^* (x) u_n (x) dx = \int_{-l}^l \sin~ \dfrac{n\pi}{l} x \sin~ \dfrac{n\pi}{l} x dx = \int_{-l}^l \cos~ \dfrac{n\pi}{l} x \cos~ \dfrac{n\pi}{l} x dx 
+	= \frac{1}{2} \int_{-l}^l \left(1+ \cos~ \dfrac{2n\pi}{l} x \right)dx  
+	= l
+\end{aligned} \]
+显然，公式中的$l$源于函数集$\displaystyle \{1, \cos~ \dfrac{n\pi}{l} x,\sin~ \dfrac{n\pi}{l} x \}$只是一个正交完全集，而不是正交归一完全集。
+
+~~\\ 
+\begin{hint}
+	对傳里叶级数和傳里叶变换的理解，需要具备解函数空间概念。即一个固有值方程的固有函数系是一个正交完备系，张开一个解函数空间。解函数空间中的任意解函数都可以用固有函数的线性叠加来表达。傳里叶级数正是某固有值方程的固有函数系【见第四章】，其收敛性的证明见第五章。
+\end{hint}
+\begin{example}
+试证明傳里叶级数 $\displaystyle \{1, \cos~ \dfrac{n\pi}{l} x,\sin~ \dfrac{n\pi}{l} x \}$ 是 [$-l,l$]上的一个正交集
+\end{example}
+\begin{proof}要证明是正交集，需证明任意两函数正交，\\
+	（1）$\cos$与$1$正交
+		$$\begin{aligned}
+			\int\limits_{-l}^l \cos \dfrac{n\pi}{l} x d x = -\dfrac{l}{n\pi}\left.\sin \dfrac{n\pi}{l} x\right\vert _{-l}^l = -\dfrac{l}{n\pi}(\sin n\pi + \sin n\pi) =0 \quad(n=1,2,3, \ldots )
+			\end{aligned}$$
+	（2）$\sin$与$1$正交	
+	$$\begin{aligned}
+		\int\limits_{-l}^l \sin \dfrac{n\pi}{l} x d x &= \left.\dfrac{l}{n\pi}\cos \dfrac{n\pi}{l} x\right\vert _{-l}^l = \dfrac{l}{n\pi}(\cos n\pi - \cos n\pi) =0 \quad(n=1,2,3, \ldots )
+		\end{aligned}$$
+	(3) $\sin$与$\sin $正交
+	$$
+	\begin{aligned}
+			\int\limits_{-l}^l \sin \dfrac{m\pi}{l} x \cdot \sin \dfrac{n\pi}{l} x d x
+			&= -\frac{1}{2} \int\limits_{-l}^l\left[\cos \dfrac{m+n}{l} \pi x - \cos \dfrac{n-m}{l}\pi x \right]d x\\
+			&=0  \quad(m, n=1,2,3, \ldots ; m \neq n)
+			\end{aligned}  
+	$$ 
+	(4) $\cos$与$\cos $正交
+	$$
+	\begin{aligned}
+		\int\limits_{-l}^l \cos \dfrac{m\pi}{l} x \cdot \cos \dfrac{n\pi}{l} x d x
+		&= \frac{1}{2} \int\limits_{-l}^l\left[\cos \dfrac{m+n}{l} \pi x + \cos \dfrac{n-m}{l}\pi x \right]d x\\
+		&=0  \quad(m, n=1,2,3, \ldots ; m \neq n)
+		\end{aligned} 
+		$$ 
+	(5) $\sin $与$\cos$正交	
+$$
+\begin{aligned}
+\int_{-l}^l \sin \dfrac{m\pi}{l} x \cdot \cos \dfrac{n\pi}{l} x d x & =\frac{1}{2} \int_{-l}^l[\sin (m+n) \dfrac{\pi x}{l}+\sin (m-n) \dfrac{\pi x}{l}] d x \\
+&=0 \quad(m, n=1,2,3, \ldots)
+\end{aligned}
+$$
+\textcolor{red}{证毕！}
+\end{proof}
+ 
+~~\\ 
+\begin{example}
+	试利用傅里叶级数的正交性导出周期函数$f(x)$（$T=2l$）的傅里叶级数展开系数公式
+\end{example}
+	\emph{解：}
+    把$f(x)$做傅里叶级数展开
+	$$ f(x) =\dfrac{a_0}{2} +\sum\limits_{n=1}^{\infty}  \left(  a_n \cos~ \dfrac{n\pi}{l} x +  b_n \sin~ \dfrac{n\pi}{l} x  \right) $$
+	1.求$a_0$ \\
+	展开式两端同时对一个周期积分
+	$$ \int_{-l}^l  f(x) dx = \int_{-l}^l  \dfrac{a_0}{2} dx +\sum\limits_{n=1}^{\infty}  \left(  a_n \int_{-l}^l \cos~ \dfrac{n\pi}{l} x dx+  b_n \int_{-l}^l \sin~ \dfrac{n\pi}{l} x dx \right) $$
+	考虑$1$与$\cos,\sin $之间的正交性，有：
+$$\begin{aligned}
+	\int_{-l}^l  f(x) dx &= \int_{-l}^l  \dfrac{a_0}{2} dx
+=\left.\dfrac{a_0}{2}x\right|_{-l} ^l 
+ =(l-(-l)) \dfrac{a_0}{2} 
+ =2 l \dfrac{a_0}{2} \\
+\implies a_0 & = \dfrac{1}{l} \int_{-l}^l f(x) dx 
+\end{aligned}
+$$
+2. 求$a_n$\\ 对傅里叶级数展开式两端同乘以 $\cos \dfrac{m\pi}{l} x $,再积分
+
+$$\begin{aligned}
+	\int_{-l}^l  f(x) \cos~ \dfrac{m\pi}{l} x dx &= \int_{-l}^l  \dfrac{a_0}{2} \cos~ \dfrac{m\pi}{l} x dx +\sum\limits_{n=1}^{\infty}  \left(  a_n \int_{-l}^l \cos~ \dfrac{m\pi}{l} x \cos~ \dfrac{n\pi}{l} x dx+  b_n \int_{-l}^l \cos~ \dfrac{m\pi}{l} x \sin~ \dfrac{n\pi}{l} x dx \right) \\
+& =0 +\sum\limits_{n=1}^{\infty}  \left(  a_n \int_{-l}^l \cos~ \dfrac{m\pi}{l} x \cos~ \dfrac{n\pi}{l} x dx+  0 \right) 
+\end{aligned}
+$$
+由正交性，只有当$m=n$时，有
+$$\begin{aligned}
+\int_{-l}^l  f(x) \cos~ \dfrac{n\pi}{l} x dx & =a_n \int_{-l}^l \cos~ \dfrac{n\pi}{l} x \cos~ \dfrac{n\pi}{l} x dx
+\end{aligned}
+$$
+由三角函数倍角公式
+$$\begin{aligned}
+	\int_{-l}^l  f(x) \cos~ \dfrac{n\pi}{l} x dx 
+=\dfrac{a_n}{2}  \int_{-l}^l \left(1+ \cos~ \dfrac{2n\pi}{l} x \right)dx  
+=\dfrac{a_n}{2} \int_{-l}^l 1 dx 
+=a_n l 
+\end{aligned}
+$$
+因此，有 
+$$
+ a_n = \dfrac{1}{l} \int_{-l}^l  f(x) \cos~ \dfrac{n\pi}{l} x dx  
+$$ 
+3. 求$b_n$\\
+同理，对傅里叶级数展开式两端同乘以 $\sin~ \dfrac{m\pi}{l} x $,再积分, 可得
+$$\begin{aligned}
+	\int_{-l}^l  f(x) \sin~ \dfrac{m\pi}{l} x dx &= \int_{-l}^l  \dfrac{a_0}{2} \sin~ \dfrac{m\pi}{l} x dx \\
+	& \qquad +\sum\limits_{n=1}^{\infty}  \left( a_n \int_{-l}^l \sin~ \dfrac{m\pi}{l} x \cos~ \dfrac{n\pi}{l} x dx+  b_n \int_{-l}^l \sin~ \dfrac{m\pi}{l} x \sin~ \dfrac{n\pi}{l} x dx \right) \\
+& =0 +\sum\limits_{n=1}^{\infty} \left(0 + b_n \int_{-l}^l \sin~ \dfrac{m\pi}{l} x \sin~ \dfrac{n\pi}{l} x dx \right)  
+\end{aligned}
+$$
+由正交性，只有当$m=n$时，有
+$$\begin{aligned}
+\int_{-l}^l  f(x) \sin~ \dfrac{n\pi}{l} x dx & =b_n \int_{-l}^l \sin~ \dfrac{n\pi}{l} x \sin~ \dfrac{n\pi}{l} x dx  = b_n l
+\end{aligned}
+$$
+得
+$$b_n  = \dfrac{1}{l} \int_{-l}^l  f(x) \sin~ \dfrac{n\pi}{l} x dx $$
+\textcolor{red}{结束！}
+
+
+\subsection{应用实例}
+\begin{example} 
+	求函数$f(x)$的傳里叶级数展开式
+$$ f(x)=\begin{cases}
+		1 , ~~~ x \in [0, \pi] \\
+         \\
+		-1 ,~~~ x \in [-\pi, 0] 
+	\end{cases} $$
+\end{example}
+\emph{解：} 
+	这是个非同期函数，做周期性（$T=2\pi$）延拓到整个空间，所得周期函数如图[\ref{fig:prolongation}]所示。
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\textwidth]{figs/fft0.png}
+		\caption{周期性延拓}
+		\label{fig:prolongation}
+	\end{figure}
+    ~~\\ 
+	这是个奇函数，展开式中只含$\sin~ \dfrac{n\pi}{l} x$函数，即$\cos~ \dfrac{n\pi}{l} x$函数前的$a_n=0$, 只需计算 $b_n$ 
+	$$ \begin{aligned}
+		b_n &= \dfrac{1}{l} \int\limits_{-l}^{+l} f(x) \sin~ \dfrac{n\pi}{l} x  d x = \dfrac{1}{\pi} \int\limits_{-\pi}^{+\pi} f(x) \sin n x d x  
+	\end{aligned}  $$
+	分段积分
+	$$ \begin{aligned}
+		b_n &= \dfrac{1}{\pi} \int\limits_{0}^{+\pi} (+1) \sin n x d x +\dfrac{1}{\pi} \int\limits_{-\pi}^{0} (-1) \sin n x d x \\ 
+		&= \dfrac{2}{\pi}\int\limits_{0}^{+\pi} \sin n x d x   \\
+		&= \left. \frac{2}{n\pi} [\cos nx ] \right\vert _0 ^\pi = \frac{2}{n\pi} [ (-1) ^n -1] 
+	\end{aligned}  $$
+	只有当$n$为奇数时，$b_n$不为零
+	$$b_{2k+1} = \frac{2}{n\pi} [ (-1) ^n -1] =  -\frac{4}{(2k+1)\pi}$$
+	代回傳里叶展开式， 得：
+$$  \begin{aligned}
+	f(x) &=\dfrac{a_0}{2} +\sum\limits_{n=1}^{\infty}  \left(  a_n \cos~ \dfrac{n\pi}{l} x +  b_n \sin~ \dfrac{n\pi}{l} x  \right) \\
+	&= \sum_{k=0}^{\infty} -\frac{4}{(2k+1)\pi} \sin(2k+1) \frac{\pi}{\pi} dx \\
+ &= -\dfrac{4}{\pi} \sum_{k=0}^{\infty}  \dfrac{1}{2k+1} \sin(2k+1) dx \\ 
+\end{aligned}   
+ $$ 
+
+
+\begin{example}
+计算函数$f(x)=e^{-|x|}$的傅里叶变换 
+\end{example}
+\emph{解：}
+ 令变换函数为$ G(\omega) $, 有 \[
+	\begin{aligned}
+		G(\omega) &= \int_{-\infty}^{\infty} e^{-|x|} e^{-i\omega x} dx \\ 
+		&=\int_{-\infty}^{0} e^{x} e^{-i\omega x} dx + \int_{0}^{\infty} e^{-x} e^{-i\omega x} dx 
+	\end{aligned}
+	\]
+	\[
+	\begin{aligned}
+		G(\omega)
+		&=\int_{0}^{\infty} e^{-y} e^{i\omega y} dy + \int_{0}^{\infty} e^{-x} e^{-i\omega x} dx \\
+		&= \int_{0}^{\infty} e^{-x} e^{i\omega x} dx + \int_{0}^{\infty} e^{-x} e^{-i\omega x} dx \\
+		&= \int_{0}^{\infty} e^{-x} (e^{i\omega x} +e^{-i\omega x} )dx
+	\end{aligned}
+	\]
+	代入欧拉公式
+	\[ e^{i\omega x} = \cos \omega x + i \sin \omega x, \quad e^{-i\omega x} = \cos \omega x - i \sin \omega x  \]
+	得
+	\[
+		\begin{aligned}
+			G(\omega) 
+			= 2 \int_{0}^{\infty} e^{-x} \cos \omega xdx = \frac{2}{1+\omega ^2}
+		\end{aligned}
+	\]
+	因此，有
+	\[
+	\begin{aligned}
+		f(x) &= \frac{1}{2\pi}\int_{-\infty}^{\infty} G(\omega) e^{i\omega x} d\omega \\ 
+		&=\frac{1}{\pi}\int_{-\infty}^{\infty} \frac{1}{1+\omega ^2} e^{i\omega x} d\omega  \\
+		&=\frac{1}{\pi}\int_{-\infty}^{\infty} \frac{1}{1+\omega ^2} (\cos \omega x + i \sin \omega x) d\omega  \\
+		&= \frac{2}{\pi} \int_{0}^{\infty} \frac{\cos \omega x}{1+\omega ^2} d\omega
+	\end{aligned}
+	\]
+	\textcolor{red}{解毕！}\\
+	~~\\
+	变形，有
+	\[ \int_{0}^{\infty} \frac{\cos \omega x}{1+\omega ^2} d\omega = \frac{\pi}{2} e^{-|x|} \]
+	取$x=0$,得重要积分公式
+	\[ \int_{0}^{\infty} \frac{1}{1+\omega ^2} d\omega = \frac{\pi}{2} \]
+
+
+
+~~\\ 
+\begin{example} 
+	量子力学中,某体系在坐标表象中的波函数如下，求在动量表象中的波函数
+$$\Psi(x)=\frac{1}{\sqrt{2\pi \hbar}}  \int_{-\infty}^{+\infty} c(p) e^{\frac{i}{\hbar} px} dp $$
+\emph{解：} 
+令 $\hbar k =  p$, $\hbar dk =  dp$，代入, 得
+$$\Psi(x)=\frac{\sqrt{\hbar} }{\sqrt{2\pi}}  \int_{-\infty}^{+\infty} c(p) e^{i k x} dk $$
+运用傳里叶变换公式，有
+$$ \frac{\sqrt{\hbar} }{\sqrt{2\pi}} c(p)= \frac{1}{2\pi} \int_{-\infty}^{+\infty}  \Psi(x) e^{-i k x} dx $$
+整理，得
+$$ c(p)= \dfrac{1}{\sqrt{2\pi \hbar}} \int_{-\infty}^{+\infty} \Psi(x) e^{-\frac{i}{\hbar} p x} d x $$
+这正是动量表象中的波函数。
+
+\end{example}
+
+\subsection{傅里叶变换的性质}
+~~\\
+线性性质: $\displaystyle c_1 f_1(x)+c_2 f_2(x) \longleftrightarrow c_1 \tilde{f}_1(k)+c_2 \tilde{f}_2(k)$\\
+相似性质: $\displaystyle f(a x) \longleftrightarrow \frac{1}{|a|} \tilde{f}\left(\frac{k}{a}\right)(a \neq 0)$\\
+微分性质: 若 $\displaystyle \left.f^{(\mathrm{en})}(x)\right|_{x \rightarrow \pm \infty}=0 \quad(m=0,1,2$,
+$\cdots, n-1)$, 则
+$$
+f^{(\mathrm{n})}(x) \longleftrightarrow(\mathrm{ik})^n \tilde{f}(k) \quad(n=1,2,3, \cdots)
+$$
+$~~\qquad\qquad \text{若} \displaystyle \left.f^{(m)}(k)\right|_{k+t+\infty}=0(m=0,1,2, \cdots, n-1)$, 则
+$$
+(-\mathrm{i} x)^n f(x) \longleftrightarrow \bar{f}^{(n)}(k) \quad(n=1,2,3, \cdots)
+$$
+积分性质: 若 $\displaystyle \int_{-\infty}^{+\infty} f(\xi) \mathrm{d} \xi=0$, 则
+$$
+\int_{-\infty}^* f(\xi) \mathrm{d} \xi \longleftrightarrow \frac{1}{\mathrm{i} k} \tilde{f}(k)
+$$
+$~~\qquad\qquad \text{若} \displaystyle \int_{-\infty}^{+\infty} \bar{f}(\eta) \mathrm{d} \eta=0$, 则
+$$
+\frac{1}{-\mathrm{i} x} f(x) \longleftrightarrow \int_{-\infty}^k \tilde{f}(\eta) \mathrm{d} \eta
+$$
+延迟性质： $\displaystyle f\left(x-x_0\right) \longleftrightarrow e^{-i_2} \bar{j}(k)$\\
+位移性质: $\displaystyle f(x) e^{-i \mathbf{k}_n=} \longleftrightarrow \tilde{f}\left(k+k_0\right)$\\
+卷积定理：
+$$
+\begin{aligned}
+& \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} f_1(\xi) f_2(x-\xi) \mathrm{d} \xi \longleftrightarrow \bar{f}_1(k) \bar{f}_2(k) \\
+& f_1(x) f_2(x) \longleftrightarrow \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} \tilde{f}_1(\eta) \bar{f}_2(k-\eta) \mathrm{d} \eta
+\end{aligned}
+$$
+Parseval 等式:
+$$
+\begin{gathered}
+\int_{-\infty}^{+\infty} f(x) g^*(x) \mathrm{d} x=\int_{-\infty}^{+\infty} \tilde{f}(k) \bar{g}^*(k) \mathrm{d} k \\
+\int_{-\infty}^{+\infty}|f(x)|^2 \mathrm{~d} x=\int_{-\infty}^{+\infty}|\tilde{f}(k)|^2 \mathrm{~d} k
+\end{gathered}
+$$
+~~\\ 
+
+\begin{Exercises}
+	\item 
+		试用分离变量法求解方程
+		\begin{equation*}
+		(1) \quad \frac{d y}{d x}=f\left(\frac{y}{x}\right), \qquad (2)\quad\left(x-y \cos \frac{y}{x}\right) d x+x \cos \frac{y}{x} d y=0
+		\end{equation*}
+	\item  
+		求解非齐次振动方程 
+		$$\begin{cases}
+			u^{\prime \prime} +\omega ^2 u =t^2+2t, (t>0)\\
+			u(0)=0, u'(0)=0
+		\end{cases}$$
+	\item 求函数的傳里叶展开式：
+	 $\displaystyle f(x)=\begin{cases}
+			\pi +x , ~~~ x \in [-\pi, 0] \\
+			\pi -x ,~~~ x \in   [0, \pi] 
+		\end{cases}$
+	\item 试用分离变量法求解初值问题
+	\begin{equation*}
+			\frac{dy}{dt}	=  r y (1-\frac{y}{K}), ~~~~ y(t_0) = y_0
+		\end{equation*}
+	\item 试求解方程
+		$$ u'' - k ^2 u =0, \quad (k > 0) $$
+	\item 试用幂级数法求解方程
+	\begin{equation*}
+			\frac{d^2 y}{d x^2} -2x \frac{d y}{d x} +2n y =0 
+		\end{equation*}
+	\item 试证明	
+	$$\begin{aligned}
+	\int\limits_{-l}^l \sin \dfrac{m\pi}{l}  x \cdot \cos \dfrac{n\pi}{l} x d x &=0 \quad(m, n=1,2,3, \ldots ; m \neq n) \\
+	\int\limits_{-l}^l \sin \dfrac{m\pi}{l} x \cdot \sin \dfrac{n\pi}{l} x d x= &0  \quad(m, n=1,2,3, \ldots ; m \neq n) \\
+	\int_{-l}^l \cos \dfrac{n\pi}{l} x \cos \dfrac{n\pi}{l} x dx = &\int_{-l}^l \sin \dfrac{n\pi}{l} x \sin \dfrac{n\pi}{l} x dx =  l
+	\end{aligned} $$
+	\item 试利用三角级数正交性计算积分  
+	$$ \int_{-l}^l (3\cos \dfrac{\pi}{l} x+ 5\cos \dfrac{3\pi}{l}x )\cos \dfrac{n\pi}{l} x dx  $$
+	\item 若函数内积定义为
+			$$\left( f(x), g(x) \right) = \int_{0}^{l} f^*(x)g(x) dx$$
+			试计算内积（式中$n,m =1,2,3,\cdots$）
+			$$\left(\sin \frac{n\pi}{l} x , x^3(x-l)^2 \right),  \qquad \left(\sin \frac{\pi}{l}x , \cos\frac{2\pi}{l}x \right), \qquad \left(\sin \frac{n\pi}{l} x , (1+\cos\frac{m\pi}{l}x) \right) $$
+	\item 求满足下列条件的二元函数：$u(x, y)$
+	      $$ \begin{aligned}
+			1. \quad  \frac{\partial u}{\partial x}=0, \qquad \qquad 
+			2. \quad \frac{\partial^2 u}{\partial x \partial y}=0 , \qquad \qquad 
+            3. \quad \frac{\partial^2 u}{\partial x \partial y}+\frac{\partial u}{\partial y} =0
+		  \end{aligned} $$
+  \end{Exercises}

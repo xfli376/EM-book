@@ -1,0 +1,1034 @@
+% To be included
+\chapter{解析函数}
+解析函数是一类具有特定性质的可微函数。本章首先引入判断函数可微或解析的主要条件：柯西-黎曼方程， 然后把实数域中常用的初等函数推广到复数域，并研究它们的性质。
+
+\section{解析函数基本概念}\label{}
+
+\subsection{复变函数的导数}
+
+\begin{definition}
+    \label{}\index{}
+    设复变函数$w = f(z)$定义于区域$E$，$z_0$是$E$内一点，且$z_0 + \Delta z$依然在$E$内，
+    如果存在极限
+    \begin{equation}
+        \lim_{\Delta z \to 0} \frac{\Delta w}{\Delta z}= \lim_{\Delta z \to 0}  \frac{f(z_0 +  \Delta z) - f(z_0)}{\Delta z}
+    \end{equation}
+   则称函数$f(z)$在$z_0$点可导。这个极限值称为函数$f(z)$在$z_0$点的\emph{导数}，记为
+    \begin{equation}
+        f'(z_0) = \left.\frac{\mathrm{d} w }{\mathrm{d} z} \right|_{z=z_0} = \lim_{\Delta z \to 0} \frac{\Delta w}{\Delta z}= \lim_{\Delta z \to 0}  \frac{f(z_0 +  \Delta z) - f(z_0)}{\Delta z}
+    \end{equation}
+\end{definition}
+考虑自变量发生变化$\Delta z$时, 因变量对应地发生变化$\Delta w$，令它们的比值为
+\[ A = \frac{\Delta w}{\Delta z}\]
+因此有 
+\[ |\Delta w| = |A| |\Delta z|, \quad \text{Arg}(\Delta w) -\text{Arg}(\Delta z) = \text{Arg}(A)  \]
+即：$|A|$是两个变化量之间的伸缩率，$\text{Arg}(A) $是两个变化量之间的夹角。如果函数$f(z)$在$z_0$点可导，则对于任意极小的变化量$\Delta z$, 比值$\dfrac{\Delta w}{\Delta z}$恒为$A$。这说明两个变化量之间的伸缩率和夹角都保持不变，称为\emph{保形性}。因此可导的几何意义就是函数在$z_0$附近具有保形性。如果不具有保形性，则不可导。实变函数的导数只描述伸缩率的不变性，复变函数的导数同时描述了伸缩率和夹角的不变性。
+
+导数也可采用$\varepsilon-\delta$语言进行定义：
+\begin{definition}
+  \label{}\index{}
+  设函数$w = f(z)$定义于区域$E$，$z_0$是$E$内一点，且$z_0 + \Delta z$依然在$E$内，
+  对于任意给定的$\varepsilon>0$, 存在一个$\delta>0$， 使得当$|\Delta z|< \delta$时，有
+  \[\left|\frac{f(z_0 +  \Delta z) - f(z_0) }{\Delta z} - f'(z_0)\right| < \varepsilon\] 
+  成立，则称函数$f(z)$在$z_0$点可导，并称$f'(z_0)$是函数$f(z)$在$z_0$点导数。
+\end{definition}
+说明：\begin{compactitem}
+    \item 函数在某点的导数具有惟一性，与$\Delta z \to 0$的具体路径无关。
+    \item 若函数$f(z)$在$z_0$点可导，则函数$f(z)$在$z_0$点必然连续。
+    \item 若函数$f(z)$在$z_0$点连续，则函数$f(z)$在$z_0$点不一定可导。
+\end{compactitem}
+
+\begin{example}
+  由导数的定义求函数
+\[ f(z) = z^2\]
+的导数.
+\end{example}
+\emph{解：} 根据导数的定义，有 
+\[ \begin{aligned}
+f'(z) &= \lim_{\Delta z \to 0 }  \frac{f(z +  \Delta z) - f(z)}{\Delta z} \\
+&= \lim_{\Delta z \to 0 }  \frac{(z +  \Delta z)^2 - z^2}{\Delta z} \\
+&=  \lim_{\Delta z \to 0 } (2z +  \Delta z) \\
+&= 2z
+\end{aligned}\]
+
+\begin{definition}
+      \label{}\index{}
+      如果函数$w =f(z)$在$z_0$点可导， 则
+      \[ \Delta w = f(z_0 + \Delta z) - f(z_0) =  f'(z_0)\cdot \Delta z + O(\Delta z)\Delta z
+      \]
+      式中$\lim\limits_{\Delta z \to 0} O(\Delta z) =0 $,$ \left\vert O(\Delta z)\Delta z\right\vert$ 是 $\left\vert \Delta z \right\vert$的高阶无穷小,$f'(z_0)\cdot \Delta z$是函数$w = f(z)$ 对于改变量$\Delta w$的线性部分，称为函数$w = f(z)$ 在点 $z_0$的\emph{微分}，记为
+      \[ \mathrm{d}w = f'(z_0)\cdot \Delta z\]
+      函数$w = f(z)$ 在点 $z_0$的微分存在，则称$w = f(z)$ 在点 $z_0$可微。如果$w = f(z)$ 在区域$E$处处可微，则称函数$w = f(z)$ 在区域$E$可微。 
+  \end{definition}
+  特别地，当$f(z) =z$时，有 $f'(z) =1$
+  \[ \mathrm{d}w = \mathrm{d}z = f'(z)\Delta z = \Delta z \]
+  因此有
+  \[ \mathrm{d}w = f'(z_0)\cdot \Delta z = f'(z_0) \mathrm{d} z\]
+  可得
+  \[ f'(z_0) = \left.\frac{\mathrm{d} w }{\mathrm{d} z} \right|_{z=z_0} \]
+  因此，函数在点 $z_0$可微与函数在点 $z_0$可导是等价的。
+  
+  \begin{theorem}\label{} \index{}
+        函数$f(z) = u(x,y) + iv(x,y)$ 定义在区域$E$， 则函数$f(z)$ 在$E$内一点$z = x+y i$ 可微/可导的充要条件为：
+        \begin{compactenum}[(i)]
+          \item 实函数$u(x,y)$和$v(x,y)$在点$(x,y)$可微/可导  
+          \item 实函数$u(x,y)$和$v(x,y)$在点$(x,y)$满足柯西-黎曼方程（C-R方程）
+          \begin{equation}
+            \frac{\partial u}{\partial x } = \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y } = - \frac{\partial v}{\partial x}
+          \end{equation}
+        \end{compactenum}
+\end{theorem}
+柯西-黎曼方程表明：可导的复变函数，其实部函数和虚部函数之间有联系，并不是相互独立的。柯西-黎曼方程可以简写成
+\begin{equation}
+  u_x= v_y, \quad u_y= - v_x
+\end{equation}
+\begin{proof}
+  (1) 必要性， 设 
+  \[ f(z) = u(x,y) + iv(x,y)\]
+  有
+  \[\frac{\Delta w}{\Delta z}=\frac{u\left(x_{0}+\Delta x, y_{0}+\Delta y\right)-u\left(x_{0}, y_{0}\right)}{\Delta x+i \Delta y}+i \frac{v\left(x_{0}+\Delta x, y_{0}+\Delta y\right)-v\left(x_{0}, y_{0}\right)}{\Delta x+i \Delta y}\]
+  考虑 $f(z)$ 在点$z_0$处的导数,\\
+  若从x方向逼近
+  \[ \begin{aligned}
+    f^{\prime}\left(z_{0}\right) &=\lim\limits _{\Delta x \rightarrow 0} \frac{u\left(x_{0}+\Delta x, y_{0}\right)-u\left(x_{0}, y_{0}\right)}{\Delta x}+i \lim\limits_{\Delta x \rightarrow 0} \frac{v\left(x_{0}+h, y_{0}\right)-v\left(x_{0}, y_{0}\right)}{\Delta x} \\
+    &=\frac{\partial u}{\partial x}\left(x_{0}, y_{0}\right)+i \frac{\partial v}{\partial x}\left(x_{0}, y_{0}\right)
+    \end{aligned}\] 
+    若从y方向逼近
+    \[ \begin{aligned}
+      f^{\prime}\left(z_{0}\right) &=\lim\limits _{\Delta y \rightarrow 0} \frac{u\left(x_{0}, y_{0} +\Delta y\right)-u\left(x_{0}, y_{0}\right)}{i \Delta y}+i \lim\limits_{\Delta y \rightarrow 0} \frac{v\left(x_{0}, y_{0}+\Delta y\right)-v\left(x_{0}, y_{0}\right)}{i\Delta y} \\
+      &=\frac{\partial v}{\partial y}\left(x_{0}, y_{0}\right)-i \frac{\partial u}{\partial y}\left(x_{0}, y_{0}\right)
+      \end{aligned}\] 
+    如果可导，则两条不同路径得到的结果必相等, 得柯西-黎曼方程 
+    \[ \frac{\partial u}{\partial x } = \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y } = - \frac{\partial v}{\partial x}\]
+    因此柯西-黎曼方程是必要条件，即：若函数$f(z)$在$z_0$不满足柯西-黎曼方程，则在$z_0$点不可微/不可导。\\
+    (2) 充分性， 设 
+    \[ h= h_1 + ih_2\]
+    由两实函数的可微性 
+    \[
+    \begin{aligned}
+    & u\left(z_0+h\right)-u\left(z_0\right)=\frac{\partial u}{\partial x}\left(z_0\right) h_1+\frac{\partial u}{\partial y}\left(z_0\right) h_2+o(h) \\
+    & v\left(z_0+h\right)-v\left(z_0\right)=\frac{\partial v}{\partial x}\left(z_0\right) h_1+\frac{\partial v}{\partial y}\left(z_0\right) h_2+o(h)
+    \end{aligned}
+    \]
+    由柯西-黎曼方程
+    \[v\left(z_0+h\right)-v\left(z_0\right)=-\frac{\partial u}{\partial y}\left(z_0\right) h_1+\frac{\partial u}{\partial x}\left(z_0\right) h_2+o(h)\]
+    所以，有
+    \[\begin{aligned}
+      u\left(z_0+h\right)+i v\left(z_0+h\right)-u\left(z_0\right)-i v\left(z_0\right) &=\left(\frac{\partial u}{\partial x}-i \frac{\partial u}{\partial y}\right)\left(h_1+i h_2\right) \\
+      & =f^{\prime}\left(z_0\right)\left(h_1+i h_2\right)+o(h)
+    \end{aligned}\]
+    即复函数$f(z)$ 在点$z_0$处可导。
+\end{proof}
+
+\begin{example}
+    试确定复变函数
+  \[ f(z) = x + 2y i\]
+  是否可导
+\end{example}
+\emph{解：} 函数若可导，要求存在极限
+\[\lim_{\Delta z \to 0 }  \frac{f(z +  \Delta z) - f(z)}{\Delta z} \]
+取$z= x+yi$代入,得
+\[ \begin{aligned}
+  \lim_{\Delta z \to 0 }  \frac{f(z +  \Delta z) - f(z)}{\Delta z}  &= \lim_{\Delta z \to 0 }  \frac{(x +  \Delta x)  + 2(y +  \Delta y) i  - (x + 2y i )}{\Delta x + \Delta y i}  \\ 
+  &= \lim_{\Delta z \to 0 } \frac{\Delta x + 2 \Delta y i} {\Delta x +  \Delta y i} 
+\end{aligned}\]
+(1) 若$z+ \Delta z$沿着与x轴平行的方向趋于$z$, 则有 $\Delta y =0$, 代入 
+\[ \lim_{\Delta z \to 0 } \frac{\Delta x + 2 \Delta y i} {\Delta x +  \Delta y i}  =  \lim_{\Delta z \to 0 } \frac{\Delta x } {\Delta x }  =1 \]
+(2) 若$z+ \Delta z$沿着与y轴平行的方向趋于$z$, 则有 $\Delta x =0$, 代入 
+\[ \lim_{\Delta z \to 0 } \frac{\Delta x + 2 \Delta y i} {\Delta x +  \Delta y i}  =  \lim_{\Delta z \to 0 } \frac{2 \Delta y i } {\Delta y i }  =2 \]
+不具唯一性，极限不存在，因此复变函数 $f(z) = x + 2y i$ 不可导。
+
+\begin{example}
+  试证明函数$f(z) = \sqrt{xy}$在$z=0$处不可导但满足C-R方程
+\end{example}
+\begin{proof}
+  (1) 计算比值 
+  \[ \frac{\Delta w  }{\Delta z } = \frac{f(z) -f(0) }{z -0 } =  \frac{\sqrt{xy}}{x+yi } \]
+  选取趋近方式为$y=kx$,代入上式 
+  \[ \frac{\Delta w  }{\Delta z } = \frac{\sqrt{k}}{1+ik } \]
+  这是个随k变的值，因此 $\lim\limits_{z \to 0} \frac{f(z) -f(0) }{z -0 } $ 不存在\\
+  即函数$f(z) = \sqrt{xy}$在$z=0$处不可导。\\ 
+  (2) 由于$w=\sqrt{xy} = u +i v $, 因此有 
+  \[ u(x,y) = \sqrt{xy}, \qquad v(x,y)=0\]
+  求四个偏分
+  \[u_x(0,0) = \lim\limits_{x \to 0} \frac{u(x,0) -u(0,0) }{x -0 } =0 = v_y(0,0) \]
+  \[u_y(0,0) = \lim\limits_{y \to 0} \frac{u(0,y) -u(0,0) }{y -0 } =0 = -v_x(0,0) \]
+  即函数$f(z) = \sqrt{xy}$在$z=0$处满足C-R方程。
+\end{proof}
+
+\begin{example}
+    试证明复变函数
+    \[ f(z) = z ^n, \, n \in \mathbb{Z}^+\]
+    在z平面处处可导。
+\end{example}
+\begin{proof}
+    计算极限
+  \[ \begin{aligned}
+    \lim_{\Delta z \to 0 }  \frac{f(z +  \Delta z) - f(z)}{\Delta z}  
+    &=   \lim_{\Delta z \to 0 }  \frac{(z +  \Delta z)^n - z^n}{\Delta z}  \\
+    &=    \lim_{\Delta z \to 0 } \left[n z^{n-1} + \frac{n(n-1)}{2}z^{n-2} \Delta z + \cdots + (\Delta z)^{n-1} \right] \\
+    &= n z^{n-1} 
+  \end{aligned}\]
+  极限处处存在，因此函数在z平面处处可导。
+\end{proof}
+
+\begin{example}
+  试证柯西-黎曼方程具有如下极坐标形式
+\begin{equation}
+  u_r = \frac{1}{r}v_\theta, \quad v_r = -\frac{1}{r} u_\theta
+\end{equation}
+\end{example}
+\begin{proof}
+存在坐标变换关系
+\[ \begin{cases}
+	x = r\cos\theta \\
+	y = r \sin \theta \\ 
+\end{cases}\]
+  根据二元函数链式求导法则，有
+  \[ \begin{aligned}
+    u_r &= u_x x_r + u_y y_r \\
+        &= u_x \cos \theta + u_y \sin \theta \\
+    u_\theta & = u_x x_\theta + u_y y_\theta \\
+        & = -u_x  r \sin \theta  + u_y r \cos \theta 
+  \end{aligned}\]
+  同理可得
+  \[ \begin{aligned}
+    v_r &= v_x x_r + v_y y_r \\
+        &= v_x \cos \theta + v_y \sin \theta \\
+    v_\theta & = v_x x_\theta + v_y y_\theta \\
+        & = -v_x  r \sin \theta  + v_y r \cos \theta 
+  \end{aligned}\]
+  代入
+  \[ u_x = v_y, \quad u_y =-v_x\]
+  得
+  \[ v_r = -u_y \cos \theta + u_x \sin \theta, \quad  v_\theta = u_y  r \sin \theta  + u_x r \cos \theta  \]
+  比较$u_r$与$v_\theta$，$v_r$与$u_\theta$, 得
+  \[ u_r = \frac{1}{r}v_\theta, \quad v_r = -\frac{1}{r} u_\theta\]
+\end{proof}
+
+\begin{definition}
+  如果 $f(z)$在区域$E$内任意一点都可导，则称$f(z)$在区域$E$可导。函数$f(z)$ 在区域$E$内每一点$z$的函数会随着$z$的变化而变化，因此这些导数构成一个关于$z$的函数，称为函数$f(z)$在区域$E$内的\emph{导函数},也简称导数，记为$f'(z)$或$\dfrac{dw}{dz}$。
+  \end{definition}
+  由二元函数求导公式并结合柯西-黎曼方程，得导数公式：
+  \begin{equation}\label{} 
+      \begin{aligned}
+          f'(z) &= \frac{\partial u}{\partial x} + i \frac{\partial v }{\partial x} = \frac{\partial v}{\partial y} - i \frac{\partial u }{\partial y} = \frac{\partial u}{\partial x} - i \frac{\partial u }{\partial y} =
+          \frac{\partial v}{\partial y} + i \frac{\partial v }{\partial x}   \\
+      \end{aligned}
+  \end{equation}
+  因此，当$f(z)$可导时，仅由实部或者仅由虚部可以求出其导数。利用此公式求导，可免去分析极限所带来的困难。
+
+~\\
+\noindent\emph{导数的运算法则} 
+
+复变函数的导数定义与实变函数的定义类似，因此复变函数的导数运算法则与实变函数的保持一致。
+\begin{compactenum}[(1)]
+  \item 导数的四则运算
+  \begin{enumerate}
+    \item $(c)' =0, \, c$为复常数 \vspace{0.3em}
+    \item $(z^n)' =n z^{n-1}, \, n$为正整数 \vspace{0.3em}
+    \item $ [f(z) \pm g(z)]' = f'(z) \pm g'(z)$ \vspace{0.3em}
+    \item $ [f(z) g(z)]' = f'(z) g(z) + f(z) g'(z) $ \vspace{0.3em}
+    \item $ \left[\dfrac{f(z)}{g(z)} \right]' = \dfrac{f'(z) g(z) - f(z) g'(z)}{g^2(z)}, \, \quad  g(z) \ne 0 $ 
+  \end{enumerate}
+  \item 复合函数的求导法则 $\left[ f(g(z))\right]' = f'(w)g'(z)$ 
+  \item 反函数的求导法则  $ [f^{-1}]'(w)  = \left. \dfrac{1}{f'(z)} \right|_{z=f^{-1}(w)} = \dfrac{1}{f'[f^{-1}(w)]}  $
+\end{compactenum}
+
+
+\begin{example}
+  求函数
+    \[ f(z) = (3z^2 -4z +5)^{11}\]
+  的导数.
+\end{example}
+\emph{解：} 由复合函数求导法则
+\[ \begin{aligned}
+  f'(z) &= 11 (3z^2 -4z +5)^{10} \cdot \frac{\mathrm{d}}{\mathrm{d}z } (3z^2 -4z +5) \\ 
+  &=  11 (3z^2 -4z +5)^{10} (6z-4) \\
+  &= 22(3z-2)(3z^2 -4z +5 )^{10}
+\end{aligned}\]
+
+\subsection{复变函数的解析性}
+
+\begin{definition}\label{}\index{}
+函数$w = f(z)$定义于区域$E$，$z_0$是$E$内一点，如果$f(z)$在$z_0$点及$z_0$的邻域内处处可导，则称$f(z)$在$z_0$点\emph{解析}。如果函数$f(z)$在$z_0$点不解析，则称$z_0$是函数$f(z)$的一个\emph{奇点}。\\
+如果 $f(z)$在区域$E$内任意一点都解析，则称$f(z)$是区域$E$的一个\emph{解析函数}，也称全纯函数或正则函数。
+\end{definition}
+说明：
+\begin{compactitem}
+    \item 解析函数这一重要概念, 是与相伴区域密切联系的。 函数$f(z)$在$z_0$解析，则函数$f(z)$在$z_0$可微。函数$f(z)$在$z_0$可微，但函数$f(z)$在$z_0$不一定解析， 因为它在其$z_0$的邻域内不一定处处可微。
+    \item 函数$f(z)$在区域$E$可微/可导，则函数$f(z)$在区域$E$解析，两者是等价的。
+    \item 通常泛称的解析函数是容许有奇点的, 但更主要的是, 它在复平面上总有解析点。
+\end{compactitem}
+
+\begin{example}
+    分析下列函数的解析性
+  \[ f(z) = z^2, \quad  g(z) = x+ 2yi, \quad h(z) =\left\vert z\right\vert^2 \]
+\end{example}
+  \emph{解:} （1）根据导数的定义，有 
+  \[ \begin{aligned}
+    f'(z) &= \lim_{\Delta z \to 0 }  \frac{f(z +  \Delta z) - f(z)}{\Delta z} \\
+    &= \lim_{\Delta z \to 0 }  \frac{(z +  \Delta z)^2 - z^2}{\Delta z} \\
+    &=  \lim_{\Delta z \to 0 } (2z +  \Delta z) \\
+    &= 2z
+  \end{aligned}\]
+  即$f(z)$在复平面处处可导，根据解析函数的定义，它在整个复平面是解析函数.\\
+  （2）根据导数的定义
+  \[\lim_{\Delta z \to 0 }  \frac{g(z +  \Delta z) - g(z)}{\Delta z} \]
+  取$z= x+yi$代入,得
+  \[ \begin{aligned}
+    \lim_{\Delta z \to 0 }  \frac{g(z +  \Delta z) - g(z)}{\Delta z}  &= \lim_{\Delta z \to 0 }  \frac{(x +  \Delta x)  + 2(y +  \Delta y) i  - (x + 2y i )}{\Delta x + \Delta y i}  \\ 
+    &= \lim_{\Delta z \to 0 } \frac{\Delta x + 2 \Delta y i} {\Delta x +  \Delta y i} 
+  \end{aligned}\]
+  \begin{inparaenum}[(i)]
+    \item 若$z+ \Delta z$沿着与x轴平行的方向趋于$z$, 则有 $\Delta y =0$, 代入 
+    \[ \lim_{\Delta z \to 0 } \frac{\Delta x + 2 \Delta y i} {\Delta x +  \Delta y i}  =  \lim_{\Delta x \to 0 } \frac{\Delta x } {\Delta x }  =1 \]
+    \item 若$z+ \Delta z$沿着与y轴平行的方向趋于$z$, 则有 $\Delta x =0$, 代入 
+    \[ \lim_{\Delta z \to 0 } \frac{\Delta x + 2 \Delta y i} {\Delta x +  \Delta y i}  =  \lim_{\Delta y \to 0 } \frac{2 \Delta y i } {\Delta y i }  =2 \]
+\end{inparaenum}
+因此函数 $g(z) = x + 2y i$ 在复平面处处不可导，处处不解析。\\
+（3）计算极限
+  \[ \begin{aligned}
+    \lim_{\Delta z \to 0 }  \frac{h(z_0 +  \Delta z) - h(z_0)}{\Delta z}  
+    &=   \lim_{\Delta z \to 0 }  \frac{ \left\vert z_0 +  \Delta z \right\vert^2  - \left\vert z_0 \right\vert^2 }{\Delta z}  \\
+    &=   \lim_{\Delta z \to 0 } \frac{(z_0 +  \Delta z) (z_0^* +  (\Delta z)^*) - z_0z_0 ^* }{\Delta z} \\
+    &= \lim_{\Delta z \to 0 } \left( z_0^* + (\Delta z)^* + z_0\frac{(\Delta z)^*}{\Delta z}\right)
+  \end{aligned}\]
+  \begin{inparaenum}[(i)]
+    \item 当$z_0=0$, 上式 $= 0$. 说明函数在原点可导。\\
+    \item 当$z_0\ne 0$, 令 $\Delta z $沿直线 
+    \[ y-y_0 = k(x-x_0)\]
+    趋于$z_0$时，有
+    \[ \begin{aligned}
+      \frac{(\Delta z)^*}{\Delta z} &= \frac{\Delta x- i\Delta y }{\Delta x+ i\Delta y }  \\
+      &= \frac{1- i \frac{\Delta y}{\Delta x} }{1+ i \frac{\Delta y}{\Delta x}} \\
+      &=   \frac{1- ik }{1+ i k} 
+    \end{aligned}\]
+    由于$k$的任意性, 当$\Delta z$趋零时, $\dfrac{(\Delta z)^*}{\Delta z} $趋于的值不确定, 因此极限 $$\lim_{\Delta z \to 0 }  \dfrac{h(z_0 +  \Delta z) - h(z_0)}{\Delta z} $$ 不存在。
+\end{inparaenum}
+因此，函数$h(z) =\left\vert z\right\vert^2 $在复平面上处处不解析。
+
+\begin{example}
+    分析下列函数$f(z) =  z Re(z)$的解析性。
+\end{example}
+  \emph{解:} （1）取$z=0$
+  \[ \begin{aligned}
+    \lim_{\Delta z \to 0 }  \frac{f(z +  \Delta z) - f(z)}{\Delta z} 
+    &= \lim_{\Delta z \to 0 }  \frac{f(0 +  \Delta z) - f(0)}{\Delta z}  \\
+    &= \lim_{\Delta z \to 0 }  \frac{\Delta z Re (\Delta z)}{\Delta z} \\
+    &= 0
+  \end{aligned}\]
+  即$f(z)$在原点可导。\\
+  （2）取$z \ne 0$ 
+  \[ \begin{aligned}
+   \frac{f(z +  \Delta z) - f(z)}{\Delta z} 
+   &=   \frac{(z +  \Delta z)  Re (z +  \Delta z) - z Re (z)}{\Delta z}  \\
+   &= \frac{z}{\Delta z}[ Re (z +  \Delta z) - Re (z) ] +  Re (z +  \Delta z) \\
+   &= \frac{z}{\Delta x + i \Delta y }[ x +  \Delta x - x ] +  (x + \Delta x) \\
+   &= z \frac{\Delta x}{\Delta x + i \Delta y } + x + \Delta x 
+ \end{aligned}\]
+ 计算两种趋近方案:\\ 
+ \begin{inparaenum}[(i)]
+    \item \[\begin{aligned}
+    \lim _{\substack{\Delta  x = 0 \\ \Delta y \rightarrow 0}} \frac{f(z +  \Delta z) - f(z)}{\Delta z}   
+     &=  \lim_{\Delta y \to 0 }  z \frac{0}{0+ i \Delta y } + x + 0 \\
+     &= x 
+ \end{aligned}\]
+ \item \[\begin{aligned}
+ \lim _{\substack{\Delta  y = 0 \\ \Delta x \rightarrow 0}} \frac{f(z +  \Delta z) - f(z)}{\Delta z}   
+    &=  \lim_{\Delta x \to 0 }  z \frac{\Delta x }{\Delta x + i 0 } + x + \Delta x  \\
+    &= z + x 
+\end{aligned}\]
+\end{inparaenum}
+即$z \ne 0$的点，不可导，  \\
+因此函数$f(z)$在复平面处处不解析。
+
+\begin{theorem}\label{} \index{}
+    对于两复数$f(z)$和$g(z)$, 在区域$E$内有定义， \\
+    \begin{compactitem}
+        \item 若 $f(z), g(z)$ 在区域$E$内解析, 
+        则它们的各、差、积、商(分母不为零)在区域$E$也解析。
+        \item 若函数$h = g(z)$在 区域$E$ 解析, 函数$w = f(z)$在$h$平面的区域$F$解析, 如果$E$内的每一个点$z$对应的函数值$ h=g(z)$都属于区域$F$, 则复合函数 
+        \[ w = f[g(z)]\]
+        在区域$E$ 解析。
+    \end{compactitem}
+\end{theorem}
+特别地： \\
+\begin{inparaenum}[(i)]
+    \item 所有的多项式函数 $P(z)$在复平面处处解析。\\
+    \item 有理分式函数$\dfrac{P(z)}{Q(z)}$在不含分母为零的点的区域解析，使分母为零的点是奇点。\\
+\end{inparaenum}
+
+\begin{theorem}\label{} \index{}
+    函数$f(z) =u(x,y) +iv(x,y)$ 的定义域为$E$，
+    \begin{compactitem}
+    \item 它在定义域内解析的充要条件是：$u(x,y)$和$v(x,y)$ 在$E$内可微，并且满足柯西-黎曼方程 （C-R方程）
+     \item  区域$D \subseteq E $，如果$u(x,y)$和$v(x,y)$的四个偏导函数$u'_x, u'_y, v'_x, v'_y$在$D$内存在、连续且满足柯西-黎曼方程 （C-R方程）, 则函数$f(z)$在区域$D$内解析。 
+    \end{compactitem}
+\end{theorem}
+~\\
+函数解析的判定方法：
+\begin{compactitem}
+    \item 如果能用求导公式和法则证实复变函数$f(z)$的导数在区域$D$内处处存在，则可断定函数$f(z)$在区域$D$内解析。
+    \item 如果函数$f(z) =u(x,y) +iv(x,y)$ 在区域$D$内有定义，$u(x,y)$和$v(x,y)$的四个偏导函数$u_x, u_y, v_x, v_y$都存在、连续且满足柯西-黎曼方程，则可断定函数$f(z)$在区域$D$内解析。
+\end{compactitem}
+
+\begin{example} \label{ex:gz}
+试判定下列函数在何处可导，何处解析
+  \[ f(z) = z^*, \, g(z) = e^x(\cos y + i \sin y), \,h(z) = z Re(z)\]    
+\end{example}
+\emph{解}
+（1）由于 \[ u(x,y) + iv(x,y) = w = z^* = x -yi \]
+    有 \[ u(x,y) =x, v(x,y) =-y\] 
+计算四个偏微分  
+     \[ \frac{\partial u}{\partial x} =1, \frac{\partial u}{\partial  y }=0, \frac{\partial v}{\partial x} =0, \frac{\partial v}{\partial y} =-1\]
+     有$ \dfrac{\partial u}{\partial x} \ne \dfrac{\partial v}{\partial y} $,即不满足柯西-黎曼方程，故$f(z)$在复平面处处不可导，处处不解析。\\
+(2) 由 $g(z) = e^x(\cos y + i \sin y)$， 可得 
+     \[ u(x,y) =e^x\cos y, v(x,y) =e^x \sin y\] 
+     计算四个偏微分 
+     \[ \frac{\partial u}{\partial x} =e^x\cos y, \frac{\partial u}{\partial  y }=- e^x \sin  y, \frac{\partial v}{\partial x} =e^x \sin y, \frac{\partial v}{\partial y} =e^x \cos  y\]
+     判定:\\
+     \begin{inparaenum}[(i)]
+       \item 四个一阶偏导数存在且连续\\
+       \item $\dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y}, \, \dfrac{\partial u}{\partial  y } = -   \dfrac{\partial v}{\partial x}$
+     \end{inparaenum}
+因此 $g(z)$在复平面处处可导，处处解析。\\
+根据导数公式,可求得  
+    \[ \begin{aligned}
+      g'(z) &= \frac{\partial u}{\partial x} + i \frac{\partial v }{\partial x} \\ 
+      &= e^x\cos y +i e^x \sin y  \\
+      &= g(z)
+    \end{aligned}\]
+(3) 由 $h(z) = z Re(z) = x^2 + i xy$ 可得
+    \[ u(x,y) =x^2, v(x,y) =xy\] 
+    计算四个偏微分 
+    \[ \frac{\partial u}{\partial x} =2 x, \frac{\partial u}{\partial  y }=0, \frac{\partial v}{\partial x} =y, \frac{\partial v}{\partial y} =x\]
+    判定:\\
+    \begin{inparaenum}[(i)]
+      \item 四个一阶偏导数存在且连续\\
+      \item 当且仅当$x=y=0$时，满足柯西-黎曼方程
+    \end{inparaenum}
+因此 $h(z)$仅在原点可导，在复平面处处不解析。
+
+
+ \begin{example}
+    如果$f(z) =u(x,y ) + i v(x,y) $ 在区域$D$内是解析函数，且$f'(z) = 0, (z \in D) $, 试证明函数$f(z)$在区域$D$内是常函数。
+ \end{example}
+    \begin{proof}
+    由导函数公式，有
+    \[ f'(z) = u_x + i v_x = v_y - i u_y =0\]
+    由复数相等条件
+    \[ u_x = v_y = v_x = u_y =0\]
+    因此有
+    \[ u(x,y) = c_1, \qquad v(x,y) =c_2\]
+    式中$c_1, c_2$为复常数，即
+    \[ f(z) = u(x,y) + iv(x,y) = c_1 + i c_2 = C_1 + iC_2\]
+    式中$C_1, C_2$为实常数。\\
+    即：函数$f(z)$在区域$D$内是常函数。
+    \end{proof}
+ \begin{example}
+    如果$f(z) =u(x,y ) + i v(x,y) $ 在区域$D$内是解析函数，且$f'(z) \ne 0 $, 试证明曲线族$u(x,y)=c_1$和$v(x,y) = c_2$ 必互相正交，其中$c_1, c_2$ 为常数。
+ \end{example}
+    \begin{proof}
+        因为 $f'(z) = -\frac{1}{i}u_y + v_y \ne 0 $，所以 $v_y$和$u_y$不能全为零。\\
+        （1）设曲线族$u(x,y)=c_1$和$v(x,y) = c_2$ 在某交点处$v_y$和$u_y$都不为零 \\
+        根据隐函数求导法则，它们的斜率分别为：
+         \[ k_1 = - \frac{u_x}{u_y}, \qquad k_2 = - \frac{v_x}{v_y}\]
+        根据C-R方程，计算两者的积
+        \[ k_1\cdot k_2 = \left(- \frac{u_x}{u_y}\right) \cdot \left(- \frac{v_x}{v_y}\right) = \left(- \frac{v_y}{u_y}\right) \cdot \left(- \frac{u_x}{v_y}\right) =-1\]
+        因此两者正交。\\
+        （2）如果交点处$v_y$和$u_y$有一个为零， 则另一个必不为零，那两曲线的切线一条水平，另一条垂直，它们依然相互正交。
+    \end{proof}
+\begin{example}
+        如果$f(z) =u(x,y ) + i v(x,y) $ 在区域$D$内是解析函数，且$v= u^2 $, 求$f(z)$
+\end{example}   
+\emph{解：} 根据C-R方程，计算$u(x,y)$的偏导 
+    \[\begin{aligned}
+        u_x &= v_y = 2u u_y  \qquad (a)\\
+        u_y &= -v_x = -2u u_x \qquad (b)
+    \end{aligned}\]
+    (1) 把(b)式代入(a)
+    \[ u_x (4u^2 +1) =0\]
+    由于$(4u^2 +1) \ne 0$, 得$u_x =0$ \\
+    (2)若把(a)式代入(b)，同理可得$u_y =0$ \\
+    因此 
+    \[ u'(x,y) = 0 \Rightarrow u(x,y)=c\]
+    式中$c$为实常数。代回得 
+    \[ f(z) =u(x,y ) + i v(x,y) = c+ ic^2 \]
+
+
+\section{初等解析函数}\label{}
+实数域的初等函数，比如三角函数，指数函数，对数函数，幂函数等，它们是一类性质各异且应用非常广泛的可微函数。本节我们将把这些常用的实数域初等函数推广到复数域，并分析它们的可微性、解析性等重要性质。\\
+
+\subsection{指数函数}
+~\\
+在例[\ref{ex:gz}]中，我们看到函数
+\[ f(z) = e^x (\cos y + i \sin y) \]
+在复平面处处可微处处解析，且$f'(z) = f(z)$。这些性质与实数域中的指数函数$f(x) = e^x$完全相同。基此，可以定义复数域的指数函数。
+\begin{definition}\index{}
+	对于任意复数 $z= x +iy $, 由关系式
+  \begin{equation}\label{eq:zshs}
+    f(z) = e^z = e^{x+iy}  = e^x (\cos y + i \sin y) 
+  \end{equation} 
+规定的复函数$e^z$称为复数$z$的\emph{指数函数}, 通常记为 $\exp {z}$。
+\end{definition}
+在定义式[\ref{eq:zshs}]中，当$z$的实部$x=0$时，有 
+\begin{equation}
+  e^{iy}  = \cos y + i \sin y 
+\end{equation} 
+这正是欧拉公式，因此式[\ref{eq:zshs}]可以看成的实数域欧拉公式向复数域的推广。
+可以看出，指数函数的模$|e^z| = e^x > 0$, 辐角$\arg (e^z) = y $, 实部$\text{Re}(e^z) = e^x \cos y$, 虚部$\text{Im}(e^z) = e^x \sin y$。
+
+当$z$的虚部$y=0$时，复指数函数$f(z)= e^x$与实指数函数$f(x) = e^x$保持一致。同时，实指数函数的加法定理: $e^{x_1+x_2} = e^{x_1} e^{x_2}$ 在复指数函数中也得以保存，即有
+\begin{equation}
+  e^{z_1+z_2} = e^{z_1} e^{z_2},
+\end{equation}
+指数函数$e^z$具有如下主要性质：
+\begin{compactenum}[(a)]
+	\item 解析性：$e^z$在复平面$\mathbb{C}$解析，且$(e^z)' = e^z$,
+	\item 加法定理:  $e^{z_1+z_2} = e^{z_1} e^{z_2}$，
+	\item 周期性：$e^{z+2k\pi i } = e^{z}, \, (k=0, \pm 1, \pm 2, \dots)$，基本周期为$2\pi i$。
+\end{compactenum}
+说明：
+\begin{compactenum}[(i)]
+	\item $e^z= \exp {z}$只是一种记号, 不能理解为$(2.718\dots)^z$, 失去了幂的意义。
+	\item 实指数函数$e^x$没有周期性。
+\end{compactenum}
+
+\begin{example}
+  试证明函数$f(z) = e^{\bar{z}}$在复平面不解析
+\end{example}
+\begin{proof}
+  由于$e^{\bar{z}} = e^x(\cos y - i \sin y)$, 有
+  \[ u(x,y) = e^x \cos y, \qquad v(x,y) = - e^x \sin y \]
+  求四个偏分
+  \[ u_x = e^x \cos y,\, v_y = -  e^x \cos y\]
+  只有在$k=k \pi + \pi /2 $时，才满足C-R方程 $u_x = v_y$, 因此$e^{\bar{z}}$在复平面不解析。 
+\end{proof}
+
+\begin{example}
+  试求函数$f(z) = |e^{z^2}|$
+\end{example}
+\emph{解：} 令$z = x+ iy $, 有$z^2 = x^2 - y^2 + 2xyi$
+\[ \begin{aligned}
+  f(z) = |e^{z^2}| & = |e^{x^2 - y^2 + 2xyi}|  \\
+  & = |e^{x^2 - y^2 } e^{2xyi}| \\
+  & = e^{x^2 - y^2 } 
+\end{aligned}\]
+
+\begin{example}
+  试求函数$e^{2+3i}$和$e^{2-3i}$的主辐角
+\end{example}
+\emph{解：} 因为$e^z = e^{x+ iy} = e^x(\cos y + i \sin y) $ 的辐角为
+\[Arg (e^z) = y + 2k\pi, k \in \mathbb{Z} \]
+代入,并根据辐角主值区间$\left(- \pi, \pi\right]$确定$k$的取值。 
+\[Arg (e^{2+3i}) = 3 + 2k\pi, \qquad \arg (e^{2+3i}) = 3 \]
+\[Arg (e^{2-3i}) = -3 + 2k\pi, \qquad \arg (e^{2-3i}) = -3 \]
+
+\begin{example}
+  试求函数$f(x) = e^{z/5}$的周期
+\end{example}
+\emph{解：} 由于$e^z$的周期为$2k\pi i$ 
+\[ \begin{aligned}
+  f(z) & =  e^{z/5} =  e^{z/5 + 2k\pi i}  \\
+     & =  e^{\frac{z + 10k\pi i}{5}}  \\
+     & = f(z+10k \pi i)
+\end{aligned}\]
+因此，函数$f(x) = e^{z/5}$的周期为$10k \pi i$。
+
+\subsection{三角函数与双曲函数}
+~\\
+在公式
+\[ e^{x+iy}  = e^x (\cos y + i \sin y) \]
+中，取$x=0$, 得 
+\[ e^{iy}  = \cos y + i \sin y \]
+取复共轭，得
+\[ e^{-iy}  = \cos y - i \sin y \]
+两式相加减，得 
+\begin{equation}\label{eq:ssjhs}
+  \sin y =  \frac{e^{iy} - e^{-iy} }{2i}, \qquad \cos y =  \frac{e^{iy} + e^{-iy} }{2}
+\end{equation}
+这说明实数域的三角函数可以用表示成复函数形式。下面把它推广到复数域。
+\begin{definition}
+  对于任意复数 $z= x +iy $, 由关系式
+  \begin{equation}\label{eq:fsjhs}
+    \sin z =  \frac{e^{iz} - e^{-iz} }{2i}, \qquad \cos z =  \frac{e^{iz} + e^{-iz} }{2}
+  \end{equation}
+所规定的复函数$\sin z$和$\cos z$ 分别称为复数$z$的的\emph{正弦函数}和\emph{余弦函数}。
+\end{definition}
+在定义式[\ref{eq:fsjhs}]中，当$z$的虚部$y=0$时，正好是式[\ref{eq:ssjhs}]。即 复数域的三角函数与实数域的三角函数保持一致。\\
+三角函数具有如下主要性质：
+\begin{compactenum}[(a)]
+	\item 解析性：$\sin z $和 $\cos z $在复平面$\mathbb{C}$解析，且
+  \begin{equation}
+   \sin' z = \cos z , \cos' z = -\sin z  
+  \end{equation}
+  \item 奇偶性：
+  \begin{equation}
+    \sin (-z) = - \sin z, \,\cos (-z) = \cos z
+  \end{equation}
+	\item 三角恒等式: 
+  \begin{equation} 
+    \begin{aligned}
+      & \sin^2 z + \cos^2 z =1 \\
+      & \sin(z_1 +z_2) = \sin z_1 \cos z_2 + \cos z_1 \sin z_2 \\
+      & \cos(z_1 +z_2) = \cos z_1 \cos z_2 - \sin z_1 \sin z_2  \\
+      & \sin 2 z = 2 \sin z \cos z \\
+      & \tan 2 z = \frac{2 tan z}{1- tan ^2 z} \\
+      & \sin \left( \frac{\pi}{2}- z\right) = \cos z, \quad \cos(z+ \pi) = - \cos z \\
+      & |\cos z|^2 = \cos ^2 z + \sinh^2 y, \quad |\sin z|^2 = \sin ^2 z + \sinh^2
+    \end{aligned}
+  \end{equation}
+	\item 周期性：
+	\begin{equation}
+    \sin(z+2\pi) = \sin z, \, \cos(z+2\pi) = \cos z
+  \end{equation}
+\end{compactenum}
+
+\begin{proof}
+  (1) 解析性 : 　根据定义
+  \[\sin z =  \frac{e^{iz} - e^{-iz} }{2i}, \qquad \cos z =  \frac{e^{iz} + e^{-iz} }{2}\]
+  由于$e^{iz}$和$e^{-iz}$都在复平面$\mathbb{C}$解析，可得$\sin z$和$\cos z $也在复平面$\mathbb{C}$解析。\\ 
+  (2)导数：
+  \[ \begin{aligned}
+    \sin z &=  \frac{e^{iz} - e^{-iz} }{2i} \\
+    \sin' z &=  \frac{1}{2i} (e^{iz} - e^{-iz} )'\\
+    &= \frac{1}{2} (e^{iz} + e^{-iz} ) \\
+    & = \cos z
+  \end{aligned}\]
+  （3）周期性： 
+  \[ \begin{aligned}
+    \sin (z+2\pi) &=  \frac{e^{i(z+2\pi)} - e^{-i(z+2\pi)} }{2i} \\
+    & =  \frac{e^{iz}e^{2\pi i}  - e^{-iz}e^{-2\pi i}  }{2i} \\
+    &=  \frac{e^{iz} - e^{-iz} }{2i} \\
+    & = \sin z
+  \end{aligned}\]
+  (4) 三角恒等式 \\
+  \[ \begin{aligned}
+    \sin^2 z & = -\frac{(e^{iz} - e^{-iz})(e^{iz} - e^{-iz}) }{4}  \\
+    & = \frac{ - e^{i2z} - e^{-i2z} + 2 }{4} \\
+  \end{aligned}\]
+  \[ \begin{aligned}
+    \cos^2 z & = \frac{(e^{iz} + e^{-iz})(e^{iz} + e^{-iz}) }{4}  \\
+    & = \frac{ e^{i2z} + e^{-i2z} + 2 }{4} 
+  \end{aligned}\]
+  两式相加，得
+  \[ \sin^2 z + \cos^2 z =1 \]
+  和差化积 
+  \[ \begin{aligned}
+   \sin(z_1 + z_2) & =  \frac{e^{i(z_1+z_2)} - e^{-i(z_1+z_2)} }{2i} \\
+   & =   \frac{e^{iz_1} e^{iz_2}  - e^{-iz_1} e^{-iz_2}}{2i} \\
+   & =   \frac{e^{iz_1} - e^{-iz_1} }{2i} \frac{e^{iz_2} + e^{-iz_2} }{2} + \frac{e^{iz_1} + e^{-iz_1} }{2} \frac{e^{iz_2} - e^{-iz_2} }{2i}  \\
+   & = \sin z_1 \cos z_2 + \cos z_1 \sin z_2 
+  \end{aligned}\]
+
+\end{proof}
+
+\begin{example}
+  试证明公式 $|\sin x| \le 1 $和$| \cos x| \le 1 $ 不能推广到复数域。
+\end{example}
+\begin{proof}
+  取$z = iy, (y>0)$ , 则有 
+  \[ |\cos iy | =  |\frac{e^{i(iy)} + e^{-i(iy)} }{2} | =  |\frac{e^{-y} + e^{y} }{2} | >   \frac{e^{y} }{2} \]
+  很明显，随着$y$变大，会出现$\dfrac{e^{y} }{2} > 1$，因此有 
+  \[ |\cos z | >1\]
+\end{proof}
+
+\begin{example}
+  试证明函数$f(z) = \sin \bar{z}$ 在复平面不解析
+\end{example}
+\begin{proof}
+  由三角函数定义式 
+  \[ \sin \bar{z} = \frac{e^{i\bar{z}} - e^{-i\bar{z}} }{2i} \]
+代入 
+\[ \bar{z} = x - iy \]
+得 
+\[ \sin \bar{z} = \sin x \cosh y  - i \cos x \sinh y \]
+因此有 
+\[ u(x,y) = \sin x \cosh y , \quad v(x,y) = - \cos x \sinh y\]
+存在偏导 
+\[ u_x = \cos x \cosh y  , \quad v_y = - \cos x \cosh y\]
+只有当$x= k\pi \pm \dfrac{\pi}{2}, (k \in \mathbb{Z})$时，才有 $u_x = v_y$。 \\
+因此$f(z) = \sin \bar{z}$ 在复平面不解析。 
+\end{proof}
+
+\begin{example}
+  求三角函数$ \sin (1 +2 i)$的值
+\end{example}
+\emph{解：} 由和差化积公式 
+\[ \begin{aligned}
+  \sin (1 +2 i) &= \sin 2i \cos 1 + \cos 2i \sin 1  \\
+    & =  \frac{e^{i 2i } - e^{-i 2i } }{2i} \cos 1  + \frac{e^{i 2i } + e^{-i 2i } }{2}  \sin 1  \\
+    & =  \frac{e^{2} + e^{-2} }{2}  \sin 1   + i \frac{e^{2} - e^{-2} }{2} \cos 1 \\
+    & = \cosh 2 \sin 1   + i \sinh 2 \cos 1
+\end{aligned}\] 
+\begin{example}
+  试证明函数$ \sin z$的零点为 
+  \[z = k \pi \qquad ( k =0, \pm 1, \pm 2, \dots)\]
+  $\cos z$ 的零点为 
+  \[z = k  + \frac{1}{2}\pi \qquad ( k =0, \pm 1, \pm 2, \dots)\]
+\end{example}
+\begin{proof}
+  所谓零点，就是满足$\sin z =0$的所有$z$点。
+  代入定义式
+  \[ \begin{aligned}
+    \sin z = \frac{e^{iz} - e^{-iz} }{2i} & = 0 \\
+    \frac{e^{i2z} - 1 }{2i e^{iz}} & = 0 \\
+  \end{aligned}\]
+  得 \[ e^{i2z} = 1 \]
+  因此 
+  \[ e^{-2y} e^{i2x} = 1 = e^{i2k \pi }\]
+  由复数相等条件，得
+  \[ e^{-2y} = 1, \qquad 2x = 2k \pi, \, (k=0, \pm1, \pm2, \dots)\]
+  即$ y =0, x = k \pi $,因此函数$ \sin z$的零点为
+  \[ z = k \pi , \, (k=0, \pm1, \pm2, \cdots)\]
+  同理可得$\cos z$ 的零点。
+\end{proof}
+
+\begin{definition}
+  对于任意复数 $z= x +iy $, 由关系式
+  \begin{equation}\label{}
+    \begin{aligned}
+      & \tan z = \frac{\sin z}{\cos z} , \, \cot z = \frac{\cos z} {\sin z} \\
+      & \sec z = \frac{1}{\cos z} , \, \csc z = \frac{1} {\sin z} \\
+    \end{aligned}
+  \end{equation}
+所规定的复函数分别称为复数$z$的\emph{正切函数、余切函数、正割函数}和\emph{余割函数}。
+\end{definition}
+很明显，它们都是相应的实函数在复数域内的推广。正切函数的周期为$\pi$, 正割函数的周期为$2\pi$, 且它们在分母不为零的点处处解析，导数为
+\begin{equation}\label{}
+  \begin{aligned}
+    & \tan' z = \sec ^2 z , \qquad \cot' z = - \csc ^2 z\\
+    & \sec' z = \sec z \tan z , \,\, \csc' z =  - \csc z \cot z \\
+  \end{aligned}
+\end{equation}
+
+\begin{definition}
+  对于任意复数 $z= x +iy $, 由关系式
+  \begin{equation}\label{}
+    \begin{array}{l}
+      \sinh z=\dfrac{\mathrm{e}^{z}-\mathrm{e}^{-z}}{2}, \cosh z=\dfrac{\mathrm{e}^{z}+\mathrm{e}^{-z}}{2} \\
+      \tanh z=\dfrac{\sinh z}{\cosh z}, \quad \operatorname{coth} z=\dfrac{1}{\tanh z} \\
+      \operatorname{sech} z=\dfrac{1}{\cosh z},\quad \operatorname{csch} z=\dfrac{1}{\sinh z}
+      \end{array}
+  \end{equation}
+所规定的复函数分别称为复数$z$的\emph{双曲正弦函数、双曲余弦函数、双曲正切函数、双曲余切函数、双曲正割函数}和\emph{双曲余割函数}。
+\end{definition}
+很明显，它们都是相应的实函数在复数域内的推广，都是周期函数且都是相应区域内解析。
+
+在本小节中，我们看到无论是三角函数还是双曲函数, 它们都由指数函数$\exp{z}$定义的。因此，熟悉并掌握指数函数$\exp{z}$的性质运算技巧就显得尤为重要。
+
+\begin{example}
+  指出函数$f(z) = \sin x \cosh y + i \cos x \sinh y$的解析区域，并求出导数。
+\end{example}
+\emph{解：} (1) 由题意有 
+\[ u(x,y) = \sin x \cosh y , \quad v(x,y) = \cos x \sinh y \]
+求四他偏导 
+\[ u_x =  \cos x \cosh y, \quad u_y = \sin x \sinh y  \]
+\[ v_x =  -\sin x \sinh y, \quad u_y = \cos x \cosh y  \]
+它们在复平面连续，故$u(x,y), v(x,y)$在复平面可微, 同时存在
+\[ u_x =v_y, \quad u_v = -v_x\]
+即它们满足C-R方程，因此$f(z)$在复平面处处解析。\\
+(2)由导数公式 
+\[ f'(z) = u_x + i v_x = \cos x \cosh y - i \sin x \cosh y\]
+
+\subsection{对数函数}
+~\\
+\begin{definition}
+  我们规定对数函数是指数函数的反函数, 即满足方程$$e^w = z \quad (z\ne 0)$$的函数$w = f(z)$ 称为\emph{对数函数},记为 
+  \begin{equation}
+    w = \text{Ln}(z) = \ln(|z|) + i \text{Arg}(z)
+  \end{equation}
+  由于 $\text{Arg}(z)$ 是多值函数，对数函数$  w = \text{Ln}(z)$ 也是\emph{多值函数}， 并且每两个值之间相差$2 \pi i$ 的整数倍。如果将$\text{Ln}(z)$中的$\text{Arg}(z)$取主值，所得单值函数称为对数函数$  w = \text{Ln}(z)$ 的\emph{主值}，记为
+  \[ w_0 = \ln(z) = \ln(|z|) + i \text{arg}(z)\]
+  其余各值可写成 
+  \[ w_k = \ln(z) + 2k \pi i \qquad (k = \pm 1, \pm 2, \cdots)\]
+  每一个固定的$k$确定一个单值函数，称为对数函数$  w = \text{Ln}(z)$ 的一个\emph{分支}。
+\end{definition}
+很明显，当取$z=x>0$时，对数函数$w = \text{Ln}(z)$的主值$ln(z) = \ln(x)$是实数域对数函数。因此，复数域对数函数$w = \text{Ln}(z)$是实数域对数函数 $y = \ln(x)$的扩展。
+
+\begin{example}
+  求对数函数$\text{Ln}(2)$ 和 $\text{Ln}(-1)$ 的主值。
+\end{example}
+\emph{解：} (1)根据定义， 有
+\[ \begin{aligned}
+  \text{Ln}(2) & = \ln(|2|) + i \text{Arg}(2) \\
+  & = \ln 2 + i 2k \pi , (k \in \mathbb{Z})
+\end{aligned}\]
+由于 $\arg(2) =0$, 因此 $\text{Ln}(2)$的主值为$\ln 2$ \\
+(2)根据定义， 有
+\[ \begin{aligned}
+  \text{Ln}(-1) & = \ln(|-1|) + i \text{Arg}(-1) \\
+  & = \ln 1 + i (2k +1) \pi  \\
+  & = i (2k +1) \pi , (k \in \mathbb{Z}) 
+\end{aligned}\]
+由于 $\arg(-1) =\pi $, 因此 $\text{Ln}(-1)$的主值为$i \pi $ \\
+\begin{hint}
+  实数域中负数无对数，复数域中负数有对数，这是对实对数函数的延拓。
+\end{hint}
+
+\begin{example}
+  求解方程 $ e^z -1 - \sqrt{3} i =0$。
+\end{example}
+\emph{解：} 对数函数是指数函数的反函数 
+\[ \begin{aligned}
+  e^z -1 - \sqrt{3} i & =0 \\
+  e^z & = 1 + \sqrt{3} i \\
+   z &= \text{Ln}(1 + \sqrt{3} i ) \\
+     & = \ln |1 + \sqrt{3} i | + i \text{Arg}(1 + \sqrt{3} i ) \\
+     & = \ln 2 + i \left(\frac{\pi}{3} + 2 k \pi \right), \qquad (k \in \mathbb{Z})
+\end{aligned}\]
+
+\begin{example}
+  求对数函数$\text{Ln}(-2 +3 i)$的值及主值。
+\end{example}
+\emph{解：} (1)根据定义
+\[ \begin{aligned}
+  \text{Ln}(-2 +3 i)) & = \ln(|-2 +3 i|) + i \text{Arg}(-2 +3 i) \\
+  & = \ln \sqrt{13} + i \left( \pi - \arctan \frac{3}{2} + 2 k \pi \right)  \\
+  & = \frac{1}{2} \ln 13 +i \left[ (2 k +1) \pi - \arctan \frac{3}{2}\right], \qquad (k \in \mathbb{Z}) 
+\end{aligned}\]
+由于$\arg(-2 +3 i) = \pi - \arctan \dfrac{3}{2}$,所以 
+\[ \ln (-2 +3 i) = \frac{1}{2} \ln 13  + i \left( \pi - \arctan \dfrac{3}{2} \right)\]
+
+对数函数具有如下主要性质：
+\begin{compactenum}[(a)]
+	\item 解析性：在除去负实轴（含原点）外的在复平面内,处处连续处处可导，且
+  \begin{equation}\label{eq:dsds}
+   \ln' z = \frac{1}{z} , \text{Ln}' z = \frac{1}{z}
+  \end{equation}
+  \begin{proof}
+    设$z = x + yi$, 当 $x < 0$时，有极限
+    \[ \lim\limits_{y_{0^-}} (\arg z) = - \pi, \quad \lim\limits_{y_{0^+}} (\arg z) = - \pi\]
+    因此，除原点和负实轴外，在复平面其他各点处处连续。\\
+    主值支$w = \ln z $是单值的，有
+    \[ \frac{d w}{ d z} = \frac{d \ln z }{ d z}  = \frac{1 }{ \dfrac{ d z}{d \ln z }}  =   \frac{1 }{ \dfrac{ d e^w }{d w }}  =  \frac{1 }{e^w }  = \frac{1}{z} \]
+    同理，上式对每一个分支都成立，因此， 式[\ref{eq:dsds}]得证。
+  \end{proof}
+  \item 恒等式：
+  \begin{equation}
+    e^{\text{Ln}(z)} = z
+  \end{equation}
+  \item 可加法则：
+  \begin{equation}
+    \text{Ln}(z_1 z_2) =  \text{Ln}(z_1) + \text{Ln}(z_2), \quad  \text{Ln}(z_1 / z_2) =  \text{Ln}(z_1) - \text{Ln}(z_2)
+  \end{equation}
+  \begin{proof}
+    运用公式把$z_1 z_2$分开，然后再组合
+    \[ \begin{aligned}
+      \text{Ln}(z_1 z_2) &= \ln |z_1 z_2| + i \text{Arg} (z_1 z_2) + 2 k \pi i \\
+      & = \ln |z_1|  + \ln |z_2| +  i \text{Arg} (z_1)  +  2 m \pi i + i \text{Arg} (z_2) + 2 n \pi i \\ 
+      & =  \text{Ln}(z_1) +  \text{Ln}(z_2)
+    \end{aligned}\]
+    \[ \begin{aligned}
+      \text{Ln}(z_1 /z_2) &= \ln |z_1 /z_2| + i \text{Arg} (z_1/ z_2) + 2 k \pi i \\
+      & = \ln |z_1|  - \ln |z_2| +  i \text{Arg} (z_1)  +  2 m \pi i - i \text{Arg} (z_2) - 2 n \pi i \\ 
+      & =  \text{Ln}(z_1) - \text{Ln}(z_2)
+    \end{aligned}\]
+  \end{proof}
+\end{compactenum}
+
+\subsection{乘幂与幂函数}
+~\\
+实数域存在两个实常数的乘幂，表示为$a^b$。若推广到复数域，则得形如$(1+i)^{1-i}$的数，应明确它的值及意义。
+\begin{definition}
+  设$a,b$是两个复常数且$a \ne 0$, 存在\emph{乘幂} 
+  \begin{equation}
+    a^b = e^{b\text{Ln}a}
+  \end{equation}
+  若$a$取复变数$z$, 则有 
+  \begin{equation}
+    w = z^b = e^{b\text{Ln}z}
+  \end{equation}
+  称为$z$的\emph{幂函数} 。若$b$取复变数$z$, 则有 
+  \begin{equation}
+    w = a^z = e^{z\text{Ln}a}
+  \end{equation}
+  称为$z$的\emph{一般指数函数}，它是一个具有无穷多个在z平面上单值解析分支的函数。\\
+  当一般指数函数中取$a=e$且$\text{Ln} e$只取主值时，退化为通常的单值指数函数$$w = e^z.$$ \\
+  若$a,b$都取复变数, 则是双变量的复变函数
+  \begin{equation}
+    w = f(z_1, z_2) = z_1^{z_2} = e^{z_2\text{Ln}z_1}
+  \end{equation}
+\end{definition}
+对于乘幂$a^b$，若b取某些特别的值，
+\begin{compactenum}[(a)]
+	\item $b=n$(正整数)，则乘幂$a^b$只有一个值 
+  \[  \begin{aligned}
+    a^n & = e^{n \text{Ln}a}  \\
+    &= e^{ \text{Ln}a +  \text{Ln}a + \dots + \text{Ln}a }  \\
+    &= e^{ \text{Ln}a} \cdot e^{ \text{Ln}a} \cdot \dots \cdot e^{ \text{Ln}a} \\
+    & = a\cdot a \cdot \dots \cdot a, \quad (\text{n个因子}) 
+  \end{aligned} \]
+  取$a=z$,则得幂函数(单值) 
+  \begin{equation}
+    w = z^n 
+  \end{equation}
+	\item   $b=\dfrac{1}{n}$(n为正整数)，则乘幂$a^b$有n-1个不同的值
+	\[  \begin{aligned}
+    a^{\frac{1}{n}} & = e^{\frac{1}{n}\text{Ln}a}  \\
+    &=  e^{\frac{1}{n} [\ln|a| + i \text{Arg}a] }\\ 
+    & = e^{\frac{1}{n}\ln|a|} e^{i \frac{ \arg a + 2k \pi }{n}} \\
+    & = |a|^{\frac{1}{n}} \left[ \cos \frac{ \arg a + 2k \pi }{n} + i \sin \frac{ \arg a + 2k \pi }{n}\right], \quad (k = 0,1,2,\dots, n-1) \\
+    & = \sqrt[n]{a}
+  \end{aligned} \]
+  取$a=z$,则得幂函数$z = w^n $的反函数
+  \begin{equation}
+    w = z^{\frac{1}{n}} 
+  \end{equation}
+  \item   $b=\dfrac{m}{n}$(n与m为互质正整数)，则乘幂$a^b$有n-1个不同的值
+	\[  \begin{aligned}
+    a^{\frac{m}{n}} & = e^{\frac{m}{n} \ln |a|} \left[ \cos \frac{m}{n} (\arg a + 2k \pi ) + i \sin \frac{m}{n} (\arg a + 2k \pi ) \right], \quad (k = 0,1,2,\dots, n-1)
+  \end{aligned} \]
+  \item   $b$取无理数或虚数，则乘幂$a^b$有无穷多个值。\\
+\end{compactenum}
+总之，由于$\text{Ln} a $ 的多值性，乘幂$a^b$一般是多值的（b取正整数时例外），因此 幂函数$w = z^b$和一般指数函数$w = a^z$ 一般也是多值的，且获得各单值分支函数的方法与对数函数$w = \text{Ln} z $ 的方法是一样。  
+  \begin{example}
+  求乘幂$1^1$、$1^{\sqrt{2}}$ 和$i^i$的值 
+\end{example}
+\emph{解：} (1) 根据乘幂的定义 
+\[ \begin{aligned}
+  1^{1} & =  e^{\text{Ln}1} \\
+  &=  e^{[\ln 1 + i \text{Arg}1]}  \\
+  &=  e^{2 k \pi i}  , \quad (k \in \mathbb{Z}) \\
+  & = 1
+\end{aligned} \]
+由于$b$取整数，乘幂只有一个值。\\
+(2) 根据乘幂的定义 
+\[ \begin{aligned}
+  1^{\sqrt{2}} & =  e^{\sqrt{2}\text{Ln}1} \\
+  &=  e^{\sqrt{2}[\ln 1 + i \text{Arg}1]}  \\
+  &=  e^{2\sqrt{2} k \pi i}  \\
+  &= \cos (2\sqrt{2} k \pi )  + i \sin (2\sqrt{2} k \pi ), \quad (k \in \mathbb{Z})
+\end{aligned} \]
+由于$b$取无理数，乘幂有无穷多个值。\\
+(3) 根据乘幂的定义 
+\[ \begin{aligned}
+  i^{i} & =  e^{i\text{Ln}i} \\
+  &=  e^{i[\ln 1 + i \text{Arg}i]}  \\
+  &=  e^{i^2 \left( \dfrac{\pi}{2} + 2 k \pi \right)}  \\
+  &= e^{-\left( \dfrac{\pi}{2} + 2 k \pi \right)}, \quad (k \in \mathbb{Z})
+\end{aligned} \]
+由于$b$取虚数，乘幂有无穷多个值。\\
+
+\begin{example}
+  试证明 $ (z^b)' = b z^{b-1}$, 其中$b$为实数
+\end{example}
+\begin{proof}
+  \[ \begin{aligned}
+    (z^b)' & =  (e^{b \text{Ln} z})' \\
+&= e^{b \text{Ln} z} \frac{d}{dz} (b \ln z + 2 b k \pi i) \\
+&= z^b \cdot b \cdot \frac{1}{z} \\
+&= b z^{b-1} 
+  \end{aligned}\]
+\end{proof}
+
+\subsection{反三角函数与反双曲函数}
+~\\
+反三角函数是三角函数的反函数。由于三角函数可以非常简单地用指数函数表示，而指数函数的反函数是对数函数，所以反三角函数可以用对数函数非常简单地进行表示。
+\begin{definition}
+  设$z,w$是两个复变数，它们之间满足三角函数方程（其中的一个）
+  \[ \sin w =z, \quad \cos w =z, \quad \tan w =z \]
+  对应解函数可记为 
+  \begin{equation}
+   \begin{aligned}
+    w &= \text{Arcsin}z = - i \text{Ln}(iz + \sqrt{1-z^2})\\
+    w &= \text{Arccos}z = -i \frac{1}{i}  \text{Ln}(iz + \sqrt{z^2 -1})\\
+    w &= \text{Arctan}z = -\frac{i}{2}\text{Ln} \frac{1+iz}{1-iz},\\
+   \end{aligned}
+  \end{equation}
+  称为$z$的\emph{反正弦函数}，\emph{反余弦函数}和\emph{反正切函数}。 
+\end{definition}
+\begin{proof}
+  方程 $\tan w =z $可写成指数函数形式
+  \[ \frac{1}{i} \frac{e^{iw} -e^{-iw} }{e^{iw} + e^{-iw}} =z \]
+  改用$z$表示$w$
+  \[ e ^{i 2w} = \frac{1+iz}{1-iz}\]
+  因此有 
+  \[\begin{aligned}
+    {i 2w} & = \text{Ln}\frac{1+iz}{1-iz} \\
+    w &= - \frac{i}{2}\text{Ln}\frac{1+iz}{1-iz} \\
+    \text{Arctan}z &= -\frac{i}{2}\text{Ln} \frac{1+iz}{1-iz}
+  \end{aligned}\]
+  同理可得其他两个函数表达式。
+\end{proof}
+
+\begin{example}
+  求$\text{Arcsin}  2$的值
+\end{example}
+\emph{解：} 代公式 
+\[ \begin{aligned}
+  \text{Arcsin}z &= - i \text{Ln}(iz + \sqrt{1-z^2}) \\
+  \text{Arcsin}2 &= - i \text{Ln}(i2 + \sqrt{1-2^2}) \\
+  & = -i \text{Ln} \, ( 2 \pm \sqrt{3}) i\\
+  & = -i \left[\ln ( 2 \pm \sqrt{3}) + \frac{\pi}{2} i + 2k \pi i \right] \\
+  & =  (\frac{1}{2} + 2 k ) \pi - i \ln ( 2 \pm \sqrt{3}), \quad (k \in \mathbb{Z})
+\end{aligned}\]
+
+\begin{definition}
+  设$z,w$是两个复变数，它们之间满足双曲函数方程（其中的一个）
+  \[ \sinh w =z, \quad \cosh w =z, \quad \tanh w =z\]
+  对应解函数可记为 
+  \begin{equation}
+   \begin{aligned}
+    w &= \text{Arcsinh}\,z = \text{Ln}(z + \sqrt{z^2 +1})\\
+    w &= \text{Arccosh}\,z = \text{Ln}(z + \sqrt{z^2 -1})\\
+    w &= \text{Arctanh}\,z = \frac{1}{2}\text{Ln} \frac{1+z}{1-z},\\
+   \end{aligned}
+  \end{equation}
+  称为$z$的\emph{反双曲正弦函数}，\emph{反双曲余弦函数}和\emph{反双曲正切函数}。 
+\end{definition}
+\begin{proof}
+  方程 $\cosh w =z $可写成指数函数形式
+  \[ \frac{e^{w} + e^{-w} }{2} =z \]
+  化简 
+  \[ e^{2 w} + 2z e^w + 1 =0\]
+  这是关于$ e^w$一元二次方程,合理的解为
+  \[ e ^{w} = z + \sqrt{z^2 -1}\]
+  因此有 
+  \[\begin{aligned}
+    w & = \text{Ln}(z + \sqrt{z^2 -1}) \\
+    \text{Arccosh}z & = \text{Ln}(z + \sqrt{z^2 -1})
+  \end{aligned}\]
+  同理可得其他两个函数表达式。
+\end{proof}
+
+\begin{Exercises}
+  \item 求函数$f(z) = \dfrac{z+1}{z(z^2+1)}$ 的奇点。
+  \item 求函数$f(z) = \sin 5 z$的周期。
+  \item 试求不等式$|\sin z| \le 1$和$|\cos z| \le 1$ 同时成立的条件。
+	\item 下列关系式是否正确 
+	\[ (1) \, \overline{e^z} = e^{\bar{z}} , \quad 
+  (2) \, \overline{\cos z} = \cos \bar{z} , \quad 
+  (3) \, \overline{\sin z} = \sin \bar{z} \]
+	\item 求下列方程的全解 
+	\[ (1) \, \sin z =0, \quad 
+  (2) \, \cos z = 0 , \quad 
+  (3) \, 1+ e^z =0 , \quad 
+  (4) \, \sin z + \cos z =0 \]
+  \item 求$\text{Arctan(2i)}$的值
+  \item 试证明函数$f(z) = \text{Re} z$在复平面处处不解析
+  \item 试分析函数$f(z) = x y^2 + ix^2y$在复平面的可微性和解析性
+  \item 试证明函数$f(z) = x^3 + 3x^2 y i - 3xy^2 - y^3 i$在复平面处处解析，并求其导数
+  \item 试证明对于任意整数$m$，存在等式 
+       \[ (e^z)^m = e^{mz}\]
+  \item 试证明 
+    \[ \begin{aligned}
+&(1)  \sin (\mathrm{i} z)=\mathrm{i} \sinh z ; (2)  \cos (\mathrm{i} z)=\cosh z ; \\
+&(3)  \sinh (\mathrm{i} z)=  \mathrm{i}\sin  z ; (4)  \cosh (\mathrm{i} z)=\cos z ; \\
+&(5)  \tan (\mathrm{i} z)=\mathrm{i} \tanh z ; (6)  \tanh (\mathrm{i} z)=i \tan z  \\
+    \end{aligned}\]
+  \item 试证明 
+  \[ \begin{aligned}
+    &(1)  \sin z=\sin x  \cosh y+i \cos x  \sinh y \\
+    &(2)  \cos z=\cos x  \cosh y-i \sin x  \sinh y \\
+    &(3)  |\sin z|^{2}=\sin ^{2} x+\sinh ^{2} y \\
+    &(4)  |\cos z|^{2}=\cos ^{2} x+\sinh ^{2} y \\
+        \end{aligned}\]
+  \item 试证明 
+  \[ \begin{aligned}
+    &(1)  \cosh ^{2} z-\sinh ^{2} z=1 \\
+    &(2)  \operatorname{sech}^{2} z+\tanh ^{2} z=1 \\
+    &(3)  \cosh \left(z_{1}+z_{2}\right)=\cosh z_{1} \cosh z_{2}+\sinh z_{1} \sinh z_{2} 
+    \end{aligned}\]
+\end{Exercises}
